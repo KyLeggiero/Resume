@@ -51,47 +51,28 @@
 <!-- END Plugin Stylesheets -->
 
 <!-- BEGIN Style-Switcher Stylesheets -->
-<link rel="stylesheet" id="_switchSheetBackup" href="https://stylesheets.bhstudios.org/assets/v2/neon/neon-water.css"/>
-<link rel="stylesheet" id="_switchSheet"       href="https://stylesheets.bhstudios.org/assets/v2/neon/neon-water.css"/>
+<link rel="stylesheet" id="_switchSheetBackup" href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/>
+<link rel="stylesheet" id="_switchSheet"       href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/>
+<!--<link rel="stylesheet" id="temp"               href="http://localhost:4000/assets/v2/neon/neon-water.css" />-->
 <!-- END Style-Switcher Stylesheets -->
 
 <!-- BEGIN Style-Switcher Scripts -->
-<script type="text/javascript" src="https://Shared.BHStudios.org/_js/styleSwitch.js"> /* Style Switching Scripts */ </script>
+<!--<script type="text/javascript" src="https://Shared.BHStudios.org/_js/styleSwitch.js"> /* Style Switching Scripts */ </script>-->
 <!-- END Style-Switcher Scripts -->
 
-<!-- BEGIN Option Bar Script -->
-<script>/* Included from https://Shared.BHStudios.org/_js/OptionBar.jQuery.js*/
+<!--<script src="https://Shared.BHStudios.org/_js/OptionBar.jQuery.js"> /* Option Bar scripts */ </script>-->
 
-var skinBrightnessLocalStorageKey = "skin-brightness"
-
-var initialBrightness = window.localStorage.getItem(skinBrightnessLocalStorageKey) || "light"
-$(":root").addClass("brightness-" + initialBrightness)
-
-$(function() {
-	$("input[name='skin-brightness'][value='" + initialBrightness + "']").prop("checked", true)
-
-	$("input[name='skin-brightness']").change(function() {
-		var newValue = $("input[name='skin-brightness']:checked").val() || "light"
-
-		$(":root").removeClass(function(index, className) {
-			return (className.match(/\bbrightness-\w+/gim) || []).join(" ")
-		})
-
-		$(":root").addClass("brightness-" + newValue)
-
-		window.localStorage.setItem(skinBrightnessLocalStorageKey, newValue)
-	})
-})
-
-</script>
-<!-- END Option Bar Script -->
-
-    <script src="./_js/production/resumes/lib/kotlin.js"> /* Kotlin/JS */ </script>
-    <script src="./_js/production/resumes/resumes.js"> /* Scripts just for this page */ </script>
+<script src="https://shared.BHStudios.org/_js/jquery-3.3.1.min.js"> /* JQuery */ </script>
+<!--<script src="https://shared.BHStudios.org/_js/require-2.3.6.min.js"> /* Require.JS */ </script>-->
+<script src="./_js/production/resumes/lib/kotlin.js"> /* Kotlin/JS */ </script>
+<script src="./_js/production/resumes/resumes.js"> /* Scripts just for this page */ </script>
 </head>
 
 
 
 <body>
+    <header class="app-bar">
+        <h1 class="title">Ben Leggiero</h1>
+    </header>
 </body>
 </html>

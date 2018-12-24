@@ -14,7 +14,7 @@ var resumes = function (_, Kotlin) {
   var toMutableList = Kotlin.kotlin.collections.toMutableList_us0mfu$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
-  var joinToString = Kotlin.kotlin.collections.joinToString_fmv235$;
+  var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
   var emptyList = Kotlin.kotlin.collections.emptyList_287e2$;
   var emptySet = Kotlin.kotlin.collections.emptySet_287e2$;
   var equals = Kotlin.equals;
@@ -62,7 +62,7 @@ var resumes = function (_, Kotlin) {
       var item = tmp$_0.next();
       destination.add_11rb$(Résumé$Companion_getInstance().invoke_pzjc5w$(base, item));
     }
-    tmp$.append((new RésuméPortal(destination)).renderToHtmlString());
+    tmp$.append((new RésuméPortal(destination)).renderToHtmlElement());
   }
   var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var wrapFunction = Kotlin.wrapFunction;
@@ -158,8 +158,9 @@ var resumes = function (_, Kotlin) {
     simpleName: 'RequireJSConfiguration',
     interfaces: []
   };
-  function Résumé(title) {
+  function Résumé(id, title) {
     Résumé$Companion_getInstance();
+    this.id = id;
     this.title = title;
   }
   function Résumé$Companion() {
@@ -168,7 +169,7 @@ var resumes = function (_, Kotlin) {
   Résumé$Companion.prototype.invoke_pzjc5w$ = function (filtering, with_0) {
     var base = filtering;
     var filter = with_0;
-    return new Résumé(filter.meta.title);
+    return new Résumé(base.meta.id + '_' + filter.meta.id, filter.meta.title);
   };
   Résumé$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -188,29 +189,32 @@ var resumes = function (_, Kotlin) {
     interfaces: []
   };
   Résumé.prototype.component1 = function () {
+    return this.id;
+  };
+  Résumé.prototype.component2 = function () {
     return this.title;
   };
-  Résumé.prototype.copy_61zpoe$ = function (title) {
-    return new Résumé(title === void 0 ? this.title : title);
+  Résumé.prototype.copy_puj7f4$ = function (id, title) {
+    return new Résumé(id === void 0 ? this.id : id, title === void 0 ? this.title : title);
   };
   Résumé.prototype.toString = function () {
-    return 'R\xE9sum\xE9(title=' + Kotlin.toString(this.title) + ')';
+    return 'R\xE9sum\xE9(id=' + Kotlin.toString(this.id) + (', title=' + Kotlin.toString(this.title)) + ')';
   };
   Résumé.prototype.hashCode = function () {
     var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.id) | 0;
     result = result * 31 + Kotlin.hashCode(this.title) | 0;
     return result;
   };
   Résumé.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.title, other.title))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.title, other.title)))));
   };
   function RésuméPortal(résumés) {
     this.résumés = résumés;
   }
-  function RésuméPortal$renderToHtmlString$lambda(it) {
-    return '<li>' + it.renderToHtmlString() + '<\/li>';
-  }
-  RésuméPortal.prototype.renderToHtmlString = function () {
+  RésuméPortal.prototype.renderToHtmlElement = function () {
+    var list = document.createElement('ul');
+    addClass(list, ['r\xE9sum\xE9-portal']);
     var $receiver = this.résumés;
     var destination = ArrayList_init(collectionSizeOrDefault($receiver, 10));
     var tmp$;
@@ -219,12 +223,27 @@ var resumes = function (_, Kotlin) {
       var item = tmp$.next();
       destination.add_11rb$(new RésuméPortalItem(item));
     }
-    return "<ul class='r\xE9sum\xE9-portal'>" + joinToString(destination, void 0, void 0, void 0, void 0, void 0, RésuméPortal$renderToHtmlString$lambda) + '<\/ul>';
+    var destination_0 = ArrayList_init(collectionSizeOrDefault(destination, 10));
+    var tmp$_0;
+    tmp$_0 = destination.iterator();
+    while (tmp$_0.hasNext()) {
+      var item_0 = tmp$_0.next();
+      destination_0.add_11rb$(item_0.renderToHtmlElement());
+    }
+    var tmp$_1;
+    tmp$_1 = destination_0.iterator();
+    while (tmp$_1.hasNext()) {
+      var element = tmp$_1.next();
+      var listItem = document.createElement('li');
+      listItem.appendChild(element);
+      list.appendChild(listItem);
+    }
+    return list;
   };
   RésuméPortal.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9Portal',
-    interfaces: [HtmlStringRenderable]
+    interfaces: [HtmlElementRenderable]
   };
   RésuméPortal.prototype.component1 = function () {
     return this.résumés;
@@ -246,13 +265,23 @@ var resumes = function (_, Kotlin) {
   function RésuméPortalItem(résumé) {
     this.résumé = résumé;
   }
-  RésuméPortalItem.prototype.renderToHtmlString = function () {
-    return 'Title: ' + this.résumé.title;
+  function RésuméPortalItem$renderToHtmlElement$lambda(event) {
+    alert('Hi');
+    event.preventDefault();
+    return Unit;
+  }
+  RésuméPortalItem.prototype.renderToHtmlElement = function () {
+    var tmp$, tmp$_0;
+    var anchor = document.createElement('a');
+    (tmp$_0 = Kotlin.isType(tmp$ = anchor, HTMLAnchorElement) ? tmp$ : null) != null ? (tmp$_0.href = '#' + this.résumé.id) : null;
+    $(anchor).click(RésuméPortalItem$renderToHtmlElement$lambda);
+    anchor.textContent = 'Title: ' + this.résumé.title;
+    return anchor;
   };
   RésuméPortalItem.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9PortalItem',
-    interfaces: [HtmlStringRenderable]
+    interfaces: [HtmlElementRenderable]
   };
   RésuméPortalItem.prototype.component1 = function () {
     return this.résumé;
@@ -322,8 +351,9 @@ var resumes = function (_, Kotlin) {
     }
     return BasicRésuméJson$Companion_instance;
   }
-  function BasicRésuméJson$Meta(infoVersion, title) {
+  function BasicRésuméJson$Meta(id, infoVersion, title) {
     BasicRésuméJson$Meta$Companion_getInstance();
+    this.id = id;
     this.infoVersion = infoVersion;
     this.title = title;
   }
@@ -331,21 +361,25 @@ var resumes = function (_, Kotlin) {
     BasicRésuméJson$Meta$Companion_instance = this;
   }
   BasicRésuméJson$Meta$Companion.prototype.invoke_qk3xy8$ = function (jsonObject) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-    tmp$_1 = KotlinVersion.Companion;
-    tmp$_0 = typeof (tmp$ = jsonObject['info-version']) === 'string' ? tmp$ : null;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
+    tmp$_0 = typeof (tmp$ = jsonObject['id']) === 'string' ? tmp$ : null;
     if (tmp$_0 == null) {
       return null;
     }
-    tmp$_2 = invoke(tmp$_1, tmp$_0);
+    tmp$_3 = KotlinVersion.Companion;
+    tmp$_2 = typeof (tmp$_1 = jsonObject['info-version']) === 'string' ? tmp$_1 : null;
     if (tmp$_2 == null) {
       return null;
     }
-    tmp$_4 = typeof (tmp$_3 = jsonObject['title']) === 'string' ? tmp$_3 : null;
+    tmp$_4 = invoke(tmp$_3, tmp$_2);
     if (tmp$_4 == null) {
       return null;
     }
-    return new BasicRésuméJson$Meta(tmp$_2, tmp$_4);
+    tmp$_6 = typeof (tmp$_5 = jsonObject['title']) === 'string' ? tmp$_5 : null;
+    if (tmp$_6 == null) {
+      return null;
+    }
+    return new BasicRésuméJson$Meta(tmp$_0, tmp$_4, tmp$_6);
   };
   BasicRésuméJson$Meta$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -365,25 +399,29 @@ var resumes = function (_, Kotlin) {
     interfaces: []
   };
   BasicRésuméJson$Meta.prototype.component1 = function () {
-    return this.infoVersion;
+    return this.id;
   };
   BasicRésuméJson$Meta.prototype.component2 = function () {
+    return this.infoVersion;
+  };
+  BasicRésuméJson$Meta.prototype.component3 = function () {
     return this.title;
   };
-  BasicRésuméJson$Meta.prototype.copy_7aly5g$ = function (infoVersion, title) {
-    return new BasicRésuméJson$Meta(infoVersion === void 0 ? this.infoVersion : infoVersion, title === void 0 ? this.title : title);
+  BasicRésuméJson$Meta.prototype.copy_v54qkq$ = function (id, infoVersion, title) {
+    return new BasicRésuméJson$Meta(id === void 0 ? this.id : id, infoVersion === void 0 ? this.infoVersion : infoVersion, title === void 0 ? this.title : title);
   };
   BasicRésuméJson$Meta.prototype.toString = function () {
-    return 'Meta(infoVersion=' + Kotlin.toString(this.infoVersion) + (', title=' + Kotlin.toString(this.title)) + ')';
+    return 'Meta(id=' + Kotlin.toString(this.id) + (', infoVersion=' + Kotlin.toString(this.infoVersion)) + (', title=' + Kotlin.toString(this.title)) + ')';
   };
   BasicRésuméJson$Meta.prototype.hashCode = function () {
     var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.id) | 0;
     result = result * 31 + Kotlin.hashCode(this.infoVersion) | 0;
     result = result * 31 + Kotlin.hashCode(this.title) | 0;
     return result;
   };
   BasicRésuméJson$Meta.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.infoVersion, other.infoVersion) && Kotlin.equals(this.title, other.title)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.infoVersion, other.infoVersion) && Kotlin.equals(this.title, other.title)))));
   };
   function BasicRésuméJson$Content(contact, workHistory) {
     BasicRésuméJson$Content$Companion_getInstance();
@@ -1238,8 +1276,9 @@ var resumes = function (_, Kotlin) {
     }
     return RésuméFilterJson$Companion_instance;
   }
-  function RésuméFilterJson$Meta(infoVersion, title) {
+  function RésuméFilterJson$Meta(id, infoVersion, title) {
     RésuméFilterJson$Meta$Companion_getInstance();
+    this.id = id;
     this.infoVersion = infoVersion;
     this.title = title;
   }
@@ -1247,21 +1286,25 @@ var resumes = function (_, Kotlin) {
     RésuméFilterJson$Meta$Companion_instance = this;
   }
   RésuméFilterJson$Meta$Companion.prototype.invoke_qk3xy8$ = function (jsonObject) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-    tmp$_1 = KotlinVersion.Companion;
-    tmp$_0 = typeof (tmp$ = jsonObject['info-version']) === 'string' ? tmp$ : null;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
+    tmp$_0 = typeof (tmp$ = jsonObject['id']) === 'string' ? tmp$ : null;
     if (tmp$_0 == null) {
       return null;
     }
-    tmp$_2 = invoke(tmp$_1, tmp$_0);
+    tmp$_3 = KotlinVersion.Companion;
+    tmp$_2 = typeof (tmp$_1 = jsonObject['info-version']) === 'string' ? tmp$_1 : null;
     if (tmp$_2 == null) {
       return null;
     }
-    tmp$_4 = typeof (tmp$_3 = jsonObject['title']) === 'string' ? tmp$_3 : null;
+    tmp$_4 = invoke(tmp$_3, tmp$_2);
     if (tmp$_4 == null) {
       return null;
     }
-    return new RésuméFilterJson$Meta(tmp$_2, tmp$_4);
+    tmp$_6 = typeof (tmp$_5 = jsonObject['title']) === 'string' ? tmp$_5 : null;
+    if (tmp$_6 == null) {
+      return null;
+    }
+    return new RésuméFilterJson$Meta(tmp$_0, tmp$_4, tmp$_6);
   };
   RésuméFilterJson$Meta$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -1281,25 +1324,29 @@ var resumes = function (_, Kotlin) {
     interfaces: []
   };
   RésuméFilterJson$Meta.prototype.component1 = function () {
-    return this.infoVersion;
+    return this.id;
   };
   RésuméFilterJson$Meta.prototype.component2 = function () {
+    return this.infoVersion;
+  };
+  RésuméFilterJson$Meta.prototype.component3 = function () {
     return this.title;
   };
-  RésuméFilterJson$Meta.prototype.copy_7aly5g$ = function (infoVersion, title) {
-    return new RésuméFilterJson$Meta(infoVersion === void 0 ? this.infoVersion : infoVersion, title === void 0 ? this.title : title);
+  RésuméFilterJson$Meta.prototype.copy_v54qkq$ = function (id, infoVersion, title) {
+    return new RésuméFilterJson$Meta(id === void 0 ? this.id : id, infoVersion === void 0 ? this.infoVersion : infoVersion, title === void 0 ? this.title : title);
   };
   RésuméFilterJson$Meta.prototype.toString = function () {
-    return 'Meta(infoVersion=' + Kotlin.toString(this.infoVersion) + (', title=' + Kotlin.toString(this.title)) + ')';
+    return 'Meta(id=' + Kotlin.toString(this.id) + (', infoVersion=' + Kotlin.toString(this.infoVersion)) + (', title=' + Kotlin.toString(this.title)) + ')';
   };
   RésuméFilterJson$Meta.prototype.hashCode = function () {
     var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.id) | 0;
     result = result * 31 + Kotlin.hashCode(this.infoVersion) | 0;
     result = result * 31 + Kotlin.hashCode(this.title) | 0;
     return result;
   };
   RésuméFilterJson$Meta.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.infoVersion, other.infoVersion) && Kotlin.equals(this.title, other.title)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.infoVersion, other.infoVersion) && Kotlin.equals(this.title, other.title)))));
   };
   function RésuméFilterJson$RecursiveFilter(inclusion, criteria) {
     RésuméFilterJson$RecursiveFilter$Companion_getInstance();
@@ -1720,11 +1767,46 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.meta, other.meta) && Kotlin.equals(this.filters, other.filters)))));
   };
+  var throwCCE = Kotlin.throwCCE;
+  var trim = Kotlin.kotlin.text.trim_gw00vp$;
+  function createElementFromHTML(htmlString) {
+    var tmp$, tmp$_0;
+    var div = document.createElement('div');
+    var tmp$_1;
+    div.innerHTML = trim(Kotlin.isCharSequence(tmp$_1 = htmlString) ? tmp$_1 : throwCCE()).toString();
+    var tmp$_2;
+    if ((tmp$_0 = Kotlin.isType(tmp$ = div.firstChild, Element) ? tmp$ : null) != null)
+      tmp$_2 = tmp$_0;
+    else {
+      console.error('Could not convert new HTML node into element');
+      tmp$_2 = null;
+    }
+    return tmp$_2;
+  }
   function HtmlStringRenderable() {
   }
+  HtmlStringRenderable.prototype.renderToHtmlElement = function () {
+    var tmp$;
+    var tmp$_0;
+    if ((tmp$ = createElementFromHTML(this.renderToHtmlString())) != null)
+      tmp$_0 = tmp$;
+    else {
+      var $receiver = document.createElement('div');
+      console.error('Failed to create any element from HTML string; reverting to div');
+      tmp$_0 = $receiver;
+    }
+    return tmp$_0;
+  };
   HtmlStringRenderable.$metadata$ = {
     kind: Kind_INTERFACE,
     simpleName: 'HtmlStringRenderable',
+    interfaces: [HtmlElementRenderable]
+  };
+  function HtmlElementRenderable() {
+  }
+  HtmlElementRenderable.$metadata$ = {
+    kind: Kind_INTERFACE,
+    simpleName: 'HtmlElementRenderable',
     interfaces: []
   };
   var copyToArray = Kotlin.kotlin.collections.copyToArray;
@@ -1851,7 +1933,9 @@ var resumes = function (_, Kotlin) {
   var package$bh = package$org.bh || (package$org.bh = {});
   var package$tools = package$bh.tools || (package$bh.tools = {});
   var package$ui = package$tools.ui || (package$tools.ui = {});
+  package$ui.createElementFromHTML_61zpoe$ = createElementFromHTML;
   package$ui.HtmlStringRenderable = HtmlStringRenderable;
+  package$ui.HtmlElementRenderable = HtmlElementRenderable;
   var package$w3c = package$org.w3c || (package$org.w3c = {});
   var package$fetch = package$w3c.fetch || (package$w3c.fetch = {});
   package$fetch.fetchAll_vqirvp$ = fetchAll;

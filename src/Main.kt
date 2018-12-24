@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
         jq("body").append("<main><h2>Hello there</h2></main>")
 
         fun buildPortal(base: BasicRésuméJson, filters: List<RésuméFilterJson>) {
-            jq("main").append(RésuméPortal(résumés = filters.map { filter -> Résumé(filtering = base, with = filter) }).renderToHtmlString())
+            jq("main").append(RésuméPortal(résumés = filters.map { filter -> Résumé(filtering = base, with = filter) }).renderToHtmlElement())
         }
 
         @Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")

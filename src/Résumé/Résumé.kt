@@ -6,6 +6,7 @@ package Résumé
  * @since 2018-12-21.
  */
 data class Résumé(
+        val id: String,
         val title: String
 ) {
 
@@ -15,6 +16,7 @@ data class Résumé(
             val filter = with
 
             return Résumé(
+                    id = "${base.meta.id}_${filter.meta.id}",
                     title = filter.meta.title
             )
         }

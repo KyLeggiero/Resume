@@ -36,12 +36,14 @@ data class RésuméFilterJson(
 
 
     data class Meta(
+            val id: String,
             val infoVersion: KotlinVersion,
             val title: String
     ) {
         companion object {
             operator fun invoke(jsonObject: Json): Meta? {
                 return Meta(
+                        id = jsonObject["id"] as? String ?: return null,
                         infoVersion = KotlinVersion(jsonString = jsonObject["info-version"] as? String ?: return null) ?: return null,
                         title = jsonObject["title"] as? String ?: return null
                 )

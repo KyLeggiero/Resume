@@ -7,10 +7,10 @@ var resumes = function (_, Kotlin) {
   var getOrNull = Kotlin.kotlin.collections.getOrNull_yzln2o$;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
   var KotlinVersion = Kotlin.kotlin.KotlinVersion;
+  var Unit = Kotlin.kotlin.Unit;
   var first = Kotlin.kotlin.collections.first_2p1efm$;
   var println = Kotlin.kotlin.io.println_s8jyv4$;
   var drop = Kotlin.kotlin.collections.drop_ba2ldo$;
-  var Unit = Kotlin.kotlin.Unit;
   var toMutableList = Kotlin.kotlin.collections.toMutableList_us0mfu$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
@@ -21,6 +21,12 @@ var resumes = function (_, Kotlin) {
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
+  RésuméPageState$placeholder.prototype = Object.create(RésuméPageState.prototype);
+  RésuméPageState$placeholder.prototype.constructor = RésuméPageState$placeholder;
+  RésuméPageState$portal.prototype = Object.create(RésuméPageState.prototype);
+  RésuméPageState$portal.prototype.constructor = RésuméPageState$portal;
+  RésuméPageState$résumé.prototype = Object.create(RésuméPageState.prototype);
+  RésuméPageState$résumé.prototype.constructor = RésuméPageState$résumé;
   BasicRésuméJson$Content$Job$Position$Compensation$Type.prototype = Object.create(Enum.prototype);
   BasicRésuméJson$Content$Job$Position$Compensation$Type.prototype.constructor = BasicRésuméJson$Content$Job$Position$Compensation$Type;
   BasicRésuméJson$Content$Job$Position$Compensation$Tier.prototype = Object.create(Enum.prototype);
@@ -51,18 +57,28 @@ var resumes = function (_, Kotlin) {
       tmp$_1 = null;
     return tmp$_1;
   }
+  var allResourcePaths;
+  function main$lambda$listenForPageChanges$lambda(it) {
+    console.log('Would refresh');
+    return Unit;
+  }
+  function main$lambda$listenForPageChanges() {
+    $(window).on('hashchange', void 0, main$lambda$listenForPageChanges$lambda);
+  }
   var collectionSizeOrDefault = Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$;
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
-  function main$lambda$buildPortal(base, filters) {
-    var tmp$ = $('main');
-    var destination = ArrayList_init(collectionSizeOrDefault(filters, 10));
-    var tmp$_0;
-    tmp$_0 = filters.iterator();
-    while (tmp$_0.hasNext()) {
-      var item = tmp$_0.next();
-      destination.add_11rb$(Résumé$Companion_getInstance().invoke_pzjc5w$(base, item));
-    }
-    tmp$.append((new RésuméPortal(destination)).renderToHtmlElement());
+  function main$lambda$buildPortal(closure$renderer) {
+    return function (base, filters) {
+      var tmp$ = closure$renderer;
+      var destination = ArrayList_init(collectionSizeOrDefault(filters, 10));
+      var tmp$_0;
+      tmp$_0 = filters.iterator();
+      while (tmp$_0.hasNext()) {
+        var item = tmp$_0.next();
+        destination.add_11rb$(Résumé$Companion_getInstance().invoke_pzjc5w$(base, item));
+      }
+      tmp$.refreshPage_ngqhws$(new RésuméPageState$portal(destination));
+    };
   }
   var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var wrapFunction = Kotlin.wrapFunction;
@@ -77,11 +93,11 @@ var resumes = function (_, Kotlin) {
       };
     };
   });
-  function main$lambda$lambda(closure$buildPortal) {
+  function main$lambda$lambda(closure$buildPortal, closure$listenForPageChanges) {
     return function (jsons) {
       var resumeBasic = BasicRésuméJson$Companion_getInstance().invoke_qk3xy8$(first(jsons));
       if (resumeBasic == null) {
-        println('Could not parse basic Re\xE9sum\xE9 JSON!');
+        println('Could not parse basic R\xE9sum\xE9 JSON!');
       }
        else {
         var tmp$ = closure$buildPortal;
@@ -97,14 +113,18 @@ var resumes = function (_, Kotlin) {
           }
         }
         tmp$(resumeBasic, destination);
+        closure$listenForPageChanges();
       }
       return Unit;
     };
   }
   function main$lambda() {
     $('body').append('<main><h2>Hello there<\/h2><\/main>');
-    var buildPortal = main$lambda$buildPortal;
-    fetchAllAsJson(['/documents/resume-basic.json', '/documents/resume-filter-software-engineer.json'], main$lambda$lambda(buildPortal));
+    var renderer = new DynamicRésumePageRenderer($('main').get(0));
+    renderer.refreshPage_ngqhws$(RésuméPageState$placeholder_getInstance());
+    var listenForPageChanges = main$lambda$listenForPageChanges;
+    var buildPortal = main$lambda$buildPortal(renderer);
+    fetchAllAsJson(allResourcePaths.slice(), main$lambda$lambda(buildPortal, listenForPageChanges));
     return Unit;
   }
   function main(args) {
@@ -158,11 +178,93 @@ var resumes = function (_, Kotlin) {
     simpleName: 'RequireJSConfiguration',
     interfaces: []
   };
+  function DynamicRésumePageRenderer(containerElement) {
+    this.containerElement = containerElement;
+  }
+  function DynamicRésumePageRenderer$refreshPage$lambda(closure$state, this$DynamicRésumePageRenderer) {
+    return function () {
+      this$DynamicRésumePageRenderer.showContent_0(this$DynamicRésumePageRenderer.content_0(closure$state));
+      return Unit;
+    };
+  }
+  DynamicRésumePageRenderer.prototype.refreshPage_ngqhws$ = function (state) {
+    this.clearPage_0(DynamicRésumePageRenderer$refreshPage$lambda(state, this));
+  };
+  DynamicRésumePageRenderer.prototype.clearPage_0 = function (then) {
+    this.containerElement.innerHTML = '';
+    then();
+  };
+  DynamicRésumePageRenderer.prototype.showContent_0 = function (contentElement) {
+    this.containerElement.appendChild(contentElement);
+  };
+  DynamicRésumePageRenderer.prototype.content_0 = function ($receiver) {
+    return this.renderer_0($receiver).renderToHtmlElement();
+  };
+  DynamicRésumePageRenderer.prototype.renderer_0 = function ($receiver) {
+    if (Kotlin.isType($receiver, RésuméPageState$placeholder))
+      return placeholder_getInstance();
+    else if (Kotlin.isType($receiver, RésuméPageState$portal))
+      return new RésuméPortal($receiver.résumés);
+    else if (Kotlin.isType($receiver, RésuméPageState$résumé))
+      return $receiver.résumé;
+    else
+      return Kotlin.noWhenBranchMatched();
+  };
+  DynamicRésumePageRenderer.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'DynamicR\xE9sumePageRenderer',
+    interfaces: []
+  };
+  function RésuméPageState() {
+  }
+  function RésuméPageState$placeholder() {
+    RésuméPageState$placeholder_instance = this;
+    RésuméPageState.call(this);
+  }
+  RésuméPageState$placeholder.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'placeholder',
+    interfaces: [RésuméPageState]
+  };
+  var RésuméPageState$placeholder_instance = null;
+  function RésuméPageState$placeholder_getInstance() {
+    if (RésuméPageState$placeholder_instance === null) {
+      new RésuméPageState$placeholder();
+    }
+    return RésuméPageState$placeholder_instance;
+  }
+  function RésuméPageState$portal(résumés) {
+    RésuméPageState.call(this);
+    this.résumés = résumés;
+  }
+  RésuméPageState$portal.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'portal',
+    interfaces: [RésuméPageState]
+  };
+  function RésuméPageState$résumé(résumé) {
+    RésuméPageState.call(this);
+    this.résumé = résumé;
+  }
+  RésuméPageState$résumé.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'r\xE9sum\xE9',
+    interfaces: [RésuméPageState]
+  };
+  RésuméPageState.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'R\xE9sum\xE9PageState',
+    interfaces: []
+  };
   function Résumé(id, title) {
     Résumé$Companion_getInstance();
     this.id = id;
     this.title = title;
   }
+  var NotImplementedError_init = Kotlin.kotlin.NotImplementedError;
+  Résumé.prototype.renderToHtmlElement = function () {
+    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
+  };
   function Résumé$Companion() {
     Résumé$Companion_instance = this;
   }
@@ -186,7 +288,7 @@ var resumes = function (_, Kotlin) {
   Résumé.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9',
-    interfaces: []
+    interfaces: [HtmlElementRenderable]
   };
   Résumé.prototype.component1 = function () {
     return this.id;
@@ -213,6 +315,10 @@ var resumes = function (_, Kotlin) {
     this.résumés = résumés;
   }
   RésuméPortal.prototype.renderToHtmlElement = function () {
+    var section = document.createElement('section');
+    var heading = document.createElement('h2');
+    heading.textContent = 'R\xE9sum\xE9s';
+    section.appendChild(heading);
     var list = document.createElement('ul');
     addClass(list, ['r\xE9sum\xE9-portal']);
     var $receiver = this.résumés;
@@ -238,7 +344,8 @@ var resumes = function (_, Kotlin) {
       listItem.appendChild(element);
       list.appendChild(listItem);
     }
-    return list;
+    section.appendChild(list);
+    return section;
   };
   RésuméPortal.$metadata$ = {
     kind: Kind_CLASS,
@@ -265,16 +372,10 @@ var resumes = function (_, Kotlin) {
   function RésuméPortalItem(résumé) {
     this.résumé = résumé;
   }
-  function RésuméPortalItem$renderToHtmlElement$lambda(event) {
-    alert('Hi');
-    event.preventDefault();
-    return Unit;
-  }
   RésuméPortalItem.prototype.renderToHtmlElement = function () {
     var tmp$, tmp$_0;
     var anchor = document.createElement('a');
     (tmp$_0 = Kotlin.isType(tmp$ = anchor, HTMLAnchorElement) ? tmp$ : null) != null ? (tmp$_0.href = '#' + this.résumé.id) : null;
-    $(anchor).click(RésuméPortalItem$renderToHtmlElement$lambda);
     anchor.textContent = 'Title: ' + this.résumé.title;
     return anchor;
   };
@@ -1767,6 +1868,26 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.meta, other.meta) && Kotlin.equals(this.filters, other.filters)))));
   };
+  function placeholder() {
+    placeholder_instance = this;
+  }
+  placeholder.prototype.renderToHtmlElement = function () {
+    var paragraph = document.createElement('p');
+    paragraph.textContent = 'Loading...';
+    return paragraph;
+  };
+  placeholder.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'placeholder',
+    interfaces: [HtmlElementRenderable]
+  };
+  var placeholder_instance = null;
+  function placeholder_getInstance() {
+    if (placeholder_instance === null) {
+      new placeholder();
+    }
+    return placeholder_instance;
+  }
   var throwCCE = Kotlin.throwCCE;
   var trim = Kotlin.kotlin.text.trim_gw00vp$;
   function createElementFromHTML(htmlString) {
@@ -1821,15 +1942,27 @@ var resumes = function (_, Kotlin) {
   }
   var package$Extensions = _.Extensions || (_.Extensions = {});
   package$Extensions.invoke_1gbgeh$ = invoke;
+  Object.defineProperty(_, 'allResourcePaths', {
+    get: function () {
+      return allResourcePaths;
+    }
+  });
   _.main_kand9s$ = main;
   _.fetchAllAsJson_sb2h9h$ = fetchAllAsJson;
   _.resolveAllAsJson_drtnbh$ = resolveAllAsJson;
   var package$RequireJsInterface = _.RequireJsInterface || (_.RequireJsInterface = {});
   package$RequireJsInterface.RequireJSConfiguration = RequireJSConfiguration;
+  var package$Résumé = _.Résumé || (_.Résumé = {});
+  package$Résumé.DynamicRésumePageRenderer = DynamicRésumePageRenderer;
+  Object.defineProperty(RésuméPageState, 'placeholder', {
+    get: RésuméPageState$placeholder_getInstance
+  });
+  RésuméPageState.portal = RésuméPageState$portal;
+  RésuméPageState.résumé = RésuméPageState$résumé;
+  package$Résumé.RésuméPageState = RésuméPageState;
   Object.defineProperty(Résumé, 'Companion', {
     get: Résumé$Companion_getInstance
   });
-  var package$Résumé = _.Résumé || (_.Résumé = {});
   package$Résumé.Résumé = Résumé;
   package$Résumé.RésuméPortal = RésuméPortal;
   package$Résumé.RésuméPortalItem = RésuméPortalItem;
@@ -1929,6 +2062,9 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson$RecursiveFilter.Criterion = RésuméFilterJson$RecursiveFilter$Criterion;
   RésuméFilterJson.RecursiveFilter = RésuméFilterJson$RecursiveFilter;
   package$Résumé.RésuméFilterJson = RésuméFilterJson;
+  Object.defineProperty(package$Résumé, 'placeholder', {
+    get: placeholder_getInstance
+  });
   var package$org = _.org || (_.org = {});
   var package$bh = package$org.bh || (package$org.bh = {});
   var package$tools = package$bh.tools || (package$bh.tools = {});
@@ -1940,6 +2076,7 @@ var resumes = function (_, Kotlin) {
   var package$fetch = package$w3c.fetch || (package$w3c.fetch = {});
   package$fetch.fetchAll_vqirvp$ = fetchAll;
   kotlinVersionRegex = Regex_init('(\\d+)\\.(\\d+)(?:\\.(\\d+))+');
+  allResourcePaths = ['/documents/resume-basic.json', '/documents/resume-filter-software-engineer.json'];
   main([]);
   Kotlin.defineModule('resumes', _);
   return _;

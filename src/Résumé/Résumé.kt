@@ -1,5 +1,8 @@
 package Résumé
 
+import org.bh.tools.ui.*
+import org.w3c.dom.*
+
 
 /**
  * @author ben
@@ -8,7 +11,13 @@ package Résumé
 data class Résumé(
         val id: String,
         val title: String
-) {
+): HtmlElementRenderable {
+
+    override fun renderToHtmlElement(): Element {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
 
     companion object {
         operator fun invoke(filtering: BasicRésuméJson, with: RésuméFilterJson): Résumé {

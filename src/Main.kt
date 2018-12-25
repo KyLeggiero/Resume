@@ -1,32 +1,54 @@
 import Résumé.*
 import jQueryInterface.*
 import org.w3c.fetch.*
+import kotlin.browser.*
 import kotlin.js.*
 
 
-/**
+/*
  * @author Ben Leggiero
  * @since 2018-12-18
  */
+
+
+val allResourcePaths = arrayOf(
+        "/documents/resume-basic.json",
+        "/documents/resume-filter-software-engineer.json"
+)
 
 
 fun main(args: Array<String>) {
     jq {
         jq("body").append("<main><h2>Hello there</h2></main>")
 
-        fun buildPortal(base: BasicRésuméJson, filters: List<RésuméFilterJson>) {
-            jq("main").append(RésuméPortal(résumés = filters.map { filter -> Résumé(filtering = base, with = filter) }).renderToHtmlElement())
+        val renderer = DynamicRésumePageRenderer(jq("main")[0])
+        renderer.refreshPage(RésuméPageState.placeholder)
+
+        fun listenForPageChanges() {
+            jq(window).on("hashchange") {
+                console.log("Would refresh")
+//                renderer.refreshPage()
+            }
         }
 
+
+        fun buildPortal(base: BasicRésuméJson, filters: List<RésuméFilterJson>) {
+            renderer.refreshPage(RésuméPageState.portal(résumés = filters.map { filter ->
+                Résumé(filtering = base, with = filter)
+            }))
+        }
+
+
         @Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")
-        fetchAllAsJson("/documents/resume-basic.json", "/documents/resume-filter-software-engineer.json") { jsons ->
+        fetchAllAsJson(*allResourcePaths) { jsons ->
             val resumeBasic = BasicRésuméJson(jsons.first())
 
             if (null == resumeBasic) {
-                println("Could not parse basic Reésumé JSON!")
+                println("Could not parse basic Résumé JSON!")
             }
             else {
                 buildPortal(base = resumeBasic, filters = jsons.drop(1).mapNotNull { RésuméFilterJson(it) })
+                listenForPageChanges()
             }
         }
     }
@@ -60,4 +82,5 @@ fun resolveAllAsJson(promise: Promise<Array<out Response>>, result: (List<Json>)
         }
 
         resolveAllResponses()
-    }}
+    }
+}

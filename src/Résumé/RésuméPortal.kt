@@ -16,6 +16,12 @@ data class RésuméPortal(
 ): HtmlElementRenderable {
 
     override fun renderToHtmlElement(): Element {
+        val section = document.createElement("section")
+
+        val heading = document.createElement("h2")
+        heading.textContent = "Résumés"
+        section.appendChild(heading)
+
         val list = document.createElement("ul")
         list.addClass("résumé-portal")
         résumés
@@ -26,7 +32,9 @@ data class RésuméPortal(
                 listItem.appendChild(it)
                 list.appendChild(listItem)
             }
-        return list
+        section.appendChild(list)
+
+        return section
     }
 }
 
@@ -37,10 +45,10 @@ data class RésuméPortalItem(
     override fun renderToHtmlElement(): Element {
         val anchor = document.createElement("a")
         (anchor as? HTMLAnchorElement)?.href = "#${résumé.id}"
-        jq(anchor).click { event ->
-            alert("Hi")
-            event.preventDefault()
-        }
+//        jq(anchor).click { event ->
+//            alert("Hi")
+//            event.preventDefault()
+//        }
         anchor.textContent = "Title: ${résumé.title}"
         return anchor
     }

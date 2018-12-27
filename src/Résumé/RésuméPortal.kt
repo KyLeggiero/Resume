@@ -36,6 +36,18 @@ data class RésuméPortal(
 
         return section
     }
+
+
+
+    companion object {
+        @Suppress("UnnecessaryVariable")
+        operator fun invoke(filtering: BasicRésuméJson, with: List<RésuméFilterJson>): RésuméPortal {
+            val base = filtering
+            val filters = with
+
+            return RésuméPortal(filters.map { Résumé(filtering = base, with = it) })
+        }
+    }
 }
 
 
@@ -49,7 +61,7 @@ data class RésuméPortalItem(
 //            alert("Hi")
 //            event.preventDefault()
 //        }
-        anchor.textContent = "Title: ${résumé.title}"
+        anchor.textContent = résumé.title
         return anchor
     }
 

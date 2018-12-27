@@ -8,16 +8,20 @@ var resumes = function (_, Kotlin) {
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
   var KotlinVersion = Kotlin.kotlin.KotlinVersion;
   var Unit = Kotlin.kotlin.Unit;
+  var plus = Kotlin.kotlin.collections.plus_xfiyik$;
+  var plus_0 = Kotlin.kotlin.collections.plus_khz7k3$;
   var first = Kotlin.kotlin.collections.first_2p1efm$;
   var println = Kotlin.kotlin.io.println_s8jyv4$;
   var drop = Kotlin.kotlin.collections.drop_ba2ldo$;
   var toMutableList = Kotlin.kotlin.collections.toMutableList_us0mfu$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
+  var equals = Kotlin.equals;
+  var firstOrNull = Kotlin.kotlin.collections.firstOrNull_7wnvza$;
+  var toList = Kotlin.kotlin.collections.toList_7wnvza$;
+  var emptySet = Kotlin.kotlin.collections.emptySet_287e2$;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
   var emptyList = Kotlin.kotlin.collections.emptyList_287e2$;
-  var emptySet = Kotlin.kotlin.collections.emptySet_287e2$;
-  var equals = Kotlin.equals;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
@@ -58,29 +62,35 @@ var resumes = function (_, Kotlin) {
     return tmp$_1;
   }
   var allResourcePaths;
-  function main$lambda$listenForPageChanges$lambda(it) {
-    console.log('Would refresh');
-    return Unit;
-  }
-  function main$lambda$listenForPageChanges() {
-    $(window).on('hashchange', void 0, main$lambda$listenForPageChanges$lambda);
-  }
-  var collectionSizeOrDefault = Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$;
-  var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
-  function main$lambda$buildPortal(closure$renderer) {
-    return function (base, filters) {
-      var tmp$ = closure$renderer;
-      var destination = ArrayList_init(collectionSizeOrDefault(filters, 10));
-      var tmp$_0;
-      tmp$_0 = filters.iterator();
-      while (tmp$_0.hasNext()) {
-        var item = tmp$_0.next();
-        destination.add_11rb$(Résumé$Companion_getInstance().invoke_pzjc5w$(base, item));
-      }
-      tmp$.refreshPage_ngqhws$(new RésuméPageState$portal(destination));
+  var cachedPortal;
+  function main$lambda$refreshPage(closure$renderer) {
+    return function () {
+      closure$renderer.refreshPage_ngqhws$(RésuméPageState$Companion_getInstance().inferredFromUrl());
     };
   }
-  var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_287e2$;
+  function main$lambda$listenForPageChanges$lambda(closure$refreshPage) {
+    return function (it) {
+      console.log('Would refresh');
+      closure$refreshPage();
+      return Unit;
+    };
+  }
+  function main$lambda$listenForPageChanges(closure$refreshPage) {
+    return function () {
+      $(window).on('hashchange', void 0, main$lambda$listenForPageChanges$lambda(closure$refreshPage));
+    };
+  }
+  function main$lambda$buildPortal(closure$refreshPage) {
+    return function (base, filters) {
+      var tmp$, tmp$_0;
+      tmp$ = RésuméPageState$Companion_getInstance().sharedCache;
+      tmp$.bases = plus(tmp$.bases, base);
+      tmp$_0 = RésuméPageState$Companion_getInstance().sharedCache;
+      tmp$_0.filters = plus_0(tmp$_0.filters, filters);
+      closure$refreshPage();
+    };
+  }
+  var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var wrapFunction = Kotlin.wrapFunction;
   var mapNotNullTo$lambda = wrapFunction(function () {
     return function (closure$transform, closure$destination) {
@@ -102,7 +112,7 @@ var resumes = function (_, Kotlin) {
        else {
         var tmp$ = closure$buildPortal;
         var $receiver = drop(jsons, 1);
-        var destination = ArrayList_init_0();
+        var destination = ArrayList_init();
         var tmp$_0;
         tmp$_0 = $receiver.iterator();
         while (tmp$_0.hasNext()) {
@@ -121,9 +131,10 @@ var resumes = function (_, Kotlin) {
   function main$lambda() {
     $('body').append('<main><h2>Hello there<\/h2><\/main>');
     var renderer = new DynamicRésumePageRenderer($('main').get(0));
+    var refreshPage = main$lambda$refreshPage(renderer);
     renderer.refreshPage_ngqhws$(RésuméPageState$placeholder_getInstance());
-    var listenForPageChanges = main$lambda$listenForPageChanges;
-    var buildPortal = main$lambda$buildPortal(renderer);
+    var listenForPageChanges = main$lambda$listenForPageChanges(refreshPage);
+    var buildPortal = main$lambda$buildPortal(refreshPage);
     fetchAllAsJson(allResourcePaths.slice(), main$lambda$lambda(buildPortal, listenForPageChanges));
     return Unit;
   }
@@ -166,7 +177,7 @@ var resumes = function (_, Kotlin) {
     };
   }
   function resolveAllAsJson(promise, result) {
-    var accumulatedJson = ArrayList_init_0();
+    var accumulatedJson = ArrayList_init();
     promise.then(resolveAllAsJson$lambda).then(resolveAllAsJson$lambda_0(result, accumulatedJson));
   }
   function RequireJSConfiguration(enforceDefine, paths) {
@@ -202,9 +213,9 @@ var resumes = function (_, Kotlin) {
   };
   DynamicRésumePageRenderer.prototype.renderer_0 = function ($receiver) {
     if (Kotlin.isType($receiver, RésuméPageState$placeholder))
-      return placeholder_getInstance();
+      return résuméPagePlaceholder_getInstance();
     else if (Kotlin.isType($receiver, RésuméPageState$portal))
-      return new RésuméPortal($receiver.résumés);
+      return $receiver.portal;
     else if (Kotlin.isType($receiver, RésuméPageState$résumé))
       return $receiver.résumé;
     else
@@ -216,6 +227,7 @@ var resumes = function (_, Kotlin) {
     interfaces: []
   };
   function RésuméPageState() {
+    RésuméPageState$Companion_getInstance();
   }
   function RésuméPageState$placeholder() {
     RésuméPageState$placeholder_instance = this;
@@ -233,9 +245,9 @@ var resumes = function (_, Kotlin) {
     }
     return RésuméPageState$placeholder_instance;
   }
-  function RésuméPageState$portal(résumés) {
+  function RésuméPageState$portal(portal) {
     RésuméPageState.call(this);
-    this.résumés = résumés;
+    this.portal = portal;
   }
   RésuméPageState$portal.$metadata$ = {
     kind: Kind_CLASS,
@@ -251,6 +263,100 @@ var resumes = function (_, Kotlin) {
     simpleName: 'r\xE9sum\xE9',
     interfaces: [RésuméPageState]
   };
+  function RésuméPageState$Cache(bases, filters) {
+    this.bases = bases;
+    this.filters = filters;
+  }
+  RésuméPageState$Cache.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Cache',
+    interfaces: []
+  };
+  RésuméPageState$Cache.prototype.component1 = function () {
+    return this.bases;
+  };
+  RésuméPageState$Cache.prototype.component2 = function () {
+    return this.filters;
+  };
+  RésuméPageState$Cache.prototype.copy_h52uze$ = function (bases, filters) {
+    return new RésuméPageState$Cache(bases === void 0 ? this.bases : bases, filters === void 0 ? this.filters : filters);
+  };
+  RésuméPageState$Cache.prototype.toString = function () {
+    return 'Cache(bases=' + Kotlin.toString(this.bases) + (', filters=' + Kotlin.toString(this.filters)) + ')';
+  };
+  RésuméPageState$Cache.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.bases) | 0;
+    result = result * 31 + Kotlin.hashCode(this.filters) | 0;
+    return result;
+  };
+  RésuméPageState$Cache.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.bases, other.bases) && Kotlin.equals(this.filters, other.filters)))));
+  };
+  function RésuméPageState$Companion() {
+    RésuméPageState$Companion_instance = this;
+    this.sharedCache = new RésuméPageState$Cache(emptySet(), emptySet());
+  }
+  RésuméPageState$Companion.prototype.inferredFromUrl = function () {
+    var meaning = UrlParser_getInstance().parse_h13imq$(window.location);
+    if (meaning.currentBaseRésuméId != null && meaning.currentRésuméFilterId != null) {
+      var $receiver = this.sharedCache.bases;
+      var firstOrNull$result;
+      firstOrNull$break: do {
+        var tmp$;
+        tmp$ = $receiver.iterator();
+        while (tmp$.hasNext()) {
+          var element = tmp$.next();
+          if (equals(element.meta.id, meaning.currentBaseRésuméId)) {
+            firstOrNull$result = element;
+            break firstOrNull$break;
+          }
+        }
+        firstOrNull$result = null;
+      }
+       while (false);
+      var cachedBaseMatch = firstOrNull$result;
+      var $receiver_0 = this.sharedCache.filters;
+      var firstOrNull$result_0;
+      firstOrNull$break: do {
+        var tmp$_0;
+        tmp$_0 = $receiver_0.iterator();
+        while (tmp$_0.hasNext()) {
+          var element_0 = tmp$_0.next();
+          if (equals(element_0.meta.id, meaning.currentRésuméFilterId)) {
+            firstOrNull$result_0 = element_0;
+            break firstOrNull$break;
+          }
+        }
+        firstOrNull$result_0 = null;
+      }
+       while (false);
+      var cachedFilterMatch = firstOrNull$result_0;
+      if (cachedBaseMatch != null && cachedFilterMatch != null) {
+        return new RésuméPageState$résumé(Résumé$Companion_getInstance().invoke_pzjc5w$(cachedBaseMatch, cachedFilterMatch));
+      }
+    }
+    var firstCachedBase = firstOrNull(this.sharedCache.bases);
+    if (firstCachedBase != null) {
+      var filters = this.sharedCache.filters;
+      if (!filters.isEmpty()) {
+        return new RésuméPageState$portal(RésuméPortal$Companion_getInstance().invoke_7fgr4n$(firstCachedBase, toList(this.sharedCache.filters)));
+      }
+    }
+    return RésuméPageState$placeholder_getInstance();
+  };
+  RésuméPageState$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var RésuméPageState$Companion_instance = null;
+  function RésuméPageState$Companion_getInstance() {
+    if (RésuméPageState$Companion_instance === null) {
+      new RésuméPageState$Companion();
+    }
+    return RésuméPageState$Companion_instance;
+  }
   RésuméPageState.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9PageState',
@@ -261,9 +367,15 @@ var resumes = function (_, Kotlin) {
     this.id = id;
     this.title = title;
   }
-  var NotImplementedError_init = Kotlin.kotlin.NotImplementedError;
   Résumé.prototype.renderToHtmlElement = function () {
-    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
+    var article = document.createElement('article');
+    var heading = document.createElement('h1');
+    heading.textContent = this.title;
+    article.appendChild(heading);
+    var excuse = document.createElement('aside');
+    excuse.textContent = "Pretend there's awesome content here";
+    article.appendChild(excuse);
+    return article;
   };
   function Résumé$Companion() {
     Résumé$Companion_instance = this;
@@ -312,8 +424,11 @@ var resumes = function (_, Kotlin) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.title, other.title)))));
   };
   function RésuméPortal(résumés) {
+    RésuméPortal$Companion_getInstance();
     this.résumés = résumés;
   }
+  var collectionSizeOrDefault = Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$;
+  var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   RésuméPortal.prototype.renderToHtmlElement = function () {
     var section = document.createElement('section');
     var heading = document.createElement('h2');
@@ -322,14 +437,14 @@ var resumes = function (_, Kotlin) {
     var list = document.createElement('ul');
     addClass(list, ['r\xE9sum\xE9-portal']);
     var $receiver = this.résumés;
-    var destination = ArrayList_init(collectionSizeOrDefault($receiver, 10));
+    var destination = ArrayList_init_0(collectionSizeOrDefault($receiver, 10));
     var tmp$;
     tmp$ = $receiver.iterator();
     while (tmp$.hasNext()) {
       var item = tmp$.next();
       destination.add_11rb$(new RésuméPortalItem(item));
     }
-    var destination_0 = ArrayList_init(collectionSizeOrDefault(destination, 10));
+    var destination_0 = ArrayList_init_0(collectionSizeOrDefault(destination, 10));
     var tmp$_0;
     tmp$_0 = destination.iterator();
     while (tmp$_0.hasNext()) {
@@ -347,6 +462,33 @@ var resumes = function (_, Kotlin) {
     section.appendChild(list);
     return section;
   };
+  function RésuméPortal$Companion() {
+    RésuméPortal$Companion_instance = this;
+  }
+  RésuméPortal$Companion.prototype.invoke_7fgr4n$ = function (filtering, with_0) {
+    var base = filtering;
+    var filters = with_0;
+    var destination = ArrayList_init_0(collectionSizeOrDefault(filters, 10));
+    var tmp$;
+    tmp$ = filters.iterator();
+    while (tmp$.hasNext()) {
+      var item = tmp$.next();
+      destination.add_11rb$(Résumé$Companion_getInstance().invoke_pzjc5w$(base, item));
+    }
+    return new RésuméPortal(destination);
+  };
+  RésuméPortal$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var RésuméPortal$Companion_instance = null;
+  function RésuméPortal$Companion_getInstance() {
+    if (RésuméPortal$Companion_instance === null) {
+      new RésuméPortal$Companion();
+    }
+    return RésuméPortal$Companion_instance;
+  }
   RésuméPortal.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9Portal',
@@ -376,7 +518,7 @@ var resumes = function (_, Kotlin) {
     var tmp$, tmp$_0;
     var anchor = document.createElement('a');
     (tmp$_0 = Kotlin.isType(tmp$ = anchor, HTMLAnchorElement) ? tmp$ : null) != null ? (tmp$_0.href = '#' + this.résumé.id) : null;
-    anchor.textContent = 'Title: ' + this.résumé.title;
+    anchor.textContent = this.résumé.title;
     return anchor;
   };
   RésuméPortalItem.$metadata$ = {
@@ -558,7 +700,7 @@ var resumes = function (_, Kotlin) {
     if (tmp$_4 == null) {
       return null;
     }
-    var destination = ArrayList_init_0();
+    var destination = ArrayList_init();
     var tmp$_5;
     loop_label: for (tmp$_5 = 0; tmp$_5 !== tmp$_4.length; ++tmp$_5) {
       var element = tmp$_4[tmp$_5];
@@ -741,7 +883,7 @@ var resumes = function (_, Kotlin) {
     tmp$_11 = (tmp$_10 = Kotlin.isType(tmp$_9 = jsonObject['end'], Object) ? tmp$_9 : null) != null ? BasicRésuméJson$Content$Job$Position$Companion_getInstance().invoke_qk3xy8$(tmp$_10) : null;
     var tmp$_21;
     if ((tmp$_13 = Kotlin.isArray(tmp$_12 = jsonObject['keywords']) ? tmp$_12 : null) != null) {
-      var destination = ArrayList_init_0();
+      var destination = ArrayList_init();
       var tmp$_22;
       for (tmp$_22 = 0; tmp$_22 !== tmp$_13.length; ++tmp$_22) {
         var element = tmp$_13[tmp$_22];
@@ -1470,7 +1612,7 @@ var resumes = function (_, Kotlin) {
     }
     var tmp$_6;
     if ((tmp$_4 = Kotlin.isArray(tmp$_3 = jsonObject['criteria']) ? tmp$_3 : null) != null) {
-      var destination = ArrayList_init(tmp$_4.length);
+      var destination = ArrayList_init_0(tmp$_4.length);
       var tmp$_7;
       for (tmp$_7 = 0; tmp$_7 !== tmp$_4.length; ++tmp$_7) {
         var item = tmp$_4[tmp$_7];
@@ -1868,26 +2010,114 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.meta, other.meta) && Kotlin.equals(this.filters, other.filters)))));
   };
-  function placeholder() {
-    placeholder_instance = this;
+  function résuméPagePlaceholder() {
+    résuméPagePlaceholder_instance = this;
   }
-  placeholder.prototype.renderToHtmlElement = function () {
+  résuméPagePlaceholder.prototype.renderToHtmlElement = function () {
     var paragraph = document.createElement('p');
     paragraph.textContent = 'Loading...';
     return paragraph;
   };
-  placeholder.$metadata$ = {
+  résuméPagePlaceholder.$metadata$ = {
     kind: Kind_OBJECT,
-    simpleName: 'placeholder',
+    simpleName: 'r\xE9sum\xE9PagePlaceholder',
     interfaces: [HtmlElementRenderable]
   };
-  var placeholder_instance = null;
-  function placeholder_getInstance() {
-    if (placeholder_instance === null) {
-      new placeholder();
+  var résuméPagePlaceholder_instance = null;
+  function résuméPagePlaceholder_getInstance() {
+    if (résuméPagePlaceholder_instance === null) {
+      new résuméPagePlaceholder();
     }
-    return placeholder_instance;
+    return résuméPagePlaceholder_instance;
   }
+  function UrlParser() {
+    UrlParser_instance = this;
+    this.uuidRegexPattern_0 = '[A-Z0-9-]{36}';
+    this.fragmentRegexPattern_0 = '#?(?<base>[A-Z0-9-]{36})_(?<filter>[A-Z0-9-]{36})';
+    this.fragmentRegex_0 = new RegExp(this.fragmentRegexPattern_0, 'i');
+  }
+  UrlParser.prototype.parse_h13imq$ = function (location) {
+    var fragment = location.hash;
+    return this.parseFragment_0(fragment);
+  };
+  UrlParser.prototype.parseFragment_0 = function (fragment) {
+    var tmp$, tmp$_0, tmp$_1;
+    tmp$ = this.fragmentRegex_0.exec(fragment);
+    if (tmp$ == null) {
+      return UrlMeaning$Companion_getInstance().unknown;
+    }
+    var allGroups = tmp$;
+    tmp$_0 = allGroups[1];
+    if (tmp$_0 == null) {
+      return UrlMeaning$Companion_getInstance().unknown;
+    }
+    var baseId = tmp$_0;
+    tmp$_1 = allGroups[2];
+    if (tmp$_1 == null) {
+      return UrlMeaning$Companion_getInstance().unknown;
+    }
+    var filterId = tmp$_1;
+    return new UrlMeaning(baseId, filterId);
+  };
+  UrlParser.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'UrlParser',
+    interfaces: []
+  };
+  var UrlParser_instance = null;
+  function UrlParser_getInstance() {
+    if (UrlParser_instance === null) {
+      new UrlParser();
+    }
+    return UrlParser_instance;
+  }
+  function UrlMeaning(currentBaseRésuméId, currentRésuméFilterId) {
+    UrlMeaning$Companion_getInstance();
+    this.currentBaseRésuméId = currentBaseRésuméId;
+    this.currentRésuméFilterId = currentRésuméFilterId;
+  }
+  function UrlMeaning$Companion() {
+    UrlMeaning$Companion_instance = this;
+    this.unknown = new UrlMeaning(null, null);
+  }
+  UrlMeaning$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var UrlMeaning$Companion_instance = null;
+  function UrlMeaning$Companion_getInstance() {
+    if (UrlMeaning$Companion_instance === null) {
+      new UrlMeaning$Companion();
+    }
+    return UrlMeaning$Companion_instance;
+  }
+  UrlMeaning.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'UrlMeaning',
+    interfaces: []
+  };
+  UrlMeaning.prototype.component1 = function () {
+    return this.currentBaseRésuméId;
+  };
+  UrlMeaning.prototype.component2 = function () {
+    return this.currentRésuméFilterId;
+  };
+  UrlMeaning.prototype.copy_rkkr90$ = function (currentBaseRésuméId, currentRésuméFilterId) {
+    return new UrlMeaning(currentBaseRésuméId === void 0 ? this.currentBaseRésuméId : currentBaseRésuméId, currentRésuméFilterId === void 0 ? this.currentRésuméFilterId : currentRésuméFilterId);
+  };
+  UrlMeaning.prototype.toString = function () {
+    return 'UrlMeaning(currentBaseR\xE9sum\xE9Id=' + Kotlin.toString(this.currentBaseRésuméId) + (', currentR\xE9sum\xE9FilterId=' + Kotlin.toString(this.currentRésuméFilterId)) + ')';
+  };
+  UrlMeaning.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.currentBaseRésuméId) | 0;
+    result = result * 31 + Kotlin.hashCode(this.currentRésuméFilterId) | 0;
+    return result;
+  };
+  UrlMeaning.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.currentBaseRésuméId, other.currentBaseRésuméId) && Kotlin.equals(this.currentRésuméFilterId, other.currentRésuméFilterId)))));
+  };
   var throwCCE = Kotlin.throwCCE;
   var trim = Kotlin.kotlin.text.trim_gw00vp$;
   function createElementFromHTML(htmlString) {
@@ -1932,7 +2162,7 @@ var resumes = function (_, Kotlin) {
   };
   var copyToArray = Kotlin.kotlin.collections.copyToArray;
   function fetchAll(resources) {
-    var destination = ArrayList_init(resources.length);
+    var destination = ArrayList_init_0(resources.length);
     var tmp$;
     for (tmp$ = 0; tmp$ !== resources.length; ++tmp$) {
       var item = resources[tmp$];
@@ -1947,6 +2177,14 @@ var resumes = function (_, Kotlin) {
       return allResourcePaths;
     }
   });
+  Object.defineProperty(_, 'cachedPortal', {
+    get: function () {
+      return cachedPortal;
+    },
+    set: function (value) {
+      cachedPortal = value;
+    }
+  });
   _.main_kand9s$ = main;
   _.fetchAllAsJson_sb2h9h$ = fetchAllAsJson;
   _.resolveAllAsJson_drtnbh$ = resolveAllAsJson;
@@ -1959,11 +2197,18 @@ var resumes = function (_, Kotlin) {
   });
   RésuméPageState.portal = RésuméPageState$portal;
   RésuméPageState.résumé = RésuméPageState$résumé;
+  RésuméPageState.Cache = RésuméPageState$Cache;
+  Object.defineProperty(RésuméPageState, 'Companion', {
+    get: RésuméPageState$Companion_getInstance
+  });
   package$Résumé.RésuméPageState = RésuméPageState;
   Object.defineProperty(Résumé, 'Companion', {
     get: Résumé$Companion_getInstance
   });
   package$Résumé.Résumé = Résumé;
+  Object.defineProperty(RésuméPortal, 'Companion', {
+    get: RésuméPortal$Companion_getInstance
+  });
   package$Résumé.RésuméPortal = RésuméPortal;
   package$Résumé.RésuméPortalItem = RésuméPortalItem;
   Object.defineProperty(BasicRésuméJson, 'Companion', {
@@ -2062,9 +2307,16 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson$RecursiveFilter.Criterion = RésuméFilterJson$RecursiveFilter$Criterion;
   RésuméFilterJson.RecursiveFilter = RésuméFilterJson$RecursiveFilter;
   package$Résumé.RésuméFilterJson = RésuméFilterJson;
-  Object.defineProperty(package$Résumé, 'placeholder', {
-    get: placeholder_getInstance
+  Object.defineProperty(package$Résumé, 'r\xE9sum\xE9PagePlaceholder', {
+    get: résuméPagePlaceholder_getInstance
   });
+  Object.defineProperty(package$Résumé, 'UrlParser', {
+    get: UrlParser_getInstance
+  });
+  Object.defineProperty(UrlMeaning, 'Companion', {
+    get: UrlMeaning$Companion_getInstance
+  });
+  package$Résumé.UrlMeaning = UrlMeaning;
   var package$org = _.org || (_.org = {});
   var package$bh = package$org.bh || (package$org.bh = {});
   var package$tools = package$bh.tools || (package$bh.tools = {});
@@ -2077,6 +2329,7 @@ var resumes = function (_, Kotlin) {
   package$fetch.fetchAll_vqirvp$ = fetchAll;
   kotlinVersionRegex = Regex_init('(\\d+)\\.(\\d+)(?:\\.(\\d+))+');
   allResourcePaths = ['/documents/resume-basic.json', '/documents/resume-filter-software-engineer.json'];
+  cachedPortal = null;
   main([]);
   Kotlin.defineModule('resumes', _);
   return _;

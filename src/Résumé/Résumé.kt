@@ -2,6 +2,7 @@ package Résumé
 
 import org.bh.tools.ui.*
 import org.w3c.dom.*
+import kotlin.browser.*
 
 
 /**
@@ -14,7 +15,17 @@ data class Résumé(
 ): HtmlElementRenderable {
 
     override fun renderToHtmlElement(): Element {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val article = document.createElement("article")
+
+        val heading = document.createElement("h1")
+        heading.textContent = title
+        article.appendChild(heading)
+
+        val excuse = document.createElement("aside")
+        excuse.textContent = "Pretend there's awesome content here"
+        article.appendChild(excuse)
+
+        return article
     }
 
 

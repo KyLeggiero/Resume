@@ -10,7 +10,7 @@ import kotlin.browser.*
  * @author Ben Leggiero
  * @since 2018-12-25
  */
-object placeholder: HtmlElementRenderable {
+object résuméPagePlaceholder: HtmlElementRenderable {
     override fun renderToHtmlElement(): Element {
         val paragraph = document.createElement("p")
         paragraph.textContent = "Loading..."

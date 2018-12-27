@@ -16,26 +16,35 @@ val allResourcePaths = arrayOf(
         "/documents/resume-filter-software-engineer.json"
 )
 
+var cachedPortal: RésuméPortal? = null
+
 
 fun main(args: Array<String>) {
     jq {
         jq("body").append("<main><h2>Hello there</h2></main>")
 
         val renderer = DynamicRésumePageRenderer(jq("main")[0])
+
+
+        fun refreshPage() {
+            renderer.refreshPage(RésuméPageState.inferredFromUrl())
+        }
+
+
         renderer.refreshPage(RésuméPageState.placeholder)
 
         fun listenForPageChanges() {
             jq(window).on("hashchange") {
                 console.log("Would refresh")
-//                renderer.refreshPage()
+                refreshPage()
             }
         }
 
 
         fun buildPortal(base: BasicRésuméJson, filters: List<RésuméFilterJson>) {
-            renderer.refreshPage(RésuméPageState.portal(résumés = filters.map { filter ->
-                Résumé(filtering = base, with = filter)
-            }))
+            RésuméPageState.sharedCache.bases += base
+            RésuméPageState.sharedCache.filters += filters
+            refreshPage()
         }
 
 

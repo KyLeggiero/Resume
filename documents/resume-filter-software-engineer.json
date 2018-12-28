@@ -1,0 +1,21 @@
+{
+  "format-version": "1.0.0",
+  "meta": {
+    "info-version": "3.0.0",
+    "title": "Software Engineer",
+    "id": "10A340AB-6E34-4B83-A2B3-0424E65ECB4F"
+  },
+  "filters": {
+    "inclusion": "any",
+    "criteria": [
+      {
+        "scope": "keywords",
+        "type": "contains",
+        "values": [
+          "software engineering",
+          "career"
+        ]
+      }
+    ]
+  }
+}

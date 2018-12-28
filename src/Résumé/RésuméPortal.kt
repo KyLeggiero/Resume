@@ -18,7 +18,7 @@ data class RésuméPortal(
     override fun renderToHtmlElement(): Element {
         val section = document.createElement("section")
 
-        val heading = document.createElement("h2")
+        val heading = document.createElement("h1")
         heading.textContent = "Résumés"
         section.appendChild(heading)
 

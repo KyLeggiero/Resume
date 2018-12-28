@@ -194,6 +194,7 @@ var resumes = function (_, Kotlin) {
   }
   function DynamicRésumePageRenderer$refreshPage$lambda(closure$state, this$DynamicRésumePageRenderer) {
     return function () {
+      this$DynamicRésumePageRenderer.applyRootClasses_0(closure$state);
       this$DynamicRésumePageRenderer.showContent_0(this$DynamicRésumePageRenderer.content_0(closure$state));
       return Unit;
     };
@@ -204,6 +205,14 @@ var resumes = function (_, Kotlin) {
   DynamicRésumePageRenderer.prototype.clearPage_0 = function (then) {
     this.containerElement.innerHTML = '';
     then();
+  };
+  DynamicRésumePageRenderer.prototype.applyRootClasses_0 = function (from) {
+    if (Kotlin.isType(from, RésuméPageState$placeholder) || Kotlin.isType(from, RésuméPageState$portal))
+      $(':root').addClass('top-level');
+    else if (Kotlin.isType(from, RésuméPageState$résumé))
+      $(':root').removeClass('top-level');
+    else
+      Kotlin.noWhenBranchMatched();
   };
   DynamicRésumePageRenderer.prototype.showContent_0 = function (contentElement) {
     this.containerElement.appendChild(contentElement);
@@ -431,7 +440,7 @@ var resumes = function (_, Kotlin) {
   var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   RésuméPortal.prototype.renderToHtmlElement = function () {
     var section = document.createElement('section');
-    var heading = document.createElement('h2');
+    var heading = document.createElement('h1');
     heading.textContent = 'R\xE9sum\xE9s';
     section.appendChild(heading);
     var list = document.createElement('ul');

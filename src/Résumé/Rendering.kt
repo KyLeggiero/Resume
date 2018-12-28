@@ -1,5 +1,6 @@
 package Résumé
 
+import jQueryInterface.*
 import org.w3c.dom.*
 import kotlin.browser.*
 
@@ -13,6 +14,7 @@ class DynamicRésumePageRenderer(
 ) {
     fun refreshPage(state: RésuméPageState) {
         clearPage(then = {
+            applyRootClasses(from = state)
             showContent(state.content())
         })
     }
@@ -21,6 +23,15 @@ class DynamicRésumePageRenderer(
     private fun clearPage(then: () -> Unit) {
         containerElement.innerHTML = ""
         then()
+    }
+
+
+    private fun applyRootClasses(from: RésuméPageState) {
+        when (from) {
+            is RésuméPageState.placeholder,
+            is RésuméPageState.portal -> jq(":root").addClass("top-level")
+            is RésuméPageState.résumé -> jq(":root").removeClass("top-level")
+        }
     }
 
 

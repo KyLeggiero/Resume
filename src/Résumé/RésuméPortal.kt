@@ -1,40 +1,26 @@
 package Résumé
 
-import jQueryInterface.*
+import org.bh.tools.base.collections.*
 import org.bh.tools.ui.*
+import org.bh.tools.ui.Heading.Level.*
 import org.w3c.dom.*
-import kotlin.browser.*
-import kotlin.dom.*
+
 
 /**
  * @author Ben Leggiero
  * @since 2018-12-23
  */
-
 data class RésuméPortal(
         val résumés: List<Résumé>
 ): HtmlElementRenderable {
 
     override fun renderToHtmlElement(): Element {
-        val section = document.createElement("section")
+        val heading = Heading(level1, "Résumés")
 
-        val heading = document.createElement("h1")
-        heading.textContent = "Résumés"
-        section.appendChild(heading)
-
-        val list = document.createElement("ul")
+        val list = UnorderedList<RésuméPortalItemContent>(résumés.mapTo(mutableSetOf()) { RésuméPortalItem(it) })
         list.addClass("résumé-portal")
-        résumés
-            .map(::RésuméPortalItem)
-            .map(HtmlElementRenderable::renderToHtmlElement)
-            .forEach {
-                val listItem = document.createElement("li")
-                listItem.appendChild(it)
-                list.appendChild(listItem)
-            }
-        section.appendChild(list)
 
-        return section
+        return UntypedGroup(listOf(heading, list)).renderToHtmlElement()
     }
 
 
@@ -51,20 +37,29 @@ data class RésuméPortal(
 }
 
 
+
+private typealias RésuméPortalItemContent = SingleItemCollection<Link<SingleItemCollection<PlainText>>>
+
+
+
 data class RésuméPortalItem(
         val résumé: Résumé
-): HtmlElementRenderable {
-    override fun renderToHtmlElement(): Element {
-        val anchor = document.createElement("a")
-        (anchor as? HTMLAnchorElement)?.href = "#${résumé.id}"
-//        jq(anchor).click { event ->
-//            alert("Hi")
-//            event.preventDefault()
-//        }
-        anchor.textContent = résumé.title
-        return anchor
-    }
-
+): ListItem<RésuméPortalItemContent>
+(SingleItemCollection(Link(href = "#${résumé.id}", text = résumé.title))) {
+//    override fun renderToHtmlElement(): HTMLLIElement {
+//        val link = Link(to = "#${résumé.id}")
+////        jq(anchor).click { event ->
+////            alert("Hi")
+////            event.preventDefault()
+////        }
+//        link.textContent = this.text
+//
+//        val listItem = super.renderToHtmlElement()
+//        listItem.textContent = ""
+//        listItem.appendChild(link)
+//
+//        return listItem
+//    }
 }
 
-external fun alert(message: String)
+//external fun alert(message: String)

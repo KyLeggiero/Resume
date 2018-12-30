@@ -35,12 +35,12 @@ class DynamicRésumePageRenderer(
     }
 
 
-    private fun showContent(contentElement: Element) {
+    private fun showContent(contentElement: Node) {
         containerElement.appendChild(contentElement)
     }
 
 
-    private fun RésuméPageState.content(): Element {
+    private fun RésuméPageState.content(): Node {
         return renderer().renderToHtmlElement()
     }
 

@@ -14,7 +14,7 @@ import kotlin.browser.*
 interface HtmlStringRenderable: HtmlElementRenderable {
     fun renderToHtmlString(): String
 
-    override fun renderToHtmlElement(): Element {
+    override fun renderToHtmlElement(): Node {
         return createElementFromHTML(renderToHtmlString())
                 ?: document.createElement("div").also {
                     console.error("Failed to create any element from HTML string; reverting to div")
@@ -32,5 +32,5 @@ interface HtmlStringRenderable: HtmlElementRenderable {
  */
 
 interface HtmlElementRenderable {
-    fun renderToHtmlElement(): Element
+    fun renderToHtmlElement(): Node
 }

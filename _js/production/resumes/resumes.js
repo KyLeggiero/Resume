@@ -20,10 +20,16 @@ var resumes = function (_, Kotlin) {
   var firstOrNull = Kotlin.kotlin.collections.firstOrNull_7wnvza$;
   var toList = Kotlin.kotlin.collections.toList_7wnvza$;
   var emptySet = Kotlin.kotlin.collections.emptySet_287e2$;
-  var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
+  var lastOrNull = Kotlin.kotlin.collections.lastOrNull_2p1efm$;
+  var listOf = Kotlin.kotlin.collections.listOf_mh5how$;
+  var listOf_0 = Kotlin.kotlin.collections.listOf_i5x0yv$;
   var emptyList = Kotlin.kotlin.collections.emptyList_287e2$;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
+  var Iterator = Kotlin.kotlin.collections.Iterator;
+  var Collection = Kotlin.kotlin.collections.Collection;
+  var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
+  var toByte = Kotlin.toByte;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
   RésuméPageState$placeholder.prototype = Object.create(RésuméPageState.prototype);
   RésuméPageState$placeholder.prototype.constructor = RésuméPageState$placeholder;
@@ -31,6 +37,18 @@ var resumes = function (_, Kotlin) {
   RésuméPageState$portal.prototype.constructor = RésuméPageState$portal;
   RésuméPageState$résumé.prototype = Object.create(RésuméPageState.prototype);
   RésuméPageState$résumé.prototype.constructor = RésuméPageState$résumé;
+  HtmlParentWidget.prototype = Object.create(HtmlWidget.prototype);
+  HtmlParentWidget.prototype.constructor = HtmlParentWidget;
+  Group.prototype = Object.create(HtmlParentWidget.prototype);
+  Group.prototype.constructor = Group;
+  Résumé.prototype = Object.create(Group.prototype);
+  Résumé.prototype.constructor = Résumé;
+  HtmlRichTextWidget.prototype = Object.create(HtmlParentWidget.prototype);
+  HtmlRichTextWidget.prototype.constructor = HtmlRichTextWidget;
+  ListItem.prototype = Object.create(HtmlRichTextWidget.prototype);
+  ListItem.prototype.constructor = ListItem;
+  RésuméPortalItem.prototype = Object.create(ListItem.prototype);
+  RésuméPortalItem.prototype.constructor = RésuméPortalItem;
   BasicRésuméJson$Content$Job$Position$Compensation$Type.prototype = Object.create(Enum.prototype);
   BasicRésuméJson$Content$Job$Position$Compensation$Type.prototype.constructor = BasicRésuméJson$Content$Job$Position$Compensation$Type;
   BasicRésuméJson$Content$Job$Position$Compensation$Tier.prototype = Object.create(Enum.prototype);
@@ -41,6 +59,24 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson$RecursiveFilter$Criterion$Scope.prototype.constructor = RésuméFilterJson$RecursiveFilter$Criterion$Scope;
   RésuméFilterJson$RecursiveFilter$Criterion$Type.prototype = Object.create(Enum.prototype);
   RésuméFilterJson$RecursiveFilter$Criterion$Type.prototype.constructor = RésuméFilterJson$RecursiveFilter$Criterion$Type;
+  HtmlTextWidget.prototype = Object.create(HtmlWidget.prototype);
+  HtmlTextWidget.prototype.constructor = HtmlTextWidget;
+  Group$Kind.prototype = Object.create(Enum.prototype);
+  Group$Kind.prototype.constructor = Group$Kind;
+  UntypedGroup.prototype = Object.create(Group.prototype);
+  UntypedGroup.prototype.constructor = UntypedGroup;
+  BodyText$Kind.prototype = Object.create(Enum.prototype);
+  BodyText$Kind.prototype.constructor = BodyText$Kind;
+  BodyText.prototype = Object.create(HtmlRichTextWidget.prototype);
+  BodyText.prototype.constructor = BodyText;
+  Link.prototype = Object.create(HtmlRichTextWidget.prototype);
+  Link.prototype.constructor = Link;
+  Heading$Level.prototype = Object.create(Enum.prototype);
+  Heading$Level.prototype.constructor = Heading$Level;
+  Heading.prototype = Object.create(HtmlTextWidget.prototype);
+  Heading.prototype.constructor = Heading;
+  UnorderedList.prototype = Object.create(HtmlParentWidget.prototype);
+  UnorderedList.prototype.constructor = UnorderedList;
   var kotlinVersionRegex;
   function invoke($receiver, jsonString) {
     var tmp$, tmp$_0;
@@ -371,28 +407,22 @@ var resumes = function (_, Kotlin) {
     simpleName: 'R\xE9sum\xE9PageState',
     interfaces: []
   };
-  function Résumé(id, title) {
+  function Résumé(id, title, contact, latestJob) {
     Résumé$Companion_getInstance();
+    var tmp$, tmp$_0, tmp$_1;
+    Group.call(this, Group$Kind$article_getInstance(), listOf_0([new Heading(Heading$Level$level1_getInstance(), title), new BodyText(BodyText$Kind$paragraph_getInstance(), listOf((tmp$_1 = (tmp$_0 = (tmp$ = contact.blogUrl) != null ? tmp$.href : null) != null ? Link$Companion_getInstance().invoke_puj7f4$(tmp$_0, contact.name) : null) != null ? tmp$_1 : new PlainText(contact.name))), BodyText$Companion_getInstance().invoke_uzf9oc$(BodyText$Kind$aside_getInstance(), "Pretend there's more awesome content here")]));
     this.id = id;
     this.title = title;
+    this.contact = contact;
+    this.latestJob = latestJob;
   }
-  Résumé.prototype.renderToHtmlElement = function () {
-    var article = document.createElement('article');
-    var heading = document.createElement('h1');
-    heading.textContent = this.title;
-    article.appendChild(heading);
-    var excuse = document.createElement('aside');
-    excuse.textContent = "Pretend there's awesome content here";
-    article.appendChild(excuse);
-    return article;
-  };
   function Résumé$Companion() {
     Résumé$Companion_instance = this;
   }
   Résumé$Companion.prototype.invoke_pzjc5w$ = function (filtering, with_0) {
     var base = filtering;
     var filter = with_0;
-    return new Résumé(base.meta.id + '_' + filter.meta.id, filter.meta.title);
+    return new Résumé(base.meta.id + '_' + filter.meta.id, filter.meta.title, Résumé$Contact$Companion_getInstance().invoke_tdzttd$(base.content.contact), Résumé$Job$Companion_getInstance().invoke_wws1il$(lastOrNull(base.content.workHistory)));
   };
   Résumé$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -406,10 +436,109 @@ var resumes = function (_, Kotlin) {
     }
     return Résumé$Companion_instance;
   }
+  function Résumé$Contact(name, blogUrl) {
+    Résumé$Contact$Companion_getInstance();
+    this.name = name;
+    this.blogUrl = blogUrl;
+  }
+  function Résumé$Contact$Companion() {
+    Résumé$Contact$Companion_instance = this;
+  }
+  Résumé$Contact$Companion.prototype.invoke_tdzttd$ = function (from) {
+    var tmp$;
+    return new Résumé$Contact(((tmp$ = from.preferredFirstName) != null ? tmp$ : from.fullFirstName) + (from.middleInitial != null ? ' ' + from.middleInitial.toUpperCase() + '.' : '') + ' ' + from.lastName, from.blogURL);
+  };
+  Résumé$Contact$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var Résumé$Contact$Companion_instance = null;
+  function Résumé$Contact$Companion_getInstance() {
+    if (Résumé$Contact$Companion_instance === null) {
+      new Résumé$Contact$Companion();
+    }
+    return Résumé$Contact$Companion_instance;
+  }
+  Résumé$Contact.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Contact',
+    interfaces: []
+  };
+  Résumé$Contact.prototype.component1 = function () {
+    return this.name;
+  };
+  Résumé$Contact.prototype.component2 = function () {
+    return this.blogUrl;
+  };
+  Résumé$Contact.prototype.copy_lsk196$ = function (name, blogUrl) {
+    return new Résumé$Contact(name === void 0 ? this.name : name, blogUrl === void 0 ? this.blogUrl : blogUrl);
+  };
+  Résumé$Contact.prototype.toString = function () {
+    return 'Contact(name=' + Kotlin.toString(this.name) + (', blogUrl=' + Kotlin.toString(this.blogUrl)) + ')';
+  };
+  Résumé$Contact.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.name) | 0;
+    result = result * 31 + Kotlin.hashCode(this.blogUrl) | 0;
+    return result;
+  };
+  Résumé$Contact.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.name, other.name) && Kotlin.equals(this.blogUrl, other.blogUrl)))));
+  };
+  function Résumé$Job(title) {
+    Résumé$Job$Companion_getInstance();
+    this.title = title;
+  }
+  function Résumé$Job$Companion() {
+    Résumé$Job$Companion_instance = this;
+  }
+  Résumé$Job$Companion.prototype.invoke_wws1il$ = function (from) {
+    var tmp$, tmp$_0, tmp$_1;
+    tmp$_1 = (tmp$_0 = (tmp$ = from != null ? from.end : null) != null ? tmp$ : from != null ? from.start : null) != null ? tmp$_0.title : null;
+    if (tmp$_1 == null) {
+      return null;
+    }
+    return new Résumé$Job(tmp$_1);
+  };
+  Résumé$Job$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var Résumé$Job$Companion_instance = null;
+  function Résumé$Job$Companion_getInstance() {
+    if (Résumé$Job$Companion_instance === null) {
+      new Résumé$Job$Companion();
+    }
+    return Résumé$Job$Companion_instance;
+  }
+  Résumé$Job.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Job',
+    interfaces: []
+  };
+  Résumé$Job.prototype.component1 = function () {
+    return this.title;
+  };
+  Résumé$Job.prototype.copy_61zpoe$ = function (title) {
+    return new Résumé$Job(title === void 0 ? this.title : title);
+  };
+  Résumé$Job.prototype.toString = function () {
+    return 'Job(title=' + Kotlin.toString(this.title) + ')';
+  };
+  Résumé$Job.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.title) | 0;
+    return result;
+  };
+  Résumé$Job.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.title, other.title))));
+  };
   Résumé.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9',
-    interfaces: [HtmlElementRenderable]
+    interfaces: [Group]
   };
   Résumé.prototype.component1 = function () {
     return this.id;
@@ -417,63 +546,53 @@ var resumes = function (_, Kotlin) {
   Résumé.prototype.component2 = function () {
     return this.title;
   };
-  Résumé.prototype.copy_puj7f4$ = function (id, title) {
-    return new Résumé(id === void 0 ? this.id : id, title === void 0 ? this.title : title);
+  Résumé.prototype.component3 = function () {
+    return this.contact;
+  };
+  Résumé.prototype.component4 = function () {
+    return this.latestJob;
+  };
+  Résumé.prototype.copy_mixf62$ = function (id, title, contact, latestJob) {
+    return new Résumé(id === void 0 ? this.id : id, title === void 0 ? this.title : title, contact === void 0 ? this.contact : contact, latestJob === void 0 ? this.latestJob : latestJob);
   };
   Résumé.prototype.toString = function () {
-    return 'R\xE9sum\xE9(id=' + Kotlin.toString(this.id) + (', title=' + Kotlin.toString(this.title)) + ')';
+    return 'R\xE9sum\xE9(id=' + Kotlin.toString(this.id) + (', title=' + Kotlin.toString(this.title)) + (', contact=' + Kotlin.toString(this.contact)) + (', latestJob=' + Kotlin.toString(this.latestJob)) + ')';
   };
   Résumé.prototype.hashCode = function () {
     var result = 0;
     result = result * 31 + Kotlin.hashCode(this.id) | 0;
     result = result * 31 + Kotlin.hashCode(this.title) | 0;
+    result = result * 31 + Kotlin.hashCode(this.contact) | 0;
+    result = result * 31 + Kotlin.hashCode(this.latestJob) | 0;
     return result;
   };
   Résumé.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.title, other.title)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.title, other.title) && Kotlin.equals(this.contact, other.contact) && Kotlin.equals(this.latestJob, other.latestJob)))));
   };
   function RésuméPortal(résumés) {
     RésuméPortal$Companion_getInstance();
     this.résumés = résumés;
   }
-  var collectionSizeOrDefault = Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$;
-  var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
+  var LinkedHashSet_init = Kotlin.kotlin.collections.LinkedHashSet_init_287e2$;
   RésuméPortal.prototype.renderToHtmlElement = function () {
-    var section = document.createElement('section');
-    var heading = document.createElement('h1');
-    heading.textContent = 'R\xE9sum\xE9s';
-    section.appendChild(heading);
-    var list = document.createElement('ul');
-    addClass(list, ['r\xE9sum\xE9-portal']);
-    var $receiver = this.résumés;
-    var destination = ArrayList_init_0(collectionSizeOrDefault($receiver, 10));
-    var tmp$;
-    tmp$ = $receiver.iterator();
-    while (tmp$.hasNext()) {
-      var item = tmp$.next();
+    var heading = new Heading(Heading$Level$level1_getInstance(), 'R\xE9sum\xE9s');
+    var tmp$ = this.résumés;
+    var destination = LinkedHashSet_init();
+    var tmp$_0;
+    tmp$_0 = tmp$.iterator();
+    while (tmp$_0.hasNext()) {
+      var item = tmp$_0.next();
       destination.add_11rb$(new RésuméPortalItem(item));
     }
-    var destination_0 = ArrayList_init_0(collectionSizeOrDefault(destination, 10));
-    var tmp$_0;
-    tmp$_0 = destination.iterator();
-    while (tmp$_0.hasNext()) {
-      var item_0 = tmp$_0.next();
-      destination_0.add_11rb$(item_0.renderToHtmlElement());
-    }
-    var tmp$_1;
-    tmp$_1 = destination_0.iterator();
-    while (tmp$_1.hasNext()) {
-      var element = tmp$_1.next();
-      var listItem = document.createElement('li');
-      listItem.appendChild(element);
-      list.appendChild(listItem);
-    }
-    section.appendChild(list);
-    return section;
+    var list = new UnorderedList(destination);
+    list.addClass_61zpoe$('r\xE9sum\xE9-portal');
+    return (new UntypedGroup(void 0, listOf_0([heading, list]))).renderToHtmlElement();
   };
   function RésuméPortal$Companion() {
     RésuméPortal$Companion_instance = this;
   }
+  var collectionSizeOrDefault = Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$;
+  var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   RésuméPortal$Companion.prototype.invoke_7fgr4n$ = function (filtering, with_0) {
     var base = filtering;
     var filters = with_0;
@@ -521,19 +640,13 @@ var resumes = function (_, Kotlin) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.résumés, other.résumés))));
   };
   function RésuméPortalItem(résumé) {
+    ListItem.call(this, new SingleItemCollection(Link$Companion_getInstance().invoke_puj7f4$('#' + résumé.id, résumé.title)));
     this.résumé = résumé;
   }
-  RésuméPortalItem.prototype.renderToHtmlElement = function () {
-    var tmp$, tmp$_0;
-    var anchor = document.createElement('a');
-    (tmp$_0 = Kotlin.isType(tmp$ = anchor, HTMLAnchorElement) ? tmp$ : null) != null ? (tmp$_0.href = '#' + this.résumé.id) : null;
-    anchor.textContent = this.résumé.title;
-    return anchor;
-  };
   RésuméPortalItem.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9PortalItem',
-    interfaces: [HtmlElementRenderable]
+    interfaces: [ListItem]
   };
   RésuméPortalItem.prototype.component1 = function () {
     return this.résumé;
@@ -853,7 +966,6 @@ var resumes = function (_, Kotlin) {
       };
     };
   });
-  var LinkedHashSet_init = Kotlin.kotlin.collections.LinkedHashSet_init_287e2$;
   var mapNotNullTo$lambda_2 = wrapFunction(function () {
     return function (closure$transform, closure$destination) {
       return function (element) {
@@ -2127,6 +2239,47 @@ var resumes = function (_, Kotlin) {
   UrlMeaning.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.currentBaseRésuméId, other.currentBaseRésuméId) && Kotlin.equals(this.currentRésuméFilterId, other.currentRésuméFilterId)))));
   };
+  function SingleItemCollection(onlyElement) {
+    this.onlyElement = onlyElement;
+    this.size_6jips9$_0 = 1;
+  }
+  Object.defineProperty(SingleItemCollection.prototype, 'size', {
+    get: function () {
+      return this.size_6jips9$_0;
+    }
+  });
+  SingleItemCollection.prototype.contains_11rb$ = function (element) {
+    return equals(element, this.onlyElement);
+  };
+  SingleItemCollection.prototype.containsAll_brywnq$ = function (elements) {
+    return equals(firstOrNull(elements), this.onlyElement) && elements.size === 1;
+  };
+  SingleItemCollection.prototype.isEmpty = function () {
+    return false;
+  };
+  function SingleItemCollection$iterator$ObjectLiteral(this$SingleItemCollection) {
+    this.this$SingleItemCollection = this$SingleItemCollection;
+    this.hasIterated = false;
+  }
+  SingleItemCollection$iterator$ObjectLiteral.prototype.hasNext = function () {
+    return !this.hasIterated;
+  };
+  SingleItemCollection$iterator$ObjectLiteral.prototype.next = function () {
+    this.hasIterated = true;
+    return this.this$SingleItemCollection.onlyElement;
+  };
+  SingleItemCollection$iterator$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [Iterator]
+  };
+  SingleItemCollection.prototype.iterator = function () {
+    return new SingleItemCollection$iterator$ObjectLiteral(this);
+  };
+  SingleItemCollection.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'SingleItemCollection',
+    interfaces: [Collection]
+  };
   var throwCCE = Kotlin.throwCCE;
   var trim = Kotlin.kotlin.text.trim_gw00vp$;
   function createElementFromHTML(htmlString) {
@@ -2143,6 +2296,417 @@ var resumes = function (_, Kotlin) {
     }
     return tmp$_2;
   }
+  function HtmlWidget(htmlTagName, classes) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    this.htmlTagName_h15ebu$_0 = htmlTagName;
+    this.classes_4tnzxm$_0 = classes;
+  }
+  Object.defineProperty(HtmlWidget.prototype, 'htmlTagName', {
+    get: function () {
+      return this.htmlTagName_h15ebu$_0;
+    }
+  });
+  Object.defineProperty(HtmlWidget.prototype, 'classes', {
+    get: function () {
+      return this.classes_4tnzxm$_0;
+    }
+  });
+  HtmlWidget.prototype.renderToHtmlElement = function () {
+    var element = document.createElement(this.htmlTagName);
+    var tmp$;
+    tmp$ = this.classes.iterator();
+    while (tmp$.hasNext()) {
+      var element_0 = tmp$.next();
+      addClass(element, [element_0]);
+    }
+    return element;
+  };
+  HtmlWidget.prototype.addClass_61zpoe$ = function (newClass) {
+    this.classes.add_11rb$(newClass);
+  };
+  HtmlWidget.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'HtmlWidget',
+    interfaces: [HtmlElementRenderable]
+  };
+  function HtmlTextWidget(htmlTagName, text) {
+    HtmlWidget.call(this, htmlTagName);
+    this.text_xbfjac$_0 = text;
+  }
+  Object.defineProperty(HtmlTextWidget.prototype, 'text', {
+    get: function () {
+      return this.text_xbfjac$_0;
+    }
+  });
+  HtmlTextWidget.prototype.renderToHtmlElement = function () {
+    var textElement = HtmlWidget.prototype.renderToHtmlElement.call(this);
+    textElement.textContent = this.text;
+    return textElement;
+  };
+  HtmlTextWidget.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'HtmlTextWidget',
+    interfaces: [HtmlWidget]
+  };
+  function HtmlRichTextWidget(htmlTagName, children) {
+    HtmlRichTextWidget$Companion_getInstance();
+    HtmlParentWidget.call(this, htmlTagName, children);
+    this.children_got86q$_0 = children;
+  }
+  Object.defineProperty(HtmlRichTextWidget.prototype, 'children', {
+    get: function () {
+      return this.children_got86q$_0;
+    }
+  });
+  function HtmlRichTextWidget$Companion() {
+    HtmlRichTextWidget$Companion_instance = this;
+  }
+  HtmlRichTextWidget$Companion.prototype.invoke_bwup1g$ = function (htmlTagName, text) {
+    return new HtmlRichTextWidget(htmlTagName, listOf(new PlainText(text)));
+  };
+  HtmlRichTextWidget$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var HtmlRichTextWidget$Companion_instance = null;
+  function HtmlRichTextWidget$Companion_getInstance() {
+    if (HtmlRichTextWidget$Companion_instance === null) {
+      new HtmlRichTextWidget$Companion();
+    }
+    return HtmlRichTextWidget$Companion_instance;
+  }
+  HtmlRichTextWidget.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'HtmlRichTextWidget',
+    interfaces: [HtmlParentWidget]
+  };
+  function HtmlParentWidget(htmlTagName, children) {
+    HtmlWidget.call(this, htmlTagName);
+    this.children_4lxi5t$_0 = children;
+  }
+  Object.defineProperty(HtmlParentWidget.prototype, 'children', {
+    get: function () {
+      return this.children_4lxi5t$_0;
+    }
+  });
+  HtmlParentWidget.prototype.renderToHtmlElement = function () {
+    var container = HtmlWidget.prototype.renderToHtmlElement.call(this);
+    var tmp$;
+    tmp$ = this.children.iterator();
+    while (tmp$.hasNext()) {
+      var element = tmp$.next();
+      container.appendChild(element.renderToHtmlElement());
+    }
+    return container;
+  };
+  HtmlParentWidget.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'HtmlParentWidget',
+    interfaces: [HtmlWidget]
+  };
+  function Group(kind, children) {
+    if (kind === void 0)
+      kind = Group$Kind$section_getInstance();
+    HtmlParentWidget.call(this, kind.htmlTagName, children);
+    this.kind = kind;
+  }
+  function Group$Kind(name, ordinal, htmlTagName) {
+    Enum.call(this);
+    this.htmlTagName = htmlTagName;
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function Group$Kind_initFields() {
+    Group$Kind_initFields = function () {
+    };
+    Group$Kind$section_instance = new Group$Kind('section', 0, 'section');
+    Group$Kind$article_instance = new Group$Kind('article', 1, 'article');
+    Group$Kind$main_instance = new Group$Kind('main', 2, 'main');
+  }
+  var Group$Kind$section_instance;
+  function Group$Kind$section_getInstance() {
+    Group$Kind_initFields();
+    return Group$Kind$section_instance;
+  }
+  var Group$Kind$article_instance;
+  function Group$Kind$article_getInstance() {
+    Group$Kind_initFields();
+    return Group$Kind$article_instance;
+  }
+  var Group$Kind$main_instance;
+  function Group$Kind$main_getInstance() {
+    Group$Kind_initFields();
+    return Group$Kind$main_instance;
+  }
+  Group$Kind.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Kind',
+    interfaces: [Enum]
+  };
+  function Group$Kind$values() {
+    return [Group$Kind$section_getInstance(), Group$Kind$article_getInstance(), Group$Kind$main_getInstance()];
+  }
+  Group$Kind.values = Group$Kind$values;
+  function Group$Kind$valueOf(name) {
+    switch (name) {
+      case 'section':
+        return Group$Kind$section_getInstance();
+      case 'article':
+        return Group$Kind$article_getInstance();
+      case 'main':
+        return Group$Kind$main_getInstance();
+      default:throwISE('No enum constant org.bh.tools.ui.Group.Kind.' + name);
+    }
+  }
+  Group$Kind.valueOf_61zpoe$ = Group$Kind$valueOf;
+  Group.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Group',
+    interfaces: [HtmlParentWidget]
+  };
+  function UntypedGroup(kind, children) {
+    if (kind === void 0)
+      kind = Group$Kind$section_getInstance();
+    Group.call(this, kind, children);
+  }
+  UntypedGroup.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'UntypedGroup',
+    interfaces: [Group]
+  };
+  function BodyText(kind, children) {
+    BodyText$Companion_getInstance();
+    HtmlRichTextWidget.call(this, kind.htmlTagName, children);
+    this.kind = kind;
+  }
+  function BodyText$Companion() {
+    BodyText$Companion_instance = this;
+  }
+  BodyText$Companion.prototype.invoke_uzf9oc$ = function (kind, text) {
+    return new BodyText(kind, new SingleItemCollection(new PlainText(text)));
+  };
+  BodyText$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var BodyText$Companion_instance = null;
+  function BodyText$Companion_getInstance() {
+    if (BodyText$Companion_instance === null) {
+      new BodyText$Companion();
+    }
+    return BodyText$Companion_instance;
+  }
+  function BodyText$Kind(name, ordinal, htmlTagName) {
+    Enum.call(this);
+    this.htmlTagName = htmlTagName;
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function BodyText$Kind_initFields() {
+    BodyText$Kind_initFields = function () {
+    };
+    BodyText$Kind$paragraph_instance = new BodyText$Kind('paragraph', 0, 'p');
+    BodyText$Kind$aside_instance = new BodyText$Kind('aside', 1, 'aside');
+  }
+  var BodyText$Kind$paragraph_instance;
+  function BodyText$Kind$paragraph_getInstance() {
+    BodyText$Kind_initFields();
+    return BodyText$Kind$paragraph_instance;
+  }
+  var BodyText$Kind$aside_instance;
+  function BodyText$Kind$aside_getInstance() {
+    BodyText$Kind_initFields();
+    return BodyText$Kind$aside_instance;
+  }
+  BodyText$Kind.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Kind',
+    interfaces: [Enum]
+  };
+  function BodyText$Kind$values() {
+    return [BodyText$Kind$paragraph_getInstance(), BodyText$Kind$aside_getInstance()];
+  }
+  BodyText$Kind.values = BodyText$Kind$values;
+  function BodyText$Kind$valueOf(name) {
+    switch (name) {
+      case 'paragraph':
+        return BodyText$Kind$paragraph_getInstance();
+      case 'aside':
+        return BodyText$Kind$aside_getInstance();
+      default:throwISE('No enum constant org.bh.tools.ui.BodyText.Kind.' + name);
+    }
+  }
+  BodyText$Kind.valueOf_61zpoe$ = BodyText$Kind$valueOf;
+  BodyText.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'BodyText',
+    interfaces: [HtmlRichTextWidget]
+  };
+  function PlainText(text) {
+    this.text = text;
+  }
+  PlainText.prototype.renderToHtmlElement = function () {
+    return new Text(this.text);
+  };
+  PlainText.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'PlainText',
+    interfaces: [HtmlElementRenderable]
+  };
+  function Link(href, children) {
+    Link$Companion_getInstance();
+    HtmlRichTextWidget.call(this, 'a', children);
+    this.href = href;
+  }
+  Link.prototype.renderToHtmlElement = function () {
+    var content = HtmlRichTextWidget.prototype.renderToHtmlElement.call(this);
+    content.href = this.href;
+    return content;
+  };
+  function Link$Companion() {
+    Link$Companion_instance = this;
+  }
+  Link$Companion.prototype.invoke_puj7f4$ = function (href, text) {
+    return new Link(href, new SingleItemCollection(new PlainText(text)));
+  };
+  Link$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var Link$Companion_instance = null;
+  function Link$Companion_getInstance() {
+    if (Link$Companion_instance === null) {
+      new Link$Companion();
+    }
+    return Link$Companion_instance;
+  }
+  Link.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Link',
+    interfaces: [HtmlRichTextWidget]
+  };
+  function Heading(level, text) {
+    HtmlTextWidget.call(this, 'h' + level.asDigit, text);
+    this.level = level;
+  }
+  function Heading$Level(name, ordinal, asDigit) {
+    Enum.call(this);
+    this.asDigit = asDigit;
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function Heading$Level_initFields() {
+    Heading$Level_initFields = function () {
+    };
+    Heading$Level$level1_instance = new Heading$Level('level1', 0, toByte(1));
+    Heading$Level$level2_instance = new Heading$Level('level2', 1, toByte(2));
+    Heading$Level$level3_instance = new Heading$Level('level3', 2, toByte(3));
+    Heading$Level$level4_instance = new Heading$Level('level4', 3, toByte(4));
+    Heading$Level$level5_instance = new Heading$Level('level5', 4, toByte(5));
+    Heading$Level$level6_instance = new Heading$Level('level6', 5, toByte(6));
+  }
+  var Heading$Level$level1_instance;
+  function Heading$Level$level1_getInstance() {
+    Heading$Level_initFields();
+    return Heading$Level$level1_instance;
+  }
+  var Heading$Level$level2_instance;
+  function Heading$Level$level2_getInstance() {
+    Heading$Level_initFields();
+    return Heading$Level$level2_instance;
+  }
+  var Heading$Level$level3_instance;
+  function Heading$Level$level3_getInstance() {
+    Heading$Level_initFields();
+    return Heading$Level$level3_instance;
+  }
+  var Heading$Level$level4_instance;
+  function Heading$Level$level4_getInstance() {
+    Heading$Level_initFields();
+    return Heading$Level$level4_instance;
+  }
+  var Heading$Level$level5_instance;
+  function Heading$Level$level5_getInstance() {
+    Heading$Level_initFields();
+    return Heading$Level$level5_instance;
+  }
+  var Heading$Level$level6_instance;
+  function Heading$Level$level6_getInstance() {
+    Heading$Level_initFields();
+    return Heading$Level$level6_instance;
+  }
+  Heading$Level.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Level',
+    interfaces: [Enum]
+  };
+  function Heading$Level$values() {
+    return [Heading$Level$level1_getInstance(), Heading$Level$level2_getInstance(), Heading$Level$level3_getInstance(), Heading$Level$level4_getInstance(), Heading$Level$level5_getInstance(), Heading$Level$level6_getInstance()];
+  }
+  Heading$Level.values = Heading$Level$values;
+  function Heading$Level$valueOf(name) {
+    switch (name) {
+      case 'level1':
+        return Heading$Level$level1_getInstance();
+      case 'level2':
+        return Heading$Level$level2_getInstance();
+      case 'level3':
+        return Heading$Level$level3_getInstance();
+      case 'level4':
+        return Heading$Level$level4_getInstance();
+      case 'level5':
+        return Heading$Level$level5_getInstance();
+      case 'level6':
+        return Heading$Level$level6_getInstance();
+      default:throwISE('No enum constant org.bh.tools.ui.Heading.Level.' + name);
+    }
+  }
+  Heading$Level.valueOf_61zpoe$ = Heading$Level$valueOf;
+  Heading.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Heading',
+    interfaces: [HtmlTextWidget]
+  };
+  function UnorderedList(items) {
+    HtmlParentWidget.call(this, 'ul', items);
+  }
+  UnorderedList.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'UnorderedList',
+    interfaces: [HtmlParentWidget]
+  };
+  function ListItem(children) {
+    ListItem$Companion_getInstance();
+    HtmlRichTextWidget.call(this, 'li', children);
+  }
+  function ListItem$Companion() {
+    ListItem$Companion_instance = this;
+  }
+  ListItem$Companion.prototype.invoke_61zpoe$ = function (text) {
+    return new ListItem(listOf(new PlainText(text)));
+  };
+  ListItem$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var ListItem$Companion_instance = null;
+  function ListItem$Companion_getInstance() {
+    if (ListItem$Companion_instance === null) {
+      new ListItem$Companion();
+    }
+    return ListItem$Companion_instance;
+  }
+  ListItem.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'ListItem',
+    interfaces: [HtmlRichTextWidget]
+  };
   function HtmlStringRenderable() {
   }
   HtmlStringRenderable.prototype.renderToHtmlElement = function () {
@@ -2214,6 +2778,14 @@ var resumes = function (_, Kotlin) {
   Object.defineProperty(Résumé, 'Companion', {
     get: Résumé$Companion_getInstance
   });
+  Object.defineProperty(Résumé$Contact, 'Companion', {
+    get: Résumé$Contact$Companion_getInstance
+  });
+  Résumé.Contact = Résumé$Contact;
+  Object.defineProperty(Résumé$Job, 'Companion', {
+    get: Résumé$Job$Companion_getInstance
+  });
+  Résumé.Job = Résumé$Job;
   package$Résumé.Résumé = Résumé;
   Object.defineProperty(RésuméPortal, 'Companion', {
     get: RésuméPortal$Companion_getInstance
@@ -2329,8 +2901,71 @@ var resumes = function (_, Kotlin) {
   var package$org = _.org || (_.org = {});
   var package$bh = package$org.bh || (package$org.bh = {});
   var package$tools = package$bh.tools || (package$bh.tools = {});
+  var package$base = package$tools.base || (package$tools.base = {});
+  var package$collections = package$base.collections || (package$base.collections = {});
+  package$collections.SingleItemCollection = SingleItemCollection;
   var package$ui = package$tools.ui || (package$tools.ui = {});
   package$ui.createElementFromHTML_61zpoe$ = createElementFromHTML;
+  package$ui.HtmlWidget = HtmlWidget;
+  package$ui.HtmlTextWidget = HtmlTextWidget;
+  Object.defineProperty(HtmlRichTextWidget, 'Companion', {
+    get: HtmlRichTextWidget$Companion_getInstance
+  });
+  package$ui.HtmlRichTextWidget = HtmlRichTextWidget;
+  package$ui.HtmlParentWidget = HtmlParentWidget;
+  Object.defineProperty(Group$Kind, 'section', {
+    get: Group$Kind$section_getInstance
+  });
+  Object.defineProperty(Group$Kind, 'article', {
+    get: Group$Kind$article_getInstance
+  });
+  Object.defineProperty(Group$Kind, 'main', {
+    get: Group$Kind$main_getInstance
+  });
+  Group.Kind = Group$Kind;
+  package$ui.Group = Group;
+  package$ui.UntypedGroup = UntypedGroup;
+  Object.defineProperty(BodyText, 'Companion', {
+    get: BodyText$Companion_getInstance
+  });
+  Object.defineProperty(BodyText$Kind, 'paragraph', {
+    get: BodyText$Kind$paragraph_getInstance
+  });
+  Object.defineProperty(BodyText$Kind, 'aside', {
+    get: BodyText$Kind$aside_getInstance
+  });
+  BodyText.Kind = BodyText$Kind;
+  package$ui.BodyText = BodyText;
+  package$ui.PlainText = PlainText;
+  Object.defineProperty(Link, 'Companion', {
+    get: Link$Companion_getInstance
+  });
+  package$ui.Link = Link;
+  Object.defineProperty(Heading$Level, 'level1', {
+    get: Heading$Level$level1_getInstance
+  });
+  Object.defineProperty(Heading$Level, 'level2', {
+    get: Heading$Level$level2_getInstance
+  });
+  Object.defineProperty(Heading$Level, 'level3', {
+    get: Heading$Level$level3_getInstance
+  });
+  Object.defineProperty(Heading$Level, 'level4', {
+    get: Heading$Level$level4_getInstance
+  });
+  Object.defineProperty(Heading$Level, 'level5', {
+    get: Heading$Level$level5_getInstance
+  });
+  Object.defineProperty(Heading$Level, 'level6', {
+    get: Heading$Level$level6_getInstance
+  });
+  Heading.Level = Heading$Level;
+  package$ui.Heading = Heading;
+  package$ui.UnorderedList = UnorderedList;
+  Object.defineProperty(ListItem, 'Companion', {
+    get: ListItem$Companion_getInstance
+  });
+  package$ui.ListItem = ListItem;
   package$ui.HtmlStringRenderable = HtmlStringRenderable;
   package$ui.HtmlElementRenderable = HtmlElementRenderable;
   var package$w3c = package$org.w3c || (package$org.w3c = {});

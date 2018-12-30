@@ -4,7 +4,6 @@ package org.bh.tools.ui
 
 import org.bh.tools.base.collections.*
 import org.bh.tools.ui.Group.Kind.*
-import org.bh.tools.ui.UntypedGroup.Kind.*
 import org.w3c.dom.*
 import kotlin.browser.*
 import kotlin.dom.*
@@ -105,8 +104,8 @@ open class Group<out ChildHtmlElement, Children>
 (val kind: Kind = section, children: Children)
     : HtmlParentWidget<HTMLElement, Children>(htmlTagName = kind.htmlTagName, children = children)
 where ChildHtmlElement: HTMLElement,
-      Children: Collection<HtmlWidget<ChildHtmlElement>> {
-
+      Children: Collection<HtmlWidget<ChildHtmlElement>>
+{
     enum class Kind(val htmlTagName: String) {
         section("section"),
         article("article"),
@@ -121,7 +120,22 @@ class UntypedGroup(kind: Kind = section, children: List<HtmlWidget<HTMLElement>>
 
 
 
-class BodyText: HtmlWidget<HTMLParagraphElement>("p")
+class BodyText<Children>(val kind: Kind, children: Children)
+    : HtmlRichTextWidget<HTMLElement, Children>(kind.htmlTagName, children)
+where Children: Collection<HtmlElementRenderable>
+{
+    companion object {
+        operator fun invoke(kind: Kind, text: String) =
+                BodyText(kind, SingleItemCollection(PlainText(text)))
+    }
+
+
+
+    enum class Kind(val htmlTagName: String) {
+        paragraph("p"),
+        aside("aside")
+    }
+}
 
 
 

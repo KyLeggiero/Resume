@@ -20,7 +20,7 @@ data class RésuméPortal(
         val list = UnorderedList<RésuméPortalItemContent>(résumés.mapTo(mutableSetOf()) { RésuméPortalItem(it) })
         list.addClass("résumé-portal")
 
-        return UntypedGroup(listOf(heading, list)).renderToHtmlElement()
+        return UntypedGroup(children = listOf(heading, list)).renderToHtmlElement()
     }
 
 

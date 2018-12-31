@@ -28,7 +28,7 @@ data class BasicRésuméJson(
         operator fun invoke(jsonObject: Json): BasicRésuméJson? {
             val formatVersion = jsonObject["format-version"]
             if (formatVersion !is String || !compatibleVersionRegex.matches(formatVersion)) {
-                println("Incompatible format version")
+                console.error("Incompatible format version")
                 return null
             }
 
@@ -66,7 +66,7 @@ data class BasicRésuméJson(
             operator fun invoke(jsonObject: Json): Content? {
                 @Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE", "UNCHECKED_CAST")
                 return Content(contact = Contact(jsonObject = jsonObject["contact"] as? Json ?: return null) ?: return null,
-                               workHistory = (jsonObject["work-history"] as? Array<*> ?: return null).mapNotNull { Job(jsonObject = it as? Json ?: return@mapNotNull null) }
+                               workHistory = (jsonObject["work-history"] as? Array<*> ?: return null).mapNotNull { Job(jsonObject = it as? Json ?: return@mapNotNull null) ?: null.also { console.error("Failed to parse job: ${JSON.stringify(jsonObject)}") } }
                 )
             }
         }
@@ -132,7 +132,7 @@ data class BasicRésuméJson(
                     val nameLong: String?,
                     val division: String?,
                     val broadLocation: String,
-                    val address: String,
+                    val address: String?,
 
                     val phoneNumber: String?
             ) {
@@ -142,7 +142,7 @@ data class BasicRésuméJson(
                                        nameLong = jsonObject["name-long"] as? String,
                                        division = jsonObject["division"] as? String,
                                        broadLocation = jsonObject["broad-location"] as? String ?: return null,
-                                       address = jsonObject["address"] as? String ?: return null,
+                                       address = jsonObject["address"] as? String,
 
                                        phoneNumber = jsonObject["phone-number"] as? String
                         )
@@ -156,7 +156,7 @@ data class BasicRésuméJson(
                     val date: Date,
                     val title: String?,
                     val description: String?,
-                    val compensation: Compensation
+                    val compensation: Compensation?
             ) {
                 companion object {
                     operator fun invoke(jsonObject: Json): Position? {
@@ -164,7 +164,7 @@ data class BasicRésuméJson(
                         return Position(date = Date(jsonObject["date"] as? String ?: return null),
                                         title = jsonObject["title"] as? String,
                                         description = jsonObject["description"] as? String,
-                                        compensation = Compensation(jsonObject = jsonObject["compensation"] as? Json ?: return null) ?: return null
+                                        compensation = Compensation(jsonObject = jsonObject["compensation"] as? Json ?: return null)
                         )
                     }
                 }

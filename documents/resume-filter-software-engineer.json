@@ -9,11 +9,19 @@
     "inclusion": "any",
     "criteria": [
       {
-        "scope": "keywords",
+        "scope": "tags",
         "type": "contains",
         "values": [
           "software engineering",
           "career"
+        ]
+      },
+      {
+        "scope": "keywords",
+        "type": "highlight",
+        "values": [
+          "developer",
+          "designer"
         ]
       }
     ]

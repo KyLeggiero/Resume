@@ -11,7 +11,7 @@ import kotlin.js.*
  */
 object UrlParser {
     private const val uuidRegexPattern = "[A-Z0-9-]{36}"
-    private const val fragmentRegexPattern = "#?(?<base>$uuidRegexPattern)_(?<filter>$uuidRegexPattern)"
+    private const val fragmentRegexPattern = "#?($uuidRegexPattern)_($uuidRegexPattern)" // these used to be named groups, called base and filter. Firefox doesn't support that :/
     private val fragmentRegex = RegExp(fragmentRegexPattern, "i")
 
 

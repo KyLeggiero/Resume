@@ -3,6 +3,7 @@ package Résumé
 import jQueryInterface.*
 import org.w3c.dom.*
 import kotlin.browser.*
+import Résumé.RemoteWidgetData.*
 
 /*
  * @author Ben Leggiero
@@ -10,12 +11,19 @@ import kotlin.browser.*
  */
 
 class DynamicRésumePageRenderer(
+        val appBarTitleTextElement: Element,
+        val appBarSubtitleTextElement: Element,
         val containerElement: Element
 ) {
+    private val initialAppBarTitle = appBarTitleTextElement.textContent
+    private val initialAppBarSubtitle = appBarSubtitleTextElement.textContent
+
+
     fun refreshPage(state: RésuméPageState) {
         clearPage(then = {
             applyRootClasses(from = state)
             showContent(state.content())
+            applyRemoteWidgetData(state.remoteWidgetData())
         })
     }
 
@@ -40,8 +48,31 @@ class DynamicRésumePageRenderer(
     }
 
 
+    private fun applyRemoteWidgetData(remoteWidgetData: Set<RemoteWidgetData>) {
+        if (remoteWidgetData.isEmpty()) {
+            appBarTitleTextElement.textContent = initialAppBarTitle
+            appBarSubtitleTextElement.textContent = initialAppBarSubtitle
+        }
+        else {
+            remoteWidgetData.forEach {
+                when (it) {
+                    is appBarTitle -> appBarTitleTextElement.textContent = it.titleText
+                    is appBarSubtitle -> appBarSubtitleTextElement.textContent = it.subtitleText
+                }
+            }
+        }
+    }
+
+
     private fun RésuméPageState.content(): Node {
         return renderer().renderToHtmlElement()
+    }
+
+
+    private fun RésuméPageState.remoteWidgetData(): Set<RemoteWidgetData>  = when (this) {
+        is RésuméPageState.placeholder -> emptySet()
+        is RésuméPageState.portal -> emptySet()
+        is RésuméPageState.résumé -> this.résumé.remoteWidgetData()
     }
 
 
@@ -92,10 +123,30 @@ sealed class RésuméPageState {
                 if (filters.isNotEmpty()) {
                     return portal(RésuméPortal(filtering = firstCachedBase, with = sharedCache.filters.toList()))
                 }
+                else {
+                    console.error("Failed to parse any filter!")
+                }
             }
-
+            else {
+                console.error("Failed to parse the base state!")
+            }
 
             return placeholder
         }
     }
+}
+
+
+
+/**
+ * An object which wants its data displayed in a remote widget
+ */
+interface RemoteWidgetDataSource {
+    fun remoteWidgetData(): Set<RemoteWidgetData>
+}
+
+
+sealed class RemoteWidgetData {
+    class appBarTitle(val titleText: String): RemoteWidgetData()
+    class appBarSubtitle(val subtitleText: String): RemoteWidgetData()
 }

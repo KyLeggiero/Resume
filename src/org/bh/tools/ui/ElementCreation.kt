@@ -49,9 +49,10 @@ where HtmlElementType: HTMLElement
 open class HtmlTextWidget<out HtmlElementType>
 (
         htmlTagName: String,
+        classes: MutableList<String> = mutableListOf(),
         open val text: String
 )
-    : HtmlWidget<HtmlElementType>(htmlTagName)
+    : HtmlWidget<HtmlElementType>(htmlTagName = htmlTagName, classes = classes)
 where HtmlElementType: HTMLElement
 {
     override fun renderToHtmlElement(): HtmlElementType {
@@ -66,9 +67,10 @@ where HtmlElementType: HTMLElement
 open class HtmlParentWidget<out HtmlElementType, Children>
 (
         htmlTagName: String,
+        classes: MutableList<String> = mutableListOf(),
         open val children: Children
 )
-    : HtmlWidget<HtmlElementType>(htmlTagName = htmlTagName)
+    : HtmlWidget<HtmlElementType>(htmlTagName = htmlTagName, classes = classes)
         where HtmlElementType: HTMLElement,
               Children: Collection<HtmlElementRenderable>
 {
@@ -85,19 +87,20 @@ open class HtmlParentWidget<out HtmlElementType, Children>
 open class HtmlRichTextWidget<out HtmlElementType, Children>
 (
         htmlTagName: String,
+        classes: MutableList<String> = mutableListOf(),
         open override val children: Children
 )
-    : HtmlParentWidget<HtmlElementType, Children>(htmlTagName, children)
+    : HtmlParentWidget<HtmlElementType, Children>(htmlTagName = htmlTagName, classes = classes, children = children)
         where HtmlElementType: HTMLElement,
               Children: Collection<HtmlElementRenderable>
 {
     companion object {
-        operator fun <Self, HtmlElementType> invoke(htmlTagName: String, text: String)
+        operator fun <Self, HtmlElementType> invoke(htmlTagName: String, classes: MutableList<String> = mutableListOf(), text: String)
                 : HtmlRichTextWidget<HtmlElementType, List<PlainText>>
                 where Self: HtmlRichTextWidget<HtmlElementType, List<PlainText>>,
                       HtmlElementType: HTMLElement {
 
-            return HtmlRichTextWidget(htmlTagName, listOf(PlainText(text)))
+            return HtmlRichTextWidget(htmlTagName, classes = classes, children = listOf(PlainText(text)))
         }
     }
 }
@@ -107,8 +110,12 @@ open class HtmlRichTextWidget<out HtmlElementType, Children>
 // MARK: - Actual Element Wrappers
 
 open class Group<out ChildHtmlElement, Children>
-(val kind: Kind = section, children: Children)
-    : HtmlParentWidget<HTMLElement, Children>(htmlTagName = kind.htmlTagName, children = children)
+(
+        val kind: Kind = section,
+        classes: MutableList<String> = mutableListOf(),
+        children: Children
+)
+    : HtmlParentWidget<HTMLElement, Children>(htmlTagName = kind.htmlTagName, classes = classes, children = children)
 where ChildHtmlElement: HTMLElement,
       Children: Collection<HtmlWidget<ChildHtmlElement>>
 {
@@ -121,18 +128,26 @@ where ChildHtmlElement: HTMLElement,
 
 
 
-class UntypedGroup(kind: Kind = section, children: List<HtmlWidget<HTMLElement>>)
-    : Group<HTMLElement, List<HtmlWidget<HTMLElement>>>(kind, children)
+class UntypedGroup(
+        kind: Kind = section,
+        classes: MutableList<String> = mutableListOf(),
+        children: List<HtmlWidget<HTMLElement>>
+)
+    : Group<HTMLElement, List<HtmlWidget<HTMLElement>>>(kind, classes = classes, children = children)
 
 
 
-class BodyText<Children>(val kind: Kind = paragraph, children: Children)
-    : HtmlRichTextWidget<HTMLElement, Children>(kind.htmlTagName, children)
+class BodyText<Children>(
+        val kind: Kind = paragraph,
+        classes: MutableList<String> = mutableListOf(),
+        children: Children
+)
+    : HtmlRichTextWidget<HTMLElement, Children>(kind.htmlTagName, classes = classes, children = children)
 where Children: Collection<HtmlElementRenderable>
 {
     companion object {
-        operator fun invoke(kind: Kind, text: String) =
-                BodyText(kind, SingleItemCollection(PlainText(text)))
+        operator fun invoke(kind: Kind, classes: MutableList<String> = mutableListOf(), text: String) =
+                BodyText(kind, classes = classes, children = SingleItemCollection(PlainText(text)))
     }
 
 
@@ -145,8 +160,11 @@ where Children: Collection<HtmlElementRenderable>
 
 
 
-open class InlineText<Children>(children: Children)
-    : HtmlRichTextWidget<HTMLElement, Children>("span", children)
+open class InlineText<Children>(
+        classes: MutableList<String> = mutableListOf(),
+        children: Children
+)
+    : HtmlRichTextWidget<HTMLElement, Children>("span", classes = classes, children = children)
 where Children: Collection<HtmlElementRenderable>
 
 
@@ -159,8 +177,12 @@ class PlainText(val text: String): HtmlElementRenderable {
 
 
 
-class Link<Children>(val href: String, children: Children)
-    : HtmlRichTextWidget<HTMLAnchorElement, Children>(htmlTagName = "a", children = children)
+class Link<Children>(
+        val href: String,
+        classes: MutableList<String> = mutableListOf(),
+        children: Children
+)
+    : HtmlRichTextWidget<HTMLAnchorElement, Children>(htmlTagName = "a", classes = classes, children = children)
 where Children: Collection<HtmlElementRenderable>
 {
     override fun renderToHtmlElement(): HTMLAnchorElement {
@@ -172,17 +194,22 @@ where Children: Collection<HtmlElementRenderable>
 
 
     companion object {
-        operator fun invoke(href: String, text: String) =
-                Link(href = href, children = SingleItemCollection(PlainText(text)))
+        operator fun invoke(href: String, classes: MutableList<String> = mutableListOf(), text: String) =
+                Link(href = href, classes = classes, children = SingleItemCollection(PlainText(text)))
 
-        operator fun invoke(href: URL, text: String) =
-                Link(href = href.href, text = text)
+        operator fun invoke(href: URL, classes: MutableList<String> = mutableListOf(), text: String) =
+                Link(href = href.href, classes = classes, text = text)
     }
 }
 
 
 
-class Heading(val level: Level, text: String): HtmlTextWidget<HTMLHeadingElement>(htmlTagName = "h${level.asDigit}", text = text) {
+class Heading(
+        val level: Level,
+        classes: MutableList<String> = mutableListOf(),
+        text: String
+)
+    : HtmlTextWidget<HTMLHeadingElement>(htmlTagName = "h${level.asDigit}", classes = classes, text = text) {
 
     enum class Level(val asDigit: Byte) {
         level1(1.toByte()),
@@ -196,15 +223,21 @@ class Heading(val level: Level, text: String): HtmlTextWidget<HTMLHeadingElement
 
 
 
-class UnorderedList<ItemChildren>(items: Set<ListItem<ItemChildren>>)
-    : HtmlParentWidget<HTMLUListElement, Set<ListItem<ItemChildren>>>("ul", items)
+class UnorderedList<ItemChildren>(
+        classes: MutableList<String> = mutableListOf(),
+        items: Set<ListItem<ItemChildren>>
+)
+    : HtmlParentWidget<HTMLUListElement, Set<ListItem<ItemChildren>>>("ul", classes = classes, children = items)
 where ItemChildren: Collection<HtmlElementRenderable>
 
 
 
 open class ListItem<Children>
-(children: Children)
-    : HtmlRichTextWidget<HTMLLIElement, Children>(htmlTagName = "li", children = children)
+(
+        classes: MutableList<String> = mutableListOf(),
+        children: Children
+)
+    : HtmlRichTextWidget<HTMLLIElement, Children>(htmlTagName = "li", classes = classes, children = children)
 where Children: Collection<HtmlElementRenderable> {
 
     companion object {

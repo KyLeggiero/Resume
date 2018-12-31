@@ -21,7 +21,11 @@ var cachedPortal: RésuméPortal? = null
 
 fun main(args: Array<String>) {
     jq {
-        val renderer = DynamicRésumePageRenderer(jq("main")[0])
+        val renderer = DynamicRésumePageRenderer(
+            containerElement = jq("main")[0],
+            appBarTitleTextElement = jq(".title .title-text")[0],
+            appBarSubtitleTextElement = jq(".title .subtitle-text")[0]
+        )
 
         renderer.refreshPage(RésuméPageState.placeholder)
 
@@ -33,7 +37,6 @@ fun main(args: Array<String>) {
 
         fun beginListeningForPageChanges() {
             jq(window).on("hashchange") {
-                console.log("Would refresh")
                 refreshPage()
             }
         }
@@ -51,10 +54,10 @@ fun main(args: Array<String>) {
             val resumeBasic = BasicRésuméJson(jsons.first())
 
             if (null == resumeBasic) {
-                println("Could not parse basic Résumé JSON!")
+                console.error("Could not parse basic Résumé JSON!")
             }
             else {
-                buildPortal(base = resumeBasic, filters = jsons.drop(1).mapNotNull { RésuméFilterJson(it) })
+                buildPortal(base = resumeBasic, filters = jsons.drop(1).mapNotNull { RésuméFilterJson(it) ?: null.also { console.error("Could not convert JSON to filter!") } })
                 beginListeningForPageChanges()
             }
         }

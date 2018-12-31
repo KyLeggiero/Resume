@@ -61,6 +61,10 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson$RecursiveFilter$Criterion$Scope.prototype.constructor = RésuméFilterJson$RecursiveFilter$Criterion$Scope;
   RésuméFilterJson$RecursiveFilter$Criterion$Type.prototype = Object.create(Enum.prototype);
   RésuméFilterJson$RecursiveFilter$Criterion$Type.prototype.constructor = RésuméFilterJson$RecursiveFilter$Criterion$Type;
+  InlineText.prototype = Object.create(HtmlRichTextWidget.prototype);
+  InlineText.prototype.constructor = InlineText;
+  résuméPagePlaceholder.prototype = Object.create(InlineText.prototype);
+  résuméPagePlaceholder.prototype.constructor = résuméPagePlaceholder;
   HtmlTextWidget.prototype = Object.create(HtmlWidget.prototype);
   HtmlTextWidget.prototype.constructor = HtmlTextWidget;
   Group$Kind.prototype = Object.create(Enum.prototype);
@@ -71,8 +75,6 @@ var resumes = function (_, Kotlin) {
   BodyText$Kind.prototype.constructor = BodyText$Kind;
   BodyText.prototype = Object.create(HtmlRichTextWidget.prototype);
   BodyText.prototype.constructor = BodyText;
-  InlineText.prototype = Object.create(HtmlRichTextWidget.prototype);
-  InlineText.prototype.constructor = InlineText;
   Link.prototype = Object.create(HtmlRichTextWidget.prototype);
   Link.prototype.constructor = Link;
   Heading$Level.prototype = Object.create(Enum.prototype);
@@ -108,16 +110,16 @@ var resumes = function (_, Kotlin) {
       closure$renderer.refreshPage_ngqhws$(RésuméPageState$Companion_getInstance().inferredFromUrl());
     };
   }
-  function main$lambda$listenForPageChanges$lambda(closure$refreshPage) {
+  function main$lambda$beginListeningForPageChanges$lambda(closure$refreshPage) {
     return function (it) {
       console.log('Would refresh');
       closure$refreshPage();
       return Unit;
     };
   }
-  function main$lambda$listenForPageChanges(closure$refreshPage) {
+  function main$lambda$beginListeningForPageChanges(closure$refreshPage) {
     return function () {
-      $(window).on('hashchange', void 0, main$lambda$listenForPageChanges$lambda(closure$refreshPage));
+      $(window).on('hashchange', void 0, main$lambda$beginListeningForPageChanges$lambda(closure$refreshPage));
     };
   }
   function main$lambda$buildPortal(closure$refreshPage) {
@@ -143,7 +145,7 @@ var resumes = function (_, Kotlin) {
       };
     };
   });
-  function main$lambda$lambda(closure$buildPortal, closure$listenForPageChanges) {
+  function main$lambda$lambda(closure$buildPortal, closure$beginListeningForPageChanges) {
     return function (jsons) {
       var resumeBasic = BasicRésuméJson$Companion_getInstance().invoke_qk3xy8$(first(jsons));
       if (resumeBasic == null) {
@@ -163,19 +165,18 @@ var resumes = function (_, Kotlin) {
           }
         }
         tmp$(resumeBasic, destination);
-        closure$listenForPageChanges();
+        closure$beginListeningForPageChanges();
       }
       return Unit;
     };
   }
   function main$lambda() {
-    $('body').append('<main><h2>Hello there<\/h2><\/main>');
     var renderer = new DynamicRésumePageRenderer($('main').get(0));
-    var refreshPage = main$lambda$refreshPage(renderer);
     renderer.refreshPage_ngqhws$(RésuméPageState$placeholder_getInstance());
-    var listenForPageChanges = main$lambda$listenForPageChanges(refreshPage);
+    var refreshPage = main$lambda$refreshPage(renderer);
+    var beginListeningForPageChanges = main$lambda$beginListeningForPageChanges(refreshPage);
     var buildPortal = main$lambda$buildPortal(refreshPage);
-    fetchAllAsJson(allResourcePaths.slice(), main$lambda$lambda(buildPortal, listenForPageChanges));
+    fetchAllAsJson(allResourcePaths.slice(), main$lambda$lambda(buildPortal, beginListeningForPageChanges));
     return Unit;
   }
   function main(args) {
@@ -2139,16 +2140,17 @@ var resumes = function (_, Kotlin) {
   };
   function résuméPagePlaceholder() {
     résuméPagePlaceholder_instance = this;
+    InlineText.call(this, new SingleItemCollection(new PlainText('Loading...')));
   }
   résuméPagePlaceholder.prototype.renderToHtmlElement = function () {
-    var paragraph = document.createElement('p');
-    paragraph.textContent = 'Loading...';
-    return paragraph;
+    var span = InlineText.prototype.renderToHtmlElement.call(this);
+    this.addClass_61zpoe$('loading-indicator').addClass_61zpoe$('placeholder');
+    return span;
   };
   résuméPagePlaceholder.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'r\xE9sum\xE9PagePlaceholder',
-    interfaces: [HtmlElementRenderable]
+    interfaces: [InlineText]
   };
   var résuméPagePlaceholder_instance = null;
   function résuméPagePlaceholder_getInstance() {

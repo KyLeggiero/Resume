@@ -23,15 +23,15 @@ fun main(args: Array<String>) {
     jq {
         val renderer = DynamicRésumePageRenderer(jq("main")[0])
 
+        renderer.refreshPage(RésuméPageState.placeholder)
+
 
         fun refreshPage() {
             renderer.refreshPage(RésuméPageState.inferredFromUrl())
         }
 
 
-        renderer.refreshPage(RésuméPageState.placeholder)
-
-        fun listenForPageChanges() {
+        fun beginListeningForPageChanges() {
             jq(window).on("hashchange") {
                 console.log("Would refresh")
                 refreshPage()
@@ -55,7 +55,7 @@ fun main(args: Array<String>) {
             }
             else {
                 buildPortal(base = resumeBasic, filters = jsons.drop(1).mapNotNull { RésuméFilterJson(it) })
-                listenForPageChanges()
+                beginListeningForPageChanges()
             }
         }
     }

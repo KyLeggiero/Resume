@@ -2,6 +2,8 @@
 :root {
     --font-family-title: 'Questrial', 'Roboto', sans-serif;
 }
+
+
 @keyframes app-bar-background-animation {
     /* Inspired by https://www.gradient-animator.com by Ian Forrest ( https://www.IanForrest.me ) */
 
@@ -46,13 +48,21 @@
     background-position: 0% 50%;
 }
 
+
 .app-bar .title {
     color: #1DEAB7 !important;
     mix-blend-mode: screen;
+    font-size: 17pt;
 }
+
 
 .app-bar .title :link,
 .app-bar .title :visited {
     color: inherit !important;
     text-decoration: none;
+}
+
+
+.placeholder {
+    opacity: 0.2;
 }

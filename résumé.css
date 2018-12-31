@@ -1,0 +1,68 @@
+
+:root {
+    --font-family-title: 'Questrial', 'Roboto', sans-serif;
+}
+
+
+@keyframes app-bar-background-animation {
+    /* Inspired by https://www.gradient-animator.com by Ian Forrest ( https://www.IanForrest.me ) */
+
+    0% {
+        background-position:50% 50%;
+        background-size: 400% 400%;
+    }
+
+    17% {
+        background-position:100% 0%;
+    }
+
+    33% {
+        background-position:100% 100%;
+    }
+
+    50% {
+        background-position:50% 50%;
+    }
+
+    67% {
+        background-position:0% 0%;
+    }
+
+    83% {
+        background-position:0% 100%;
+    }
+
+    100% {
+        background-position:50% 50%;
+        background-size: 400% 400%;
+    }
+}
+
+
+.app-bar {
+    background-image: linear-gradient(-135deg, #0D47A2 0%, #311B93 25%, #890E4F 100%);
+    animation-duration: 30s;
+    animation-name: app-bar-background-animation;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    background-position: 0% 50%;
+}
+
+
+.app-bar .title {
+    color: #1DEAB7 !important;
+    mix-blend-mode: screen;
+    font-size: 17pt;
+}
+
+
+.app-bar .title :link,
+.app-bar .title :visited {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+
+.placeholder {
+    opacity: 0.2;
+}

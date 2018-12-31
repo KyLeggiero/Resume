@@ -39,12 +39,14 @@ var resumes = function (_, Kotlin) {
   RésuméPageState$résumé.prototype.constructor = RésuméPageState$résumé;
   HtmlParentWidget.prototype = Object.create(HtmlWidget.prototype);
   HtmlParentWidget.prototype.constructor = HtmlParentWidget;
+  HtmlRichTextWidget.prototype = Object.create(HtmlParentWidget.prototype);
+  HtmlRichTextWidget.prototype.constructor = HtmlRichTextWidget;
+  Résumé$Contact.prototype = Object.create(HtmlRichTextWidget.prototype);
+  Résumé$Contact.prototype.constructor = Résumé$Contact;
   Group.prototype = Object.create(HtmlParentWidget.prototype);
   Group.prototype.constructor = Group;
   Résumé.prototype = Object.create(Group.prototype);
   Résumé.prototype.constructor = Résumé;
-  HtmlRichTextWidget.prototype = Object.create(HtmlParentWidget.prototype);
-  HtmlRichTextWidget.prototype.constructor = HtmlRichTextWidget;
   ListItem.prototype = Object.create(HtmlRichTextWidget.prototype);
   ListItem.prototype.constructor = ListItem;
   RésuméPortalItem.prototype = Object.create(ListItem.prototype);
@@ -69,6 +71,8 @@ var resumes = function (_, Kotlin) {
   BodyText$Kind.prototype.constructor = BodyText$Kind;
   BodyText.prototype = Object.create(HtmlRichTextWidget.prototype);
   BodyText.prototype.constructor = BodyText;
+  InlineText.prototype = Object.create(HtmlRichTextWidget.prototype);
+  InlineText.prototype.constructor = InlineText;
   Link.prototype = Object.create(HtmlRichTextWidget.prototype);
   Link.prototype.constructor = Link;
   Heading$Level.prototype = Object.create(Enum.prototype);
@@ -438,6 +442,8 @@ var resumes = function (_, Kotlin) {
   }
   function Résumé$Contact(name, blogUrl) {
     Résumé$Contact$Companion_getInstance();
+    var tmp$;
+    HtmlRichTextWidget.call(this, 'span', new SingleItemCollection((tmp$ = blogUrl != null ? Link$Companion_getInstance().invoke_lejq9n$(blogUrl, name) : null) != null ? tmp$ : new PlainText(name)));
     this.name = name;
     this.blogUrl = blogUrl;
   }
@@ -463,7 +469,7 @@ var resumes = function (_, Kotlin) {
   Résumé$Contact.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Contact',
-    interfaces: []
+    interfaces: [HtmlRichTextWidget]
   };
   Résumé$Contact.prototype.component1 = function () {
     return this.name;
@@ -2325,6 +2331,7 @@ var resumes = function (_, Kotlin) {
   };
   HtmlWidget.prototype.addClass_61zpoe$ = function (newClass) {
     this.classes.add_11rb$(newClass);
+    return this;
   };
   HtmlWidget.$metadata$ = {
     kind: Kind_CLASS,
@@ -2350,39 +2357,6 @@ var resumes = function (_, Kotlin) {
     simpleName: 'HtmlTextWidget',
     interfaces: [HtmlWidget]
   };
-  function HtmlRichTextWidget(htmlTagName, children) {
-    HtmlRichTextWidget$Companion_getInstance();
-    HtmlParentWidget.call(this, htmlTagName, children);
-    this.children_got86q$_0 = children;
-  }
-  Object.defineProperty(HtmlRichTextWidget.prototype, 'children', {
-    get: function () {
-      return this.children_got86q$_0;
-    }
-  });
-  function HtmlRichTextWidget$Companion() {
-    HtmlRichTextWidget$Companion_instance = this;
-  }
-  HtmlRichTextWidget$Companion.prototype.invoke_bwup1g$ = function (htmlTagName, text) {
-    return new HtmlRichTextWidget(htmlTagName, listOf(new PlainText(text)));
-  };
-  HtmlRichTextWidget$Companion.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'Companion',
-    interfaces: []
-  };
-  var HtmlRichTextWidget$Companion_instance = null;
-  function HtmlRichTextWidget$Companion_getInstance() {
-    if (HtmlRichTextWidget$Companion_instance === null) {
-      new HtmlRichTextWidget$Companion();
-    }
-    return HtmlRichTextWidget$Companion_instance;
-  }
-  HtmlRichTextWidget.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'HtmlRichTextWidget',
-    interfaces: [HtmlParentWidget]
-  };
   function HtmlParentWidget(htmlTagName, children) {
     HtmlWidget.call(this, htmlTagName);
     this.children_4lxi5t$_0 = children;
@@ -2406,6 +2380,39 @@ var resumes = function (_, Kotlin) {
     kind: Kind_CLASS,
     simpleName: 'HtmlParentWidget',
     interfaces: [HtmlWidget]
+  };
+  function HtmlRichTextWidget(htmlTagName, children) {
+    HtmlRichTextWidget$Companion_getInstance();
+    HtmlParentWidget.call(this, htmlTagName, children);
+    this.children_got86q$_0 = children;
+  }
+  Object.defineProperty(HtmlRichTextWidget.prototype, 'children', {
+    get: function () {
+      return this.children_got86q$_0;
+    }
+  });
+  function HtmlRichTextWidget$Companion() {
+    HtmlRichTextWidget$Companion_instance = this;
+  }
+  HtmlRichTextWidget$Companion.prototype.invoke_3wp7x$ = function (htmlTagName, text) {
+    return new HtmlRichTextWidget(htmlTagName, listOf(new PlainText(text)));
+  };
+  HtmlRichTextWidget$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var HtmlRichTextWidget$Companion_instance = null;
+  function HtmlRichTextWidget$Companion_getInstance() {
+    if (HtmlRichTextWidget$Companion_instance === null) {
+      new HtmlRichTextWidget$Companion();
+    }
+    return HtmlRichTextWidget$Companion_instance;
+  }
+  HtmlRichTextWidget.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'HtmlRichTextWidget',
+    interfaces: [HtmlParentWidget]
   };
   function Group(kind, children) {
     if (kind === void 0)
@@ -2479,6 +2486,8 @@ var resumes = function (_, Kotlin) {
   };
   function BodyText(kind, children) {
     BodyText$Companion_getInstance();
+    if (kind === void 0)
+      kind = BodyText$Kind$paragraph_getInstance();
     HtmlRichTextWidget.call(this, kind.htmlTagName, children);
     this.kind = kind;
   }
@@ -2546,6 +2555,14 @@ var resumes = function (_, Kotlin) {
     simpleName: 'BodyText',
     interfaces: [HtmlRichTextWidget]
   };
+  function InlineText(children) {
+    HtmlRichTextWidget.call(this, 'span', children);
+  }
+  InlineText.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'InlineText',
+    interfaces: [HtmlRichTextWidget]
+  };
   function PlainText(text) {
     this.text = text;
   }
@@ -2572,6 +2589,9 @@ var resumes = function (_, Kotlin) {
   }
   Link$Companion.prototype.invoke_puj7f4$ = function (href, text) {
     return new Link(href, new SingleItemCollection(new PlainText(text)));
+  };
+  Link$Companion.prototype.invoke_lejq9n$ = function (href, text) {
+    return Link$Companion_getInstance().invoke_puj7f4$(href.href, text);
   };
   Link$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2908,11 +2928,11 @@ var resumes = function (_, Kotlin) {
   package$ui.createElementFromHTML_61zpoe$ = createElementFromHTML;
   package$ui.HtmlWidget = HtmlWidget;
   package$ui.HtmlTextWidget = HtmlTextWidget;
+  package$ui.HtmlParentWidget = HtmlParentWidget;
   Object.defineProperty(HtmlRichTextWidget, 'Companion', {
     get: HtmlRichTextWidget$Companion_getInstance
   });
   package$ui.HtmlRichTextWidget = HtmlRichTextWidget;
-  package$ui.HtmlParentWidget = HtmlParentWidget;
   Object.defineProperty(Group$Kind, 'section', {
     get: Group$Kind$section_getInstance
   });
@@ -2936,6 +2956,7 @@ var resumes = function (_, Kotlin) {
   });
   BodyText.Kind = BodyText$Kind;
   package$ui.BodyText = BodyText;
+  package$ui.InlineText = InlineText;
   package$ui.PlainText = PlainText;
   Object.defineProperty(Link, 'Companion', {
     get: Link$Companion_getInstance

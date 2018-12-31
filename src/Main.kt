@@ -21,8 +21,6 @@ var cachedPortal: RésuméPortal? = null
 
 fun main(args: Array<String>) {
     jq {
-        jq("body").append("<main><h2>Hello there</h2></main>")
-
         val renderer = DynamicRésumePageRenderer(jq("main")[0])
 
 

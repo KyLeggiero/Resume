@@ -3,8 +3,10 @@
 package org.bh.tools.ui
 
 import org.bh.tools.base.collections.*
+import org.bh.tools.ui.BodyText.Kind.*
 import org.bh.tools.ui.Group.Kind.*
 import org.w3c.dom.*
+import org.w3c.dom.url.*
 import kotlin.browser.*
 import kotlin.dom.*
 
@@ -23,10 +25,11 @@ fun createElementFromHTML(htmlString: String): Element? {
 
 
 
-open class HtmlWidget<out HtmlElementType: HTMLElement>(
+open class HtmlWidget<out HtmlElementType>(
         open val htmlTagName: String,
         open val classes: MutableList<String> = mutableListOf()
 ): HtmlElementRenderable
+where HtmlElementType: HTMLElement
 {
     override open fun renderToHtmlElement(): HtmlElementType {
         val element = document.createElement(htmlTagName).unsafeCast<HtmlElementType>()
@@ -35,24 +38,45 @@ open class HtmlWidget<out HtmlElementType: HTMLElement>(
     }
 
 
-    fun addClass(newClass: String) {
+    fun addClass(newClass: String): HtmlWidget<HtmlElementType> {
         this.classes += newClass
+        return this
     }
 }
 
 
 
-open class HtmlTextWidget<out HtmlElementType: HTMLElement>
+open class HtmlTextWidget<out HtmlElementType>
 (
         htmlTagName: String,
         open val text: String
 )
     : HtmlWidget<HtmlElementType>(htmlTagName)
+where HtmlElementType: HTMLElement
 {
     override fun renderToHtmlElement(): HtmlElementType {
         val textElement = super.renderToHtmlElement()
         textElement.textContent = text
         return textElement
+    }
+}
+
+
+
+open class HtmlParentWidget<out HtmlElementType, Children>
+(
+        htmlTagName: String,
+        open val children: Children
+)
+    : HtmlWidget<HtmlElementType>(htmlTagName = htmlTagName)
+        where HtmlElementType: HTMLElement,
+              Children: Collection<HtmlElementRenderable>
+{
+
+    override fun renderToHtmlElement(): HtmlElementType {
+        val container = super.renderToHtmlElement()
+        children.forEach { container.appendChild(it.renderToHtmlElement()) }
+        return container
     }
 }
 
@@ -68,31 +92,13 @@ open class HtmlRichTextWidget<out HtmlElementType, Children>
               Children: Collection<HtmlElementRenderable>
 {
     companion object {
-        operator fun <HtmlElementType> invoke(htmlTagName: String, text: String)
+        operator fun <Self, HtmlElementType> invoke(htmlTagName: String, text: String)
                 : HtmlRichTextWidget<HtmlElementType, List<PlainText>>
-                where HtmlElementType: HTMLElement {
+                where Self: HtmlRichTextWidget<HtmlElementType, List<PlainText>>,
+                      HtmlElementType: HTMLElement {
 
             return HtmlRichTextWidget(htmlTagName, listOf(PlainText(text)))
         }
-    }
-}
-
-
-
-open class HtmlParentWidget<out HtmlElementType, Children>
-(
-        htmlTagName: String,
-        open val children: Children
-)
-    : HtmlWidget<HtmlElementType>(htmlTagName = htmlTagName)
-where HtmlElementType: HTMLElement,
-      Children: Collection<HtmlElementRenderable>
-{
-
-    override fun renderToHtmlElement(): HtmlElementType {
-        val container = super.renderToHtmlElement()
-        children.forEach { container.appendChild(it.renderToHtmlElement()) }
-        return container
     }
 }
 
@@ -120,7 +126,7 @@ class UntypedGroup(kind: Kind = section, children: List<HtmlWidget<HTMLElement>>
 
 
 
-class BodyText<Children>(val kind: Kind, children: Children)
+class BodyText<Children>(val kind: Kind = paragraph, children: Children)
     : HtmlRichTextWidget<HTMLElement, Children>(kind.htmlTagName, children)
 where Children: Collection<HtmlElementRenderable>
 {
@@ -136,6 +142,12 @@ where Children: Collection<HtmlElementRenderable>
         aside("aside")
     }
 }
+
+
+
+open class InlineText<Children>(children: Children)
+    : HtmlRichTextWidget<HTMLElement, Children>("span", children)
+where Children: Collection<HtmlElementRenderable>
 
 
 
@@ -160,9 +172,11 @@ where Children: Collection<HtmlElementRenderable>
 
 
     companion object {
-        operator fun invoke(href: String, text: String): Link<SingleItemCollection<PlainText>> {
-            return Link(href = href, children = SingleItemCollection(PlainText(text)))
-        }
+        operator fun invoke(href: String, text: String) =
+                Link(href = href, children = SingleItemCollection(PlainText(text)))
+
+        operator fun invoke(href: URL, text: String) =
+                Link(href = href.href, text = text)
     }
 }
 

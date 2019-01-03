@@ -63,6 +63,25 @@
 }
 
 
+.app-bar .title .subtitle-text:not(:empty) {
+    margin-left: 2em;
+    margin-inline-start: 2em;
+    margin-inline-end: 0;
+}
+
+
 .placeholder {
     opacity: 0.2;
+}
+
+
+/* TODO: Move: */
+
+
+.app-bar .title,
+.app-bar .title * {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-overflow: fade(1em);
+  overflow: hidden;
 }

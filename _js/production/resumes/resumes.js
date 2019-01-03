@@ -11,32 +11,37 @@ var resumes = function (_, Kotlin) {
   var plus = Kotlin.kotlin.collections.plus_xfiyik$;
   var plus_0 = Kotlin.kotlin.collections.plus_khz7k3$;
   var first = Kotlin.kotlin.collections.first_2p1efm$;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var drop = Kotlin.kotlin.collections.drop_ba2ldo$;
   var toMutableList = Kotlin.kotlin.collections.toMutableList_us0mfu$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
+  var emptySet = Kotlin.kotlin.collections.emptySet_287e2$;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
   var equals = Kotlin.equals;
   var firstOrNull = Kotlin.kotlin.collections.firstOrNull_7wnvza$;
   var toList = Kotlin.kotlin.collections.toList_7wnvza$;
-  var emptySet = Kotlin.kotlin.collections.emptySet_287e2$;
+  var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
+  var setOf = Kotlin.kotlin.collections.setOf_i5x0yv$;
   var lastOrNull = Kotlin.kotlin.collections.lastOrNull_2p1efm$;
   var listOf = Kotlin.kotlin.collections.listOf_mh5how$;
   var listOf_0 = Kotlin.kotlin.collections.listOf_i5x0yv$;
   var emptyList = Kotlin.kotlin.collections.emptyList_287e2$;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
+  var mutableListOf = Kotlin.kotlin.collections.mutableListOf_i5x0yv$;
   var Iterator = Kotlin.kotlin.collections.Iterator;
   var Collection = Kotlin.kotlin.collections.Collection;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
   var toByte = Kotlin.toByte;
-  var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
   RésuméPageState$placeholder.prototype = Object.create(RésuméPageState.prototype);
   RésuméPageState$placeholder.prototype.constructor = RésuméPageState$placeholder;
   RésuméPageState$portal.prototype = Object.create(RésuméPageState.prototype);
   RésuméPageState$portal.prototype.constructor = RésuméPageState$portal;
   RésuméPageState$résumé.prototype = Object.create(RésuméPageState.prototype);
   RésuméPageState$résumé.prototype.constructor = RésuméPageState$résumé;
+  RemoteWidgetData$appBarTitle.prototype = Object.create(RemoteWidgetData.prototype);
+  RemoteWidgetData$appBarTitle.prototype.constructor = RemoteWidgetData$appBarTitle;
+  RemoteWidgetData$appBarSubtitle.prototype = Object.create(RemoteWidgetData.prototype);
+  RemoteWidgetData$appBarSubtitle.prototype.constructor = RemoteWidgetData$appBarSubtitle;
   HtmlParentWidget.prototype = Object.create(HtmlWidget.prototype);
   HtmlParentWidget.prototype.constructor = HtmlParentWidget;
   HtmlRichTextWidget.prototype = Object.create(HtmlParentWidget.prototype);
@@ -61,6 +66,10 @@ var resumes = function (_, Kotlin) {
   RésuméFilterJson$RecursiveFilter$Criterion$Scope.prototype.constructor = RésuméFilterJson$RecursiveFilter$Criterion$Scope;
   RésuméFilterJson$RecursiveFilter$Criterion$Type.prototype = Object.create(Enum.prototype);
   RésuméFilterJson$RecursiveFilter$Criterion$Type.prototype.constructor = RésuméFilterJson$RecursiveFilter$Criterion$Type;
+  InlineText.prototype = Object.create(HtmlRichTextWidget.prototype);
+  InlineText.prototype.constructor = InlineText;
+  résuméPagePlaceholder.prototype = Object.create(InlineText.prototype);
+  résuméPagePlaceholder.prototype.constructor = résuméPagePlaceholder;
   HtmlTextWidget.prototype = Object.create(HtmlWidget.prototype);
   HtmlTextWidget.prototype.constructor = HtmlTextWidget;
   Group$Kind.prototype = Object.create(Enum.prototype);
@@ -71,8 +80,6 @@ var resumes = function (_, Kotlin) {
   BodyText$Kind.prototype.constructor = BodyText$Kind;
   BodyText.prototype = Object.create(HtmlRichTextWidget.prototype);
   BodyText.prototype.constructor = BodyText;
-  InlineText.prototype = Object.create(HtmlRichTextWidget.prototype);
-  InlineText.prototype.constructor = InlineText;
   Link.prototype = Object.create(HtmlRichTextWidget.prototype);
   Link.prototype.constructor = Link;
   Heading$Level.prototype = Object.create(Enum.prototype);
@@ -108,16 +115,15 @@ var resumes = function (_, Kotlin) {
       closure$renderer.refreshPage_ngqhws$(RésuméPageState$Companion_getInstance().inferredFromUrl());
     };
   }
-  function main$lambda$listenForPageChanges$lambda(closure$refreshPage) {
+  function main$lambda$beginListeningForPageChanges$lambda(closure$refreshPage) {
     return function (it) {
-      console.log('Would refresh');
       closure$refreshPage();
       return Unit;
     };
   }
-  function main$lambda$listenForPageChanges(closure$refreshPage) {
+  function main$lambda$beginListeningForPageChanges(closure$refreshPage) {
     return function () {
-      $(window).on('hashchange', void 0, main$lambda$listenForPageChanges$lambda(closure$refreshPage));
+      $(window).on('hashchange', void 0, main$lambda$beginListeningForPageChanges$lambda(closure$refreshPage));
     };
   }
   function main$lambda$buildPortal(closure$refreshPage) {
@@ -143,11 +149,11 @@ var resumes = function (_, Kotlin) {
       };
     };
   });
-  function main$lambda$lambda(closure$buildPortal, closure$listenForPageChanges) {
+  function main$lambda$lambda(closure$buildPortal, closure$beginListeningForPageChanges) {
     return function (jsons) {
       var resumeBasic = BasicRésuméJson$Companion_getInstance().invoke_qk3xy8$(first(jsons));
       if (resumeBasic == null) {
-        println('Could not parse basic R\xE9sum\xE9 JSON!');
+        console.error('Could not parse basic R\xE9sum\xE9 JSON!');
       }
        else {
         var tmp$ = closure$buildPortal;
@@ -158,24 +164,33 @@ var resumes = function (_, Kotlin) {
         while (tmp$_0.hasNext()) {
           var element = tmp$_0.next();
           var tmp$_0_0;
-          if ((tmp$_0_0 = RésuméFilterJson$Companion_getInstance().invoke_qk3xy8$(element)) != null) {
+          var tmp$_1;
+          var tmp$_2;
+          if ((tmp$_1 = RésuméFilterJson$Companion_getInstance().invoke_qk3xy8$(element)) != null)
+            tmp$_2 = tmp$_1;
+          else {
+            console.error('Could not convert JSON to filter!');
+            tmp$_2 = null;
+          }
+          if ((tmp$_0_0 = tmp$_2) != null) {
             destination.add_11rb$(tmp$_0_0);
           }
         }
         tmp$(resumeBasic, destination);
-        closure$listenForPageChanges();
+        closure$beginListeningForPageChanges();
       }
       return Unit;
     };
   }
   function main$lambda() {
-    $('body').append('<main><h2>Hello there<\/h2><\/main>');
-    var renderer = new DynamicRésumePageRenderer($('main').get(0));
-    var refreshPage = main$lambda$refreshPage(renderer);
+    var tmp$;
+    tmp$ = $('main').get(0);
+    var renderer = new DynamicRésumePageRenderer($('.title .title-text').get(0), $('.title .subtitle-text').get(0), tmp$);
     renderer.refreshPage_ngqhws$(RésuméPageState$placeholder_getInstance());
-    var listenForPageChanges = main$lambda$listenForPageChanges(refreshPage);
+    var refreshPage = main$lambda$refreshPage(renderer);
+    var beginListeningForPageChanges = main$lambda$beginListeningForPageChanges(refreshPage);
     var buildPortal = main$lambda$buildPortal(refreshPage);
-    fetchAllAsJson(allResourcePaths.slice(), main$lambda$lambda(buildPortal, listenForPageChanges));
+    fetchAllAsJson(allResourcePaths.slice(), main$lambda$lambda(buildPortal, beginListeningForPageChanges));
     return Unit;
   }
   function main(args) {
@@ -229,13 +244,18 @@ var resumes = function (_, Kotlin) {
     simpleName: 'RequireJSConfiguration',
     interfaces: []
   };
-  function DynamicRésumePageRenderer(containerElement) {
+  function DynamicRésumePageRenderer(appBarTitleTextElement, appBarSubtitleTextElement, containerElement) {
+    this.appBarTitleTextElement = appBarTitleTextElement;
+    this.appBarSubtitleTextElement = appBarSubtitleTextElement;
     this.containerElement = containerElement;
+    this.initialAppBarTitle_0 = this.appBarTitleTextElement.textContent;
+    this.initialAppBarSubtitle_0 = this.appBarSubtitleTextElement.textContent;
   }
   function DynamicRésumePageRenderer$refreshPage$lambda(closure$state, this$DynamicRésumePageRenderer) {
     return function () {
       this$DynamicRésumePageRenderer.applyRootClasses_0(closure$state);
       this$DynamicRésumePageRenderer.showContent_0(this$DynamicRésumePageRenderer.content_0(closure$state));
+      this$DynamicRésumePageRenderer.applyRemoteWidgetData_0(this$DynamicRésumePageRenderer.remoteWidgetData_0(closure$state));
       return Unit;
     };
   }
@@ -257,8 +277,35 @@ var resumes = function (_, Kotlin) {
   DynamicRésumePageRenderer.prototype.showContent_0 = function (contentElement) {
     this.containerElement.appendChild(contentElement);
   };
+  DynamicRésumePageRenderer.prototype.applyRemoteWidgetData_0 = function (remoteWidgetData) {
+    if (remoteWidgetData.isEmpty()) {
+      this.appBarTitleTextElement.textContent = this.initialAppBarTitle_0;
+      this.appBarSubtitleTextElement.textContent = this.initialAppBarSubtitle_0;
+    }
+     else {
+      var tmp$;
+      tmp$ = remoteWidgetData.iterator();
+      while (tmp$.hasNext()) {
+        var element = tmp$.next();
+        if (Kotlin.isType(element, RemoteWidgetData$appBarTitle))
+          this.appBarTitleTextElement.textContent = element.titleText;
+        else if (Kotlin.isType(element, RemoteWidgetData$appBarSubtitle))
+          this.appBarSubtitleTextElement.textContent = element.subtitleText;
+      }
+    }
+  };
   DynamicRésumePageRenderer.prototype.content_0 = function ($receiver) {
     return this.renderer_0($receiver).renderToHtmlElement();
+  };
+  DynamicRésumePageRenderer.prototype.remoteWidgetData_0 = function ($receiver) {
+    if (Kotlin.isType($receiver, RésuméPageState$placeholder))
+      return emptySet();
+    else if (Kotlin.isType($receiver, RésuméPageState$portal))
+      return emptySet();
+    else if (Kotlin.isType($receiver, RésuméPageState$résumé))
+      return $receiver.résumé.remoteWidgetData();
+    else
+      return Kotlin.noWhenBranchMatched();
   };
   DynamicRésumePageRenderer.prototype.renderer_0 = function ($receiver) {
     if (Kotlin.isType($receiver, RésuméPageState$placeholder))
@@ -391,6 +438,12 @@ var resumes = function (_, Kotlin) {
       if (!filters.isEmpty()) {
         return new RésuméPageState$portal(RésuméPortal$Companion_getInstance().invoke_7fgr4n$(firstCachedBase, toList(this.sharedCache.filters)));
       }
+       else {
+        console.error('Failed to parse any filter!');
+      }
+    }
+     else {
+      console.error('Failed to parse the base state!');
     }
     return RésuméPageState$placeholder_getInstance();
   };
@@ -411,15 +464,50 @@ var resumes = function (_, Kotlin) {
     simpleName: 'R\xE9sum\xE9PageState',
     interfaces: []
   };
-  function Résumé(id, title, contact, latestJob) {
+  function RemoteWidgetDataSource() {
+  }
+  RemoteWidgetDataSource.$metadata$ = {
+    kind: Kind_INTERFACE,
+    simpleName: 'RemoteWidgetDataSource',
+    interfaces: []
+  };
+  function RemoteWidgetData() {
+  }
+  function RemoteWidgetData$appBarTitle(titleText) {
+    RemoteWidgetData.call(this);
+    this.titleText = titleText;
+  }
+  RemoteWidgetData$appBarTitle.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'appBarTitle',
+    interfaces: [RemoteWidgetData]
+  };
+  function RemoteWidgetData$appBarSubtitle(subtitleText) {
+    RemoteWidgetData.call(this);
+    this.subtitleText = subtitleText;
+  }
+  RemoteWidgetData$appBarSubtitle.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'appBarSubtitle',
+    interfaces: [RemoteWidgetData]
+  };
+  RemoteWidgetData.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'RemoteWidgetData',
+    interfaces: []
+  };
+  function Résumé(id, tagline, contact, latestJob) {
     Résumé$Companion_getInstance();
     var tmp$, tmp$_0, tmp$_1;
-    Group.call(this, Group$Kind$article_getInstance(), listOf_0([new Heading(Heading$Level$level1_getInstance(), title), new BodyText(BodyText$Kind$paragraph_getInstance(), listOf((tmp$_1 = (tmp$_0 = (tmp$ = contact.blogUrl) != null ? tmp$.href : null) != null ? Link$Companion_getInstance().invoke_puj7f4$(tmp$_0, contact.name) : null) != null ? tmp$_1 : new PlainText(contact.name))), BodyText$Companion_getInstance().invoke_uzf9oc$(BodyText$Kind$aside_getInstance(), "Pretend there's more awesome content here")]));
+    Group.call(this, Group$Kind$article_getInstance(), void 0, listOf_0([new Heading(Heading$Level$level1_getInstance(), void 0, tagline), new BodyText(BodyText$Kind$paragraph_getInstance(), void 0, listOf((tmp$_1 = (tmp$_0 = (tmp$ = contact.blogUrl) != null ? tmp$.href : null) != null ? Link$Companion_getInstance().invoke_g0g0o2$(tmp$_0, void 0, contact.name) : null) != null ? tmp$_1 : new PlainText(contact.name))), BodyText$Companion_getInstance().invoke_7hw6ha$(BodyText$Kind$aside_getInstance(), void 0, "Pretend there's more awesome content here")]));
     this.id = id;
-    this.title = title;
+    this.tagline = tagline;
     this.contact = contact;
     this.latestJob = latestJob;
   }
+  Résumé.prototype.remoteWidgetData = function () {
+    return setOf([new RemoteWidgetData$appBarTitle(this.contact.name), new RemoteWidgetData$appBarSubtitle(this.tagline)]);
+  };
   function Résumé$Companion() {
     Résumé$Companion_instance = this;
   }
@@ -443,7 +531,7 @@ var resumes = function (_, Kotlin) {
   function Résumé$Contact(name, blogUrl) {
     Résumé$Contact$Companion_getInstance();
     var tmp$;
-    HtmlRichTextWidget.call(this, 'span', new SingleItemCollection((tmp$ = blogUrl != null ? Link$Companion_getInstance().invoke_lejq9n$(blogUrl, name) : null) != null ? tmp$ : new PlainText(name)));
+    HtmlRichTextWidget.call(this, 'span', void 0, new SingleItemCollection((tmp$ = blogUrl != null ? Link$Companion_getInstance().invoke_me6ycp$(blogUrl, void 0, name) : null) != null ? tmp$ : new PlainText(name)));
     this.name = name;
     this.blogUrl = blogUrl;
   }
@@ -544,13 +632,13 @@ var resumes = function (_, Kotlin) {
   Résumé.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'R\xE9sum\xE9',
-    interfaces: [Group]
+    interfaces: [RemoteWidgetDataSource, Group]
   };
   Résumé.prototype.component1 = function () {
     return this.id;
   };
   Résumé.prototype.component2 = function () {
-    return this.title;
+    return this.tagline;
   };
   Résumé.prototype.component3 = function () {
     return this.contact;
@@ -558,22 +646,22 @@ var resumes = function (_, Kotlin) {
   Résumé.prototype.component4 = function () {
     return this.latestJob;
   };
-  Résumé.prototype.copy_mixf62$ = function (id, title, contact, latestJob) {
-    return new Résumé(id === void 0 ? this.id : id, title === void 0 ? this.title : title, contact === void 0 ? this.contact : contact, latestJob === void 0 ? this.latestJob : latestJob);
+  Résumé.prototype.copy_mixf62$ = function (id, tagline, contact, latestJob) {
+    return new Résumé(id === void 0 ? this.id : id, tagline === void 0 ? this.tagline : tagline, contact === void 0 ? this.contact : contact, latestJob === void 0 ? this.latestJob : latestJob);
   };
   Résumé.prototype.toString = function () {
-    return 'R\xE9sum\xE9(id=' + Kotlin.toString(this.id) + (', title=' + Kotlin.toString(this.title)) + (', contact=' + Kotlin.toString(this.contact)) + (', latestJob=' + Kotlin.toString(this.latestJob)) + ')';
+    return 'R\xE9sum\xE9(id=' + Kotlin.toString(this.id) + (', tagline=' + Kotlin.toString(this.tagline)) + (', contact=' + Kotlin.toString(this.contact)) + (', latestJob=' + Kotlin.toString(this.latestJob)) + ')';
   };
   Résumé.prototype.hashCode = function () {
     var result = 0;
     result = result * 31 + Kotlin.hashCode(this.id) | 0;
-    result = result * 31 + Kotlin.hashCode(this.title) | 0;
+    result = result * 31 + Kotlin.hashCode(this.tagline) | 0;
     result = result * 31 + Kotlin.hashCode(this.contact) | 0;
     result = result * 31 + Kotlin.hashCode(this.latestJob) | 0;
     return result;
   };
   Résumé.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.title, other.title) && Kotlin.equals(this.contact, other.contact) && Kotlin.equals(this.latestJob, other.latestJob)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.tagline, other.tagline) && Kotlin.equals(this.contact, other.contact) && Kotlin.equals(this.latestJob, other.latestJob)))));
   };
   function RésuméPortal(résumés) {
     RésuméPortal$Companion_getInstance();
@@ -581,18 +669,19 @@ var resumes = function (_, Kotlin) {
   }
   var LinkedHashSet_init = Kotlin.kotlin.collections.LinkedHashSet_init_287e2$;
   RésuméPortal.prototype.renderToHtmlElement = function () {
-    var heading = new Heading(Heading$Level$level1_getInstance(), 'R\xE9sum\xE9s');
-    var tmp$ = this.résumés;
+    var heading = new Heading(Heading$Level$level1_getInstance(), void 0, 'R\xE9sum\xE9s');
+    var tmp$ = void 0;
+    var tmp$_0 = this.résumés;
     var destination = LinkedHashSet_init();
-    var tmp$_0;
-    tmp$_0 = tmp$.iterator();
-    while (tmp$_0.hasNext()) {
-      var item = tmp$_0.next();
+    var tmp$_1;
+    tmp$_1 = tmp$_0.iterator();
+    while (tmp$_1.hasNext()) {
+      var item = tmp$_1.next();
       destination.add_11rb$(new RésuméPortalItem(item));
     }
-    var list = new UnorderedList(destination);
+    var list = new UnorderedList(tmp$, destination);
     list.addClass_61zpoe$('r\xE9sum\xE9-portal');
-    return (new UntypedGroup(void 0, listOf_0([heading, list]))).renderToHtmlElement();
+    return (new UntypedGroup(void 0, void 0, listOf_0([heading, list]))).renderToHtmlElement();
   };
   function RésuméPortal$Companion() {
     RésuméPortal$Companion_instance = this;
@@ -646,7 +735,7 @@ var resumes = function (_, Kotlin) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.résumés, other.résumés))));
   };
   function RésuméPortalItem(résumé) {
-    ListItem.call(this, new SingleItemCollection(Link$Companion_getInstance().invoke_puj7f4$('#' + résumé.id, résumé.title)));
+    ListItem.call(this, void 0, new SingleItemCollection(Link$Companion_getInstance().invoke_g0g0o2$('#' + résumé.id, void 0, résumé.tagline)));
     this.résumé = résumé;
   }
   RésuméPortalItem.$metadata$ = {
@@ -687,7 +776,7 @@ var resumes = function (_, Kotlin) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
     var formatVersion = jsonObject['format-version'];
     if (!(typeof formatVersion === 'string') || !this.compatibleVersionRegex_0.matches_6bul2c$(formatVersion)) {
-      println('Incompatible format version');
+      console.error('Incompatible format version');
       return null;
     }
     tmp$_1 = BasicRésuméJson$Meta$Companion_getInstance();
@@ -835,14 +924,21 @@ var resumes = function (_, Kotlin) {
       var tmp$_0_0;
       var transform$result;
       transform$break: do {
-        var tmp$_6, tmp$_7, tmp$_8;
+        var tmp$_6, tmp$_7, tmp$_8, tmp$_9;
         tmp$_8 = BasicRésuméJson$Content$Job$Companion_getInstance();
         tmp$_7 = Kotlin.isType(tmp$_6 = element, Object) ? tmp$_6 : null;
         if (tmp$_7 == null) {
           transform$result = null;
           break transform$break;
         }
-        transform$result = tmp$_8.invoke_qk3xy8$(tmp$_7);
+        var tmp$_10;
+        if ((tmp$_9 = tmp$_8.invoke_qk3xy8$(tmp$_7)) != null)
+          tmp$_10 = tmp$_9;
+        else {
+          console.error('Failed to parse job: ' + JSON.stringify(jsonObject));
+          tmp$_10 = null;
+        }
+        transform$result = tmp$_10;
       }
        while (false);
       if ((tmp$_0_0 = transform$result) != null) {
@@ -1068,7 +1164,7 @@ var resumes = function (_, Kotlin) {
     BasicRésuméJson$Content$Job$Company$Companion_instance = this;
   }
   BasicRésuméJson$Content$Job$Company$Companion.prototype.invoke_qk3xy8$ = function (jsonObject) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
     tmp$_0 = typeof (tmp$ = jsonObject['name']) === 'string' ? tmp$ : null;
     if (tmp$_0 == null) {
       return null;
@@ -1079,11 +1175,7 @@ var resumes = function (_, Kotlin) {
     if (tmp$_6 == null) {
       return null;
     }
-    tmp$_8 = typeof (tmp$_7 = jsonObject['address']) === 'string' ? tmp$_7 : null;
-    if (tmp$_8 == null) {
-      return null;
-    }
-    return new BasicRésuméJson$Content$Job$Company(tmp$_0, tmp$_2, tmp$_4, tmp$_6, tmp$_8, typeof (tmp$_9 = jsonObject['phone-number']) === 'string' ? tmp$_9 : null);
+    return new BasicRésuméJson$Content$Job$Company(tmp$_0, tmp$_2, tmp$_4, tmp$_6, typeof (tmp$_7 = jsonObject['address']) === 'string' ? tmp$_7 : null, typeof (tmp$_8 = jsonObject['phone-number']) === 'string' ? tmp$_8 : null);
   };
   BasicRésuméJson$Content$Job$Company$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -1120,7 +1212,7 @@ var resumes = function (_, Kotlin) {
   BasicRésuméJson$Content$Job$Company.prototype.component6 = function () {
     return this.phoneNumber;
   };
-  BasicRésuméJson$Content$Job$Company.prototype.copy_anc74l$ = function (name, nameLong, division, broadLocation, address, phoneNumber) {
+  BasicRésuméJson$Content$Job$Company.prototype.copy_i87h5c$ = function (name, nameLong, division, broadLocation, address, phoneNumber) {
     return new BasicRésuméJson$Content$Job$Company(name === void 0 ? this.name : name, nameLong === void 0 ? this.nameLong : nameLong, division === void 0 ? this.division : division, broadLocation === void 0 ? this.broadLocation : broadLocation, address === void 0 ? this.address : address, phoneNumber === void 0 ? this.phoneNumber : phoneNumber);
   };
   BasicRésuméJson$Content$Job$Company.prototype.toString = function () {
@@ -1150,7 +1242,7 @@ var resumes = function (_, Kotlin) {
     BasicRésuméJson$Content$Job$Position$Companion_instance = this;
   }
   BasicRésuméJson$Content$Job$Position$Companion.prototype.invoke_qk3xy8$ = function (jsonObject) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
     tmp$_0 = typeof (tmp$ = jsonObject['date']) === 'string' ? tmp$ : null;
     if (tmp$_0 == null) {
       return null;
@@ -1163,11 +1255,7 @@ var resumes = function (_, Kotlin) {
     if (tmp$_7 == null) {
       return null;
     }
-    tmp$_9 = tmp$_8.invoke_qk3xy8$(tmp$_7);
-    if (tmp$_9 == null) {
-      return null;
-    }
-    return new BasicRésuméJson$Content$Job$Position(tmp$_1, tmp$_3, tmp$_5, tmp$_9);
+    return new BasicRésuméJson$Content$Job$Position(tmp$_1, tmp$_3, tmp$_5, tmp$_8.invoke_qk3xy8$(tmp$_7));
   };
   BasicRésuméJson$Content$Job$Position$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -1425,7 +1513,7 @@ var resumes = function (_, Kotlin) {
   BasicRésuméJson$Content$Job$Position.prototype.component4 = function () {
     return this.compensation;
   };
-  BasicRésuméJson$Content$Job$Position.prototype.copy_jad6cd$ = function (date, title, description, compensation) {
+  BasicRésuméJson$Content$Job$Position.prototype.copy_tog0sk$ = function (date, title, description, compensation) {
     return new BasicRésuméJson$Content$Job$Position(date === void 0 ? this.date : date, title === void 0 ? this.title : title, description === void 0 ? this.description : description, compensation === void 0 ? this.compensation : compensation);
   };
   BasicRésuméJson$Content$Job$Position.prototype.toString = function () {
@@ -1611,7 +1699,7 @@ var resumes = function (_, Kotlin) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
     var formatVersion = jsonObject['format-version'];
     if (!(typeof formatVersion === 'string') || !this.compatibleVersionRegex_0.matches_6bul2c$(formatVersion)) {
-      println('Incompatible format version');
+      console.error('Incompatible format version');
       return null;
     }
     tmp$_1 = RésuméFilterJson$Meta$Companion_getInstance();
@@ -1630,6 +1718,7 @@ var resumes = function (_, Kotlin) {
     }
     tmp$_6 = tmp$_5.invoke_qk3xy8$(tmp$_4);
     if (tmp$_6 == null) {
+      console.error('Could not parse recursive filter!');
       return null;
     }
     return new RésuméFilterJson(tmp$_2, tmp$_6);
@@ -1735,6 +1824,7 @@ var resumes = function (_, Kotlin) {
     }
     tmp$_2 = tmp$_1.invoke_61zpoe$(tmp$_0);
     if (tmp$_2 == null) {
+      console.error('Could not parse inclusion filter!');
       return null;
     }
     var tmp$_6;
@@ -1762,6 +1852,7 @@ var resumes = function (_, Kotlin) {
       tmp$_6 = null;
     tmp$_5 = tmp$_6;
     if (tmp$_5 == null) {
+      console.error('Could not parse criteria!');
       return null;
     }
     return new RésuméFilterJson$RecursiveFilter(tmp$_2, tmp$_5);
@@ -1931,12 +2022,18 @@ var resumes = function (_, Kotlin) {
     RésuméFilterJson$RecursiveFilter$Criterion$Scope_initFields = function () {
     };
     RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_instance = new RésuméFilterJson$RecursiveFilter$Criterion$Scope('keywords', 0, 'keywords');
+    RésuméFilterJson$RecursiveFilter$Criterion$Scope$tags_instance = new RésuméFilterJson$RecursiveFilter$Criterion$Scope('tags', 1, 'tags');
     RésuméFilterJson$RecursiveFilter$Criterion$Scope$Companion_getInstance();
   }
   var RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_instance;
   function RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_getInstance() {
     RésuméFilterJson$RecursiveFilter$Criterion$Scope_initFields();
     return RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_instance;
+  }
+  var RésuméFilterJson$RecursiveFilter$Criterion$Scope$tags_instance;
+  function RésuméFilterJson$RecursiveFilter$Criterion$Scope$tags_getInstance() {
+    RésuméFilterJson$RecursiveFilter$Criterion$Scope_initFields();
+    return RésuméFilterJson$RecursiveFilter$Criterion$Scope$tags_instance;
   }
   function RésuméFilterJson$RecursiveFilter$Criterion$Scope$Companion() {
     RésuméFilterJson$RecursiveFilter$Criterion$Scope$Companion_instance = this;
@@ -1977,13 +2074,15 @@ var resumes = function (_, Kotlin) {
     interfaces: [Enum]
   };
   function RésuméFilterJson$RecursiveFilter$Criterion$Scope$values() {
-    return [RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_getInstance()];
+    return [RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_getInstance(), RésuméFilterJson$RecursiveFilter$Criterion$Scope$tags_getInstance()];
   }
   RésuméFilterJson$RecursiveFilter$Criterion$Scope.values = RésuméFilterJson$RecursiveFilter$Criterion$Scope$values;
   function RésuméFilterJson$RecursiveFilter$Criterion$Scope$valueOf(name) {
     switch (name) {
       case 'keywords':
         return RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_getInstance();
+      case 'tags':
+        return RésuméFilterJson$RecursiveFilter$Criterion$Scope$tags_getInstance();
       default:throwISE('No enum constant R\xE9sum\xE9.R\xE9sum\xE9FilterJson.RecursiveFilter.Criterion.Scope.' + name);
     }
   }
@@ -1998,12 +2097,18 @@ var resumes = function (_, Kotlin) {
     RésuméFilterJson$RecursiveFilter$Criterion$Type_initFields = function () {
     };
     RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_instance = new RésuméFilterJson$RecursiveFilter$Criterion$Type('contains', 0, 'contains');
+    RésuméFilterJson$RecursiveFilter$Criterion$Type$highlight_instance = new RésuméFilterJson$RecursiveFilter$Criterion$Type('highlight', 1, 'highlight');
     RésuméFilterJson$RecursiveFilter$Criterion$Type$Companion_getInstance();
   }
   var RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_instance;
   function RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_getInstance() {
     RésuméFilterJson$RecursiveFilter$Criterion$Type_initFields();
     return RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_instance;
+  }
+  var RésuméFilterJson$RecursiveFilter$Criterion$Type$highlight_instance;
+  function RésuméFilterJson$RecursiveFilter$Criterion$Type$highlight_getInstance() {
+    RésuméFilterJson$RecursiveFilter$Criterion$Type_initFields();
+    return RésuméFilterJson$RecursiveFilter$Criterion$Type$highlight_instance;
   }
   function RésuméFilterJson$RecursiveFilter$Criterion$Type$Companion() {
     RésuméFilterJson$RecursiveFilter$Criterion$Type$Companion_instance = this;
@@ -2044,13 +2149,15 @@ var resumes = function (_, Kotlin) {
     interfaces: [Enum]
   };
   function RésuméFilterJson$RecursiveFilter$Criterion$Type$values() {
-    return [RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_getInstance()];
+    return [RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_getInstance(), RésuméFilterJson$RecursiveFilter$Criterion$Type$highlight_getInstance()];
   }
   RésuméFilterJson$RecursiveFilter$Criterion$Type.values = RésuméFilterJson$RecursiveFilter$Criterion$Type$values;
   function RésuméFilterJson$RecursiveFilter$Criterion$Type$valueOf(name) {
     switch (name) {
       case 'contains':
         return RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_getInstance();
+      case 'highlight':
+        return RésuméFilterJson$RecursiveFilter$Criterion$Type$highlight_getInstance();
       default:throwISE('No enum constant R\xE9sum\xE9.R\xE9sum\xE9FilterJson.RecursiveFilter.Criterion.Type.' + name);
     }
   }
@@ -2139,16 +2246,12 @@ var resumes = function (_, Kotlin) {
   };
   function résuméPagePlaceholder() {
     résuméPagePlaceholder_instance = this;
+    InlineText.call(this, mutableListOf(['loading-indicator', 'placeholder']), new SingleItemCollection(new PlainText('Loading...')));
   }
-  résuméPagePlaceholder.prototype.renderToHtmlElement = function () {
-    var paragraph = document.createElement('p');
-    paragraph.textContent = 'Loading...';
-    return paragraph;
-  };
   résuméPagePlaceholder.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'r\xE9sum\xE9PagePlaceholder',
-    interfaces: [HtmlElementRenderable]
+    interfaces: [InlineText]
   };
   var résuméPagePlaceholder_instance = null;
   function résuméPagePlaceholder_getInstance() {
@@ -2160,7 +2263,7 @@ var resumes = function (_, Kotlin) {
   function UrlParser() {
     UrlParser_instance = this;
     this.uuidRegexPattern_0 = '[A-Z0-9-]{36}';
-    this.fragmentRegexPattern_0 = '#?(?<base>[A-Z0-9-]{36})_(?<filter>[A-Z0-9-]{36})';
+    this.fragmentRegexPattern_0 = '#?([A-Z0-9-]{36})_([A-Z0-9-]{36})';
     this.fragmentRegex_0 = new RegExp(this.fragmentRegexPattern_0, 'i');
   }
   UrlParser.prototype.parse_h13imq$ = function (location) {
@@ -2338,8 +2441,11 @@ var resumes = function (_, Kotlin) {
     simpleName: 'HtmlWidget',
     interfaces: [HtmlElementRenderable]
   };
-  function HtmlTextWidget(htmlTagName, text) {
-    HtmlWidget.call(this, htmlTagName);
+  function HtmlTextWidget(htmlTagName, classes, text) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlWidget.call(this, htmlTagName, classes);
     this.text_xbfjac$_0 = text;
   }
   Object.defineProperty(HtmlTextWidget.prototype, 'text', {
@@ -2357,8 +2463,11 @@ var resumes = function (_, Kotlin) {
     simpleName: 'HtmlTextWidget',
     interfaces: [HtmlWidget]
   };
-  function HtmlParentWidget(htmlTagName, children) {
-    HtmlWidget.call(this, htmlTagName);
+  function HtmlParentWidget(htmlTagName, classes, children) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlWidget.call(this, htmlTagName, classes);
     this.children_4lxi5t$_0 = children;
   }
   Object.defineProperty(HtmlParentWidget.prototype, 'children', {
@@ -2381,9 +2490,12 @@ var resumes = function (_, Kotlin) {
     simpleName: 'HtmlParentWidget',
     interfaces: [HtmlWidget]
   };
-  function HtmlRichTextWidget(htmlTagName, children) {
+  function HtmlRichTextWidget(htmlTagName, classes, children) {
     HtmlRichTextWidget$Companion_getInstance();
-    HtmlParentWidget.call(this, htmlTagName, children);
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlParentWidget.call(this, htmlTagName, classes, children);
     this.children_got86q$_0 = children;
   }
   Object.defineProperty(HtmlRichTextWidget.prototype, 'children', {
@@ -2394,8 +2506,11 @@ var resumes = function (_, Kotlin) {
   function HtmlRichTextWidget$Companion() {
     HtmlRichTextWidget$Companion_instance = this;
   }
-  HtmlRichTextWidget$Companion.prototype.invoke_3wp7x$ = function (htmlTagName, text) {
-    return new HtmlRichTextWidget(htmlTagName, listOf(new PlainText(text)));
+  HtmlRichTextWidget$Companion.prototype.invoke_gtcqgv$ = function (htmlTagName, classes, text) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    return new HtmlRichTextWidget(htmlTagName, classes, listOf(new PlainText(text)));
   };
   HtmlRichTextWidget$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2414,10 +2529,13 @@ var resumes = function (_, Kotlin) {
     simpleName: 'HtmlRichTextWidget',
     interfaces: [HtmlParentWidget]
   };
-  function Group(kind, children) {
+  function Group(kind, classes, children) {
     if (kind === void 0)
       kind = Group$Kind$section_getInstance();
-    HtmlParentWidget.call(this, kind.htmlTagName, children);
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlParentWidget.call(this, kind.htmlTagName, classes, children);
     this.kind = kind;
   }
   function Group$Kind(name, ordinal, htmlTagName) {
@@ -2474,28 +2592,37 @@ var resumes = function (_, Kotlin) {
     simpleName: 'Group',
     interfaces: [HtmlParentWidget]
   };
-  function UntypedGroup(kind, children) {
+  function UntypedGroup(kind, classes, children) {
     if (kind === void 0)
       kind = Group$Kind$section_getInstance();
-    Group.call(this, kind, children);
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    Group.call(this, kind, classes, children);
   }
   UntypedGroup.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'UntypedGroup',
     interfaces: [Group]
   };
-  function BodyText(kind, children) {
+  function BodyText(kind, classes, children) {
     BodyText$Companion_getInstance();
     if (kind === void 0)
       kind = BodyText$Kind$paragraph_getInstance();
-    HtmlRichTextWidget.call(this, kind.htmlTagName, children);
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlRichTextWidget.call(this, kind.htmlTagName, classes, children);
     this.kind = kind;
   }
   function BodyText$Companion() {
     BodyText$Companion_instance = this;
   }
-  BodyText$Companion.prototype.invoke_uzf9oc$ = function (kind, text) {
-    return new BodyText(kind, new SingleItemCollection(new PlainText(text)));
+  BodyText$Companion.prototype.invoke_7hw6ha$ = function (kind, classes, text) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    return new BodyText(kind, classes, new SingleItemCollection(new PlainText(text)));
   };
   BodyText$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2555,8 +2682,11 @@ var resumes = function (_, Kotlin) {
     simpleName: 'BodyText',
     interfaces: [HtmlRichTextWidget]
   };
-  function InlineText(children) {
-    HtmlRichTextWidget.call(this, 'span', children);
+  function InlineText(classes, children) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlRichTextWidget.call(this, 'span', classes, children);
   }
   InlineText.$metadata$ = {
     kind: Kind_CLASS,
@@ -2574,9 +2704,12 @@ var resumes = function (_, Kotlin) {
     simpleName: 'PlainText',
     interfaces: [HtmlElementRenderable]
   };
-  function Link(href, children) {
+  function Link(href, classes, children) {
     Link$Companion_getInstance();
-    HtmlRichTextWidget.call(this, 'a', children);
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlRichTextWidget.call(this, 'a', classes, children);
     this.href = href;
   }
   Link.prototype.renderToHtmlElement = function () {
@@ -2587,11 +2720,17 @@ var resumes = function (_, Kotlin) {
   function Link$Companion() {
     Link$Companion_instance = this;
   }
-  Link$Companion.prototype.invoke_puj7f4$ = function (href, text) {
-    return new Link(href, new SingleItemCollection(new PlainText(text)));
+  Link$Companion.prototype.invoke_g0g0o2$ = function (href, classes, text) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    return new Link(href, classes, new SingleItemCollection(new PlainText(text)));
   };
-  Link$Companion.prototype.invoke_lejq9n$ = function (href, text) {
-    return Link$Companion_getInstance().invoke_puj7f4$(href.href, text);
+  Link$Companion.prototype.invoke_me6ycp$ = function (href, classes, text) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    return Link$Companion_getInstance().invoke_g0g0o2$(href.href, classes, text);
   };
   Link$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2610,8 +2749,11 @@ var resumes = function (_, Kotlin) {
     simpleName: 'Link',
     interfaces: [HtmlRichTextWidget]
   };
-  function Heading(level, text) {
-    HtmlTextWidget.call(this, 'h' + level.asDigit, text);
+  function Heading(level, classes, text) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlTextWidget.call(this, 'h' + level.asDigit, classes, text);
     this.level = level;
   }
   function Heading$Level(name, ordinal, asDigit) {
@@ -2692,23 +2834,29 @@ var resumes = function (_, Kotlin) {
     simpleName: 'Heading',
     interfaces: [HtmlTextWidget]
   };
-  function UnorderedList(items) {
-    HtmlParentWidget.call(this, 'ul', items);
+  function UnorderedList(classes, items) {
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlParentWidget.call(this, 'ul', classes, items);
   }
   UnorderedList.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'UnorderedList',
     interfaces: [HtmlParentWidget]
   };
-  function ListItem(children) {
+  function ListItem(classes, children) {
     ListItem$Companion_getInstance();
-    HtmlRichTextWidget.call(this, 'li', children);
+    if (classes === void 0) {
+      classes = ArrayList_init();
+    }
+    HtmlRichTextWidget.call(this, 'li', classes, children);
   }
   function ListItem$Companion() {
     ListItem$Companion_instance = this;
   }
   ListItem$Companion.prototype.invoke_61zpoe$ = function (text) {
-    return new ListItem(listOf(new PlainText(text)));
+    return new ListItem(void 0, listOf(new PlainText(text)));
   };
   ListItem$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2795,6 +2943,10 @@ var resumes = function (_, Kotlin) {
     get: RésuméPageState$Companion_getInstance
   });
   package$Résumé.RésuméPageState = RésuméPageState;
+  package$Résumé.RemoteWidgetDataSource = RemoteWidgetDataSource;
+  RemoteWidgetData.appBarTitle = RemoteWidgetData$appBarTitle;
+  RemoteWidgetData.appBarSubtitle = RemoteWidgetData$appBarSubtitle;
+  package$Résumé.RemoteWidgetData = RemoteWidgetData;
   Object.defineProperty(Résumé, 'Companion', {
     get: Résumé$Companion_getInstance
   });
@@ -2894,12 +3046,18 @@ var resumes = function (_, Kotlin) {
   Object.defineProperty(RésuméFilterJson$RecursiveFilter$Criterion$Scope, 'keywords', {
     get: RésuméFilterJson$RecursiveFilter$Criterion$Scope$keywords_getInstance
   });
+  Object.defineProperty(RésuméFilterJson$RecursiveFilter$Criterion$Scope, 'tags', {
+    get: RésuméFilterJson$RecursiveFilter$Criterion$Scope$tags_getInstance
+  });
   Object.defineProperty(RésuméFilterJson$RecursiveFilter$Criterion$Scope, 'Companion', {
     get: RésuméFilterJson$RecursiveFilter$Criterion$Scope$Companion_getInstance
   });
   RésuméFilterJson$RecursiveFilter$Criterion.Scope = RésuméFilterJson$RecursiveFilter$Criterion$Scope;
   Object.defineProperty(RésuméFilterJson$RecursiveFilter$Criterion$Type, 'contains', {
     get: RésuméFilterJson$RecursiveFilter$Criterion$Type$contains_getInstance
+  });
+  Object.defineProperty(RésuméFilterJson$RecursiveFilter$Criterion$Type, 'highlight', {
+    get: RésuméFilterJson$RecursiveFilter$Criterion$Type$highlight_getInstance
   });
   Object.defineProperty(RésuméFilterJson$RecursiveFilter$Criterion$Type, 'Companion', {
     get: RésuméFilterJson$RecursiveFilter$Criterion$Type$Companion_getInstance

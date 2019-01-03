@@ -15,9 +15,9 @@ data class RésuméPortal(
 ): HtmlElementRenderable {
 
     override fun renderToHtmlElement(): Element {
-        val heading = Heading(level1, "Résumés")
+        val heading = Heading(level1, text = "Résumés")
 
-        val list = UnorderedList<RésuméPortalItemContent>(résumés.mapTo(mutableSetOf()) { RésuméPortalItem(it) })
+        val list = UnorderedList<RésuméPortalItemContent>(items = résumés.mapTo(mutableSetOf()) { RésuméPortalItem(it) })
         list.addClass("résumé-portal")
 
         return UntypedGroup(children = listOf(heading, list)).renderToHtmlElement()
@@ -42,10 +42,11 @@ private typealias RésuméPortalItemContent = SingleItemCollection<Link<SingleIt
 
 
 
-data class RésuméPortalItem(
+data class RésuméPortalItem
+(
         val résumé: Résumé
-): ListItem<RésuméPortalItemContent>
-(SingleItemCollection(Link(href = "#${résumé.id}", text = résumé.title))) {
+)
+    : ListItem<RésuméPortalItemContent>(children = SingleItemCollection(Link(href = "#${résumé.id}", text = résumé.tagline))) {
 //    override fun renderToHtmlElement(): HTMLLIElement {
 //        val link = Link(to = "#${résumé.id}")
 ////        jq(anchor).click { event ->

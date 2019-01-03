@@ -12,11 +12,6 @@ import kotlin.browser.*
  * @since 2018-12-25
  */
 object résuméPagePlaceholder: InlineText<SingleItemCollection<PlainText>>(
-        SingleItemCollection(PlainText("Loading..."))
-) {
-    override fun renderToHtmlElement(): HTMLElement {
-        val span = super.renderToHtmlElement()
-        this.addClass("loading-indicator").addClass("placeholder")
-        return span
-    }
-}
+        classes = mutableListOf("loading-indicator", "placeholder"),
+        children = SingleItemCollection(PlainText("Loading..."))
+)

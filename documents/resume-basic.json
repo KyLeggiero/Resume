@@ -7,6 +7,7 @@
   },
   "content": {
     "contact": {
+      "id": "FE07ABFD-12B7-4C27-828C-CAD99FA251A9",
       "full-first-name": "Benjamin",
       "preferred-first-name": "Ben",
       "middle-initial": "C",
@@ -20,7 +21,7 @@
         "id": "A4E4759E-0885-4480-B1C0-39CE15BFE335",
         "company": {
           "name": "Target",
-          "name-long": "Target Corporation\n",
+          "name-long": "Target Corporation",
           "division": "Mall of Georgia Branch",
           "broad-location": "Buford, GA"
         },
@@ -58,7 +59,7 @@
           "phone-number": "+1 (706) 507-8199"
         },
         "start": {
-          "startdate": "2012-09-19",
+          "date": "2012-09-19",
           "title": "Web Designer & Developer",
           "description": "Redesigned & rebuilt https://ColumbusState.edu in HTML5+CSS3, with XSLT & PHP where needed. Made CMS templates so teachers could build pages.",
 
@@ -206,8 +207,8 @@
           }
         },
 
-        "keywords": ["professional presentation software", "macOS", "software platforms", "open-source", "proprietary", "auto font scaling", "inspector"],
-        "tags": ["tech", "software engineering", "apps", "mobile", "desktop", "macOS", "iOS", "desk job", "career"],
+        "keywords": ["client-side", "file protection", "encryption", "decryption", "file sharing", "macOS", "software platforms", "open-source", "proprietary"],
+        "tags": ["tech", "software engineering", "apps", "desktop", "macOS", "desk job", "career"],
 
         "reason-for-leaving": {
           "brief": "terminated",

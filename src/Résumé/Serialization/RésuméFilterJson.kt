@@ -22,13 +22,13 @@ data class RésuméFilterJson(
         operator fun invoke(jsonObject: Json): RésuméFilterJson? {
             val formatVersion = jsonObject["format-version"]
             if (formatVersion !is String || !compatibleVersionRegex.matches(formatVersion)) {
-                println("Incompatible format version")
+                console.error("Incompatible format version")
                 return null
             }
 
             return RésuméFilterJson(
                     meta = Meta(jsonObject = jsonObject["meta"] as? Json ?: return null) ?: return null,
-                    filters = RecursiveFilter(jsonObject = jsonObject["filters"] as? Json ?: return null) ?: return null
+                    filters = RecursiveFilter(jsonObject = jsonObject["filters"] as? Json ?: return null) ?: return null.also { console.error("Could not parse recursive filter!") }
             )
         }
     }
@@ -61,8 +61,8 @@ data class RésuméFilterJson(
             @Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")
             operator fun invoke(jsonObject: Json): RecursiveFilter? {
                 return RecursiveFilter(
-                        inclusion = Inclusion(jsonString = jsonObject["inclusion"] as? String ?: return null) ?: return null,
-                        criteria = (jsonObject["criteria"] as? Array<*>)?.map { Criterion(jsonObject = it as? Json ?: return null) ?: return null } ?: return null
+                        inclusion = Inclusion(jsonString = jsonObject["inclusion"] as? String ?: return null) ?: return null.also { console.error("Could not parse inclusion filter!") },
+                        criteria = (jsonObject["criteria"] as? Array<*>)?.map { Criterion(jsonObject = it as? Json ?: return null) ?: return null } ?: return null.also { console.error("Could not parse criteria!") }
                 )
             }
         }
@@ -106,6 +106,7 @@ data class RésuméFilterJson(
                     val jsonString: String
             ) {
                 keywords(jsonString = "keywords"),
+                tags(jsonString = "tags"),
                 ;
 
 
@@ -121,6 +122,7 @@ data class RésuméFilterJson(
                     val jsonString: String
             ) {
                 contains(jsonString = "contains"),
+                highlight(jsonString = "highlight"),
                 ;
 
 

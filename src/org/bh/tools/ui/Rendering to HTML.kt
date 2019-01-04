@@ -34,3 +34,12 @@ interface HtmlStringRenderable: HtmlElementRenderable {
 interface HtmlElementRenderable {
     fun renderToHtmlElement(): Node
 }
+
+
+
+var Element.onlyChild: Node?
+    get() = if (childNodes.length == 1) null else firstChild
+    set(newValue) {
+        this.innerHTML = ""
+        this.appendChild(newValue ?: return)
+    }

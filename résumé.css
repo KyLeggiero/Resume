@@ -75,13 +75,31 @@
 }
 
 
+main {
+    position: relative;
+}
+
+
+main .page {
+    position: absolute;
+    transition-property: transform, opacity, pointer-events;
+}
+
+
+main .page:not(.presented) {
+    transform: translateY(2in);
+    opacity: 0;
+    pointer-events: none;
+}
+
+
 /* TODO: Move: */
 
 
 .app-bar .title,
-.app-bar .title * {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-overflow: fade(1em);
-  overflow: hidden;
+.app-bar .title *:not(.material-icons) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-overflow: fade(1em);
+    overflow: hidden;
 }

@@ -14,13 +14,14 @@ import Résumé.RemoteWidgetData.*
  * @author Ben Leggiero
  * @since 2018-12-21
  */
-data class Résumé(
-        val id: String,
+class Résumé(
+        id: String,
         val tagline: String,
         val contact: Contact,
         val latestJob: Job?
 )
     : Group<HTMLElement, List<HtmlWidget<*>>>(kind = article,
+                                              id = id,
                                               children = listOf(
                                                       Heading(level1, text = tagline),
                                                       BodyText(kind = paragraph, children = listOf(

@@ -4,47 +4,77 @@ import jQueryInterface.*
 import org.w3c.dom.*
 import kotlin.browser.*
 import Résumé.RemoteWidgetData.*
+import org.bh.tools.ui.*
+import Résumé.RésuméPageState.*
+import kotlin.dom.addClass
+
+
 
 /*
  * @author Ben Leggiero
  * @since 2018-12-24
  */
 
-class DynamicRésumePageRenderer(
+
+
+class DynamicRésuméPageRenderer(
         val appBarTitleTextElement: Element,
         val appBarSubtitleTextElement: Element,
-        val containerElement: Element
+        val portalContainerElement: Element,
+        val résuméContainerElementGenerator: (id: String) -> Element
 ) {
     private val initialAppBarTitle = appBarTitleTextElement.textContent
     private val initialAppBarSubtitle = appBarSubtitleTextElement.textContent
+    private val placceholderContainerElement get() = portalContainerElement
+
+    private val cachedGeneratedContainerElements = mutableMapOf<String, Element>()
 
 
     fun refreshPage(state: RésuméPageState) {
-        clearPage(then = {
-            applyRootClasses(from = state)
-            showContent(state.content())
-            applyRemoteWidgetData(state.remoteWidgetData())
-        })
+        applyRootClasses(from = state)
+        showContent(from = state)
+        applyRemoteWidgetData(state.remoteWidgetData())
     }
 
 
-    private fun clearPage(then: () -> Unit) {
-        containerElement.innerHTML = ""
-        then()
+    fun preRenderPage(from: RésuméPageState) = when (from) {
+        is résumé -> résuméContainerElement(résuméId = from.résumé.id).ifEmpty { addAll(from.content().childNodes) }
+        is portal -> portalContainerElement.onlyChild = from.content()
+        is placeholder -> placceholderContainerElement.onlyChild = from.content()
     }
+
+
+    private fun résuméContainerElement(résuméId: String) =
+            cachedGeneratedContainerElements[résuméId] ?: résuméContainerElementGenerator(résuméId).also {
+                cachedGeneratedContainerElements[résuméId] = it
+            }
 
 
     private fun applyRootClasses(from: RésuméPageState) {
         when (from) {
-            is RésuméPageState.placeholder,
-            is RésuméPageState.portal -> jq(":root").addClass("top-level")
-            is RésuméPageState.résumé -> jq(":root").removeClass("top-level")
+            is placeholder,
+            is portal -> jq(":root").addClass("top-level")
+            is résumé -> jq(":root").removeClass("top-level")
         }
     }
 
 
-    private fun showContent(contentElement: Node) {
-        containerElement.appendChild(contentElement)
+    private fun showContent(from: RésuméPageState) {
+        @Suppress("UnnecessaryVariable") val state = from
+
+        preRenderPage(from = state)
+        present(state)
+    }
+
+
+    private fun present(state: RésuméPageState) {
+        jq(".$currentlyPresentedElementClassName").removeClass(currentlyPresentedElementClassName)
+        val element = when (state) {
+            is résumé -> résuméContainerElement(state.résumé.id)
+            is portal -> portalContainerElement
+            is placeholder -> placceholderContainerElement
+        }
+        element.addClass(currentlyPresentedElementClassName)
     }
 
 
@@ -81,7 +111,51 @@ class DynamicRésumePageRenderer(
         is RésuméPageState.portal -> this.portal
         is RésuméPageState.résumé -> this.résumé
     }
+
+
+    companion object {
+        private const val currentlyPresentedElementClassName = "presented"
+    }
 }
+
+
+private fun <N: Node> N.ifEmpty(block: N.() -> Unit) {
+    if (this.isEmpty()) {
+        block()
+    }
+}
+
+
+private inline fun Node.isEmpty() = !this.hasChildNodes()
+
+
+private fun Node.addAll(childNodes: NodeList) {
+    childNodes.forEach {
+        this.appendChild(it)
+    }
+}
+
+
+private fun <T> ItemArrayLike<T>.forEach(action: (T) -> Unit) {
+    val iterator = this.iterator()
+
+    while (iterator.hasNext()) {
+        action(iterator.next())
+    }
+}
+
+
+private fun <T> ItemArrayLike<T>.iterator(): Iterator<T> {
+    return object : Iterator<T> {
+
+        override fun hasNext() = length > 0
+
+
+        override fun next() = item(0).unsafeCast<T>()
+    }
+}
+
+
 
 
 sealed class RésuméPageState {

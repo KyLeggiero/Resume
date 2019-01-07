@@ -148,17 +148,10 @@ private fun <T> ItemArrayLike<T>.forEach(action: (T) -> Unit) {
 private fun <T> ItemArrayLike<T>.iterator(): Iterator<T> {
     return object : Iterator<T> {
 
-        var nextIndex = 0
+        override fun hasNext() = length > 0
 
 
-        override fun hasNext() = nextIndex <= length - 1
-
-
-        override fun next(): T {
-            val currentIndex = nextIndex
-            nextIndex += 1
-            return item(currentIndex)!!
-        }
+        override fun next() = item(0).unsafeCast<T>()
     }
 }
 

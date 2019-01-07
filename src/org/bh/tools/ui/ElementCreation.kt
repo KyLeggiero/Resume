@@ -36,6 +36,7 @@ open class HtmlWidget<out HtmlElementType>
 {
     override open fun renderToHtmlElement(): HtmlElementType {
         val element = document.createElement(htmlTagName).unsafeCast<HtmlElementType>()
+        element.id = this.id
         classes.forEach { element.addClass(it) }
         return element
     }

@@ -29,7 +29,6 @@ var resumes = function (_, Kotlin) {
   var toByte = Kotlin.toByte;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
   var emptySet = Kotlin.kotlin.collections.emptySet_287e2$;
-  var ensureNotNull = Kotlin.ensureNotNull;
   var toList = Kotlin.kotlin.collections.toList_7wnvza$;
   var setOf = Kotlin.kotlin.collections.setOf_i5x0yv$;
   var lastOrNull = Kotlin.kotlin.collections.lastOrNull_2p1efm$;
@@ -372,6 +371,7 @@ var resumes = function (_, Kotlin) {
   });
   HtmlWidget.prototype.renderToHtmlElement = function () {
     var element = document.createElement(this.htmlTagName);
+    element.id = this.id;
     var tmp$;
     tmp$ = this.classes.iterator();
     while (tmp$.hasNext()) {
@@ -1071,15 +1071,12 @@ var resumes = function (_, Kotlin) {
   }
   function iterator$ObjectLiteral(this$iterator) {
     this.this$iterator = this$iterator;
-    this.nextIndex = 0;
   }
   iterator$ObjectLiteral.prototype.hasNext = function () {
-    return this.nextIndex <= (this.this$iterator.length - 1 | 0);
+    return this.this$iterator.length > 0;
   };
   iterator$ObjectLiteral.prototype.next = function () {
-    var currentIndex = this.nextIndex;
-    this.nextIndex = this.nextIndex + 1 | 0;
-    return ensureNotNull(this.this$iterator.item(currentIndex));
+    return this.this$iterator.item(0);
   };
   iterator$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,

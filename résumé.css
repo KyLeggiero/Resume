@@ -4,7 +4,7 @@
 }
 
 
-@keyframes app-bar-background-animation {
+@keyframes gradient-background-animation {
     /* Inspired by https://www.gradient-animator.com by Ian Forrest ( https://www.IanForrest.me ) */
 
     0% {
@@ -39,19 +39,19 @@
 }
 
 
-.app-bar {
+.gradient-background {
     background-image: linear-gradient(-135deg, #0D47A2 0%, #311B93 25%, #890E4F 100%);
     animation-duration: 30s;
-    animation-name: app-bar-background-animation;
+    animation-name: gradient-background-animation;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     background-position: 0% 50%;
+    mix-blend-mode: screen;
 }
 
 
-.app-bar .title {
+.app-bar.gradient-background .title {
     color: #1DEAB7 !important;
-    mix-blend-mode: screen;
     font-size: 17pt;
 }
 

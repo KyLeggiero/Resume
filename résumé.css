@@ -46,13 +46,13 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     background-position: 0% 50%;
-    mix-blend-mode: screen;
 }
 
 
 .app-bar.gradient-background .title {
     color: #1DEAB7 !important;
     font-size: 17pt;
+    mix-blend-mode: screen;
 }
 
 

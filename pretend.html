@@ -78,6 +78,12 @@
 
 
 <style>
+:root {
+    --tech-spec-meter-height: 3em;
+    --tech-spec-meter-width: calc((var(--tech-spec-meter-height) * 2 / 3) * 10);
+}
+
+
 .hero {
     text-align: center;;
     margin: 0;
@@ -90,8 +96,8 @@
 }
 
 .hero+* {
-    margin-top: 80vh;
-    margin-top: calc(80vh - var(--app-bar-height-auto));
+    margin-top: 80vh !important;
+    margin-top: calc(80vh - var(--app-bar-height-auto)) !important;
 }
 
 .hero,
@@ -157,6 +163,50 @@ p:not(:last-child) {
     max-width: var(--desktop-medium-max-width);
     margin: auto;
 }
+
+.content h1 {
+    text-align: center;
+    font-size: 5rem;
+    margin: 3rem 0 1rem;
+}
+
+.content dl {
+    margin: 3rem 0;
+}
+
+.content h1+dl,
+.content h2+dl,
+.content h3+dl {
+    margin-top: 0;
+}
+
+.spec-bars {
+    height: var(--tech-spec-meter-height);
+    width: var(--tech-spec-meter-width);
+    display: inline-block;
+    background-image: url("./_img/Open Piece.svg");
+    background-size: contain;
+    margin: 0 2em 0 0;
+}
+
+.spec-bars::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    background-image: url("./_img/Filled Piece.svg");
+}
+
+
+.spec-bars[data-proficiency-out-of-10="10"]::after { width: 100%; filter: hue-rotate(45deg); }
+.spec-bars[data-proficiency-out-of-10="9"]::after  { width: 90%;  filter: hue-rotate(30deg); }
+.spec-bars[data-proficiency-out-of-10="8"]::after  { width: 80%;  }
+.spec-bars[data-proficiency-out-of-10="7"]::after  { width: 70%;  filter: hue-rotate(270deg); }
+.spec-bars[data-proficiency-out-of-10="6"]::after  { width: 60%;  filter: hue-rotate(240deg); }
+.spec-bars[data-proficiency-out-of-10="5"]::after  { width: 50%;  filter: hue-rotate(225deg); }
+.spec-bars[data-proficiency-out-of-10="4"]::after  { width: 40%;  filter: hue-rotate(225deg); }
+.spec-bars[data-proficiency-out-of-10="3"]::after  { width: 30%;  filter: saturate(10%); }
+.spec-bars[data-proficiency-out-of-10="2"]::after  { width: 20%;  filter: saturate(10%) brightness(80%); }
+.spec-bars[data-proficiency-out-of-10="1"]::after  { width: 10%;  filter: saturate(10%) brightness(50%); }
 </style>
 </head>
 
@@ -167,6 +217,8 @@ p:not(:last-child) {
         <a href="#"><h1 class="title"><i class="material-icons back-to-root-icon">arrow_back</i> <span class="title-text">Ben C. Leggiero</span><span class="subtitle-text"></span></h1></a>
     </header>
 
+
+
     <section class="hero gradient-background   flex-column flex-vert-center">
         <a href="#" class="back-to-root-link"><i class="material-icons back-to-root-icon">arrow_back</i></a>
         <div class="sticky-top">
@@ -174,6 +226,121 @@ p:not(:last-child) {
             <h2 class="subtitle-text">Developer&emsp;|&emsp;Designer</h2>
         </div>
     </section>
+
+
+
+    <section class="tech-experience    content">
+        <h1>Tech Specs</h1>
+        <dl class="flex-row flex-wrap flex-horiz-space-around">
+            <div>
+                <dt><h2>Swift</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Kotlin</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+            </div>
+            <div>
+                <dt><h2>HTML 5</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+            </div>
+            <div>
+                <dt><h2>CSS 4</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Sass</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Node</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="3"></span></dd>
+            </div>
+        </dl>
+
+        <dl class="flex-row flex-wrap flex-horiz-space-around">
+            <div>
+                <dt><h2>macOS</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+            </div>
+            <div>
+                <dt><h2>iOS</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Android</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="6"></span></dd>
+            </div>
+            <div>
+                <dt><h2>JVM</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Web (front)</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Web (back)</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+            </div>
+        </dl>
+
+        <dl class="flex-row flex-wrap flex-horiz-space-around">
+            <div>
+                <dt><h2>Multithreading</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Networking</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+            </div>
+        </dl>
+    </section>
+
+
+
+    <section class="content">
+        <h1>Design</h1>
+        <dl class="flex-row flex-wrap flex-horiz-space-around">
+            <div>
+                <dt><h2>Logos</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="6"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Icons</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+            </div>
+            <div>
+                <dt><h2>UI/UX</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Web</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Print</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+            </div>
+        </dl>
+
+        <dl class="flex-row flex-wrap flex-horiz-space-around">
+            <div>
+                <dt><h2>Sketch</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Inkscape</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+            </div>
+            <div>
+                <dt><h2>Gravit</h2></dt>
+                    <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+            </div>
+        </dl>
+    </section>
+
+
 
     <section>
         <div class="content">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="material brightness-dark top-level reduce-motion" lang="en-US">
+<html class="material brightness-dark not-top-level dont-reduce-motion" lang="en-US">
 <head>
 <meta http-equiv="Content-Type"    content="text/html; charset=utf-8" /> <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8"/>
@@ -123,6 +123,24 @@
 }
 
 
+
+.hero .back-to-root-link {
+    align-self: start;
+    position: fixed;
+    top: 0;
+    left:  0;
+    padding: 0 var(--content-margin-horiz-auto);
+    line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
+    color: var(--theme-text-on-primary-color-color);
+}
+
+
+
+.hero .back-to-root-link .back-to-root-icon {
+    vertical-align: middle;
+}
+
+
 .sticky-top {
     position: sticky;
     top: 0;
@@ -150,6 +168,7 @@ p:not(:last-child) {
     </header>
 
     <section class="hero gradient-background   flex-column flex-vert-center">
+        <a href="#" class="back-to-root-link"><i class="material-icons back-to-root-icon">arrow_back</i></a>
         <div class="sticky-top">
             <h1 class="title-text">Ben C. Leggiero</h1>
             <h2 class="subtitle-text">Developer&emsp;|&emsp;Designer</h2>

@@ -46,6 +46,7 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     background-position: 0% 50%;
+    background-attachment: fixed;
 }
 
 

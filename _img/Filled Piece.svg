@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="48px" viewBox="0 0 32 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Filled Piece</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Filled-Piece" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M11.3643887,2 C9.90585482,2 8.65866035,3.04901175 8.40875344,4.48597648 L1.80005779,42.4859765 C1.77053618,42.6557258 1.75569305,42.8277027 1.75569305,43 C1.75569305,44.6568542 3.0988388,46 4.75569305,46 L20.6356113,46 C22.0941452,46 23.3413396,44.9509883 23.5912466,43.5140235 L30.1999422,5.51402352 C30.2294638,5.34427424 30.2443069,5.17229726 30.2443069,5 C30.2443069,3.34314575 28.9011612,2 27.2443069,2 L11.3643887,2 Z" id="Rectangle" stroke="#00BFA5" stroke-width="2" fill="#64FFDA" fill-rule="nonzero"></path>
+    </g>
+</svg>

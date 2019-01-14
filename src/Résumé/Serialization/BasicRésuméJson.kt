@@ -31,6 +31,9 @@ data class BasicRésuméJson(
                 console.error("Incompatible format version")
                 return null
             }
+            else {
+                console.info("Base résumé accepted with format version $formatVersion")
+            }
 
             return BasicRésuméJson(meta = Meta(jsonObject = jsonObject["meta"] as? Json ?: return null) ?: return null,
                                    content = Content(jsonObject = jsonObject["content"] as? Json ?: return null) ?: return null
@@ -45,6 +48,12 @@ data class BasicRésuméJson(
             val infoVersion: KotlinVersion,
             val title: String
     ) {
+        init {
+            console.info("Basic résumé: \"$title\" $infoVersion ($id)")
+        }
+
+
+
         companion object {
             operator fun invoke(jsonObject: Json): Meta? {
                 return Meta(

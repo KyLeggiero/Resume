@@ -33,6 +33,7 @@ var resumes = function (_, Kotlin) {
   var setOf = Kotlin.kotlin.collections.setOf_i5x0yv$;
   var lastOrNull = Kotlin.kotlin.collections.lastOrNull_2p1efm$;
   var listOf_0 = Kotlin.kotlin.collections.listOf_i5x0yv$;
+  var toString = Kotlin.toString;
   HtmlTextWidget.prototype = Object.create(HtmlWidget.prototype);
   HtmlTextWidget.prototype.constructor = HtmlTextWidget;
   HtmlParentWidget.prototype = Object.create(HtmlWidget.prototype);
@@ -1512,6 +1513,9 @@ var resumes = function (_, Kotlin) {
       console.error('Incompatible format version');
       return null;
     }
+     else {
+      console.info('Base r\xE9sum\xE9 accepted with format version ' + toString(formatVersion));
+    }
     tmp$_1 = BasicRésuméJson$Meta$Companion_getInstance();
     tmp$_0 = Kotlin.isType(tmp$ = jsonObject['meta'], Object) ? tmp$ : null;
     if (tmp$_0 == null) {
@@ -1549,6 +1553,7 @@ var resumes = function (_, Kotlin) {
     this.id = id;
     this.infoVersion = infoVersion;
     this.title = title;
+    console.info('Basic r\xE9sum\xE9: ' + '"' + this.title + '"' + ' ' + this.infoVersion + ' (' + this.id + ')');
   }
   function BasicRésuméJson$Meta$Companion() {
     BasicRésuméJson$Meta$Companion_instance = this;
@@ -2435,6 +2440,9 @@ var resumes = function (_, Kotlin) {
       console.error('Incompatible format version');
       return null;
     }
+     else {
+      console.info('Filtered r\xE9sum\xE9 accepted with format version ' + toString(formatVersion));
+    }
     tmp$_1 = RésuméFilterJson$Meta$Companion_getInstance();
     tmp$_0 = Kotlin.isType(tmp$ = jsonObject['meta'], Object) ? tmp$ : null;
     if (tmp$_0 == null) {
@@ -2473,6 +2481,7 @@ var resumes = function (_, Kotlin) {
     this.id = id;
     this.infoVersion = infoVersion;
     this.title = title;
+    console.info('Basic r\xE9sum\xE9: ' + '"' + this.title + '"' + ' ' + this.infoVersion + ' (' + this.id + ')');
   }
   function RésuméFilterJson$Meta$Companion() {
     RésuméFilterJson$Meta$Companion_instance = this;

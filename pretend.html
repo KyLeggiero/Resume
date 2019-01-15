@@ -57,7 +57,7 @@
 <!-- END Style-Switcher Stylesheets -->
 
 <!-- BEGIN Page-specific Stylesheets -->
-<link rel="stylesheet" id="google-fonts"       href="https://fonts.googleapis.com/css?family=Questrial">
+<link rel="stylesheet" id="google-fonts"       href="https://fonts.googleapis.com/css?family=Bangers|Carter+One|Gugi|Nova+Square|Questrial|Squada+One|ZCOOL+QingKe+HuangYou&amp;subset=chinese-simplified,korean,latin-ext,vietnamese">
 <link rel="stylesheet" id="résumé-styles"      href="./résumé.css" />
 <!-- END Page-specific Stylesheets -->
 
@@ -80,7 +80,11 @@
 <style>
 :root {
     --tech-spec-meter-height: 3em;
-    --tech-spec-meter-width: calc((var(--tech-spec-meter-height) * 2 / 3) * 10);
+    --tech-spec-meter-width: calc(var(--tech-spec-meter-height) * 20 / 3);
+
+    } @media (max-width: 960px) { :root { /* --phone-landscape-large-max-width */
+        --tech-spec-meter-height: 36px;
+    }
 }
 
 
@@ -194,6 +198,7 @@ p:not(:last-child) {
     display: inline-block;
     height: 100%;
     background-image: url("./_img/Filled Piece.svg");
+    background-size: contain;
 }
 
 

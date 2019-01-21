@@ -96,6 +96,7 @@
     width: 100vw;
     height: 80vh;
     min-height: 5em;
+    height: minmax(5em, 80vh);
     top: 0
 }
 
@@ -142,6 +143,8 @@
     padding: 0 var(--content-margin-horiz-auto);
     line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
     color: var(--theme-text-on-primary-color-color);
+
+    transition-property: padding, line-height, color;
 }
 
 
@@ -226,6 +229,71 @@ p:not(:last-child) {
     min-width: var(--phone-portrait-small-max-width);
 }
 
+
+dl.like-bulleted-list {
+    display: block;
+    margin-left: 2em;
+}
+
+dl.like-bulleted-list>* {
+    display: list-item;
+}
+
+[data-list-bullet-style="dash"] {
+    list-style-type: "— "
+}
+
+.definitions-inline-with-terms dd,
+.definitions-inline-with-terms dt {
+    display: inline;
+}
+
+dl.like-bulleted-list.definitions-inline-with-terms[data-definition-separator="dash"] dd {
+    margin-left: 0;
+}
+
+dl.like-bulleted-list.definitions-inline-with-terms[data-definition-separator="dash"] dd::before {
+    content: "— ";
+    position: static;
+}
+
+dl.like-bulleted-list[data-definition-separator="dash"] dd {
+    position: relative;
+    margin-left: 1em;
+}
+
+dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
+    content: "— ";
+    position: absolute;
+    left: -1em;
+}
+
+
+
+/* To be transferred */
+
+main {
+    margin: 0 auto;
+    padding: 2rem 2vw;
+}
+
+dl dt {
+    margin-top: 2em;
+}
+
+
+h1 {
+    margin-top: 2em;
+}
+
+
+header h1,
+.hero h1 {
+    margin-top: 0;
+    margin-top: unset;
+    margin-top: initial;
+}
+
 </style>
 </head>
 
@@ -247,7 +315,7 @@ p:not(:last-child) {
     </section>
 
 
-    <main class="flex-row flex-reverse flex-wrap has-sidebar">
+    <article class="flex-row flex-reverse flex-wrap has-sidebar">
         <aside class="sidebar-right">
             <section class="content">
                 <h1>Tech Specs</h1>
@@ -315,6 +383,13 @@ p:not(:last-child) {
                             <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
                     </div>
                 </dl>
+
+                <dl class="flex-row flex-wrap flex-horiz-space-around">
+                    <div>
+                        <dt><h2>New Skills</h2></dt>
+                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                    </div>
+                </dl>
             </section>
 
 
@@ -360,8 +435,49 @@ p:not(:last-child) {
                 </dl>
             </section>
         </aside>
-        <section>
-            <div class="content">
+
+        <main class="striped-sections">
+            <section class="content">
+                <h1>Education</h1>
+                <dl class="like-bulleted-list definitions-inline-with-terms" data-list-bullet-style="dash" data-definition-separator="dash">
+                    <div>
+                        <dt>Columbus State University (<time datetime="2014-05-12">2014</time>)</dt>
+                            <dd>Bachelor of Science in Computer Science</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section class="content">
+                <h1>Employment</h1>
+                <dl class="like-bulleted-list" data-list-bullet-style="dash" data-definition-separator="dash">
+                    <div>
+        				<dt>Ionic Security <strong>(<time datetime="2017-03-27">2017</time> – <i>present</i>)</strong></dt>
+        					<dd>macOS Software Engineer</dd>
+    						<dd>Building industry-edge <strong>client-side</strong> file <strong>encryption</strong> and access software for macOS. Collaborate on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.</dd>
+                    </div>
+
+                    <div>
+        				<dt><a href="https://RenewedVision.com/" target="_blank">Renewed Vision</a> <strong>(<time datetime="2016-07-14">2016</time> – <time datetime="2017-01-16">2017</time>)</strong></dt>
+        					<dd>macOS Software Engineer</dd>
+    						<dd>Built industry-leading <strong>professional presentation</strong> software for <strong>macOS</strong>. Collaboratively created <strong>software platforms</strong> with <strong>open-source &amp; proprietary</strong> tech: advanced <strong>auto font scaling</strong>, <strong>inspector</strong>, animated grid item selector.</dd>
+                    </div>
+
+                    <div>
+                        <dt>NCR Corporation — Small &amp; Medium Business <strong>(<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>)</strong></dt>
+    						<dd>Mobile Software Engineer</dd>
+    						<dd>Built industry-leading <strong>point-of-sale</strong> software for <strong>iOS &amp; Android</strong>. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.</dd>
+                    </div>
+
+    				<div>
+                        <dt>University System of Georgia — Information Technology Services <strong>(<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>)</strong></dt>
+    						<dd>Web developer &amp; designer</dd>
+    						<dd> Redesigned &amp; rebuilt <a href="https://ColumbusState.edu" target="_blank">https://ColumbusState.edu</a> in <strong>HTML5+CSS3</strong>, with <strong>XSLT &amp; PHP</strong> where needed. Made <strong>templates for CMS</strong> so teachers could build pages.</dd>
+    				</div>
+                </dl>
+            </section>
+
+            <section class="content">
+                <h1>Temporary Filler Text</h1>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan magna et ex fermentum, pretium elementum nisi pretium. Mauris sed malesuada ex. Praesent a ultricies leo. In vitae sem nec justo venenatis rutrum. Sed porta sapien sit amet purus cursus dictum. Morbi orci nisi, fringilla lobortis tellus at, aliquam semper elit. In hac habitasse platea dictumst. Cras augue nulla, auctor in elementum non, dapibus at purus. Nunc non eros molestie, porta quam in, dignissim nisl. Pellentesque consectetur risus a metus dapibus, quis vehicula nisi sodales. Vestibulum accumsan ante tristique ipsum scelerisque, facilisis dapibus orci finibus. Praesent magna sem, feugiat ac elementum a, ornare eget massa. Aliquam erat volutpat.
                 </p>
@@ -389,8 +505,8 @@ p:not(:last-child) {
                 <p>
                     Maecenas eu rhoncus orci, in finibus mauris. Proin in fermentum elit. Curabitur posuere metus at sapien pulvinar rhoncus. Proin luctus ex sed ex bibendum iaculis. Etiam egestas nisi quis elit consectetur, sed sodales augue dapibus. Nullam turpis dui, pharetra quis justo ut, interdum pretium libero. Nulla tincidunt volutpat leo, sed gravida lacus eleifend sit amet. In dapibus congue tellus eu consectetur. Morbi mollis feugiat nulla sit amet molestie. Vestibulum ante augue, dictum a dapibus at, dignissim eu nulla. Sed mi metus, placerat sed libero vitae, semper hendrerit quam. Fusce nisl diam, placerat in nibh ut, auctor lobortis ante.
                 </p>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
+    </article>
 </body>
 </html>

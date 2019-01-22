@@ -269,6 +269,81 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
 }
 
 
+.infobox {
+    border: 1px solid #8882;
+    padding: 8px;
+    border-radius: 12px;
+}
+@media screen and (max-width: 640px) {
+    .infobox {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+}
+.infobox .figure-subject {
+    width: 10vmax;
+    height: 10vmax;
+    text-align: center;
+}
+.infobox .figure-subject {
+    border: 1px solid #8882;
+    padding: 1ex;
+    border-radius: 4px;
+    margin: 0;
+    flex-grow: 0;
+}
+.infobox img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.infobox,
+.infobox .figure-subject {
+    background: #FFF8;
+}
+.infobox dl {
+    display: flex;
+}
+.infobox dl > div {
+    margin: 0 2ex;
+}
+@media screen and (max-width: 640px) {
+    .infobox dl > div {
+        width: 100%;
+    }
+}
+.infobox dl dt {
+    font-weight: 600;
+    font-size: 10pt;
+    text-transform: UPPERCASE;
+    margin-top: 1em;
+}
+.infobox dl dd {
+    margin-left: 1em;
+    font-size: 13pt;
+}
+.infobox dl dd:not(:first-of-type) {
+    position: relative;
+}
+.infobox dl dd:not(:first-of-type)::before {
+    content: "";
+    border-top: 1px dotted #7777;
+    position: absolute;
+    width: calc(100% - 2em);
+    left: 1em;
+}
+.infobox dl dd:last-of-type {
+    margin-bottom: 1em;
+}
+
+figure.infobox > figcaption {
+    flex-grow: 2;
+    text-align: center;
+    line-height: 3;
+}
+
+
+
 
 /* To be transferred */
 
@@ -439,12 +514,13 @@ header h1,
         <main class="striped-sections">
             <section class="content">
                 <h1>Education</h1>
-                <dl class="like-bulleted-list definitions-inline-with-terms" data-list-bullet-style="dash" data-definition-separator="dash">
-                    <div>
-                        <dt>Columbus State University (<time datetime="2014-05-12">2014</time>)</dt>
-                            <dd>Bachelor of Science in Computer Science</dd>
-                    </div>
-                </dl>
+                <figure class="infobox   flex-row flex-vert-center flex-horiz-center">
+                    <div class="figure-subject"><img src="https://awvjyxcken.cloudimg.io/width/200/x/https://benleggieroblogcdn.bhstudios.org/Logos/Schools/CSU_Logo_Tower_BlueBackground.png"/></div>
+                    <figcaption>
+                        <h2>Columbus State University <small>(<time datetime="2014-05-12">2014</time>)</small></h2>
+                        Bachelor of Science in Computer Science
+                    </figcaption>
+                </figure>
             </section>
 
             <section class="content">

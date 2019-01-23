@@ -42,7 +42,7 @@
 <meta name="twitter:image:src"                     content="https://Ben.BHStudios.org/_img/thumbnail.php?e=.png" />
 
 
-<script type="text/javascript" src="https://code.jquery.com/jquery.min.js">/* jQuery */</script>
+<script type="text/javascript" src="https://shared.bhstudios.org/_js/jquery-bh-preferred.js">/* jQuery */</script>
 <script type="text/javascript" src="https://shared.BHStudios.org/_js/custom.jquery.js">/* custom jQuery stuffs */</script>
 <script type="text/javascript" src="https://shared.BHStudios.org/_js/jquery.cookie-1.4.1.min.js">/* use jQuery to set cookies */</script>
 <!-- <script type="text/javascript" src="https://prog.BHStudios.org/Husk/_js/husk.jquery.js">/* Husk jQuery Plugin */</script> -->
@@ -57,7 +57,8 @@
 <!-- END Style-Switcher Stylesheets -->
 
 <!-- BEGIN Page-specific Stylesheets -->
-<link rel="stylesheet" id="google-fonts"       href="https://fonts.googleapis.com/css?family=Bangers|Carter+One|Gugi|Nova+Square|Questrial|Squada+One|ZCOOL+QingKe+HuangYou&amp;subset=chinese-simplified,korean,latin-ext,vietnamese">
+<link rel="stylesheet" id="google-fonts"       href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700|Bangers|Carter+One|Gugi|Nova+Square|Questrial|Squada+One|ZCOOL+QingKe+HuangYou|Economica:400i|Medula+One|Teko:300,400&amp;subset=chinese-simplified,korean,latin-ext,vietnamese,cyrillic,cyrillic-ext,greek,greek-ext">
+<link href="https://fonts.googleapis.com/css?family=&amp;subset=" rel="stylesheet">
 <link rel="stylesheet" id="résumé-styles"      href="./résumé.css" />
 <!-- END Page-specific Stylesheets -->
 
@@ -78,8 +79,9 @@
 
 
 <style>
+
 :root {
-    --tech-spec-meter-height: 3em;
+    --tech-spec-meter-height: 36px; /*3em;*/
     --tech-spec-meter-width: calc(var(--tech-spec-meter-height) * 20 / 3);
 
     } @media (max-width: 960px) { :root { /* --phone-landscape-large-max-width */
@@ -160,6 +162,21 @@
 }
 
 
+.tldr {
+    background: var(--background-at-level-atop-parent);
+    padding: 3rem;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: -3rem;
+
+    } @media (max-aspect-ratio:1/1) { .tldr {
+        height: 100vh;
+        margin-bottom: 0;
+    }
+}
+
+
 p:not(:last-child) {
     margin-bottom: 1em;
 }
@@ -167,13 +184,15 @@ p:not(:last-child) {
 
 .content {
     padding: 1em;
-    max-width: var(--desktop-medium-max-width);
+    /*max-width: var(--desktop-medium-max-width);*/
     margin: auto;
 }
 
 .content h1 {
     text-align: center;
     font-size: 5rem;
+    font-size: 10vmin;
+    font-size: minmax(15vmin, 5rem);
     margin: 3rem 0 1rem;
 }
 
@@ -204,6 +223,20 @@ p:not(:last-child) {
     background-size: contain;
 }
 
+.spec-list {
+    border: 1px solid var(--background-at-level-atop-parent);
+    background: var(--background-at-level-parent);
+    /* box-shadow: inset 0 0 0 1px #0004; */
+    /* background: #0001; */
+    border-radius: 1em;
+    padding: 1em;
+}
+.spec-list h2 {
+    font-family: "ZCOOL QingKe HuangYou", "Roboto Condensed", sans-serif;
+    font-style: italic;
+    /* font-variant: small-caps; */
+}
+
 
 .spec-bars[data-proficiency-out-of-10="10"]::after { width: 100%; filter: hue-rotate(45deg); }
 .spec-bars[data-proficiency-out-of-10="9"]::after  { width: 90%;  filter: hue-rotate(30deg); }
@@ -219,14 +252,14 @@ p:not(:last-child) {
 
 .flex-row.has-sidebar>.sidebar-right {
     flex-grow: 1;
-    flex-basis: 0;
     flex-shrink: 1;
+    flex-basis: var(--phone-landscape-small-max-width);
 }
 .flex-row.has-sidebar>* {
     flex-grow: 2;
     flex-shrink: 2;
     flex-basis: 0;
-    min-width: var(--phone-portrait-small-max-width);
+    /*min-width: var(--phone-landscape-small-max-width);*/
 }
 
 
@@ -269,46 +302,81 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
 }
 
 
+:root {
+    --background-at-level-0: hsl(0, 0%, 98%);
+    --background-at-level-1: hsl(0, 0%, 93%);
+    --background-at-level-2: hsl(0, 0%, 86%);
+}
+.brightness-dark {
+    --background-at-level-0: hsl(200, 19.1%, 18.4%);
+    --background-at-level-1: hsl(200, 22.1%, 15.4%);
+    --background-at-level-2: hsl(200, 25.1%, 12.4%);
+}
+:root {
+    --background-at-level-parent: var(--background-at-level-0);
+    --background-at-level-atop-parent: var(--background-at-level-1);
+}
+
+.z0 {
+    --background-at-level-parent: var(--background-at-level-0);
+    --background-at-level-atop-parent: var(--background-at-level-1);
+}
+
+.z1,
+.infobox,
+.specs {
+    --background-at-level-parent: var(--background-at-level-1);
+    --background-at-level-atop-parent: var(--background-at-level-2);
+}
+
+.z2 {
+    --background-at-level-parent: var(--background-at-level-2);
+    --background-at-level-atop-parent: var(--background-at-level-2);
+}
+
+
+
+
 .infobox {
-    border: 1px solid #8882;
+    border: 1px solid var(--background-at-level-atop-parent);
+    background: var(--background-at-level-parent);
     padding: 8px;
     border-radius: 12px;
-}
-@media screen and (max-width: 640px) {
-    .infobox {
+    margin: 3em 0;
+    } @media screen and (max-width: 640px) { .infobox {
         -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     }
 }
-.infobox .figure-subject {
+.infobox .infobox-subject {
     width: 10vmax;
     height: 10vmax;
+    min-width: 1in;
+    min-height: 1in;
+
     text-align: center;
-}
-.infobox .figure-subject {
-    border: 1px solid #8882;
+    /* border: 1px solid #8882; */
     padding: 1ex;
     border-radius: 4px;
     margin: 0;
     flex-grow: 0;
+
+    /* background: var(--background-at-level-atop-parent); */
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .infobox img {
     max-height: 100%;
     max-width: 100%;
-}
-.infobox,
-.infobox .figure-subject {
-    background: #FFF8;
 }
 .infobox dl {
     display: flex;
 }
 .infobox dl > div {
     margin: 0 2ex;
-}
-@media screen and (max-width: 640px) {
-    .infobox dl > div {
+    } @media screen and (max-width: 640px) { .infobox dl > div {
         width: 100%;
     }
 }
@@ -336,12 +404,29 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
     margin-bottom: 1em;
 }
 
-figure.infobox > figcaption {
+figure.infobox > .infobox-info {
     flex-grow: 2;
     text-align: center;
-    line-height: 3;
+    max-width: var(--phone-landscape-small-max-width);
 }
 
+.infobox-vert .infobox-subject {
+  height: auto;
+  max-height: 20vh;
+}
+
+.infobox p {
+  line-height: 1.5;
+}
+
+.infobox .infobox-info h1,
+.infobox .infobox-info h2,
+.infobox .infobox-info h3,
+.infobox .infobox-info h4,
+.infobox .infobox-info h5,
+.infobox .infobox-info h6 {
+    padding: 0 0 5mm;
+}
 
 
 
@@ -349,11 +434,19 @@ figure.infobox > figcaption {
 
 main {
     margin: 0 auto;
-    padding: 2rem 2vw;
+    padding: 0 2vw;
 }
 
 dl dt {
     margin-top: 2em;
+}
+
+dl>div {
+    margin: 1em 0;
+}
+
+dl>div>dt {
+    margin: 0;
 }
 
 
@@ -362,11 +455,29 @@ h1 {
 }
 
 
+h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
+}
+h2 small {
+    display: inline-block;
+}
+
+
 header h1,
 .hero h1 {
     margin-top: 0;
     margin-top: unset;
     margin-top: initial;
+}
+
+
+.brightness-black [data-required-theme-type]:not([data-required-theme-type="dark"]),
+.brightness-dark [data-required-theme-type]:not([data-required-theme-type="dark"]) {
+    display: none;
+}
+.brightness-white [data-required-theme-type]:not([data-required-theme-type="light"]),
+.brightness-light [data-required-theme-type]:not([data-required-theme-type="light"]) {
+    display: none;
 }
 
 </style>
@@ -390,199 +501,216 @@ header h1,
     </section>
 
 
-    <article class="flex-row flex-reverse flex-wrap has-sidebar">
-        <aside class="sidebar-right">
-            <section class="content">
-                <h1>Tech Specs</h1>
-                <dl class="flex-row flex-wrap flex-horiz-space-around">
-                    <div>
-                        <dt><h2>Swift</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Kotlin</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>HTML 5</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>CSS 4</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Sass</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Node</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="3"></span></dd>
-                    </div>
-                </dl>
+    <article>
+        <header class="tldr   flex-column flex-horiz-stretch flex-vert-center">
+            <p>Software Engineer III with a passion for making great products</p>
+        </header>
+        <div class="flex-row flex-wrap has-sidebar">
+            <main>
+                <section class="content">
+                    <h1>Employ&shy;ment</h1>
+                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-white-logo.svg')"></a>
+                        <figcaption class="infobox-info">
+                            <h2>Ionic Security <small>(<time datetime="2017-03-27">2017</time> – <i>present</i>)</small></h2>
+                            <h3>Senior macOS Software Engineer</h3>
+                            <p>Building industry-edge <strong>client-side</strong> file <strong>encryption</strong> and access software for macOS. Collaborate on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.</p>
+                            <p>Working closely with UI/UX team to hone the design of multiple company products, including <strong>graphics</strong>, <strong>animations</strong>, user <strong>flows</strong>, and overall <strong>experience</strong>.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://RenewedVision.com" target="_blank" style="background-image: url('./_img/Renewed-Vision-logo-icon.png')"></a>
+                        <figcaption class="infobox-info">
+                            <h2>Renewed Vision <small>(<time datetime="2017-03-27">2016</time> – <time datetime="2017-01-16">2017</time>)</small></h2>
+                            <h3>macOS Software Engineer</h3>
+                            <p>Built industry-leading <strong>professional presentation</strong> software for <strong>macOS</strong>. Collaboratively created <strong>software platforms</strong> with <strong>open-source &amp; proprietary</strong> tech: advanced <strong>auto font scaling</strong>, <strong>inspector</strong>, animated grid item selector</p>
+                            <p>Designed dozens of <strong>icons</strong> &amp; other graphics, <strong>user flows</strong>, interface approaches, <strong>animations</strong>, and more.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://NCRSilver.com" target="_blank" style="background-image: url('./_img/NCR-logo.svg')"></a>
+                        <figcaption class="infobox-info">
+                            <h2>NCR &mdash; Small &amp; Medium Business <small>(<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>)</small></h2>
+                            <h3>Mobile Software Engineer</h3>
+                            <p>Built state-of-the-art <strong>point-of-sale</strong> software for <strong>iOS &amp; Android</strong>. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.</p>
+                            <p>Worked alongside UI design team to <strong>revamp</strong> the system's <strong>look-and-feel</strong>.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_BlueBackground.svg')" data-required-theme-type="dark"></a>
+                        <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_WhiteBackground.svg')" data-required-theme-type="light"></a>
+                        <figcaption class="infobox-info">
+                            <h2>University System of Georgia &mdash; Information Technology Services <small>(<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>)</small></h2>
+                            <h3>Web Developer &amp; Designer</h3>
+                            <p>Redesigned &amp; rebuilt <a href="https://ColumbusState.edu" target="_blank">ColumbusState.edu</a> and dozens of sub-sites in <strong>HTML5+CSS3</strong>, with <strong>XSLT &amp; PHP</strong> where needed. Made <strong>templates for CMS</strong> so teachers could build pages.</p>
+                            <p>Invented, critiqued, and <strong>evolved design elements</strong> for CSU website. Designed pages for all schools of the University within a <strong>consistent theme</strong>.</p>
+                        </figcaption>
+                    </figure>
+                </section>
 
-                <dl class="flex-row flex-wrap flex-horiz-space-around">
-                    <div>
-                        <dt><h2>macOS</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>iOS</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Android</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="6"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>JVM</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Web (front)</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Web (back)</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
-                    </div>
-                </dl>
+                <section class="content">
+                    <h1>Edu&shy;ca&shy;tion</h1>
+                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_BlueBackground.svg')"></a>
+                        <figcaption class="infobox-info">
+                            <h2>Columbus State University <small>(<time datetime="2014-05-12">2014</time>)</small></h2>
+                            <h3>Bachelor of Science in Computer Science</h3>
+                        </figcaption>
+                    </figure>
+                </section>
 
-                <dl class="flex-row flex-wrap flex-horiz-space-around">
-                    <div>
-                        <dt><h2>Multithreading</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Networking</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
-                    </div>
-                </dl>
+                <section class="hidden content">
+                    <h1>Temporary Filler Text</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan magna et ex fermentum, pretium elementum nisi pretium. Mauris sed malesuada ex. Praesent a ultricies leo. In vitae sem nec justo venenatis rutrum. Sed porta sapien sit amet purus cursus dictum. Morbi orci nisi, fringilla lobortis tellus at, aliquam semper elit. In hac habitasse platea dictumst. Cras augue nulla, auctor in elementum non, dapibus at purus. Nunc non eros molestie, porta quam in, dignissim nisl. Pellentesque consectetur risus a metus dapibus, quis vehicula nisi sodales. Vestibulum accumsan ante tristique ipsum scelerisque, facilisis dapibus orci finibus. Praesent magna sem, feugiat ac elementum a, ornare eget massa. Aliquam erat volutpat.
+                    </p>
+                    <p>
+                        Proin finibus nunc eu risus aliquet tincidunt. Morbi blandit turpis non fermentum suscipit. Pellentesque elementum lacus et pharetra tristique. Nam convallis consectetur convallis. Fusce ullamcorper magna vel sagittis commodo. Vestibulum odio justo, ullamcorper nec ligula id, lacinia suscipit massa. Phasellus a libero id felis euismod auctor. Mauris vestibulum elementum felis non vulputate. Quisque eget rutrum quam. Sed pulvinar nisl sed lectus bibendum pellentesque. Fusce lacus ante, laoreet non eros vel, eleifend tempus massa. Mauris in blandit ligula. Fusce commodo nunc ac ullamcorper fringilla. Vivamus purus enim, varius eu neque eu, dapibus fringilla nibh.
+                    </p>
+                    <p>
+                        Praesent nec mi a lacus sollicitudin fringilla. Nulla in pulvinar nibh, ac elementum dui. Cras quam dolor, varius a lacus sed, commodo vulputate velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In justo lorem, rhoncus faucibus blandit nec, finibus at massa. Nulla ut quam in erat pharetra hendrerit eu in ante. Sed at ipsum tristique magna laoreet mattis at vitae neque. Fusce elementum eros nibh, at rutrum turpis efficitur vitae. Nulla porttitor magna ac mattis venenatis. Phasellus interdum fringilla lacus. Fusce tincidunt aliquam gravida. Donec sed accumsan velit, eget ornare ipsum. Fusce ac neque sem. In efficitur quis augue non convallis. Nam suscipit, enim sed mollis fermentum, turpis libero malesuada magna, id tempus odio arcu nec lacus.
+                    </p>
+                    <p>
+                        Ut vehicula, lectus quis rhoncus semper, massa orci scelerisque risus, ac pellentesque tortor elit vitae nisi. Pellentesque tincidunt, nisi ut blandit fringilla, augue tortor placerat erat, eget egestas elit ex sit amet ipsum. Aliquam et mollis neque, ut posuere risus. In in placerat erat. Aenean a consectetur neque. Pellentesque dictum fringilla arcu, vitae varius libero dictum nec. Fusce a mauris nulla. Nulla ac justo vitae ante sollicitudin commodo et nec massa. Fusce posuere, dui a auctor maximus, libero lectus tristique enim, eget scelerisque orci erat nec risus. Aenean sagittis turpis turpis, sit amet vehicula turpis vehicula sit amet. Donec pulvinar, ipsum gravida cursus bibendum, est arcu fermentum sapien, sit amet tincidunt lectus metus eu dui. Integer vitae hendrerit sem. Ut pulvinar mauris et dictum pretium.
+                    </p>
+                    <p>
+                        Proin dignissim consequat porta. Etiam rhoncus non ante in accumsan. Suspendisse arcu ante, ullamcorper sit amet mi a, placerat suscipit tortor. Etiam quis nisl vitae ligula rutrum tincidunt ac quis risus. Nulla ac nunc ut arcu tempus viverra eu eget felis. Sed euismod aliquam justo, et volutpat massa accumsan vel. Duis finibus libero nec mollis bibendum. Aliquam id odio pellentesque odio luctus auctor.
+                    </p>
+                    <p>
+                        Donec dignissim, erat congue interdum vehicula, sem mauris hendrerit eros, ut varius dui mi vehicula metus. Proin consequat egestas elit, non placerat eros vehicula eget. Donec purus purus, tincidunt ac hendrerit vitae, tempus ut nulla. Pellentesque pulvinar justo sit amet hendrerit accumsan. Morbi a facilisis libero. Suspendisse tempus consectetur elementum. Nunc in ex a massa imperdiet tristique. Phasellus finibus egestas mauris. Etiam iaculis mollis lorem. Sed pharetra magna metus. Proin ullamcorper velit eget urna venenatis viverra. Aenean ut lacus magna. Integer finibus odio eget elit hendrerit blandit eu quis tortor. Etiam sed ex a nunc tempor accumsan sed varius urna. Aliquam placerat orci justo, nec faucibus dolor placerat nec. Quisque lobortis blandit velit, at tincidunt tortor facilisis vel.
+                    </p>
+                    <p>
+                        Donec tempus velit eu tortor convallis, ultrices laoreet eros fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus urna sem, non feugiat urna convallis vitae. Duis sollicitudin nisi in aliquam convallis. Proin quis nunc porttitor, fermentum nunc a, imperdiet nisi. Mauris malesuada, risus id elementum tincidunt, massa lacus condimentum ipsum, porttitor blandit tortor velit sit amet mauris. Praesent a nisi lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Ut faucibus a enim non gravida. Sed augue diam, tincidunt a ex rutrum, varius sodales mi. Sed eget mauris dolor.
+                    </p>
+                    <p>
+                        Fusce condimentum ligula eros, id facilisis erat convallis quis. Vivamus finibus et est sed auctor. Duis est dui, ullamcorper sit amet ipsum eu, dictum posuere mi. Curabitur quis enim at lacus sollicitudin imperdiet. Praesent facilisis purus ac velit elementum efficitur. Duis lobortis lacinia nibh, ut tempor mi pulvinar vitae. Aenean fringilla risus ut augue varius egestas. Sed lorem nunc, placerat consectetur volutpat ut, porttitor ut turpis. Ut tincidunt dictum erat ut auctor.
+                    </p>
+                    <p>
+                        Maecenas eu rhoncus orci, in finibus mauris. Proin in fermentum elit. Curabitur posuere metus at sapien pulvinar rhoncus. Proin luctus ex sed ex bibendum iaculis. Etiam egestas nisi quis elit consectetur, sed sodales augue dapibus. Nullam turpis dui, pharetra quis justo ut, interdum pretium libero. Nulla tincidunt volutpat leo, sed gravida lacus eleifend sit amet. In dapibus congue tellus eu consectetur. Morbi mollis feugiat nulla sit amet molestie. Vestibulum ante augue, dictum a dapibus at, dignissim eu nulla. Sed mi metus, placerat sed libero vitae, semper hendrerit quam. Fusce nisl diam, placerat in nibh ut, auctor lobortis ante.
+                    </p>
+                </section>
+            </main>
 
-                <dl class="flex-row flex-wrap flex-horiz-space-around">
-                    <div>
-                        <dt><h2>New Skills</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
-                    </div>
-                </dl>
-            </section>
+            <aside class="sidebar-right">
+                <section class="content specs">
+                    <h1>Tech Specs</h1>
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Swift</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Kotlin</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>HTML 5</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>CSS 4</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Sass</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Node</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="4"></span></dd>
+                        </div>
+                    </dl>
+
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>macOS</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>iOS</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Android</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>JVM</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Web &ndash; front</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Web &ndash; back</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+                        </div>
+                    </dl>
+
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Multithreading</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Networking</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                    </dl>
+
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Learning New Skills</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                    </dl>
+                </section>
 
 
 
-            <section class="content">
-                <h1>Design</h1>
-                <dl class="flex-row flex-wrap flex-horiz-space-around">
-                    <div>
-                        <dt><h2>Logos</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="6"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Icons</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>UI/UX</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Web</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Print</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
-                    </div>
-                </dl>
+                <section class="content specs">
+                    <h1>De&shy;sign</h1>
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>UI/UX</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Icons</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Web</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Print</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Logos</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="6"></span></dd>
+                        </div>
+                    </dl>
 
-                <dl class="flex-row flex-wrap flex-horiz-space-around">
-                    <div>
-                        <dt><h2>Sketch</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Inkscape</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
-                    </div>
-                    <div>
-                        <dt><h2>Gravit</h2></dt>
-                            <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
-                    </div>
-                </dl>
-            </section>
-        </aside>
-
-        <main class="striped-sections">
-            <section class="content">
-                <h1>Education</h1>
-                <figure class="infobox   flex-row flex-vert-center flex-horiz-center">
-                    <div class="figure-subject"><img src="https://awvjyxcken.cloudimg.io/width/200/x/https://benleggieroblogcdn.bhstudios.org/Logos/Schools/CSU_Logo_Tower_BlueBackground.png"/></div>
-                    <figcaption>
-                        <h2>Columbus State University <small>(<time datetime="2014-05-12">2014</time>)</small></h2>
-                        Bachelor of Science in Computer Science
-                    </figcaption>
-                </figure>
-            </section>
-
-            <section class="content">
-                <h1>Employment</h1>
-                <dl class="like-bulleted-list" data-list-bullet-style="dash" data-definition-separator="dash">
-                    <div>
-        				<dt>Ionic Security <strong>(<time datetime="2017-03-27">2017</time> – <i>present</i>)</strong></dt>
-        					<dd>macOS Software Engineer</dd>
-    						<dd>Building industry-edge <strong>client-side</strong> file <strong>encryption</strong> and access software for macOS. Collaborate on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.</dd>
-                    </div>
-
-                    <div>
-        				<dt><a href="https://RenewedVision.com/" target="_blank">Renewed Vision</a> <strong>(<time datetime="2016-07-14">2016</time> – <time datetime="2017-01-16">2017</time>)</strong></dt>
-        					<dd>macOS Software Engineer</dd>
-    						<dd>Built industry-leading <strong>professional presentation</strong> software for <strong>macOS</strong>. Collaboratively created <strong>software platforms</strong> with <strong>open-source &amp; proprietary</strong> tech: advanced <strong>auto font scaling</strong>, <strong>inspector</strong>, animated grid item selector.</dd>
-                    </div>
-
-                    <div>
-                        <dt>NCR Corporation — Small &amp; Medium Business <strong>(<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>)</strong></dt>
-    						<dd>Mobile Software Engineer</dd>
-    						<dd>Built industry-leading <strong>point-of-sale</strong> software for <strong>iOS &amp; Android</strong>. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.</dd>
-                    </div>
-
-    				<div>
-                        <dt>University System of Georgia — Information Technology Services <strong>(<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>)</strong></dt>
-    						<dd>Web developer &amp; designer</dd>
-    						<dd> Redesigned &amp; rebuilt <a href="https://ColumbusState.edu" target="_blank">https://ColumbusState.edu</a> in <strong>HTML5+CSS3</strong>, with <strong>XSLT &amp; PHP</strong> where needed. Made <strong>templates for CMS</strong> so teachers could build pages.</dd>
-    				</div>
-                </dl>
-            </section>
-
-            <section class="content">
-                <h1>Temporary Filler Text</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan magna et ex fermentum, pretium elementum nisi pretium. Mauris sed malesuada ex. Praesent a ultricies leo. In vitae sem nec justo venenatis rutrum. Sed porta sapien sit amet purus cursus dictum. Morbi orci nisi, fringilla lobortis tellus at, aliquam semper elit. In hac habitasse platea dictumst. Cras augue nulla, auctor in elementum non, dapibus at purus. Nunc non eros molestie, porta quam in, dignissim nisl. Pellentesque consectetur risus a metus dapibus, quis vehicula nisi sodales. Vestibulum accumsan ante tristique ipsum scelerisque, facilisis dapibus orci finibus. Praesent magna sem, feugiat ac elementum a, ornare eget massa. Aliquam erat volutpat.
-                </p>
-                <p>
-                    Proin finibus nunc eu risus aliquet tincidunt. Morbi blandit turpis non fermentum suscipit. Pellentesque elementum lacus et pharetra tristique. Nam convallis consectetur convallis. Fusce ullamcorper magna vel sagittis commodo. Vestibulum odio justo, ullamcorper nec ligula id, lacinia suscipit massa. Phasellus a libero id felis euismod auctor. Mauris vestibulum elementum felis non vulputate. Quisque eget rutrum quam. Sed pulvinar nisl sed lectus bibendum pellentesque. Fusce lacus ante, laoreet non eros vel, eleifend tempus massa. Mauris in blandit ligula. Fusce commodo nunc ac ullamcorper fringilla. Vivamus purus enim, varius eu neque eu, dapibus fringilla nibh.
-                </p>
-                <p>
-                    Praesent nec mi a lacus sollicitudin fringilla. Nulla in pulvinar nibh, ac elementum dui. Cras quam dolor, varius a lacus sed, commodo vulputate velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In justo lorem, rhoncus faucibus blandit nec, finibus at massa. Nulla ut quam in erat pharetra hendrerit eu in ante. Sed at ipsum tristique magna laoreet mattis at vitae neque. Fusce elementum eros nibh, at rutrum turpis efficitur vitae. Nulla porttitor magna ac mattis venenatis. Phasellus interdum fringilla lacus. Fusce tincidunt aliquam gravida. Donec sed accumsan velit, eget ornare ipsum. Fusce ac neque sem. In efficitur quis augue non convallis. Nam suscipit, enim sed mollis fermentum, turpis libero malesuada magna, id tempus odio arcu nec lacus.
-                </p>
-                <p>
-                    Ut vehicula, lectus quis rhoncus semper, massa orci scelerisque risus, ac pellentesque tortor elit vitae nisi. Pellentesque tincidunt, nisi ut blandit fringilla, augue tortor placerat erat, eget egestas elit ex sit amet ipsum. Aliquam et mollis neque, ut posuere risus. In in placerat erat. Aenean a consectetur neque. Pellentesque dictum fringilla arcu, vitae varius libero dictum nec. Fusce a mauris nulla. Nulla ac justo vitae ante sollicitudin commodo et nec massa. Fusce posuere, dui a auctor maximus, libero lectus tristique enim, eget scelerisque orci erat nec risus. Aenean sagittis turpis turpis, sit amet vehicula turpis vehicula sit amet. Donec pulvinar, ipsum gravida cursus bibendum, est arcu fermentum sapien, sit amet tincidunt lectus metus eu dui. Integer vitae hendrerit sem. Ut pulvinar mauris et dictum pretium.
-                </p>
-                <p>
-                    Proin dignissim consequat porta. Etiam rhoncus non ante in accumsan. Suspendisse arcu ante, ullamcorper sit amet mi a, placerat suscipit tortor. Etiam quis nisl vitae ligula rutrum tincidunt ac quis risus. Nulla ac nunc ut arcu tempus viverra eu eget felis. Sed euismod aliquam justo, et volutpat massa accumsan vel. Duis finibus libero nec mollis bibendum. Aliquam id odio pellentesque odio luctus auctor.
-                </p>
-                <p>
-                    Donec dignissim, erat congue interdum vehicula, sem mauris hendrerit eros, ut varius dui mi vehicula metus. Proin consequat egestas elit, non placerat eros vehicula eget. Donec purus purus, tincidunt ac hendrerit vitae, tempus ut nulla. Pellentesque pulvinar justo sit amet hendrerit accumsan. Morbi a facilisis libero. Suspendisse tempus consectetur elementum. Nunc in ex a massa imperdiet tristique. Phasellus finibus egestas mauris. Etiam iaculis mollis lorem. Sed pharetra magna metus. Proin ullamcorper velit eget urna venenatis viverra. Aenean ut lacus magna. Integer finibus odio eget elit hendrerit blandit eu quis tortor. Etiam sed ex a nunc tempor accumsan sed varius urna. Aliquam placerat orci justo, nec faucibus dolor placerat nec. Quisque lobortis blandit velit, at tincidunt tortor facilisis vel.
-                </p>
-                <p>
-                    Donec tempus velit eu tortor convallis, ultrices laoreet eros fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus urna sem, non feugiat urna convallis vitae. Duis sollicitudin nisi in aliquam convallis. Proin quis nunc porttitor, fermentum nunc a, imperdiet nisi. Mauris malesuada, risus id elementum tincidunt, massa lacus condimentum ipsum, porttitor blandit tortor velit sit amet mauris. Praesent a nisi lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Ut faucibus a enim non gravida. Sed augue diam, tincidunt a ex rutrum, varius sodales mi. Sed eget mauris dolor.
-                </p>
-                <p>
-                    Fusce condimentum ligula eros, id facilisis erat convallis quis. Vivamus finibus et est sed auctor. Duis est dui, ullamcorper sit amet ipsum eu, dictum posuere mi. Curabitur quis enim at lacus sollicitudin imperdiet. Praesent facilisis purus ac velit elementum efficitur. Duis lobortis lacinia nibh, ut tempor mi pulvinar vitae. Aenean fringilla risus ut augue varius egestas. Sed lorem nunc, placerat consectetur volutpat ut, porttitor ut turpis. Ut tincidunt dictum erat ut auctor.
-                </p>
-                <p>
-                    Maecenas eu rhoncus orci, in finibus mauris. Proin in fermentum elit. Curabitur posuere metus at sapien pulvinar rhoncus. Proin luctus ex sed ex bibendum iaculis. Etiam egestas nisi quis elit consectetur, sed sodales augue dapibus. Nullam turpis dui, pharetra quis justo ut, interdum pretium libero. Nulla tincidunt volutpat leo, sed gravida lacus eleifend sit amet. In dapibus congue tellus eu consectetur. Morbi mollis feugiat nulla sit amet molestie. Vestibulum ante augue, dictum a dapibus at, dignissim eu nulla. Sed mi metus, placerat sed libero vitae, semper hendrerit quam. Fusce nisl diam, placerat in nibh ut, auctor lobortis ante.
-                </p>
-            </section>
-        </main>
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Sketch</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Inkscape</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Gravit</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+                        </div>
+                    </dl>
+                </section>
+            </aside>
+        </div>
     </article>
 </body>
 </html>

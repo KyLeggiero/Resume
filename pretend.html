@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="material brightness-dark not-top-level reduce-motion" lang="en-US">
+<html class="material brightness-dark not-top-level dont-reduce-motion" lang="en-US">
 <head>
 <meta http-equiv="Content-Type"    content="text/html; charset=utf-8" /> <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8"/>
@@ -78,6 +78,19 @@
 <!-- <script src="./_js/production/resumes/resumes.js"> /* Scripts just for this page */ </script> -->
 
 
+<script>
+function didClickBrightnessToggle() {
+    if ($(":root").hasClass("brightness-dark")) {
+        $(":root").removeClass("brightness-dark").addClass("brightness-light")
+    }
+    else {
+        $(":root").removeClass("brightness-light").addClass("brightness-dark")
+    }
+    return false;
+}
+</script>
+
+
 <style>
 
 :root {
@@ -149,9 +162,24 @@
     transition-property: padding, line-height, color;
 }
 
-
-
 .hero .back-to-root-link .back-to-root-icon {
+    vertical-align: middle;
+}
+
+
+.hero .brightness-toggle {
+    align-self: start;
+    position: fixed;
+    top: 0;
+    right:  0;
+    padding: 0 var(--content-margin-horiz-auto);
+    line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
+    color: var(--theme-text-on-primary-color-color);
+
+    transition-property: padding, line-height, color;
+}
+
+.hero .brightness-toggle .material-icons {
     vertical-align: middle;
 }
 
@@ -169,6 +197,7 @@
     font-weight: 300;
     text-align: center;
     margin-bottom: -3rem;
+    transition-property: background;
 
     } @media (max-aspect-ratio:1/1) { .tldr {
         height: 100vh;
@@ -230,6 +259,7 @@ p:not(:last-child) {
     /* background: #0001; */
     border-radius: 1em;
     padding: 1em;
+    transition-property: background, border;
 }
 .spec-list h2 {
     font-family: "ZCOOL QingKe HuangYou", "Roboto Condensed", sans-serif;
@@ -307,7 +337,8 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
     --background-at-level-1: hsl(0, 0%, 93%);
     --background-at-level-2: hsl(0, 0%, 86%);
 }
-.brightness-dark {
+.brightness-dark,
+.brightness-black {
     --background-at-level-0: hsl(200, 19.1%, 18.4%);
     --background-at-level-1: hsl(200, 22.1%, 15.4%);
     --background-at-level-2: hsl(200, 25.1%, 12.4%);
@@ -320,6 +351,7 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
 .z0 {
     --background-at-level-parent: var(--background-at-level-0);
     --background-at-level-atop-parent: var(--background-at-level-1);
+    transition-property: background, border, box-shadow;
 }
 
 .z1,
@@ -327,11 +359,13 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
 .specs {
     --background-at-level-parent: var(--background-at-level-1);
     --background-at-level-atop-parent: var(--background-at-level-2);
+    transition-property: background, border, box-shadow;
 }
 
 .z2 {
     --background-at-level-parent: var(--background-at-level-2);
     --background-at-level-atop-parent: var(--background-at-level-2);
+    transition-property: background, border, box-shadow;
 }
 
 
@@ -429,8 +463,32 @@ figure.infobox > .infobox-info {
 }
 
 
-
 /* To be transferred */
+
+.app-bar .icon-button .material-icons.back-to-root-icon {
+    margin-right: 1ex;
+    margin-inline-end: 1ex;
+    width: 1em;
+    text-align: start;
+}
+
+.app-bar .icon-button,
+.app-bar .back-to-root-icon {
+    vertical-align: middle;
+    min-width: var(--app-bar-height-auto);
+    transition-property: margin,width,opacity;
+    line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
+    transition-property: margin,width,opacity;
+}
+.app-bar .icon-button .material-icons {
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.brightness-toggle {
+    background: none;
+}
 
 main {
     margin: 0 auto;
@@ -487,17 +545,21 @@ header h1,
 
 <body>
     <header class="app-bar gradient-background">
-        <a href="#"><h1 class="title"><i class="material-icons back-to-root-icon">arrow_back</i> <span class="title-text">Ben C. Leggiero</span><span class="subtitle-text"></span></h1></a>
+        <a href="#" class="icon-button back-to-root-link"><h1 class="title"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <span class="title-text">Ben C. Leggiero</span><span class="subtitle-text"></span></h1></a>
     </header>
 
 
 
     <section class="hero gradient-background   flex-column flex-vert-center">
-        <a href="#" class="back-to-root-link"><i class="material-icons back-to-root-icon">arrow_back</i></a>
+        <a href="#" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
         <div class="sticky-top">
             <h1 class="title-text">Ben C. Leggiero</h1>
             <h2 class="subtitle-text">Developer&emsp;|&emsp;Designer</h2>
         </div>
+        <a href="#" class="icon-button brightness-toggle hidden" onclick="return didClickBrightnessToggle()"><i class="material-icons   ">brightness_4</i></a>
+        <script>
+        $(".brightness-toggle").toggleClass("hidden")
+        </script>
     </section>
 
 
@@ -510,7 +572,8 @@ header h1,
                 <section class="content">
                     <h1>Employ&shy;ment</h1>
                     <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
-                        <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-white-logo.svg')"></a>
+                        <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-white-logo.svg')" data-required-theme-type="dark"></a>
+                        <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-dark-grey-logo.svg')" data-required-theme-type="light"></a>
                         <figcaption class="infobox-info">
                             <h2>Ionic Security <small>(<time datetime="2017-03-27">2017</time> – <i>present</i>)</small></h2>
                             <h3>Senior macOS Software Engineer</h3>

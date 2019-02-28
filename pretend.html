@@ -172,7 +172,7 @@ $(() => {
     margin: 0;
     position: absolute;
     z-index: calc(var(--app-bar-z-index) + 1);
-    width: 100vw;
+    width: 100%;
     height: 80vh;
     min-height: 5em;
     height: minmax(5em, 80vh);
@@ -215,7 +215,7 @@ $(() => {
 
 
 
-.hero .back-to-root-link {
+.hero .icon-button.back-to-root-link {
     align-self: start;
     position: fixed;
     top: 0;
@@ -227,12 +227,12 @@ $(() => {
     transition-property: padding, line-height, color;
 }
 
-.hero .back-to-root-link .back-to-root-icon {
+.hero .icon-button.back-to-root-link .back-to-root-icon {
     vertical-align: middle;
 }
 
 
-.hero .brightness-toggle {
+.hero .icon-button {
     align-self: start;
     position: fixed;
     top: 0;
@@ -244,7 +244,7 @@ $(() => {
     transition-property: padding, line-height, color;
 }
 
-.hero .brightness-toggle .material-icons {
+.hero .icon-button .material-icons {
     vertical-align: middle;
 }
 
@@ -561,6 +561,59 @@ figure.infobox > .infobox-info {
     background: none;
 }
 
+.app-bar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: calc(var(--app-bar-z-index) + 1);
+    height: var(--app-bar-height-auto);
+
+
+    /* .flex-row */
+    display: -webkit-box!important;
+    display: -moz-box!important;
+    display: -ms-flexbox!important;
+    display: -webkit-flex!important;
+    display: flex!important;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+
+    /* [class^=flex-], [class*=" flex-"] */
+    display: -webkit-box!important;
+    display: -moz-box!important;
+    display: -ms-flexbox!important;
+    display: -webkit-flex!important;
+    display: flex!important;
+
+    /* .flex-row.flex-horiz-space-between */
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.app-bar-overlay .icon-button {
+    height: var(--app-bar-height-auto);
+    width: var(--app-bar-height-auto);
+    display: block;
+    /* vertical-align: middle; */
+    text-align: center;
+    line-height: var(--app-bar-height-auto);
+}
+
+.icon-button>* {
+    vertical-align: middle;
+}
+
+.icon-button {
+    color: inherit;
+}
+
 main {
     margin: 0 auto;
     padding: 0 2vw;
@@ -609,6 +662,11 @@ header h1,
     display: none;
 }
 
+
+.invisible {
+    visibility: hidden;
+}
+
 </style>
 </head>
 
@@ -622,15 +680,10 @@ header h1,
 
 
     <section class="hero gradient-background   flex-column flex-vert-center">
-        <a href="#" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
         <div class="sticky-top">
             <h1 class="title-text">Ben C. Leggiero</h1>
             <h2 class="subtitle-text">Developer&emsp;|&emsp;Designer</h2>
         </div>
-        <a href="#" class="icon-button brightness-toggle hidden" onclick="return didClickBrightnessToggle()"><i class="material-icons   ">brightness_4</i></a>
-        <script>
-        $(".brightness-toggle").toggleClass("hidden")
-        </script>
     </section>
 
 
@@ -847,5 +900,18 @@ header h1,
             </aside>
         </div>
     </article>
+
+
+    <nav class="app-bar-overlay">
+        <section>
+            <a href="#" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
+        </section>
+        <section>
+            <a href="https://GitHub.com/BenLeggiero/resumes" target="_blank" class="icon-button"><i class="fab fa-github fa-2x"></i></a>
+        </section>
+        <script>
+        $(".brightness-toggle").toggleClass("hidden")
+        </script>
+    </nav>
 </body>
 </html>

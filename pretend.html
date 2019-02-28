@@ -161,7 +161,7 @@ $(() => {
     --tech-spec-meter-height: 36px; /*3em;*/
     --tech-spec-meter-width: calc(var(--tech-spec-meter-height) * 20 / 3);
 
-    } @media (max-width: 960px) { :root { /* --phone-landscape-large-max-width */
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) { :root { /* --phone-landscape-large-max-width */
         --tech-spec-meter-height: 24px;
     }
 }
@@ -199,7 +199,7 @@ $(() => {
     font-size: 18vmin;
 
     } @media (max-aspect-ratio:1/1) { .hero .title-text {
-        font-size: 11vmin;
+        font-size: 10vmin;
     }
 }
 
@@ -209,7 +209,7 @@ $(() => {
     font-size: 7.5vmin;
 
     } @media (max-aspect-ratio:1/1) { .hero .subtitle-text {
-        font-size: 6vmin;
+        font-size: 5.5vmin;
     }
 }
 
@@ -359,8 +359,7 @@ p:not(:last-child) {
 .flex-row.has-sidebar>* {
     flex-grow: 2;
     flex-shrink: 2;
-    flex-basis: 0;
-    /*min-width: var(--phone-landscape-small-max-width);*/
+    flex-basis: var(--phone-landscape-small-max-width);
 }
 
 
@@ -448,7 +447,7 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
     padding: 8px;
     border-radius: 12px;
     margin: 3em 0;
-    } @media screen and (max-width: 640px) { .infobox {
+    } @media screen and (max-width: 640px), (max-aspect-ratio:1/1) { .infobox {
         -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -481,7 +480,7 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
 }
 .infobox dl > div {
     margin: 0 2ex;
-    } @media screen and (max-width: 640px) { .infobox dl > div {
+    } @media screen and (max-width: 640px), (max-aspect-ratio:1/1) { .infobox dl > div {
         width: 100%;
     }
 }
@@ -844,6 +843,10 @@ header h1,
                         <div>
                             <dt><h2>Networking</h2></dt>
                                 <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Git</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
                         </div>
                     </dl>
 

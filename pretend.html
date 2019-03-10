@@ -236,6 +236,8 @@ function setUpDarkModeCheckBox() {
             setDarkMode($("#dark-mode-toggle").is(":checked"))
         }
     })
+
+    $("#dark-mode-toggle").prop("checked", isDarkBrightness())
 }
 
 

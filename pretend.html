@@ -79,6 +79,17 @@
 
 
 <script>
+
+const ThemeBrightness = {
+    black : "brightness-black",
+    dark : "brightness-dark",
+    light : "brightness-light",
+    white : "brightness-white",
+}
+
+let userWantsHighContrastModeNext = false
+
+
 function didClickBrightnessToggle() {
     if ($(":root").hasClass("brightness-dark")) {
         $(":root").removeClass("brightness-dark").addClass("brightness-light")
@@ -139,8 +150,106 @@ function isDevicePowerfulEnoughForAnimations(callback) {
             callback(isElectricityFromAWire)
         })
     }
-
 }
+
+
+function setDarkMode(isDarkMode) {
+    setThemeBrightness(isDarkMode ? ThemeBrightness.dark : ThemeBrightness.light)
+}
+
+
+function isDarkBrightness() {
+    switch (currentThemeBrightness()) {
+        case ThemeBrightness.black:
+        case ThemeBrightness.dark:
+            return true
+
+        default:
+            return false
+    }
+}
+
+
+function setHighContrastDarkMode(isHighContrastDarkMode) {
+    setThemeBrightness(isHighContrastDarkMode ? ThemeBrightness.black : ThemeBrightness.white)
+}
+
+
+function isHighContrastBrightness() {
+    switch (currentThemeBrightness()) {
+        case ThemeBrightness.black:
+        case ThemeBrightness.white:
+            return true
+
+        default:
+            return false
+    }
+}
+
+
+function setThemeBrightness(brightness) {
+    $(":root").removeClass((_, className) => {
+        return className.match(/(\bbrightness-\w+)/gim)
+    })
+
+    $(":root").addClass(brightness)
+}
+
+
+function currentThemeBrightness() {
+    return $(":root")[0].className.match(/\bbrightness-\w+/gi)[0]
+}
+
+
+function setReduceMotion(shouldReduceMotion) {
+    $(":root").toggleClass("reduce-motion", shouldReduceMotion)
+}
+
+
+function setUpDarkModeCheckBox() {
+    $("#dark-mode-toggle").click(event => {
+        if (event.altKey || event.ctrlKey || event.shiftKey) {
+            userWantsHighContrastModeNext = true
+        }
+        else {
+            userWantsHighContrastModeNext = false
+        }
+    })
+
+    $("#dark-mode-toggle").change(event => {
+        if (userWantsHighContrastModeNext) {
+            userWantsHighContrastModeNext = false
+            const wasDarkModeAlready = isDarkBrightness()
+            const shouldCheckDarkModeCheckBox = wasDarkModeAlready
+
+            if (isHighContrastBrightness()) {
+                setDarkMode(wasDarkModeAlready)
+            }
+            else {
+                setHighContrastDarkMode(wasDarkModeAlready)
+            }
+
+            $("#dark-mode-toggle").prop("checked", shouldCheckDarkModeCheckBox)
+            return shouldCheckDarkModeCheckBox
+        }
+        else {
+            setDarkMode($("#dark-mode-toggle").is(":checked"))
+        }
+    })
+}
+
+
+function setUpReduceMotionCheckBox() {
+    $("#reduce-motion-toggle").change(event => {
+        setReduceMotion($("#reduce-motion-toggle").is(":checked"))
+    })
+}
+
+
+function setUpMenuTouchCompatibility() {
+    $(".shows-child-on-hover")
+}
+
 
 $(() => {
     isDevicePowerfulEnoughForAnimations(isDevicePowerfulEnoughForAnimations => {
@@ -150,7 +259,13 @@ $(() => {
         else {
             $(":root").addClass("reduce-motion")
         }
+
+        $("#reduce-motion-toggle").prop('checked', !isDevicePowerfulEnoughForAnimations)
     })
+
+    setUpDarkModeCheckBox()
+    setUpReduceMotionCheckBox()
+    setUpMenuTouchCompatibility()
 })
 </script>
 
@@ -514,7 +629,7 @@ figure.infobox > .infobox-info {
     max-width: var(--phone-landscape-small-max-width);
 }
 
-.infobox-vert .infobox-subject {
+.infobox-with-dynamic-layout .infobox-subject {
   height: auto;
   max-height: 20vh;
 }
@@ -638,6 +753,7 @@ h1 {
 
 h1, h2, h3, h4, h5, h6 {
     word-break: break-word;
+    hyphens: none;
 }
 h2 small {
     display: inline-block;
@@ -664,6 +780,104 @@ header h1,
 
 .invisible {
     visibility: hidden;
+}
+
+/* selecting second half of items (round up). Up to 6 */
+.app-bar-overlay>*:first-child:last-child .icon-button,
+.app-bar-overlay>*:nth-child(n+2):nth-last-child(-n+2) .icon-button,
+.app-bar-overlay>*:nth-child(n+3):nth-last-child(-n+3) .icon-button,
+.app-bar-overlay>*:nth-child(n+4):nth-last-child(-n+4) .icon-button,
+.app-bar-overlay>*:nth-child(n+5):nth-last-child(-n+5) .icon-button,
+.app-bar-overlay>*:nth-child(n+6):nth-last-child(-n+6) .icon-button {
+    margin: auto;
+}
+
+/* selecting second half of items (rounding down). Up to 6 */
+.app-bar-overlay>*:nth-child(n+1):nth-last-child(-n+2) .icon-button,
+.app-bar-overlay>*:nth-child(n+2):last-child .icon-button,
+.app-bar-overlay>*:nth-child(n+3):nth-last-child(-n+2) .icon-button,
+.app-bar-overlay>*:nth-child(n+4):nth-last-child(-n+3) .icon-button,
+.app-bar-overlay>*:nth-child(n+5):nth-last-child(-n+4) .icon-button,
+.app-bar-overlay>*:nth-child(n+6):nth-last-child(-n+5) .icon-button,
+.app-bar-overlay>*:nth-child(n+7):nth-last-child(-n+6) .icon-button {
+    margin-right: 0;
+}
+
+.app-bar,
+.app-bar-overlay {
+    color: var(--dark-theme-foreground-color);
+}
+
+.shows-child-on-hover {
+    position: relative;
+}
+
+.shows-child-on-hover .shown-on-parent-hover {
+    transition-property: visibility;
+}
+.reduce-motion .shows-child-on-hover .shown-on-parent-hover {
+    transition-property: visibility !important;
+}
+
+.shows-child-on-hover:not(:hover) .shown-on-parent-hover {
+    visibility: hidden;
+    transition-delay: 1s;
+}
+
+.shows-child-on-hover .shown-on-paren-hover[data-show-approach="unfurl-down"] {
+
+}
+
+.context-menu {
+    --context-menu-vertical-padding: 1ex;
+
+    background: var(--theme-background-color);
+    color: var(--theme-foreground-color);
+
+    box-shadow: var(--box-shadow-z6);
+    padding: var(--context-menu-vertical-padding) 0;
+    border-radius: var(--context-menu-vertical-padding);
+    list-style-type: none;
+    margin: 1ex;
+
+    transition-property: background-color, color;
+}
+.shows-child-on-hover .context-menu.shown-on-parent-hover {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: max-content;
+
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+    transform-origin: top right;
+
+    transition-property: background-color, color, opacity, transform, visibility;
+}
+.reduce-motion .shows-child-on-hover .context-menu.shown-on-parent-hover {
+    transition-property: opacity, visibility !important;
+    transform: none !important;
+}
+.shows-child-on-hover:not(:hover) .context-menu.shown-on-parent-hover {
+    opacity: 0;
+    transform: scale(0.1) translate(-1in, -2in);
+}
+.context-menu>* {
+    padding: 0;
+    margin: 0;
+}
+.context-menu .context-menu-item {
+    padding: 1ex 2ex;
+}
+.context-menu .context-menu-item label span+input,
+.context-menu .context-menu-item label input+span,
+.context-menu label.context-menu-item span+input,
+.context-menu label.context-menu-item input+span {
+    margin-left: 1em;
+}
+
+.context-menu .context-menu-item:hover {
+    background-color: #8888;
 }
 
 </style>
@@ -694,40 +908,40 @@ header h1,
             <main>
                 <section class="content">
                     <h1>Employ&shy;ment</h1>
-                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
                         <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-white-logo.svg')" data-required-theme-type="dark"></a>
                         <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-dark-grey-logo.svg')" data-required-theme-type="light"></a>
                         <figcaption class="infobox-info">
-                            <h2>Ionic Security <small>(<time datetime="2017-03-27">2017</time> – <i>present</i>)</small></h2>
-                            <h3>Senior macOS Software Engineer</h3>
-                            <p>Building industry-edge <strong>client-side</strong> file <strong>encryption</strong> and access software for macOS. Collaborate on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.</p>
+                            <h2>Ion&shy;ic Se&shy;cu&shy;ri&shy;ty <small>(<time datetime="2017-03-27">2017</time> – <i>present</i>)</small></h2>
+                            <h3>mac&shy;OS Soft&shy;ware En&shy;gi&shy;neer</h3>
+                            <p>Architecting <strong>user-facing</strong> file <strong>encryption</strong> and access software for macOS. Collaborate on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.</p>
                             <p>Working closely with UI/UX team to hone the design of multiple company products, including <strong>graphics</strong>, <strong>animations</strong>, user <strong>flows</strong>, and overall <strong>experience</strong>.</p>
                         </figcaption>
                     </figure>
-                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
                         <a class="infobox-subject" href="https://RenewedVision.com" target="_blank" style="background-image: url('./_img/Renewed-Vision-logo-icon.png')"></a>
                         <figcaption class="infobox-info">
-                            <h2>Renewed Vision <small>(<time datetime="2017-03-27">2016</time> – <time datetime="2017-01-16">2017</time>)</small></h2>
-                            <h3>macOS Software Engineer</h3>
+                            <h2>Re&shy;newed Vi&shy;sion <small>(<time datetime="2017-03-27">2016</time> – <time datetime="2017-01-16">2017</time>)</small></h2>
+                            <h3>mac&shy;OS Soft&shy;ware En&shy;gi&shy;neer</h3>
                             <p>Built industry-leading <strong>professional presentation</strong> software for <strong>macOS</strong>. Collaboratively created <strong>software platforms</strong> with <strong>open-source &amp; proprietary</strong> tech: advanced <strong>auto font scaling</strong>, <strong>inspector</strong>, animated grid item selector</p>
                             <p>Designed dozens of <strong>icons</strong> &amp; other graphics, <strong>user flows</strong>, interface approaches, <strong>animations</strong>, and more.</p>
                         </figcaption>
                     </figure>
-                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
                         <a class="infobox-subject" href="https://NCRSilver.com" target="_blank" style="background-image: url('./_img/NCR-logo.svg')"></a>
                         <figcaption class="infobox-info">
-                            <h2>NCR &mdash; Small &amp; Medium Business <small>(<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>)</small></h2>
-                            <h3>Mobile Software Engineer</h3>
+                            <h2>NCR &mdash; Small &amp; Medi&shy;um Busi&shy;ness <small>(<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>)</small></h2>
+                            <h3>Mo&shy;bile Soft&shy;ware En&shy;gi&shy;neer</h3>
                             <p>Built state-of-the-art <strong>point-of-sale</strong> software for <strong>iOS &amp; Android</strong>. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.</p>
                             <p>Worked alongside UI design team to <strong>revamp</strong> the system's <strong>look-and-feel</strong>.</p>
                         </figcaption>
                     </figure>
-                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
                         <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_BlueBackground.svg')" data-required-theme-type="dark"></a>
                         <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_WhiteBackground.svg')" data-required-theme-type="light"></a>
                         <figcaption class="infobox-info">
-                            <h2>University System of Georgia &mdash; Information Technology Services <small>(<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>)</small></h2>
-                            <h3>Web Developer &amp; Designer</h3>
+                            <h2>Uni&shy;ver&shy;si&shy;ty Sys&shy;tem of Geor&shy;gia &mdash; In&shy;for&shy;ma&shy;tion Tech&shy;nol&shy;o&shy;gy Ser&shy;vices <small>(<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>)</small></h2>
+                            <h3>Web De&shy;vel&shy;op&shy;er &amp; De&shy;sign&shy;er</h3>
                             <p>Redesigned &amp; rebuilt <a href="https://ColumbusState.edu" target="_blank">ColumbusState.edu</a> and dozens of sub-sites in <strong>HTML5+CSS3</strong>, with <strong>XSLT &amp; PHP</strong> where needed. Made <strong>templates for CMS</strong> so teachers could build pages.</p>
                             <p>Invented, critiqued, and <strong>evolved design elements</strong> for CSU website. Designed pages for all schools of the University within a <strong>consistent theme</strong>.</p>
                         </figcaption>
@@ -736,7 +950,7 @@ header h1,
 
                 <section class="content">
                     <h1>Edu&shy;ca&shy;tion</h1>
-                    <figure class="infobox infobox-vert   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
                         <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_BlueBackground.svg')" data-required-theme-type="dark"></a>
                         <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_WhiteBackground.svg')" data-required-theme-type="light"></a>
                         <figcaption class="infobox-info">
@@ -744,37 +958,6 @@ header h1,
                             <h3>Bachelor of Science in Computer Science</h3>
                         </figcaption>
                     </figure>
-                </section>
-
-                <section class="hidden content">
-                    <h1>Temporary Filler Text</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan magna et ex fermentum, pretium elementum nisi pretium. Mauris sed malesuada ex. Praesent a ultricies leo. In vitae sem nec justo venenatis rutrum. Sed porta sapien sit amet purus cursus dictum. Morbi orci nisi, fringilla lobortis tellus at, aliquam semper elit. In hac habitasse platea dictumst. Cras augue nulla, auctor in elementum non, dapibus at purus. Nunc non eros molestie, porta quam in, dignissim nisl. Pellentesque consectetur risus a metus dapibus, quis vehicula nisi sodales. Vestibulum accumsan ante tristique ipsum scelerisque, facilisis dapibus orci finibus. Praesent magna sem, feugiat ac elementum a, ornare eget massa. Aliquam erat volutpat.
-                    </p>
-                    <p>
-                        Proin finibus nunc eu risus aliquet tincidunt. Morbi blandit turpis non fermentum suscipit. Pellentesque elementum lacus et pharetra tristique. Nam convallis consectetur convallis. Fusce ullamcorper magna vel sagittis commodo. Vestibulum odio justo, ullamcorper nec ligula id, lacinia suscipit massa. Phasellus a libero id felis euismod auctor. Mauris vestibulum elementum felis non vulputate. Quisque eget rutrum quam. Sed pulvinar nisl sed lectus bibendum pellentesque. Fusce lacus ante, laoreet non eros vel, eleifend tempus massa. Mauris in blandit ligula. Fusce commodo nunc ac ullamcorper fringilla. Vivamus purus enim, varius eu neque eu, dapibus fringilla nibh.
-                    </p>
-                    <p>
-                        Praesent nec mi a lacus sollicitudin fringilla. Nulla in pulvinar nibh, ac elementum dui. Cras quam dolor, varius a lacus sed, commodo vulputate velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In justo lorem, rhoncus faucibus blandit nec, finibus at massa. Nulla ut quam in erat pharetra hendrerit eu in ante. Sed at ipsum tristique magna laoreet mattis at vitae neque. Fusce elementum eros nibh, at rutrum turpis efficitur vitae. Nulla porttitor magna ac mattis venenatis. Phasellus interdum fringilla lacus. Fusce tincidunt aliquam gravida. Donec sed accumsan velit, eget ornare ipsum. Fusce ac neque sem. In efficitur quis augue non convallis. Nam suscipit, enim sed mollis fermentum, turpis libero malesuada magna, id tempus odio arcu nec lacus.
-                    </p>
-                    <p>
-                        Ut vehicula, lectus quis rhoncus semper, massa orci scelerisque risus, ac pellentesque tortor elit vitae nisi. Pellentesque tincidunt, nisi ut blandit fringilla, augue tortor placerat erat, eget egestas elit ex sit amet ipsum. Aliquam et mollis neque, ut posuere risus. In in placerat erat. Aenean a consectetur neque. Pellentesque dictum fringilla arcu, vitae varius libero dictum nec. Fusce a mauris nulla. Nulla ac justo vitae ante sollicitudin commodo et nec massa. Fusce posuere, dui a auctor maximus, libero lectus tristique enim, eget scelerisque orci erat nec risus. Aenean sagittis turpis turpis, sit amet vehicula turpis vehicula sit amet. Donec pulvinar, ipsum gravida cursus bibendum, est arcu fermentum sapien, sit amet tincidunt lectus metus eu dui. Integer vitae hendrerit sem. Ut pulvinar mauris et dictum pretium.
-                    </p>
-                    <p>
-                        Proin dignissim consequat porta. Etiam rhoncus non ante in accumsan. Suspendisse arcu ante, ullamcorper sit amet mi a, placerat suscipit tortor. Etiam quis nisl vitae ligula rutrum tincidunt ac quis risus. Nulla ac nunc ut arcu tempus viverra eu eget felis. Sed euismod aliquam justo, et volutpat massa accumsan vel. Duis finibus libero nec mollis bibendum. Aliquam id odio pellentesque odio luctus auctor.
-                    </p>
-                    <p>
-                        Donec dignissim, erat congue interdum vehicula, sem mauris hendrerit eros, ut varius dui mi vehicula metus. Proin consequat egestas elit, non placerat eros vehicula eget. Donec purus purus, tincidunt ac hendrerit vitae, tempus ut nulla. Pellentesque pulvinar justo sit amet hendrerit accumsan. Morbi a facilisis libero. Suspendisse tempus consectetur elementum. Nunc in ex a massa imperdiet tristique. Phasellus finibus egestas mauris. Etiam iaculis mollis lorem. Sed pharetra magna metus. Proin ullamcorper velit eget urna venenatis viverra. Aenean ut lacus magna. Integer finibus odio eget elit hendrerit blandit eu quis tortor. Etiam sed ex a nunc tempor accumsan sed varius urna. Aliquam placerat orci justo, nec faucibus dolor placerat nec. Quisque lobortis blandit velit, at tincidunt tortor facilisis vel.
-                    </p>
-                    <p>
-                        Donec tempus velit eu tortor convallis, ultrices laoreet eros fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus urna sem, non feugiat urna convallis vitae. Duis sollicitudin nisi in aliquam convallis. Proin quis nunc porttitor, fermentum nunc a, imperdiet nisi. Mauris malesuada, risus id elementum tincidunt, massa lacus condimentum ipsum, porttitor blandit tortor velit sit amet mauris. Praesent a nisi lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Ut faucibus a enim non gravida. Sed augue diam, tincidunt a ex rutrum, varius sodales mi. Sed eget mauris dolor.
-                    </p>
-                    <p>
-                        Fusce condimentum ligula eros, id facilisis erat convallis quis. Vivamus finibus et est sed auctor. Duis est dui, ullamcorper sit amet ipsum eu, dictum posuere mi. Curabitur quis enim at lacus sollicitudin imperdiet. Praesent facilisis purus ac velit elementum efficitur. Duis lobortis lacinia nibh, ut tempor mi pulvinar vitae. Aenean fringilla risus ut augue varius egestas. Sed lorem nunc, placerat consectetur volutpat ut, porttitor ut turpis. Ut tincidunt dictum erat ut auctor.
-                    </p>
-                    <p>
-                        Maecenas eu rhoncus orci, in finibus mauris. Proin in fermentum elit. Curabitur posuere metus at sapien pulvinar rhoncus. Proin luctus ex sed ex bibendum iaculis. Etiam egestas nisi quis elit consectetur, sed sodales augue dapibus. Nullam turpis dui, pharetra quis justo ut, interdum pretium libero. Nulla tincidunt volutpat leo, sed gravida lacus eleifend sit amet. In dapibus congue tellus eu consectetur. Morbi mollis feugiat nulla sit amet molestie. Vestibulum ante augue, dictum a dapibus at, dignissim eu nulla. Sed mi metus, placerat sed libero vitae, semper hendrerit quam. Fusce nisl diam, placerat in nibh ut, auctor lobortis ante.
-                    </p>
                 </section>
             </main>
 
@@ -905,12 +1088,21 @@ header h1,
     </article>
 
 
+    <!-- <footer>
+        <a href="https://GitHub.com/BenLeggiero/resumes" target="_blank" class="icon-button"><i class="fab fa-github fa-2x"></i></a>
+    </footer> -->
+
+
     <nav class="app-bar-overlay">
         <section>
             <a href="#" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
         </section>
-        <section>
-            <a href="https://GitHub.com/BenLeggiero/resumes" target="_blank" class="icon-button"><i class="fab fa-github fa-2x"></i></a>
+        <section class="shows-child-on-hover">
+            <i class="icon-button material-icons">more_vert</i>
+            <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Reduce Motion</span> <input name="reduce-motion-toggle" id="reduce-motion-toggle" type="checkbox" checked /></label></li>
+            </ol>
         </section>
         <script>
         $(".brightness-toggle").toggleClass("hidden")

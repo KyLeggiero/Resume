@@ -87,6 +87,7 @@ const ThemeBrightness = {
     white : "brightness-white",
 }
 
+let userWantsHighContrastModeNext = false
 
 
 function didClickBrightnessToggle() {
@@ -157,6 +158,35 @@ function setDarkMode(isDarkMode) {
 }
 
 
+function isDarkBrightness() {
+    switch (currentThemeBrightness()) {
+        case ThemeBrightness.black:
+        case ThemeBrightness.dark:
+            return true
+
+        default:
+            return false
+    }
+}
+
+
+function setHighContrastDarkMode(isHighContrastDarkMode) {
+    setThemeBrightness(isHighContrastDarkMode ? ThemeBrightness.black : ThemeBrightness.white)
+}
+
+
+function isHighContrastBrightness() {
+    switch (currentThemeBrightness()) {
+        case ThemeBrightness.black:
+        case ThemeBrightness.white:
+            return true
+
+        default:
+            return false
+    }
+}
+
+
 function setThemeBrightness(brightness) {
     $(":root").removeClass((_, className) => {
         return className.match(/(\bbrightness-\w+)/gim)
@@ -166,14 +196,45 @@ function setThemeBrightness(brightness) {
 }
 
 
+function currentThemeBrightness() {
+    return $(":root")[0].className.match(/\bbrightness-\w+/gi)[0]
+}
+
+
 function setReduceMotion(shouldReduceMotion) {
     $(":root").toggleClass("reduce-motion", shouldReduceMotion)
 }
 
 
 function setUpDarkModeCheckBox() {
+    $("#dark-mode-toggle").click(event => {
+        if (event.altKey || event.ctrlKey || event.shiftKey) {
+            userWantsHighContrastModeNext = true
+        }
+        else {
+            userWantsHighContrastModeNext = false
+        }
+    })
+
     $("#dark-mode-toggle").change(event => {
-        setDarkMode($("#dark-mode-toggle").is(":checked"))
+        if (userWantsHighContrastModeNext) {
+            userWantsHighContrastModeNext = false
+            const wasDarkModeAlready = isDarkBrightness()
+            const shouldCheckDarkModeCheckBox = wasDarkModeAlready
+
+            if (isHighContrastBrightness()) {
+                setDarkMode(wasDarkModeAlready)
+            }
+            else {
+                setHighContrastDarkMode(wasDarkModeAlready)
+            }
+
+            $("#dark-mode-toggle").prop("checked", shouldCheckDarkModeCheckBox)
+            return shouldCheckDarkModeCheckBox
+        }
+        else {
+            setDarkMode($("#dark-mode-toggle").is(":checked"))
+        }
     })
 }
 

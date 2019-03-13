@@ -52,6 +52,7 @@
 <!-- END Basic Stylesheets -->
 
 <!-- BEGIN Style-Switcher Stylesheets -->
+<link rel="stylesheet" id="_switchSheetBackup" href="https://stylesheets.BHStudios.org/assets/v2/basics/print.css"/>
 <link rel="stylesheet" id="_switchSheetBackup" href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/>
 <!-- <link rel="stylesheet" id="_switchSheet"       href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/> -->
 <!-- END Style-Switcher Stylesheets -->
@@ -651,6 +652,12 @@ figure.infobox > .infobox-info {
     padding: 0 0 5mm;
 }
 
+footer {
+    max-width: var(--tablet-landscape-small-max-width);
+    margin: auto;
+    text-align: center;
+}
+
 
 /* To be transferred */
 
@@ -757,6 +764,8 @@ h1 {
 
 h1, h2, h3, h4, h5, h6 {
     word-break: break-word;
+}
+h2, h3, h4, h5, h6 {
     hyphens: none;
 }
 h2 small {
@@ -835,7 +844,7 @@ header h1,
 .context-menu {
     --context-menu-vertical-padding: 1ex;
 
-    background: var(--theme-background-color);
+    background: var(--background-at-level-atop-parent);
     color: var(--theme-foreground-color);
 
     box-shadow: var(--box-shadow-z6);
@@ -934,7 +943,7 @@ header h1,
         <div class="flex-row flex-wrap has-sidebar">
             <main style="transform: translate3d(0,0,0) !important">
                 <section class="content">
-                    <h1>Employ&shy;ment</h1>
+                    <h1>Em&shy;ploy&shy;ment</h1>
                     <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
                         <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-white-logo.svg')" data-required-theme-type="dark"></a>
                         <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-dark-grey-logo.svg')" data-required-theme-type="light"></a>
@@ -1147,7 +1156,7 @@ header h1,
     	<aside class="text-center">
     		Last updated <time datetime="2019-03-10">2019-03-10</time><span class="hide-print">
     		—
-    		<a href="/documents/Leggiero-Resume_2019-03-10.txt" title="Text-only version"><i class="fa fa-file-text-o"></i> Text-only version</a></span>
+    		<a href="/documents/Leggiero-Resume_2019-03-10.txt" title="Text-only version"><i class="far fa-file-alt"></i> Text-only version</a></span>
     	</aside>
     </footer>
 

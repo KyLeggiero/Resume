@@ -90,6 +90,12 @@ const ThemeBrightness = {
 let userWantsHighContrastModeNext = false
 
 
+
+function disableDisabledLinks() {
+    $(":link[disabled], :visited[disabled]").click(() => false)
+}
+
+
 function didClickBrightnessToggle() {
     if ($(":root").hasClass("brightness-dark")) {
         $(":root").removeClass("brightness-dark").addClass("brightness-light")
@@ -259,16 +265,23 @@ function setUpReduceMotionCheckBox() {
     $("#reduce-motion-toggle").change(event => {
         setReduceMotion($("#reduce-motion-toggle").is(":checked"))
     })
+    $("#reduce-motion-toggle").prop("checked", true)
 }
 
 
 function setUpMenuTouchCompatibility() {
-    $(".shows-child-on-hover")
+    const hoverParent = $(".shows-child-on-hover")
+
+    hoverParent.bind("tap", event => {
+        const shouldShowMenu = event.target.is(":hover") || event.target.is(":focus")
+
+        // 🤷🏼
+    })
 }
 
 
 $(() => {
-    $(":link[disabled], :visited[disabled]").click(() => false)
+    disableDisabledLinks()
 
     setUpAutoReduceMotion()
     setUpDarkModeCheckBox()
@@ -337,6 +350,10 @@ $(() => {
     } @media (max-aspect-ratio:1/1) { .hero .subtitle-text {
         font-size: 5.5vmin;
     }
+}
+
+.hero .title-holder {
+    margin: 1ex 0;
 }
 
 
@@ -933,14 +950,14 @@ footer aside {
 
 <body>
     <header class="app-bar gradient-background">
-        <a href="#" class="icon-button back-to-root-link"><h1 class="title"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <span class="title-text">Ben C. Leggiero</span><span class="subtitle-text"></span></h1></a>
+        <a href="#" class="icon-button back-to-root-link"><h1 class="title"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
     </header>
 
 
 
     <section class="hero gradient-background   flex-column flex-vert-center">
-        <div class="sticky-top">
-            <h1 class="title-text">Ben C. Leggiero</h1>
+        <div class="sticky-top title-holder">
+            <h1 class="title-text">Ben Leggiero</h1>
             <h2 class="subtitle-text">Developer&emsp;|&emsp;Designer</h2>
         </div>
     </section>
@@ -1148,15 +1165,18 @@ footer aside {
     	</section>
 
     	<section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
-    		<a href="/calendar" class="button" disabled><i class="fa fa-calendar"></i> <span>Calendar</span></a>
-    		<a href="/portfolio" class="button" disabled><i class="fa fa-th"></i> <span>Portfolio</span></a>
-    		<a href="https://stackoverflow.com/story/benleggiero" target="_blank" class="button"><i class="fab fa-stack-overflow"></i> <span>StackOverflow</span></a>
-    		<a href="https://github.com/BenLeggiero" target="_blank" class="button"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>
-    		<a href="https://github.com/BlueHuskyStudios" target="_blank" class="button"><i class="fab fa-github"></i> <span>GitHub <small>(Big Projects)</small></span></a>
-            <a href="https://BenLeggiero.blog" target="_blank" class="button"><i class="fas fa-blog"></i> <span>Blog</span></a>
-            <a href="https://mastodon.social/@BenLeggiero" target="_blank" class="button"><i class="fab fa-mastodon"></i> <span>Mastodon</span></a>
-    		<a href="https://google.com/+BenLeggiero" target="_blank" class="button"><i class="fab fa-google-plus-square"></i> <span>Google+</span></a>
-    		<a href="https://twitter.com/BenLeggiero" target="_blank" class="button"><i class="fab fa-twitter-square"></i> <span>Twitter</span></a>
+    		<a href="/calendar" class="button medium-emphasis" disabled><i class="fa fa-calendar"></i> <span>Calendar</span></a>
+    		<a href="/portfolio" class="button medium-emphasis" disabled><i class="fa fa-th"></i> <span>Portfolio</span></a>
+    		<a href="https://stackoverflow.com/story/benleggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-stack-overflow"></i> <span>StackOverflow</span></a>
+    		<a href="https://github.com/BenLeggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>
+    		<a href="https://github.com/BlueHuskyStudios" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Big Projects)</small></span></a>
+    	</section>
+
+    	<section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
+            <a href="https://BenLeggiero.blog" target="_blank" class="button low-emphasis"><i class="fas fa-blog"></i> <span>Blog</span></a>
+            <a href="https://mastodon.social/@BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-mastodon"></i> <span>Mastodon</span></a>
+    		<a href="https://google.com/+BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-google-plus-square"></i> <span>Google+</span></a>
+    		<a href="https://twitter.com/BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-twitter-square"></i> <span>Twitter</span></a>
     	</section>
 
     	<section class="show-print text-centered">

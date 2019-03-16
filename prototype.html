@@ -77,218 +77,7 @@
 <!-- <script src="./_js/production/resumes/lib/kotlin.js"> /* Kotlin/JS */ </script> -->
 <!-- <script src="./_js/production/resumes/resumes.js"> /* Scripts just for this page */ </script> -->
 
-
-<script>
-
-const ThemeBrightness = {
-    black : "brightness-black",
-    dark : "brightness-dark",
-    light : "brightness-light",
-    white : "brightness-white",
-}
-
-let userWantsHighContrastModeNext = false
-
-
-
-function disableDisabledLinks() {
-    $(":link[disabled], :visited[disabled]").click(() => false)
-}
-
-
-function didClickBrightnessToggle() {
-    if ($(":root").hasClass("brightness-dark")) {
-        $(":root").removeClass("brightness-dark").addClass("brightness-light")
-    }
-    else {
-        $(":root").removeClass("brightness-light").addClass("brightness-dark")
-    }
-    return false;
-}
-
-
-function isDevicePowerfulEnoughForAnimations(callback) {
-    function isInternetConnectionHardWired() {
-        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection
-        if (undefined === connection) {
-            return undefined
-        }
-        const connectionType = connection.type
-
-        switch (connectionType) {
-            case "ethernet":
-                return true
-
-            case "bluetooth":
-            case "cellular":
-            case "none":
-            case "wifi":
-            case "wimax":
-            case "other":
-            case "unknown":
-                return false
-        }
-    }
-
-
-    function isElectricityFromAWire(callback) {
-        window.navigator.getBattery().then(battery => {
-            callback(
-                battery.charging
-                && battery.level == 1
-                && !isFinite(battery.dischargingTime)
-                && battery.chargingTime == 0
-            )
-
-            battery.on
-        })
-    }
-
-
-    function isMobileUserAgent() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(window.navigator.userAgent)
-    }
-
-
-    if (isInternetConnectionHardWired()
-        && !isMobileUserAgent()) {
-        isElectricityFromAWire(isElectricityFromAWire => {
-            callback(isElectricityFromAWire)
-        })
-    }
-}
-
-
-function setUpAutoReduceMotion() {
-    isDevicePowerfulEnoughForAnimations(isDevicePowerfulEnoughForAnimations => {
-        if (isDevicePowerfulEnoughForAnimations) {
-            $(":root").removeClass("reduce-motion")
-        }
-        else {
-            $(":root").addClass("reduce-motion")
-        }
-
-        $("#reduce-motion-toggle").prop('checked', !isDevicePowerfulEnoughForAnimations)
-    })
-}
-
-
-function setDarkMode(isDarkMode) {
-    setThemeBrightness(isDarkMode ? ThemeBrightness.dark : ThemeBrightness.light)
-}
-
-
-function isDarkBrightness() {
-    switch (currentThemeBrightness()) {
-        case ThemeBrightness.black:
-        case ThemeBrightness.dark:
-            return true
-
-        default:
-            return false
-    }
-}
-
-
-function setHighContrastDarkMode(isHighContrastDarkMode) {
-    setThemeBrightness(isHighContrastDarkMode ? ThemeBrightness.black : ThemeBrightness.white)
-}
-
-
-function isHighContrastBrightness() {
-    switch (currentThemeBrightness()) {
-        case ThemeBrightness.black:
-        case ThemeBrightness.white:
-            return true
-
-        default:
-            return false
-    }
-}
-
-
-function setThemeBrightness(brightness) {
-    $(":root").removeClass((_, className) => {
-        return className.match(/(\bbrightness-\w+)/gim)
-    })
-
-    $(":root").addClass(brightness)
-}
-
-
-function currentThemeBrightness() {
-    return $(":root")[0].className.match(/\bbrightness-\w+/gi)[0]
-}
-
-
-function setReduceMotion(shouldReduceMotion) {
-    $(":root").toggleClass("reduce-motion", shouldReduceMotion)
-}
-
-
-function setUpDarkModeCheckBox() {
-    $("#dark-mode-toggle").click(event => {
-        if (event.altKey || event.ctrlKey || event.shiftKey) {
-            userWantsHighContrastModeNext = true
-        }
-        else {
-            userWantsHighContrastModeNext = false
-        }
-    })
-
-    $("#dark-mode-toggle").change(event => {
-        if (userWantsHighContrastModeNext) {
-            userWantsHighContrastModeNext = false
-            const wasDarkModeAlready = isDarkBrightness()
-            const shouldCheckDarkModeCheckBox = wasDarkModeAlready
-
-            if (isHighContrastBrightness()) {
-                setDarkMode(wasDarkModeAlready)
-            }
-            else {
-                setHighContrastDarkMode(wasDarkModeAlready)
-            }
-
-            $("#dark-mode-toggle").prop("checked", shouldCheckDarkModeCheckBox)
-            return shouldCheckDarkModeCheckBox
-        }
-        else {
-            setDarkMode($("#dark-mode-toggle").is(":checked"))
-        }
-    })
-
-    $("#dark-mode-toggle").prop("checked", isDarkBrightness())
-}
-
-
-function setUpReduceMotionCheckBox() {
-    $("#reduce-motion-toggle").change(event => {
-        setReduceMotion($("#reduce-motion-toggle").is(":checked"))
-    })
-    $("#reduce-motion-toggle").prop("checked", true)
-}
-
-
-function setUpMenuTouchCompatibility() {
-    const hoverParent = $(".shows-child-on-hover")
-
-    hoverParent.bind("tap", event => {
-        const shouldShowMenu = event.target.is(":hover") || event.target.is(":focus")
-
-        // 🤷🏼
-    })
-}
-
-
-$(() => {
-    disableDisabledLinks()
-
-    setUpAutoReduceMotion()
-    setUpDarkModeCheckBox()
-    setUpReduceMotionCheckBox()
-    setUpMenuTouchCompatibility()
-})
-</script>
+<script src="/_js/prototype.js"></script>
 
 
 <style>
@@ -947,19 +736,22 @@ header h1,
 
 .button>.fa,
 .button>.fab,
-.button>.fas {
+.button>.fas,
+.button>.material-icons {
     margin: 0 1ex;
 }
 
 .button>.fa:first-child,
 .button>.fab:first-child,
-.button>.fas:first-child {
+.button>.fas:first-child,
+.button>.material-icons:first-child {
     margin-left: 0;
 }
 
 .button>.fa:last-child,
 .button>.fab:last-child,
-.button>.fas:last-child {
+.button>.fas:last-child,
+.button>.material-icons:last-child {
     margin-right: 0;
 }
 
@@ -998,8 +790,8 @@ footer aside {
         </header>
 
         <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
-            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button">BenLeggiero@Gmail.com</a></li>
-            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button">+1 (470) BEN C LEG</a></li>
+            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button"><span>BenLeggiero<wbr/>@Gmail.com</span></a></li>
+            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button"><span>+1&nbsp;(470) BEN&nbsp;C&nbsp;LEG <small>(236-2534)</small></span></a></li>
         </ul>
 
         <div class="flex-row flex-wrap has-sidebar">
@@ -1201,7 +993,7 @@ footer aside {
 
     	<section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
     		<a href="/calendar" class="button medium-emphasis" disabled><i class="fa fa-calendar"></i> <span>Calendar</span></a>
-    		<a href="/portfolio" class="button medium-emphasis" disabled><i class="fa fa-th"></i> <span>Portfolio</span></a>
+    		<a href="/portfolio" class="button medium-emphasis"><i class="fa fa-th"></i> <span>Portfolio</span></a>
     		<a href="https://stackoverflow.com/story/benleggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-stack-overflow"></i> <span>StackOverflow</span></a>
     		<a href="https://github.com/BenLeggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>
     		<a href="https://github.com/BlueHuskyStudios" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Big Projects)</small></span></a>
@@ -1215,8 +1007,8 @@ footer aside {
     	</section>
 
         <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
-            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button"><i class="material-icons">email</i>&ensp;BenLeggiero@Gmail.com</a></li>
-            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button"><i class="material-icons">phone</i>&ensp;+1 (470) BEN C LEG</a></li>
+            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button"><i class="material-icons">email</i><span>BenLeggiero<wbr/>@Gmail.com</span></a></li>
+            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button"><i class="material-icons">phone</i><span>+1&nbsp;(470) BEN&nbsp;C&nbsp;LEG <small>(236-2534)</small></span></a></li>
         </ul>
 
     	<section class="show-print text-centered">

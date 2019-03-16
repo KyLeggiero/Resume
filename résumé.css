@@ -44,7 +44,7 @@
 
 
 .gradient-background,
-.button.big {
+.button.big:not(.low-emphasis):not(.medium-emphasis) {
     background-image: linear-gradient(-135deg, #0D47A2 0%, #311B93 25%, #890E4F 100%);
     animation-duration: 30s;
     animation-name: gradient-background-animation;

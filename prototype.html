@@ -456,6 +456,7 @@ p:not(:last-child) {
     background-image: url("./_img/Open Piece.svg");
     background-size: contain;
     margin: 0 2em 0 0;
+    transition-property: height, width;
 }
 
 .spec-bars::after {
@@ -773,6 +774,11 @@ dl dt {
 
 dl>div {
     margin: 1em 0;
+    transition-property: margin;
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) { dl>div {
+        margin: 1ex 0;
+    }
 }
 
 dl>div>dt {

@@ -434,9 +434,12 @@ $(() => {
     margin: 0 1ex;
 }
 .contact-list .contact-list-item,
-.contact-list .contact-list-item * {
+.contact-list .contact-list-item>* {
     font: inherit;
     text-transform: none !important;
+}
+footer .contact-list {
+    background: none;
 }
 
 
@@ -1186,11 +1189,11 @@ footer aside {
 
     <footer class="centered  widest-desktop-small">
     	<section class="centered flex-row flex-wrap flex-horiz-space-around hide-print">
-    		<a href="/documents/Leggiero-Resume_2019-03-10.pdf" class="button big" disabled>
+    		<a href="/documents/Leggiero-Resume_2019-03-10.pdf" class="big button" disabled>
     			<i class="fa fa-download"></i>
     			<span>Download as PDF</span>
     		</a>
-    		<a href="https://www.linkedin.com/in/ben-leggiero/" target="_blank" class="button big">
+    		<a href="https://www.linkedin.com/in/ben-leggiero/" target="_blank" class="big button">
     			<i class="fab fa-linkedin"></i>
     			<span>View LinkedIn</span>
     		</a>
@@ -1210,6 +1213,11 @@ footer aside {
     		<a href="https://google.com/+BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-google-plus-square"></i> <span>Google+</span></a>
     		<a href="https://twitter.com/BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-twitter-square"></i> <span>Twitter</span></a>
     	</section>
+
+        <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
+            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button"><i class="material-icons">email</i>&ensp;BenLeggiero@Gmail.com</a></li>
+            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button"><i class="material-icons">phone</i>&ensp;+1 (470) BEN C LEG</a></li>
+        </ul>
 
     	<section class="show-print text-centered">
     		https://Resume.BenLeggiero.blog

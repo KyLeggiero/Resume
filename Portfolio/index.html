@@ -90,14 +90,53 @@
 .portfolio-cards li {
     margin: 0;
 }
-
-.portfolio-card {
-    max-width: var(--phone-portrait-small-max-width);
-    display: block;
+.portfolio-cards>* {
+    display: inline-block;
 }
 
-.portfolio-card img {
+.portfolio-card,
+.portfolio-card.button,
+.portfolio-card.big.button,
+.portfolio-card:link,
+.portfolio-card:visited {
+    --button-border-radius: 1ex;
+    --font-weight-button: 400;
+
+    box-shadow: var(--box-shadow-z6);
+    display: block;
+    max-width: var(--phone-portrait-small-max-width);
+    padding: 0;
+    text-transform: none;
+
+    transform: translateY(0px);
+    transition-property: box-shadow, transform;
+}
+
+.portfolio-card .portfolio-card-thumbnail {
     width: 100%;
+}
+
+.portfolio-card .portfolio-card-text {
+    padding: 1ex 2ex;
+}
+
+.portfolio-card, .portfolio-card * {
+    border-radius: var(--button-border-radius);
+    text-decoration: none;
+}
+
+.portfolio-card:hover, .portfolio-card:focus {
+    box-shadow: var(--box-shadow-z24);
+    transform: translateY(-1px);
+}
+
+.portfolio-card .portfolio-card-title {
+    padding: 0 0 1ex;
+}
+
+.portfolio-card .portfolio-card-description {
+    font-weight: normal;
+    font-size: 1rem;
 }
 
 </style>
@@ -210,7 +249,7 @@ dl>div>dt {
 
 
 h1 {
-    margin-top: 2em;
+    margin: 3em 1em 1em;
 }
 
 
@@ -390,13 +429,13 @@ footer aside {
 
             <ol class="portfolio-cards">
                 <li>
-                    <a href="https://Rent-Split.BHStudios.org" target="_blank" class="portfolio-card">
+                    <a href="https://Rent-Split.BHStudios.org" target="_blank" class="portfolio-card   big low-emphasis button">
                         <figure>
-                            <img src="https://Rent-Split.BHStudios.org/_img/Logo%201.1.0%20(1024p).png" />
+                            <img src="https://Rent-Split.BHStudios.org/_img/Logo%201.1.0%20(1024p).png" class="portfolio-card-thumbnail" />
 
-                            <figcaption>
-                                <h2>Rent-Split</h2>
-                                <p>Calculates how to split rent fairly based on income</p>
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">Rent-Split</h2>
+                                <p class="portfolio-card-description">Calculates how to split rent fairly based on income</p>
                             </figcaption>
                         </figure>
                     </a>

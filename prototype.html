@@ -404,19 +404,39 @@ $(() => {
 }
 
 
-.tldr {
-    background: var(--background-at-level-atop-parent);
+.tldr,
+.contact-list {
     padding: 3rem;
     font-size: 2rem;
     font-weight: 300;
     text-align: center;
-    margin-bottom: -3rem;
-    transition-property: background;
+    transition-property: background, height, padding;
+}
 
-    } @media (max-aspect-ratio:1/1) { .tldr {
+.tldr {
+    background: var(--background-at-level-below-parent);
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) { .tldr {
         height: 100vh;
-        margin-bottom: 0;
     }
+}
+
+.contact-list {
+    background: var(--background-at-level-atop-parent);
+    list-style-type: none;
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) { .contact-list {
+        padding: 2mm;
+    }
+}
+.contact-list .contact-list-item {
+    display: inline-block;
+    margin: 0 1ex;
+}
+.contact-list .contact-list-item,
+.contact-list .contact-list-item * {
+    font: inherit;
+    text-transform: none !important;
 }
 
 
@@ -973,6 +993,12 @@ footer aside {
         <header class="tldr   flex-column flex-horiz-stretch flex-vert-center">
             <p>Software Engineer III with a passion for making great products</p>
         </header>
+
+        <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
+            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button">BenLeggiero@Gmail.com</a></li>
+            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button">+1 (470) BEN C LEG</a></li>
+        </ul>
+
         <div class="flex-row flex-wrap has-sidebar">
             <main style="transform: translate3d(0,0,0) !important">
                 <section class="content">

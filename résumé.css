@@ -62,8 +62,12 @@
 }
 
 
-.app-bar .title :link,
-.app-bar .title :visited {
+.app-bar .title {
+    margin: 0;
+    padding: 0;
+}
+.app-bar :link,
+.app-bar :visited {
     color: inherit !important;
     text-decoration: none;
 }
@@ -73,6 +77,19 @@
     margin-left: 2em;
     margin-inline-start: 2em;
     margin-inline-end: 0;
+}
+
+
+i.insignia {
+    background-image: url("/_img/insignia.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 2.5em;
+    height: 2.5em;
+    display: inline-block;
+    mix-blend-mode: screen;
+    background-blend-mode: screen;
 }
 
 
@@ -99,13 +116,7 @@ main .page:not(.presented) {
 }
 
 
-/* TODO: Move: */
 
-
-.app-bar .title,
-.app-bar .title *:not(.material-icons) {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-overflow: fade(1em);
-    overflow: hidden;
+footer aside {
+    opacity: 0.5;
 }

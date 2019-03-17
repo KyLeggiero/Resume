@@ -59,7 +59,8 @@
 
 <!-- BEGIN Page-specific Stylesheets -->
 <link rel="stylesheet" id="google-fonts"       href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700|Bangers|Carter+One|Gugi|Nova+Square|Questrial|Squada+One|ZCOOL+QingKe+HuangYou|Economica:400i|Medula+One|Teko:300,400&amp;subset=chinese-simplified,korean,latin-ext,vietnamese,cyrillic,cyrillic-ext,greek,greek-ext">
-<link rel="stylesheet" id="résumé-styles"      href="./résumé.css" />
+<link rel="stylesheet" id="résumé-styles"      href="/résumé.css" />
+<link rel="stylesheet" id="résumé-styles"      href="/to-be-transferred.css" />
 <!-- END Page-specific Stylesheets -->
 
 <!-- BEGIN Prefetched Resources -->
@@ -358,43 +359,6 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
 }
 
 
-:root {
-    --background-at-level-0: hsl(0, 0%, 98%);
-    --background-at-level-1: hsl(0, 0%, 93%);
-    --background-at-level-2: hsl(0, 0%, 86%);
-}
-.brightness-dark,
-.brightness-black {
-    --background-at-level-0: hsl(200, 19.1%, 18.4%);
-    --background-at-level-1: hsl(200, 22.1%, 15.4%);
-    --background-at-level-2: hsl(200, 25.1%, 12.4%);
-}
-:root {
-    --background-at-level-parent: var(--background-at-level-0);
-    --background-at-level-atop-parent: var(--background-at-level-1);
-}
-
-.z0 {
-    --background-at-level-parent: var(--background-at-level-0);
-    --background-at-level-atop-parent: var(--background-at-level-1);
-    transition-property: background, border, box-shadow;
-}
-
-.z1,
-.infobox,
-.specs {
-    --background-at-level-parent: var(--background-at-level-1);
-    --background-at-level-atop-parent: var(--background-at-level-2);
-    transition-property: background, border, box-shadow;
-}
-
-.z2 {
-    --background-at-level-parent: var(--background-at-level-2);
-    --background-at-level-atop-parent: var(--background-at-level-2);
-    transition-property: background, border, box-shadow;
-}
-
-
 
 
 .infobox {
@@ -493,277 +457,6 @@ footer {
     margin: auto;
     text-align: center;
 }
-
-
-/* To be transferred */
-
-.app-bar .icon-button .material-icons.back-to-root-icon {
-    margin-right: 1ex;
-    margin-inline-end: 1ex;
-    width: 1em;
-    text-align: start;
-}
-
-.app-bar .icon-button,
-.app-bar .back-to-root-icon {
-    vertical-align: middle;
-    min-width: var(--app-bar-height-auto);
-    transition-property: margin,width,opacity;
-    line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
-    transition-property: margin,width,opacity;
-}
-.app-bar .icon-button .material-icons {
-    width: 100%;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.brightness-toggle {
-    background: none;
-}
-
-.app-bar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: calc(var(--app-bar-z-index) + 1);
-    height: var(--app-bar-height-auto);
-
-
-    /* .flex-row */
-    display: -webkit-box!important;
-    display: -moz-box!important;
-    display: -ms-flexbox!important;
-    display: -webkit-flex!important;
-    display: flex!important;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-
-    /* [class^=flex-], [class*=" flex-"] */
-    display: -webkit-box!important;
-    display: -moz-box!important;
-    display: -ms-flexbox!important;
-    display: -webkit-flex!important;
-    display: flex!important;
-
-    /* .flex-row.flex-horiz-space-between */
-    -webkit-box-pack: justify;
-    -moz-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-
-.app-bar-overlay .icon-button {
-    height: var(--app-bar-height-auto);
-    width: var(--app-bar-height-auto);
-    display: block;
-    /* vertical-align: middle; */
-    text-align: center;
-    line-height: var(--app-bar-height-auto);
-}
-
-.icon-button>* {
-    vertical-align: middle;
-}
-
-.icon-button {
-    color: inherit;
-}
-
-main {
-    margin: 0 auto;
-    padding: 0 2vw;
-}
-
-dl dt {
-    margin-top: 2em;
-}
-
-dl>div {
-    margin: 1em 0;
-    transition-property: margin;
-
-    } @media (max-width: 960px), (max-aspect-ratio:1/1) { dl>div {
-        margin: 1ex 0;
-    }
-}
-
-dl>div>dt {
-    margin: 0;
-}
-
-
-h1 {
-    margin-top: 2em;
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-    word-break: break-word;
-}
-h2, h3, h4, h5, h6 {
-    hyphens: none;
-}
-h2 small {
-    display: inline-block;
-}
-
-
-header h1,
-.hero h1 {
-    margin-top: 0;
-    margin-top: unset;
-    margin-top: initial;
-}
-
-
-.brightness-black [data-required-theme-type]:not([data-required-theme-type="dark"]),
-.brightness-dark [data-required-theme-type]:not([data-required-theme-type="dark"]) {
-    display: none;
-}
-.brightness-white [data-required-theme-type]:not([data-required-theme-type="light"]),
-.brightness-light [data-required-theme-type]:not([data-required-theme-type="light"]) {
-    display: none;
-}
-
-
-.invisible {
-    visibility: hidden;
-}
-
-/* selecting second half of items (round up). Up to 6 */
-.app-bar-overlay>*:first-child:last-child .icon-button,
-.app-bar-overlay>*:nth-child(n+2):nth-last-child(-n+2) .icon-button,
-.app-bar-overlay>*:nth-child(n+3):nth-last-child(-n+3) .icon-button,
-.app-bar-overlay>*:nth-child(n+4):nth-last-child(-n+4) .icon-button,
-.app-bar-overlay>*:nth-child(n+5):nth-last-child(-n+5) .icon-button,
-.app-bar-overlay>*:nth-child(n+6):nth-last-child(-n+6) .icon-button {
-    margin: auto;
-}
-
-/* selecting second half of items (rounding down). Up to 6 */
-.app-bar-overlay>*:nth-child(n+1):nth-last-child(-n+2) .icon-button,
-.app-bar-overlay>*:nth-child(n+2):last-child .icon-button,
-.app-bar-overlay>*:nth-child(n+3):nth-last-child(-n+2) .icon-button,
-.app-bar-overlay>*:nth-child(n+4):nth-last-child(-n+3) .icon-button,
-.app-bar-overlay>*:nth-child(n+5):nth-last-child(-n+4) .icon-button,
-.app-bar-overlay>*:nth-child(n+6):nth-last-child(-n+5) .icon-button,
-.app-bar-overlay>*:nth-child(n+7):nth-last-child(-n+6) .icon-button {
-    margin-right: 0;
-}
-
-.app-bar,
-.app-bar-overlay {
-    color: var(--dark-theme-foreground-color);
-}
-
-.shows-child-on-hover {
-    position: relative;
-}
-
-.shows-child-on-hover .shown-on-parent-hover {
-    transition-property: visibility;
-}
-.reduce-motion .shows-child-on-hover .shown-on-parent-hover {
-    transition-property: visibility !important;
-}
-
-.shows-child-on-hover:not(:hover) .shown-on-parent-hover {
-    visibility: hidden;
-    transition-delay: 1s;
-}
-
-.shows-child-on-hover .shown-on-paren-hover[data-show-approach="unfurl-down"] {
-
-}
-
-.context-menu {
-    --context-menu-vertical-padding: 1ex;
-
-    background: var(--background-at-level-atop-parent);
-    color: var(--theme-foreground-color);
-
-    box-shadow: var(--box-shadow-z6);
-    padding: var(--context-menu-vertical-padding) 0;
-    border-radius: var(--context-menu-vertical-padding);
-    list-style-type: none;
-    margin: 1ex;
-
-    transition-property: background-color, color;
-}
-.shows-child-on-hover .context-menu.shown-on-parent-hover {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: max-content;
-
-    opacity: 1;
-    transform: scale(1) translate(0, 0);
-    transform-origin: top right;
-
-    transition-property: background-color, color, opacity, transform, visibility;
-}
-.reduce-motion .shows-child-on-hover .context-menu.shown-on-parent-hover {
-    transition-property: opacity, visibility !important;
-    transform: none !important;
-}
-.shows-child-on-hover:not(:hover) .context-menu.shown-on-parent-hover {
-    opacity: 0;
-    transform: scale(0.1) translate(-1in, -2in);
-}
-.context-menu>* {
-    padding: 0;
-    margin: 0;
-}
-.context-menu .context-menu-item {
-    padding: 1ex 2ex;
-}
-.context-menu .context-menu-item label span+input,
-.context-menu .context-menu-item label input+span,
-.context-menu label.context-menu-item span+input,
-.context-menu label.context-menu-item input+span {
-    margin-left: 1em;
-}
-
-.context-menu .context-menu-item:hover {
-    background-color: #8888;
-}
-
-.button>.fa,
-.button>.fab,
-.button>.fas,
-.button>.material-icons {
-    margin: 0 1ex;
-}
-
-.button>.fa:first-child,
-.button>.fab:first-child,
-.button>.fas:first-child,
-.button>.material-icons:first-child {
-    margin-left: 0;
-}
-
-.button>.fa:last-child,
-.button>.fab:last-child,
-.button>.fas:last-child,
-.button>.material-icons:last-child {
-    margin-right: 0;
-}
-
-.button small {
-    margin: 0 1ex;
-    opacity: 0.6;
-}
-
-footer aside {
-    margin: 10vh 0 3vh;
-}
-
 </style>
 </head>
 
@@ -771,7 +464,7 @@ footer aside {
 
 <body>
     <header class="app-bar gradient-background">
-        <a href="#" class="icon-button back-to-root-link"><h1 class="title"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
+        <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
     </header>
 
 
@@ -980,53 +673,53 @@ footer aside {
 
 
     <footer class="centered  widest-desktop-small">
-    	<section class="centered flex-row flex-wrap flex-horiz-space-around hide-print">
-    		<a href="/documents/Leggiero-Resume_2019-03-10.pdf" class="big button" disabled>
-    			<i class="fa fa-download"></i>
-    			<span>Download as PDF</span>
-    		</a>
-    		<a href="https://www.linkedin.com/in/ben-leggiero/" target="_blank" class="big button">
-    			<i class="fab fa-linkedin"></i>
-    			<span>View LinkedIn</span>
-    		</a>
-    	</section>
+        <section class="centered flex-row flex-wrap flex-horiz-space-around hide-print">
+            <a href="/documents/Leggiero-Resume_2019-03-17.pdf" class="big button" disabled>
+                <i class="fa fa-download"></i>
+                <span>Download as PDF</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ben-leggiero/" target="_blank" class="big button">
+                <i class="fab fa-linkedin"></i>
+                <span>View LinkedIn</span>
+            </a>
+        </section>
 
-    	<section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
-    		<a href="/Calendar" class="button medium-emphasis" disabled><i class="fa fa-calendar"></i> <span>Calendar</span></a>
-    		<a href="/Portfolio" class="button medium-emphasis"><i class="fa fa-th"></i> <span>Portfolio</span></a>
-    		<a href="https://stackoverflow.com/story/benleggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-stack-overflow"></i> <span>StackOverflow</span></a>
-    		<a href="https://github.com/BenLeggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>
-    		<a href="https://github.com/BlueHuskyStudios" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Big Projects)</small></span></a>
-    	</section>
+        <section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
+            <a href="/Calendar" class="button medium-emphasis" disabled><i class="fa fa-calendar"></i> <span>Calendar</span></a>
+            <a href="/Portfolio" class="button medium-emphasis"><i class="fa fa-th"></i> <span>Portfolio</span></a>
+            <a href="https://stackoverflow.com/story/benleggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-stack-overflow"></i> <span>StackOverflow</span></a>
+            <a href="https://github.com/BenLeggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>
+            <a href="https://github.com/BlueHuskyStudios" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Big Projects)</small></span></a>
+        </section>
 
-    	<section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
+        <section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
             <a href="https://BenLeggiero.blog" target="_blank" class="button low-emphasis"><i class="fas fa-blog"></i> <span>Blog</span></a>
             <a href="https://mastodon.social/@BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-mastodon"></i> <span>Mastodon</span></a>
-    		<a href="https://google.com/+BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-google-plus-square"></i> <span>Google+</span></a>
-    		<a href="https://twitter.com/BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-twitter-square"></i> <span>Twitter</span></a>
-    	</section>
+            <a href="https://google.com/+BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-google-plus-square"></i> <span>Google+</span></a>
+            <a href="https://twitter.com/BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-twitter-square"></i> <span>Twitter</span></a>
+        </section>
 
         <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
             <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button"><i class="material-icons">email</i><span>BenLeggiero<wbr/>@Gmail.com</span></a></li>
             <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button"><i class="material-icons">phone</i><span>+1&nbsp;(470) BEN&nbsp;C&nbsp;LEG <small>(236-2534)</small></span></a></li>
         </ul>
 
-    	<section class="show-print text-centered">
-    		https://Resume.BenLeggiero.blog
-    	</section>
+        <section class="show-print text-centered">
+            https://Resume.BenLeggiero.blog
+        </section>
 
-    	<aside class="text-center">
-    		Last updated <time datetime="2019-03-10">2019-03-10</time><span class="hide-print">
-    		—
-    		<a href="/documents/Leggiero-Resume_2019-03-10.txt" title="Text-only version"><i class="far fa-file-alt"></i> Text-only version</a></span>
-    	</aside>
+        <aside class="text-center">
+            Last updated <time datetime="2019-03-17">2019-03-17</time><span class="hide-print">
+            —
+            <a href="/documents/Leggiero-Resume_2019-03-17.txt" title="Text-only version"><i class="far fa-file-alt"></i> Text-only version</a></span>
+        </aside>
     </footer>
 
 
 
     <nav class="app-bar-overlay">
         <section>
-            <a href="#" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
+            <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
         </section>
         <section class="shows-child-on-hover">
             <i class="icon-button material-icons">more_vert</i>

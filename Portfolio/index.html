@@ -85,6 +85,10 @@
 
 <style>
 
+:root {
+    --portfolio-card-width: var(--phone-portrait-small-max-width);
+}
+
 .portfolio-cards {
     list-style-type: none;
 }
@@ -104,17 +108,29 @@
     --font-weight-button: 400;
 
     box-shadow: var(--box-shadow-z6);
+    background: var(--background-at-level-atop-parent);
     display: block;
-    max-width: var(--phone-portrait-small-max-width);
+    max-width: var(--portfolio-card-width);
+    margin: 1cm;
     padding: 0;
     text-transform: none;
 
     transform: translateY(0px);
-    transition-property: box-shadow, transform;
+    transition-property: background, box-shadow, color, transform, border, opacity;
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) {
+            .portfolio-card,
+            .portfolio-card.button,
+            .portfolio-card.big.button,
+            .portfolio-card:link,
+            .portfolio-card:visited {
+        margin: 1cm 0;
+    }
 }
 
 .portfolio-card .portfolio-card-thumbnail {
-    width: 100%;
+    max-width: 100%;
+    max-height: var(--portfolio-card-width);
 }
 
 .portfolio-card .portfolio-card-text {
@@ -147,16 +163,85 @@
 
 <body>
     <header class="app-bar gradient-background">
-        <a href="/" class="icon-button back-to-root-link"><h1 class="title"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
+        <a href="/" class="button back-to-root-link"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
     </header>
 
 
 
     <main>
         <section>
+            <h1>Big Projects</h1>
+
+            <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
+                <li>
+                    <a href="https://Ionic.com/files/" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="/_img/Ionic Files icon.png" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">Ionic Files for macOS</h2>
+                                <p class="portfolio-card-description">User-facing desktop file protection software for macOS</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://RenewedVision.com/ProPresenter/" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="/_img/ProPresenter icon.png" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">ProPresenter</h2>
+                                <p class="portfolio-card-description">Live video presentation and compositing software</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://RenewedVision.com/ProVideoPlayer/" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="/_img/PVP3.png" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">PVP 3</h2>
+                                <p class="portfolio-card-description">Elegant and powerful video streaming software for statium-tier events</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://NCRSilver.com" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="/_img/NCR Silver logo.png" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">NCR Silver</h2>
+                                <p class="portfolio-card-description">Point-of-sale software supporting mobile payments, sales reporting, loyalty rewards, business management, and more</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://ColumbusState.edu" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="/_img/ColumbusState.edu screenshot.png" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">The Columbus State University website</h2>
+                                <p class="portfolio-card-description">Over 100 specialized sites in one modern, responsive design that maintains compatibility with IE 8 through the latest Chrome. CMS integration allows school employees to maintain their own sub-sites</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ol>
+        </section>
+
+
+
+        <section>
             <h1>Big Personal Projects</h1>
 
-            <ol class="portfolio-cards">
+            <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
                 <li>
                     <a href="https://Rent-Split.BHStudios.org" target="_blank" class="portfolio-card   big low-emphasis button">
                         <figure>
@@ -169,15 +254,27 @@
                         </figure>
                     </a>
                 </li>
+                <li>
+                    <a href="https://GitHub.com/BlueHuskyStudios/Blue-Husky-Software-Platform" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="https://bluehuskystudios.github.io/Blue-Husky-Software-Structure/Blue%20Husky%20Software%20Structure.png" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">Blue Husky Software Platform</h2>
+                                <p class="portfolio-card-description">A platform of modular code and concepts upon which my personal sofware is written</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
             </ol>
         </section>
 
 
 
         <section>
-            <h1>Open-Source Contributions</h1>
+            <h1>Open-Source Con&shy;tri&shy;bu&shy;tions</h1>
 
-            <ol class="portfolio-cards">
+            <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
                 <li>
                     <a href="https://github.com/Kotlin/KEEP/pull/112" target="_blank" class="portfolio-card   big low-emphasis button">
                         <figure>
@@ -205,6 +302,18 @@
             </ol>
         </section>
     </main>
+
+
+
+    <footer class="centered  widest-desktop-small">
+        <section class="show-print text-centered">
+            https://Resume.BenLeggiero.blog/Portfolio
+        </section>
+
+        <aside class="text-center">
+            Last updated <time datetime="2019-03-17">2019-03-17</time>
+        </aside>
+    </footer>
 
 
 

@@ -2,6 +2,10 @@
 
 /* To be transferred to https://github.com/BlueHuskyStudios/stylesheets */
 
+.app-bar .title {
+    text-transform: none;
+}
+
 .app-bar .icon-button .material-icons.back-to-root-icon {
     margin-right: 1ex;
     margin-inline-end: 1ex;
@@ -32,6 +36,7 @@
     top: 0;
     left: 0;
     right: 0;
+    pointer-events: none;
     z-index: calc(var(--app-bar-z-index) + 1);
     height: var(--app-bar-height-auto);
 
@@ -70,6 +75,10 @@
     /* vertical-align: middle; */
     text-align: center;
     line-height: var(--app-bar-height-auto);
+}
+
+.app-bar-overlay>* {
+    pointer-events: all;
 }
 
 .icon-button>* {
@@ -165,6 +174,15 @@ header h1,
 .app-bar,
 .app-bar-overlay {
     color: var(--dark-theme-foreground-color);
+}
+
+
+.app-bar .title,
+.app-bar .title *:not(.material-icons) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-overflow: fade(1em);
+    overflow: hidden;
 }
 
 .shows-child-on-hover {
@@ -267,4 +285,47 @@ header h1,
 
 footer aside {
     margin: 10vh 0 3vh;
+}
+
+
+:root {
+    --background-at-level-0: hsl(0, 0%, 98%);
+    --background-at-level-1: hsl(0, 0%, 93%);
+    --background-at-level-2: hsl(0, 0%, 86%);
+}
+.brightness-dark,
+.brightness-black {
+    --background-at-level-0: hsl(200, 19.1%, 18.4%);
+    --background-at-level-1: hsl(200, 22.1%, 15.4%);
+    --background-at-level-2: hsl(200, 25.1%, 12.4%);
+}
+:root {
+    --background-at-level-parent: var(--background-at-level-0);
+    --background-at-level-atop-parent: var(--background-at-level-1);
+}
+
+.z0 {
+    --background-at-level-parent: var(--background-at-level-0);
+    --background-at-level-atop-parent: var(--background-at-level-1);
+    transition-property: background, border, box-shadow;
+}
+
+.z1,
+.infobox,
+.specs {
+    --background-at-level-parent: var(--background-at-level-1);
+    --background-at-level-atop-parent: var(--background-at-level-2);
+    transition-property: background, border, box-shadow;
+}
+
+.z2 {
+    --background-at-level-parent: var(--background-at-level-2);
+    --background-at-level-atop-parent: var(--background-at-level-2);
+    transition-property: background, border, box-shadow;
+}
+
+
+
+.text-center {
+    text-align: center;
 }

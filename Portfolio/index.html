@@ -90,6 +90,8 @@
 }
 
 .portfolio-cards {
+    --button-hover-shadow: var(--box-shadow-z24);
+
     list-style-type: none;
 }
 .portfolio-cards li {
@@ -129,8 +131,8 @@
 }
 
 .portfolio-card .portfolio-card-thumbnail {
-    max-width: 100%;
-    max-height: var(--portfolio-card-width);
+    width: 100%;
+    /* max-height: var(--portfolio-card-width); */
 }
 
 .portfolio-card .portfolio-card-text {
@@ -143,7 +145,6 @@
 }
 
 .portfolio-card:hover, .portfolio-card:focus {
-    box-shadow: var(--box-shadow-z24);
     transform: translateY(-1px);
 }
 
@@ -257,7 +258,7 @@
                 <li>
                     <a href="https://GitHub.com/BlueHuskyStudios/Blue-Husky-Software-Platform" target="_blank" class="portfolio-card   big low-emphasis button">
                         <figure>
-                            <img src="https://bluehuskystudios.github.io/Blue-Husky-Software-Structure/Blue%20Husky%20Software%20Structure.png" class="portfolio-card-thumbnail" />
+                            <img src="https://bluehuskystudios.github.io/Blue-Husky-Software-Platform/BHSP%20Logo%20B@1024p.png" class="portfolio-card-thumbnail" />
 
                             <figcaption class="portfolio-card-text">
                                 <h2 class="portfolio-card-title">Blue Husky Software Platform</h2>
@@ -295,6 +296,18 @@
                             <figcaption class="portfolio-card-text">
                                 <h2 class="portfolio-card-title">Kotlin Error Handling <small>(Proposal)</small></h2>
                                 <p class="portfolio-card-description">A proposal for how to natively handle errors in the Kotlin language</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/christophery/slide-social-buttons" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="/_img/Slide Social logo.svg" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">Slide Social Buttons</h2>
+                                <p class="portfolio-card-description">A set of uniform social share buttons invented by Christopher Yee in 2013 and updated by myself in 2015</p>
                             </figcaption>
                         </figure>
                     </a>

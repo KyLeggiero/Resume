@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="material brightness-dark top-level reduce-motion" lang="en-US">
+<html class="material brightness-dark not-top-level reduce-motion" lang="en-US">
 <head>
 <meta http-equiv="Content-Type"    content="text/html; charset=utf-8" /> <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8"/>
@@ -42,28 +42,30 @@
 <meta name="twitter:image:src"                     content="https://Ben.BHStudios.org/_img/thumbnail.php?e=.png" />
 
 
-<script type="text/javascript" src="https://code.jquery.com/jquery.min.js">/* jQuery */</script>
+<script type="text/javascript" src="https://shared.bhstudios.org/_js/jquery-bh-preferred.js">/* jQuery */</script>
 <script type="text/javascript" src="https://shared.BHStudios.org/_js/custom.jquery.js">/* custom jQuery stuffs */</script>
 <script type="text/javascript" src="https://shared.BHStudios.org/_js/jquery.cookie-1.4.1.min.js">/* use jQuery to set cookies */</script>
-<script type="text/javascript" src="https://prog.BHStudios.org/Husk/_js/husk.jquery.js">/* Husk jQuery Plugin */</script>
+<!-- <script type="text/javascript" src="https://prog.BHStudios.org/Husk/_js/husk.jquery.js">/* Husk jQuery Plugin */</script> -->
 
 <!-- BEGIN Basic Stylesheets -->
-<link rel="stylesheet" id="basic-styles"       href="https://Shared.BHStudios.org/_incl/css-masher.php?ids=0,16-22" />
+<!-- <link rel="stylesheet" id="basic-styles"       href="https://Shared.BHStudios.org/_incl/css-masher.php?ids=0,16-22" /> -->
 <!-- END Basic Stylesheets -->
 
 <!-- BEGIN Style-Switcher Stylesheets -->
+<link rel="stylesheet" id="_switchSheetBackup" href="https://stylesheets.BHStudios.org/assets/v2/basics/print.css"/>
 <link rel="stylesheet" id="_switchSheetBackup" href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/>
-<link rel="stylesheet" id="_switchSheet"       href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/>
+<!-- <link rel="stylesheet" id="_switchSheet"       href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/> -->
 <!-- END Style-Switcher Stylesheets -->
 
 <!-- BEGIN Page-specific Stylesheets -->
-<link rel="stylesheet" id="google-fonts"       href="https://fonts.googleapis.com/css?family=Questrial">
-<link rel="stylesheet" id="résumé-styles"      href="./résumé.css" />
+<link rel="stylesheet" id="google-fonts"       href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700|Bangers|Carter+One|Gugi|Nova+Square|Questrial|Squada+One|ZCOOL+QingKe+HuangYou|Economica:400i|Medula+One|Teko:300,400&amp;subset=chinese-simplified,korean,latin-ext,vietnamese,cyrillic,cyrillic-ext,greek,greek-ext">
+<link rel="stylesheet" id="résumé-styles"      href="/résumé.css" />
+<link rel="stylesheet" id="résumé-styles"      href="/to-be-transferred.css" />
 <!-- END Page-specific Stylesheets -->
 
 <!-- BEGIN Prefetched Resources -->
-<link rel="prefetch" href="./documents/resume-basic.json" />
-<link rel="prefetch" href="./documents/resume-filter-software-engineer.json" />
+<!-- <link rel="prefetch" href="./documents/resume-basic.json" />
+<link rel="prefetch" href="./documents/resume-filter-software-engineer.json" /> -->
 <!-- END Prefetched Resources -->
 
 <!-- BEGIN Style-Switcher Scripts -->
@@ -73,18 +75,662 @@
 <!--<script src="https://Shared.BHStudios.org/_js/OptionBar.jQuery.js"> /* Option Bar scripts */ </script>-->
 
 <!--<script src="https://shared.BHStudios.org/_js/require-2.3.6.min.js"> /* Require.JS */ </script>-->
-<script src="./_js/production/resumes/lib/kotlin.js"> /* Kotlin/JS */ </script>
-<script src="./_js/production/resumes/resumes.js"> /* Scripts just for this page */ </script>
+<!-- <script src="./_js/production/resumes/lib/kotlin.js"> /* Kotlin/JS */ </script> -->
+<!-- <script src="./_js/production/resumes/resumes.js"> /* Scripts just for this page */ </script> -->
+
+<script src="/_js/prototype.js"></script>
+
+
+<style>
+
+:root {
+    --tech-spec-meter-height: 36px; /*3em;*/
+    --tech-spec-meter-width: calc(var(--tech-spec-meter-height) * 20 / 3);
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) { :root { /* --phone-landscape-large-max-width */
+        --tech-spec-meter-height: 24px;
+    }
+}
+
+
+.hero {
+    text-align: center;;
+    margin: 0;
+    position: absolute;
+    z-index: calc(var(--app-bar-z-index) + 1);
+    width: 100%;
+    height: 80vh;
+    min-height: 5em;
+    height: minmax(5em, 80vh);
+    top: 0
+}
+
+.hero+* {
+    margin-top: 80vh !important;
+    margin-top: calc(80vh - var(--app-bar-height-auto)) !important;
+}
+
+.hero>* {
+    mix-blend-mode: screen;
+}
+
+.hero,
+.hero .title-text,
+.hero .subtitle-text {
+    font-family: var(--font-family-title);
+    font-weight: var(--font-weight-title);
+}
+
+.hero .title-text {
+    color: #1DEAB7;
+    margin-bottom: 0.25ex;
+
+    font-size: 18vmin;
+
+    } @media (max-aspect-ratio:1/1) { .hero .title-text {
+        font-size: 10vmin;
+    }
+}
+
+.hero .subtitle-text {
+    color: #FFAC00;
+
+    font-size: 7.5vmin;
+
+    } @media (max-aspect-ratio:1/1) { .hero .subtitle-text {
+        font-size: 5.5vmin;
+    }
+}
+
+.hero .title-holder {
+    margin: 1ex 0;
+}
+
+
+
+.hero .icon-button.back-to-root-link {
+    align-self: start;
+    position: fixed;
+    top: 0;
+    left:  0;
+    padding: 0 var(--content-margin-horiz-auto);
+    line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
+    color: var(--theme-text-on-primary-color-color);
+
+    transition-property: padding, line-height, color;
+}
+
+.hero .icon-button.back-to-root-link .back-to-root-icon {
+    vertical-align: middle;
+}
+
+
+.hero .icon-button {
+    align-self: start;
+    position: fixed;
+    top: 0;
+    right:  0;
+    padding: 0 var(--content-margin-horiz-auto);
+    line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
+    color: #CCB800;
+
+    transition-property: padding, line-height, color;
+}
+
+.hero .icon-button .material-icons {
+    vertical-align: middle;
+}
+
+
+.hero:hover .animation-toggle,
+.app-bar:hover+.hero .animation-toggle {
+    color: red;
+}
+
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+}
+
+
+.tldr,
+.contact-list {
+    padding: 3rem;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    transition-property: background, height, padding;
+}
+
+.tldr {
+    background: var(--background-at-level-below-parent);
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) { .tldr {
+        height: 100vh;
+    }
+}
+
+.contact-list {
+    background: var(--background-at-level-atop-parent);
+    list-style-type: none;
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) { .contact-list {
+        padding: 2mm;
+    }
+}
+.contact-list .contact-list-item {
+    display: inline-block;
+    margin: 0 1ex;
+}
+.contact-list .contact-list-item,
+.contact-list .contact-list-item>* {
+    font: inherit;
+    text-transform: none !important;
+}
+footer .contact-list {
+    background: none;
+}
+
+
+p:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+
+.content {
+    padding: 1em;
+    /*max-width: var(--desktop-medium-max-width);*/
+    margin: auto;
+}
+
+.content h1 {
+    text-align: center;
+    font-size: 5rem;
+    font-size: 10vmin;
+    font-size: minmax(15vmin, 5rem);
+    margin: 3rem 0 1rem;
+}
+
+.content dl {
+    margin: 3rem 0;
+}
+
+.content h1+dl,
+.content h2+dl,
+.content h3+dl {
+    margin-top: 0;
+}
+
+.spec-bars {
+    height: var(--tech-spec-meter-height);
+    width: var(--tech-spec-meter-width);
+    display: inline-block;
+    background-image: url("./_img/Open Piece.svg");
+    background-size: contain;
+    margin: 0 2em 0 0;
+    transition-property: height, width;
+}
+
+.spec-bars::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    background-image: url("./_img/Filled Piece.svg");
+    background-size: contain;
+}
+
+.spec-list {
+    border: 1px solid var(--background-at-level-atop-parent);
+    background: var(--background-at-level-parent);
+    /* box-shadow: inset 0 0 0 1px #0004; */
+    /* background: #0001; */
+    border-radius: 1em;
+    padding: 1em;
+    transition-property: background, border;
+}
+.spec-list h2 {
+    font-family: "ZCOOL QingKe HuangYou", "Roboto Condensed", sans-serif;
+    font-style: italic;
+    /* font-variant: small-caps; */
+}
+
+
+.spec-bars[data-proficiency-out-of-10="10"]::after { width: 100%; filter: hue-rotate(45deg); }
+.spec-bars[data-proficiency-out-of-10="9"]::after  { width: 90%;  filter: hue-rotate(30deg); }
+.spec-bars[data-proficiency-out-of-10="8"]::after  { width: 80%;  }
+.spec-bars[data-proficiency-out-of-10="7"]::after  { width: 70%;  filter: hue-rotate(270deg); }
+.spec-bars[data-proficiency-out-of-10="6"]::after  { width: 60%;  filter: hue-rotate(240deg); }
+.spec-bars[data-proficiency-out-of-10="5"]::after  { width: 50%;  filter: hue-rotate(225deg); }
+.spec-bars[data-proficiency-out-of-10="4"]::after  { width: 40%;  filter: hue-rotate(225deg); }
+.spec-bars[data-proficiency-out-of-10="3"]::after  { width: 30%;  filter: saturate(10%); }
+.spec-bars[data-proficiency-out-of-10="2"]::after  { width: 20%;  filter: saturate(10%) brightness(80%); }
+.spec-bars[data-proficiency-out-of-10="1"]::after  { width: 10%;  filter: saturate(10%) brightness(50%); }
+
+
+.flex-row.has-sidebar>.sidebar-right {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: var(--phone-landscape-small-max-width);
+}
+.flex-row.has-sidebar>* {
+    flex-grow: 2;
+    flex-shrink: 2;
+    flex-basis: var(--phone-landscape-small-max-width);
+}
+
+
+dl.like-bulleted-list {
+    display: block;
+    margin-left: 2em;
+}
+
+dl.like-bulleted-list>* {
+    display: list-item;
+}
+
+[data-list-bullet-style="dash"] {
+    list-style-type: "— "
+}
+
+.definitions-inline-with-terms dd,
+.definitions-inline-with-terms dt {
+    display: inline;
+}
+
+dl.like-bulleted-list.definitions-inline-with-terms[data-definition-separator="dash"] dd {
+    margin-left: 0;
+}
+
+dl.like-bulleted-list.definitions-inline-with-terms[data-definition-separator="dash"] dd::before {
+    content: "— ";
+    position: static;
+}
+
+dl.like-bulleted-list[data-definition-separator="dash"] dd {
+    position: relative;
+    margin-left: 1em;
+}
+
+dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
+    content: "— ";
+    position: absolute;
+    left: -1em;
+}
+
+
+
+
+.infobox {
+    border: 1px solid var(--background-at-level-atop-parent);
+    background: var(--background-at-level-parent);
+    padding: 8px;
+    border-radius: 12px;
+    margin: 3em 0;
+    } @media screen and (max-width: 640px), (max-aspect-ratio:1/1) { .infobox {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+}
+.infobox .infobox-subject {
+    width: 10vmax;
+    height: 10vmax;
+    min-width: 1in;
+    min-height: 1in;
+
+    text-align: center;
+    /* border: 1px solid #8882; */
+    padding: 1ex;
+    border-radius: 4px;
+    margin: 0;
+    flex-grow: 0;
+
+    /* background: var(--background-at-level-atop-parent); */
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.infobox img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.infobox dl {
+    display: flex;
+}
+.infobox dl > div {
+    margin: 0 2ex;
+    } @media screen and (max-width: 640px), (max-aspect-ratio:1/1) { .infobox dl > div {
+        width: 100%;
+    }
+}
+.infobox dl dt {
+    font-weight: 600;
+    font-size: 10pt;
+    text-transform: UPPERCASE;
+    margin-top: 1em;
+}
+.infobox dl dd {
+    margin-left: 1em;
+    font-size: 13pt;
+}
+.infobox dl dd:not(:first-of-type) {
+    position: relative;
+}
+.infobox dl dd:not(:first-of-type)::before {
+    content: "";
+    border-top: 1px dotted #7777;
+    position: absolute;
+    width: calc(100% - 2em);
+    left: 1em;
+}
+.infobox dl dd:last-of-type {
+    margin-bottom: 1em;
+}
+
+figure.infobox > .infobox-info {
+    flex-grow: 2;
+    text-align: center;
+    max-width: var(--phone-landscape-small-max-width);
+}
+
+.infobox-with-dynamic-layout .infobox-subject {
+  height: auto;
+  max-height: 20vh;
+}
+
+.infobox p {
+  line-height: 1.5;
+}
+
+.infobox .infobox-info h1,
+.infobox .infobox-info h2,
+.infobox .infobox-info h3,
+.infobox .infobox-info h4,
+.infobox .infobox-info h5,
+.infobox .infobox-info h6 {
+    padding: 0 0 5mm;
+}
+
+footer {
+    max-width: var(--tablet-landscape-small-max-width);
+    margin: auto;
+    text-align: center;
+}
+</style>
 </head>
 
 
 
 <body>
-    <header class="app-bar">
-        <a href="#"><h1 class="title"><i class="material-icons back-to-root-icon">arrow_back</i> <span class="title-text">Ben C. Leggiero</span><span class="subtitle-text"></span></h1></a>
+    <header class="app-bar gradient-background">
+        <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
     </header>
-    <main>
-        <article id="portal" class="page"></article>
-    </main>
+
+
+
+    <section class="hero gradient-background   flex-column flex-vert-center">
+        <div class="sticky-top title-holder">
+            <h1 class="title-text">Ben Leggiero</h1>
+            <h2 class="subtitle-text">Developer&emsp;|&emsp;Designer</h2>
+        </div>
+    </section>
+
+
+    <article>
+        <header class="tldr   flex-column flex-horiz-stretch flex-vert-center">
+            <p>Software Engineer III with a passion for making great products</p>
+        </header>
+
+        <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
+            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button"><span>BenLeggiero<wbr/>@Gmail.com</span></a></li>
+            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button"><span>+1&nbsp;(470) BEN&nbsp;C&nbsp;LEG <small>(236-2534)</small></span></a></li>
+        </ul>
+
+        <div class="flex-row flex-wrap has-sidebar">
+            <main style="transform: translate3d(0,0,0) !important">
+                <section class="content">
+                    <h1>Em&shy;ploy&shy;ment</h1>
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-white-logo.svg')" data-required-theme-type="dark"></a>
+                        <a class="infobox-subject" href="https://Ionic.com" target="_blank" style="background-image: url('./_img/IONIC-dark-grey-logo.svg')" data-required-theme-type="light"></a>
+                        <figcaption class="infobox-info">
+                            <h2>Ion&shy;ic Se&shy;cu&shy;ri&shy;ty <small>(<time datetime="2017-03-27">2017</time> – <i>present</i>)</small></h2>
+                            <h3>mac&shy;OS Soft&shy;ware En&shy;gi&shy;neer</h3>
+                            <p>Architecting <strong>user-facing</strong> file <strong>encryption</strong> and access software for macOS. Collaborate on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.</p>
+                            <p>Working closely with UI/UX team to hone the design of multiple company products, including <strong>graphics</strong>, <strong>animations</strong>, user <strong>flows</strong>, and overall <strong>experience</strong>.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://RenewedVision.com" target="_blank" style="background-image: url('./_img/Renewed-Vision-logo-icon.png')"></a>
+                        <figcaption class="infobox-info">
+                            <h2>Re&shy;newed Vi&shy;sion <small>(<time datetime="2017-03-27">2016</time> – <time datetime="2017-01-16">2017</time>)</small></h2>
+                            <h3>mac&shy;OS Soft&shy;ware En&shy;gi&shy;neer</h3>
+                            <p>Built industry-leading <strong>professional presentation</strong> software for <strong>macOS</strong>. Collaboratively created <strong>software platforms</strong> with <strong>open-source &amp; proprietary</strong> tech: advanced <strong>auto font scaling</strong>, <strong>inspector</strong>, animated grid item selector</p>
+                            <p>Designed dozens of <strong>icons</strong> &amp; other graphics, <strong>user flows</strong>, interface approaches, <strong>animations</strong>, and more.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://NCRSilver.com" target="_blank" style="background-image: url('./_img/NCR-logo.svg')"></a>
+                        <figcaption class="infobox-info">
+                            <h2>NCR &mdash; Small &amp; Medi&shy;um Busi&shy;ness <small>(<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>)</small></h2>
+                            <h3>Mo&shy;bile Soft&shy;ware En&shy;gi&shy;neer</h3>
+                            <p>Built state-of-the-art <strong>point-of-sale</strong> software for <strong>iOS &amp; Android</strong>. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.</p>
+                            <p>Worked alongside UI design team to <strong>revamp</strong> the system's <strong>look-and-feel</strong>.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_BlueBackground.svg')" data-required-theme-type="dark"></a>
+                        <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_WhiteBackground.svg')" data-required-theme-type="light"></a>
+                        <figcaption class="infobox-info">
+                            <h2>Uni&shy;ver&shy;si&shy;ty Sys&shy;tem of Geor&shy;gia &mdash; In&shy;for&shy;ma&shy;tion Tech&shy;nol&shy;o&shy;gy Ser&shy;vices <small>(<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>)</small></h2>
+                            <h3>Web De&shy;vel&shy;op&shy;er &amp; De&shy;sign&shy;er</h3>
+                            <p>Redesigned &amp; rebuilt <a href="https://ColumbusState.edu" target="_blank">ColumbusState.edu</a> and dozens of sub-sites in <strong>HTML5+CSS3</strong>, with <strong>XSLT &amp; PHP</strong> where needed. Made <strong>templates for CMS</strong> so teachers could build pages.</p>
+                            <p>Invented, critiqued, and <strong>evolved design elements</strong> for CSU website. Designed pages for all schools of the University within a <strong>consistent theme</strong>.</p>
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <section class="content">
+                    <h1>Edu&shy;ca&shy;tion</h1>
+                    <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                        <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_BlueBackground.svg')" data-required-theme-type="dark"></a>
+                        <a class="infobox-subject" href="https://ColumbusState.edu" target="_blank" style="background-image: url('./_img/CSU_Logo_Tower_WhiteBackground.svg')" data-required-theme-type="light"></a>
+                        <figcaption class="infobox-info">
+                            <h2>Columbus State University <small>(<time datetime="2014-05-12">2014</time>)</small></h2>
+                            <h3>Bachelor of Science in Computer Science</h3>
+                        </figcaption>
+                    </figure>
+                </section>
+            </main>
+
+            <aside class="sidebar-right">
+                <section class="content specs">
+                    <h1>Tech Specs</h1>
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Swift</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Kotlin</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>HTML 5</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>CSS 4</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Sass</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Node</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="4"></span></dd>
+                        </div>
+                    </dl>
+
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>macOS</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>iOS</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Android</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>JVM</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Web &ndash; front</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Web &ndash; back</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+                        </div>
+                    </dl>
+
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Multithreading</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Networking</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Git</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                    </dl>
+
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Learning New Skills</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                    </dl>
+                </section>
+
+
+
+                <section class="content specs">
+                    <h1>De&shy;sign</h1>
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>UI/UX</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Icons</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Web</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Print</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="8"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Logos</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="6"></span></dd>
+                        </div>
+                    </dl>
+
+                    <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
+                        <div>
+                            <dt><h2>Sketch</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="9"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Inkscape</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="10"></span></dd>
+                        </div>
+                        <div>
+                            <dt><h2>Gravit</h2></dt>
+                                <dd><span class="spec-bars" data-proficiency-out-of-10="7"></span></dd>
+                        </div>
+                    </dl>
+                </section>
+            </aside>
+        </div>
+    </article>
+
+
+
+    <footer class="centered  widest-desktop-small">
+        <section class="centered flex-row flex-wrap flex-horiz-space-around hide-print">
+            <a href="/documents/Leggiero-Resume_2019-03-17.pdf" class="big button" disabled>
+                <i class="fa fa-download"></i>
+                <span>Download as PDF</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ben-leggiero/" target="_blank" class="big button">
+                <i class="fab fa-linkedin"></i>
+                <span>View LinkedIn</span>
+            </a>
+        </section>
+
+        <section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
+            <a href="/Calendar" class="button medium-emphasis" disabled><i class="fa fa-calendar"></i> <span>Calendar</span></a>
+            <a href="/Portfolio" class="button medium-emphasis"><i class="fa fa-th"></i> <span>Portfolio</span></a>
+            <a href="https://stackoverflow.com/story/benleggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-stack-overflow"></i> <span>StackOverflow</span></a>
+            <a href="https://github.com/BenLeggiero" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>
+            <a href="https://github.com/BlueHuskyStudios" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Big Projects)</small></span></a>
+        </section>
+
+        <section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
+            <a href="https://BenLeggiero.blog" target="_blank" class="button low-emphasis"><i class="fas fa-blog"></i> <span>Blog</span></a>
+            <a href="https://mastodon.social/@BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-mastodon"></i> <span>Mastodon</span></a>
+            <a href="https://google.com/+BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-google-plus-square"></i> <span>Google+</span></a>
+            <a href="https://twitter.com/BenLeggiero" target="_blank" class="button low-emphasis"><i class="fab fa-twitter-square"></i> <span>Twitter</span></a>
+        </section>
+
+        <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
+            <li class="contact-list-item"><a href="mailto:BenLeggiero@Gmail.com" class="low-emphasis big button"><i class="material-icons">email</i><span>BenLeggiero<wbr/>@Gmail.com</span></a></li>
+            <li class="contact-list-item"><a href="tel:14702362534" class="low-emphasis big button"><i class="material-icons">phone</i><span>+1&nbsp;(470) BEN&nbsp;C&nbsp;LEG <small>(236-2534)</small></span></a></li>
+        </ul>
+
+        <section class="show-print text-centered">
+            https://Resume.BenLeggiero.blog
+        </section>
+
+        <aside class="text-center">
+            Last updated <time datetime="2019-03-17">2019-03-17</time><span class="hide-print">
+            —
+            <a href="/documents/Leggiero-Resume_2019-03-17.txt" title="Text-only version"><i class="far fa-file-alt"></i> Text-only version</a></span>
+        </aside>
+    </footer>
+
+
+
+    <nav class="app-bar-overlay">
+        <section>
+            <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
+        </section>
+        <section class="shows-child-on-hover">
+            <i class="icon-button material-icons">more_vert</i>
+            <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Reduce Motion</span> <input name="reduce-motion-toggle" id="reduce-motion-toggle" type="checkbox" checked /></label></li>
+            </ol>
+        </section>
+        <script>
+        $(".brightness-toggle").toggleClass("hidden")
+        </script>
+    </nav>
 </body>
 </html>

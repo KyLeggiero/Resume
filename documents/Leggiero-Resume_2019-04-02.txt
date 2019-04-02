@@ -1,0 +1,100 @@
+                                                      Ben Leggiero
+                                                 Developer | Designer
+
+                             Software Engineer III with a passion for making great products
+
+                       BenLeggiero@Gmail.com                        +1 (470) BEN C LEG (236-2534)
+
+
+                                                       Em­ploy­ment
+
+Ion­ic Se­cu­ri­ty (2017 – present)
+mac­OS Soft­ware En­gi­neer
+
+Architecting user-facing file encryption and access software for macOS. Collaborate on a company-wide software platform
+to allow such client software to be made consistent on many other platforms, including macOS, Android, Windows, and iOS.
+
+Working closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user
+flows, and overall experience.
+
+
+
+Re­newed Vi­sion (2016 – 2017)
+mac­OS Soft­ware En­gi­neer
+Built industry-leading professional presentation software for macOS. Collaboratively created software platforms with
+open-source & proprietary tech: advanced auto font scaling, inspector, & animated grid item selector.
+
+Designed dozens of icons & other graphics, user flows, interface approaches, animations, and more.
+
+
+
+NCR — Small & Medi­um Busi­ness (2015 – 2016)
+Mo­bile Soft­ware En­gi­neer
+
+Built state-of-the-art point-of-sale software for iOS & Android. Implemented headlining features such as 64-bit
+support, EMV payments, scale-weighing of items, & future orders, including any hardware drivers necessary for these.
+
+Worked alongside UI design team to revamp the system's look-and-feel.
+
+
+
+Uni­ver­si­ty Sys­tem of Geor­gia — In­for­ma­tion Tech­nol­o­gy Ser­vices (2012 – 2014)
+Web De­vel­op­er & De­sign­er
+
+Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3, with XSLT & PHP where needed. Made
+templates for CMS so teachers could build pages.
+
+Invented, critiqued, and evolved design elements for CSU website. Designed pages for all schools of the University
+within a consistent theme.
+
+
+
+                                                       Edu­ca­tion
+
+Columbus State University (2014)
+Bachelor of Science in Computer Science
+
+
+
+                                                       Tech Specs
+Swift:         ########## (10/10)        Kotlin:      #########_ (9/10)         HTML 5:               #########_ (9/10)
+CSS 4:         ########## (10/10)        Sass:        ########__ (8/10)         macOS:                #########_ (9/10)
+iOS:           ########__ (8/10)         Android:     #######___ (7/10)         JVM:                  #########_ (9/10)
+Web – front:   ########## (10/10)        Web – back:  #######___ (7/10)         Multithreading:       ########__ (8/10)
+Networking:    ########__ (8/10)         Git:         ########## (10/10)        Open-Source:          ########__ (8/10)
+Architecture:  ########__ (8/10)         Agile:       #########_ (9/10)         Learning New Skills:  #########_ (9/10)
+
+
+
+                                                         De­sign
+
+UI/UX:    #########_ (9/10)                     Icons:  ########## (10/10)                   Web:    ########## (10/10)
+Print:    ########__ (8/10)                     Logos:  ######____ (6/10)                    Sketch: #########_ (9/10)
+Inkscape: ########## (10/10)                    Gravit: #######___ (7/10)
+
+
+
+                                             https://Resume.BenLeggiero.me
+
+
+
+                     As PDF: https://Resume.BenLeggiero.me/documents/Leggiero-Resume_2019-04-01.pdf
+
+                                       Calendar:  https://Calendar.BenLeggiero.me
+                                      Portfolio:  https://Resume.BenLeggiero.me/Portfolio
+
+                                       LinkedIn:  https://LinkedIn.com/in/ben-leggiero
+                                  StackOverflow:  https://StackOverflow.com/story/benleggiero
+                              GitHup (Personal):  https://GitHub.com/BenLeggiero
+                          GitHub (Big Projects):  https://GitHub.com/BlueHuskyStudios
+                                           Blog:  https://BenLeggiero.blog
+                                       Mastodon:  https://Mastodon.social/@BenLeggiero
+                                        Google+:  https://Google.com/+BenLeggiero
+                                        Twitter:  https://twitter.com/BenLeggiero
+                                         E-mail:  BenLeggiero@Gmail.com
+                                          Phone:  +1 (470) BEN C LEG (236-2534)
+
+
+
+                                             https://Resume.BenLeggiero.me
+                                                Last updated 2019-04-02

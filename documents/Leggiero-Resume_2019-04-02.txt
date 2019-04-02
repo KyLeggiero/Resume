@@ -57,20 +57,37 @@ Bachelor of Science in Computer Science
 
 
                                                        Tech Specs
-Swift:         ########## (10/10)        Kotlin:      #########_ (9/10)         HTML 5:               #########_ (9/10)
-CSS 4:         ########## (10/10)        Sass:        ########__ (8/10)         macOS:                #########_ (9/10)
-iOS:           ########__ (8/10)         Android:     #######___ (7/10)         JVM:                  #########_ (9/10)
-Web – front:   ########## (10/10)        Web – back:  #######___ (7/10)         Multithreading:       ########__ (8/10)
-Networking:    ########__ (8/10)         Git:         ########## (10/10)        Open-Source:          ########__ (8/10)
-Architecture:  ########__ (8/10)         Agile:       #########_ (9/10)         Learning New Skills:  #########_ (9/10)
+
+Extraordinary:
+Swift, CSS 4, Web (front-end), Git
+
+Expert:
+Kotlin, HTML 5, macOS, JVM, Agile, Learning New Skills
+
+Advanced:
+Sass, iOS, Multithreading, Networking, Open-Source, Architecture
+
+Very Good:
+Android, Web (back-end)
 
 
 
                                                          De­sign
 
-UI/UX:    #########_ (9/10)                     Icons:  ########## (10/10)                   Web:    ########## (10/10)
-Print:    ########__ (8/10)                     Logos:  ######____ (6/10)                    Sketch: #########_ (9/10)
-Inkscape: ########## (10/10)                    Gravit: #######___ (7/10)
+Extraordinary:
+Icons, Web, Inkscape
+
+Expert:
+UI/UX, Sketch
+
+Advanced:
+Print
+
+Very Good:
+Gravit
+
+Good:
+Logos
 
 
 

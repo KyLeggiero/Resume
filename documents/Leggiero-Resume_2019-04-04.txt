@@ -1,15 +1,15 @@
                                                       Ben Leggiero
-                                                 Developer | Designer
+                                                 Developer | Designer
 
                              Software Engineer III with a passion for making great products
 
                        BenLeggiero@Gmail.com                        +1 (470) BEN C LEG (236-2534)
 
 
-                                                       Em­ploy­ment
+                                                       Employment
 
-Ion­ic Se­cu­ri­ty (2017 – present)
-mac­OS Soft­ware En­gi­neer
+Ionic Security (2017 - present)
+macOS Software Engineer
 
 Architecting user-facing file encryption and access software for macOS. Collaborate on a company-wide software platform
 to allow such client software to be made consistent on many other platforms, including macOS, Android, Windows, and iOS.
@@ -19,8 +19,8 @@ flows, and overall experience.
 
 
 
-Re­newed Vi­sion (2016 – 2017)
-mac­OS Soft­ware En­gi­neer
+Renewed Vision (2016 - 2017)
+macOS Software Engineer
 Built industry-leading professional presentation software for macOS. Collaboratively created software platforms with
 open-source & proprietary tech: advanced auto font scaling, inspector, & animated grid item selector.
 
@@ -28,8 +28,8 @@ Designed dozens of icons & other graphics, user flows, interface approaches, ani
 
 
 
-NCR — Small & Medi­um Busi­ness (2015 – 2016)
-Mo­bile Soft­ware En­gi­neer
+NCR - Small & Medium Business (2015 - 2016)
+Mobile Software Engineer
 
 Built state-of-the-art point-of-sale software for iOS & Android. Implemented headlining features such as 64-bit
 support, EMV payments, scale-weighing of items, & future orders, including any hardware drivers necessary for these.
@@ -38,8 +38,8 @@ Worked alongside UI design team to revamp the system's look-and-feel.
 
 
 
-Uni­ver­si­ty Sys­tem of Geor­gia — In­for­ma­tion Tech­nol­o­gy Ser­vices (2012 – 2014)
-Web De­vel­op­er & De­sign­er
+University System of Georgia - Information Technology Services (2012 - 2014)
+Web Developer & Designer
 
 Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3, with XSLT & PHP where needed. Made
 templates for CMS so teachers could build pages.
@@ -49,7 +49,7 @@ within a consistent theme.
 
 
 
-                                                       Edu­ca­tion
+                                                       Education
 
 Columbus State University (2014)
 Bachelor of Science in Computer Science
@@ -72,22 +72,22 @@ Android, Web (back-end)
 
 
 
-                                                         De­sign
+                                                         Design
 
 Extraordinary:
-Icons, Web, Inkscape
+Icons, Web Design, Inkscape
 
 Expert:
 UI/UX, Sketch
 
 Advanced:
-Print
+Print Design
 
 Very Good:
 Gravit
 
 Good:
-Logos
+Logo Design
 
 
 
@@ -102,7 +102,7 @@ Logos
 
                                        LinkedIn:  https://LinkedIn.com/in/ben-leggiero
                                   StackOverflow:  https://StackOverflow.com/story/benleggiero
-                              GitHup (Personal):  https://GitHub.com/BenLeggiero
+                              GitHub (Personal):  https://GitHub.com/BenLeggiero
                           GitHub (Big Projects):  https://GitHub.com/BlueHuskyStudios
                                            Blog:  https://BenLeggiero.blog
                                        Mastodon:  https://Mastodon.social/@BenLeggiero

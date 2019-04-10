@@ -4,6 +4,8 @@
     --font-family-title: var(--font-family-h1);
     --font-family-h2: var(--font-family-h1);
     --font-family-h3: var(--font-family-h1);
+    --font-weight-h1: 400;
+    --font-weight-h2: 400;
     --font-weight-h3: 400;
 }
 

@@ -136,6 +136,7 @@
 
 .portfolio-card .portfolio-card-title {
     padding: 0 0 1ex;
+    margin: 0;
 }
 
 .portfolio-card .portfolio-card-description {
@@ -157,7 +158,7 @@
 
     <main>
         <section>
-            <h1>Big Projects</h1>
+            <h1 id="big-projects">Big Projects</h1>
 
             <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
                 <li>
@@ -226,7 +227,7 @@
 
 
         <section>
-            <h1>Big Personal Projects</h1>
+            <h1 id="big-personal-projects">Big Personal Projects</h1>
 
             <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
                 <li>
@@ -271,7 +272,14 @@
 
 
         <section>
-            <h1>Open-Source Con&shy;tri&shy;bu&shy;tions</h1>
+            <h1 id="open-source-contributions">Open-Source Con&shy;tri&shy;bu&shy;tions</h1>
+
+            <aside>
+                These are only projects to which I've made notable contributions, but which I don't own. There are many
+                which are not listed here to which I have made small contributions. For those which I own, see
+                my GitHub profiles (<a href="https://GitHub.com/BenLeggiero" target="_blank">personal</a> andor
+                <a href="https://GitHub.com/BlueHuskyStudios" target="_blank">big projects</a>).
+            </aside>
 
             <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
                 <li>
@@ -311,6 +319,13 @@
                     </a>
                 </li>
             </ol>
+
+            <h2 id="my-open-source-projects">My Open-Source Projects</h2>
+
+            <footer class="centered flex-row flex-wrap flex-horiz-space-around font-1-1hx">
+                <a href="https://github.com/BenLeggiero" target="_blank" class="big button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>
+                <a href="https://github.com/BlueHuskyStudios" target="_blank" class="big button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Big Projects)</small></span></a>
+            </footer>
         </section>
     </main>
 
@@ -323,7 +338,7 @@
 
         <aside class="text-center">
             <!-- also update article:modified_time meta -->
-            Last updated <time datetime="2019-04-12">2019-04-12</time>
+            Last updated <time datetime="2019-04-20">2019-04-20</time>
         </aside>
     </footer>
 

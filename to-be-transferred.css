@@ -277,6 +277,7 @@ header h1,
 .button small {
     margin: 0 1ex;
     opacity: 0.6;
+    display: inline-block;
 }
 
 footer aside {

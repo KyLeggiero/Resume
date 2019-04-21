@@ -112,12 +112,8 @@ dl>div>dt {
 }
 
 
-h1 {
-    margin: 3em 1em 1em;
-}
-
-
 h1, h2, h3, h4, h5, h6 {
+    margin: 3em 1em 1em;
     word-break: break-word;
 }
 h2, h3, h4, h5, h6 {

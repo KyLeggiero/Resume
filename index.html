@@ -267,16 +267,6 @@ p:not(:last-child) {
     margin: 3rem 0 1rem;
 }
 
-.content dl {
-    margin: 3rem 0;
-}
-
-.content h1+dl,
-.content h2+dl,
-.content h3+dl {
-    margin-top: 0;
-}
-
 .spec-bars {
     height: var(--tech-spec-meter-height);
     width: var(--tech-spec-meter-width);
@@ -377,13 +367,13 @@ dl.like-bulleted-list[data-definition-separator="dash"] dd::before {
 
 
 
-.infobox {
+.infobox, .spec-list {
     border: 1px solid var(--background-at-level-atop-parent);
     background: var(--background-at-level-parent);
     padding: 8px;
     border-radius: 12px;
     margin: 3em 0;
-    } @media screen and (max-width: 640px), (max-aspect-ratio:1/1) { .infobox {
+    } @media screen and (max-width: 640px), (max-aspect-ratio:1/1) { .infobox, .spec-list {
         -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -561,7 +551,7 @@ footer {
                 </section>
             </main>
 
-            <aside class="sidebar-right">
+            <section class="sidebar-right">
                 <section class="content specs">
                     <h1>Tech Specs</h1>
                     <dl class="spec-list   flex-row flex-wrap flex-horiz-space-around">
@@ -695,7 +685,7 @@ footer {
                         </div>
                     </dl>
                 </section>
-            </aside>
+            </section>
         </div>
     </article>
 

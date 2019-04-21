@@ -119,6 +119,26 @@ main .page:not(.presented) {
 
 
 
+aside {
+    text-align: end;
+    opacity: 0.7;
+    margin-inline-start: auto;
+    width: 75%;
+
+    transition-property: width;
+
+    } @media (max-width: 4in) { aside {
+        width: 100%;
+    }
+}
+
+.reduce-motion aside {
+    transition-property: width !important;
+}
+
 footer aside {
+    text-align: center;
     opacity: 0.5;
+    margin: auto;
+    width: auto;
 }

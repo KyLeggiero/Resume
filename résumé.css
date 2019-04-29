@@ -118,6 +118,12 @@ main .page:not(.presented) {
 }
 
 
+.infobox,
+.specs {
+    background: var(--theme-background-color-at-level-atop-parent);
+}
+
+
 
 aside {
     text-align: end;

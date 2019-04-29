@@ -204,7 +204,7 @@ header h1,
 .context-menu {
     --context-menu-vertical-padding: 1ex;
 
-    background: var(--background-at-level-atop-parent);
+    background: var(--theme-background-color-at-level-raised);
     color: var(--theme-foreground-color);
 
     box-shadow: var(--box-shadow-z6);
@@ -282,43 +282,6 @@ header h1,
 
 footer aside {
     margin: 10vh 0 3vh;
-}
-
-
-:root {
-    --background-at-level-0: hsl(0, 0%, 98%);
-    --background-at-level-1: hsl(0, 0%, 93%);
-    --background-at-level-2: hsl(0, 0%, 86%);
-}
-.brightness-dark,
-.brightness-black {
-    --background-at-level-0: hsl(200, 19.1%, 18.4%);
-    --background-at-level-1: hsl(200, 22.1%, 15.4%);
-    --background-at-level-2: hsl(200, 25.1%, 12.4%);
-}
-:root {
-    --background-at-level-parent: var(--background-at-level-0);
-    --background-at-level-atop-parent: var(--background-at-level-1);
-}
-
-.z0 {
-    --background-at-level-parent: var(--background-at-level-0);
-    --background-at-level-atop-parent: var(--background-at-level-1);
-    transition-property: background, border, box-shadow;
-}
-
-.z1,
-.infobox,
-.specs {
-    --background-at-level-parent: var(--background-at-level-1);
-    --background-at-level-atop-parent: var(--background-at-level-2);
-    transition-property: background, border, box-shadow;
-}
-
-.z2 {
-    --background-at-level-parent: var(--background-at-level-2);
-    --background-at-level-atop-parent: var(--background-at-level-2);
-    transition-property: background, border, box-shadow;
 }
 
 

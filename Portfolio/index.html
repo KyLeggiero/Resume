@@ -36,7 +36,7 @@
 <meta property="twitter:image"                     content="/_img/Social-Preview.png" />
 <meta name="twitter:image:src"                     content="/_img/Social-Preview.png" />
 <meta property="article:published_time"            content="2019-03-23" />
-<meta property="article:modified_time"             content="2019-04-12" /> <!-- Also update the Last Updated date in the footer -->
+<meta property="article:modified_time"             content="2019-04-28" /> <!-- Also update the Last Updated date in the footer -->
 
 
 
@@ -76,8 +76,6 @@
 }
 
 .portfolio-cards {
-    --button-hover-shadow: var(--box-shadow-z24);
-
     list-style-type: none;
 }
 .portfolio-cards li {
@@ -92,6 +90,9 @@
 .portfolio-card.big.button,
 .portfolio-card:link,
 .portfolio-card:visited {
+    --button-resting-shadow: var(--box-shadow-z6);
+    --button-hover-shadow: var(--box-shadow-z24);
+    --button-pressed-shadow: none;
     --button-border-radius: 1ex;
     --font-weight-button: 400;
 
@@ -101,6 +102,8 @@
     max-width: var(--portfolio-card-width);
     margin: 1cm;
     padding: 0;
+    text-align: left;
+    text-align: start;
     text-transform: none;
 
     transform: translateY(0px);
@@ -231,6 +234,18 @@
 
             <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
                 <li>
+                    <a href="https://GitHub.com/BenLeggiero/resumes" target="_blank" class="portfolio-card   big low-emphasis button">
+                        <figure>
+                            <img src="/_img/Social-Preview.png" class="portfolio-card-thumbnail" />
+
+                            <figcaption class="portfolio-card-text">
+                                <h2 class="portfolio-card-title">This Website</h2>
+                                <p class="portfolio-card-description">I wrote all the code and designed all the UI on this site from scratch, without templates.</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
                     <a href="https://Rent-Split.BHStudios.org" target="_blank" class="portfolio-card   big low-emphasis button">
                         <figure>
                             <img src="https://Rent-Split.BHStudios.org/_img/Logo%201.1.0%20(1024p).png" class="portfolio-card-thumbnail" />
@@ -255,13 +270,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://GitHub.com/BenLeggiero/resumes" target="_blank" class="portfolio-card   big low-emphasis button">
+                    <a href="https://github.com/BlueHuskyStudios/Pixel-Art-Resizer/releases" target="_blank" class="portfolio-card   big low-emphasis button">
                         <figure>
-                            <img src="/_img/Social-Preview.png" class="portfolio-card-thumbnail" />
+                            <img src="https://raw.githubusercontent.com/BlueHuskyStudios/Pixel-Art-Resizer/master/Pixel%20Art%20Resizer/Resources/Assets.xcassets/AppIcon.appiconset/512%20x%20512@2x.png" class="portfolio-card-thumbnail" />
 
                             <figcaption class="portfolio-card-text">
-                                <h2 class="portfolio-card-title">This Website</h2>
-                                <p class="portfolio-card-description">I wrote all the code and designed all the UI on this site from scratch, without templates.</p>
+                                <h2 class="portfolio-card-title">Pixel Art Resizer</h2>
+                                <p class="portfolio-card-description">A simple macOS app which does a good job at resizing pixel art</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -338,7 +353,7 @@
 
         <aside class="text-center">
             <!-- also update article:modified_time meta -->
-            Last updated <time datetime="2019-04-20">2019-04-20</time>
+            Last updated <time datetime="2019-04-28">2019-04-28</time>
         </aside>
     </footer>
 

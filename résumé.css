@@ -141,10 +141,3 @@ aside {
 .reduce-motion aside {
     transition-property: width !important;
 }
-
-footer aside {
-    text-align: center;
-    opacity: 0.5;
-    margin: auto;
-    width: auto;
-}

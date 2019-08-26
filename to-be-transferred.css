@@ -20,6 +20,8 @@
     transition-property: margin,width,opacity;
     line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
     transition-property: margin,width,opacity;
+    padding: 0;
+    margin: 0;
 }
 .app-bar .icon-button .material-icons {
     width: 100%;

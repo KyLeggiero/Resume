@@ -1,20 +1,32 @@
+
                                                       Ben Leggiero
                                                  Developer | Designer
 
-                             Software Engineer III with a passion for making great products
+               Senior Software Engineer & Architect with a passion for designing & making great products
 
                        BenLeggiero@Gmail.com                        +1 (470) BEN C LEG (236-2534)
 
 
                                                        Employment
 
-Ionic Security (2017 - present)
+RR Don­nel­ley - Mo­tif (Contract from July 2019 - October 2019)
+mac­OS Soft­ware Ar­chi­tect
+
+Defined the future architecture for the leading photo book software on macOS. Instituted standard practices across
+teams to bring development in-house and improve turnaround.
+
+Worked back-and-forth with UI/UX leads to ensure a smooth and intuitive transition between operating system versions.
+
+
+
+
+Ionic Security (2017 - 2019)
 macOS Software Engineer
 
-Architecting user-facing file encryption and access software for macOS. Collaborate on a company-wide software platform
+Engineered user-facing file encryption and access software for macOS. Collaborated on a company-wide software platform
 to allow such client software to be made consistent on many other platforms, including macOS, Android, Windows, and iOS.
 
-Working closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user
+Worked closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user
 flows, and overall experience.
 
 
@@ -114,4 +126,4 @@ Logo Design
 
 
                                              https://Resume.BenLeggiero.me
-                                                Last updated 2019-04-02
+                                                Last updated 2019-10-30

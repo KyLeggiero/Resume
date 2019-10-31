@@ -2,8 +2,9 @@
   "format-version": "1.0.0",
   "meta": {
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
-    "info-version": "3.0.0",
-    "title": "Résumé Basics"
+    "info-version": "3.1.0",
+    "title": "Résumé Basics",
+    "date-last-edited": "2019-10-30"
   },
   "content": {
     "contact": {
@@ -14,6 +15,7 @@
       "last-name": "Leggiero",
       "phone-number": "+1 (470) BEN C LEG",
       "email-address": "BenLeggiero@Gmail.com",
+      "website-url": "https://BenLeggiero.me",
       "blog-url": "https://BenLeggiero.blog"
     },
     "work-history": [
@@ -142,7 +144,7 @@
         },
 
         "keywords": ["point-of-sale", "iOS", "Android", "64-bit", "EMV", "scale-weighing", "future orders", "drivers"],
-        "tags": ["tech", "software engineering", "apps", "mobile", "iOS", "Android", "desk job", "career"],
+        "tags": ["tech", "software engineering", "apps", "mobile", "iOS", "Cocoa Touch", "Android", "desk job", "career"],
 
         "reason-for-leaving": {
           "brief": "terminated",
@@ -172,7 +174,7 @@
         },
 
         "keywords": ["professional presentation software", "macOS", "software platforms", "open-source", "proprietary", "auto font scaling", "inspector"],
-        "tags": ["tech", "software engineering", "apps", "mobile", "desktop", "macOS", "iOS", "desk job", "career"],
+        "tags": ["tech", "software engineering", "apps", "mobile", "desktop", "macOS", "iOS", "Cocoa", "desk job", "career"],
 
         "reason-for-leaving": {
           "brief": "terminated",
@@ -191,7 +193,7 @@
         "start": {
           "date": "2017-03-27",
           "title": "Software Engineer",
-          "description": "Building industry-edge client-side file encryption and access software for macOS. Collaborate on a company-wide software platform to allow such client software to be made consistent on many other platforms, including Android, Windows, and iOS",
+          "description": "Engineered user-facing file encryption and access software for macOS. Collaborated on a company-wide software platform to allow client software to be made consistent on many platforms, including macOS, Android, Windows, and iOS. \nWorked closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user flows, and overall experience.",
           "compensation": {
             "type": "yearly",
             "amount": 75000,
@@ -199,7 +201,7 @@
           }
         },
         "end": {
-          "date": null,
+          "date": "2019-06-30",
           "compensation": {
             "type": "yearly",
             "amount": 82500,
@@ -208,11 +210,47 @@
         },
 
         "keywords": ["client-side", "file protection", "encryption", "decryption", "file sharing", "macOS", "software platforms", "open-source", "proprietary"],
-        "tags": ["tech", "software engineering", "apps", "desktop", "macOS", "desk job", "career"],
+        "tags": ["tech", "software engineering", "apps", "desktop", "macOS", "Cocoa", "desk job", "career"],
 
         "reason-for-leaving": {
-          "brief": "terminated",
-          "description": "Did not perform as required"
+          "brief": "amicable",
+          "description": "Moved to another state"
+        }
+      },
+      {
+        "id": "6EBBD5DD-62CE-41BA-ABDA-ECC64A1AE141",
+        "company": {
+          "name": "Motif",
+          "name-long": "R. R. Donnelley - Motif Photos",
+          "broad-location": "Chicago, Illinois",
+          "address": "",
+          "phone-number": ""
+        },
+        "start": {
+          "date": "2019-07-01",
+          "title": "macOS Software Architect",
+          "description": "Defined the future architecture for the leading photo book software on macOS. Instituted standard practices across teams to bring development in-house and improve turnaround.\nWorked back-and-forth with UI/UX leads to ensure a smooth and intuitive transition between operating system versions.",
+          "compensation": {
+            "type": "hourly",
+            "amount": 65,
+            "tier": "full-time"
+          }
+        },
+        "end": {
+          "date": "2019-10-30",
+          "compensation": {
+            "type": "hourly",
+            "amount": 65,
+            "tier": "full-time"
+          }
+        },
+
+        "keywords": ["architecture", "macOS", "photos", "books"],
+        "tags": ["tech", "software engineering", "software architecture", "apps", "desktop", "macOS", "Cocoa", "iOS", "iPadOS", "desk job", "career"],
+
+        "reason-for-leaving": {
+          "brief": "downsizing",
+          "description": "Company budget was cut and they terminated contracts to fit it. Mine was one of those."
         }
       }
     ]

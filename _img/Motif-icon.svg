@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>Motif icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#2D7CD4" offset="0%"></stop>
+            <stop stop-color="#16386F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Motif-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <circle id="Oval" fill="url(#linearGradient-1)" fill-rule="evenodd" cx="64" cy="64" r="57"></circle>
+            <path d="M85.4472136,86.6583592 L86.3416408,88.4472136 L64,99.618034 L41.6583592,88.4472136 L42.5527864,86.6583592 L64,97.381966 L85.4472136,86.6583592 Z M56.75,51.5 L63.925,71.1 L70.925,51.5 L77.47,51.5 L77.47,52.305 L74.6,52.655 L74.6,74.88 L77.47,75.23 L77.47,76 L68.195,76 L68.195,75.23 L71.1,74.88 L71.1,55.525 L63.645,76.175 L61.895,76.175 L53.95,54.755 L53.95,74.88 L57.1,75.23 L57.1,76 L49.295,76 L49.295,75.23 L52.445,74.88 L52.445,52.655 L49.295,52.305 L49.295,51.5 L56.75,51.5 Z M85.4472136,28.1583592 L86.3416408,29.9472136 L64,41.118034 L41.6583592,29.9472136 L42.5527864,28.1583592 L64,38.881966 L85.4472136,28.1583592 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

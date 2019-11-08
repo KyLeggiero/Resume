@@ -23,10 +23,27 @@ author:
     social:
         email: BenLeggiero@Gmail.com
         linkedin: ben-leggiero
-        github: BenLeggiero/resumes
+        github:
+            this: BenLeggiero/resumes
+            personal: BenLeggiero
+            big-projects: BlueHuskyStudios
+            utilities: RougeWare
         twitter: BenLeggiero
+        mastodon: https://Mastodon.Social/@BenLeggiero
+        blog: https://BenLeggiero.blog
         stackoverflow: users/3939277/ben-leggiero
         website: https://BenLeggiero.me
+        phone:
+            display: +1 (470) BEN C LEG
+            disambiguation: 236-2534
+            raw: 14702362534
+
+date:
+    originally-written: 2019-04-02
+    newest:
+        web: 2019-11-08
+        pdf: 2019-10-31
+        txt: 2019-10-30
 
 # # Enter the Google Analytics web tracking code (e.g. UA-2110908-2) to
 # # activate tracking

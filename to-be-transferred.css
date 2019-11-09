@@ -189,6 +189,7 @@ header h1,
 
 .shows-child-on-hover {
     position: relative;
+    outline: none;
 }
 
 .shows-child-on-hover .shown-on-parent-hover {

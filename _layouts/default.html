@@ -99,7 +99,11 @@
 
 <body>
     <header class="app-bar gradient-background">
+        {% if page.is-top-level %}
         <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
+        {% else %}
+        <a href="/" class="button back-to-root-link"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <h1 class="title"><span class="title-text">{{ site.author.name }}</span><span class="subtitle-text"></span></h1></a>
+        {% endif %}
     </header>
 
 
@@ -110,7 +114,11 @@
 
     <nav class="app-bar-overlay">
         <section>
+            {% if page.is-top-level %}
             <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
+            {% else %}
+            <a href="/" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
+            {% endif %}
         </section>
         <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
             <i class="icon-button material-icons">more_vert</i>

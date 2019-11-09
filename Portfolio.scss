@@ -1,0 +1,78 @@
+---
+---
+
+:root {
+    --portfolio-card-width: var(--phone-portrait-small-max-width);
+}
+
+.portfolio-cards {
+    list-style-type: none;
+}
+.portfolio-cards li {
+    margin: 0;
+}
+.portfolio-cards>* {
+    display: inline-block;
+}
+
+.portfolio-card,
+.portfolio-card.button,
+.portfolio-card.big.button,
+.portfolio-card:link,
+.portfolio-card:visited {
+    --button-resting-shadow: var(--box-shadow-z6);
+    --button-hover-shadow: var(--box-shadow-z24);
+    --button-pressed-shadow: none;
+    --button-border-radius: 1ex;
+    --font-weight-button: 400;
+
+    box-shadow: var(--box-shadow-z6);
+    background: var(--theme-background-color-at-level-raised);
+    display: block;
+    max-width: var(--portfolio-card-width);
+    margin: 1cm;
+    padding: 0;
+    text-align: left;
+    text-align: start;
+    text-transform: none;
+
+    transform: translateY(0px);
+    transition-property: background, box-shadow, color, transform, border, opacity;
+
+    } @media (max-width: 960px), (max-aspect-ratio:1/1) {
+            .portfolio-card,
+            .portfolio-card.button,
+            .portfolio-card.big.button,
+            .portfolio-card:link,
+            .portfolio-card:visited {
+        margin: 1cm 0;
+    }
+}
+
+.portfolio-card .portfolio-card-thumbnail {
+    width: 100%;
+    /* max-height: var(--portfolio-card-width); */
+}
+
+.portfolio-card .portfolio-card-text {
+    padding: 1ex 2ex;
+}
+
+.portfolio-card, .portfolio-card * {
+    border-radius: var(--button-border-radius);
+    text-decoration: none;
+}
+
+.portfolio-card:hover, .portfolio-card:focus {
+    transform: translateY(-1px);
+}
+
+.portfolio-card .portfolio-card-title {
+    padding: 0 0 1ex;
+    margin: 0;
+}
+
+.portfolio-card .portfolio-card-description {
+    font-weight: normal;
+    font-size: 1rem;
+}

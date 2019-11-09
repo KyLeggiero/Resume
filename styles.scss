@@ -1,0 +1,145 @@
+---
+---
+
+:root {
+    --font-family-h1: 'Questrial', 'Roboto', sans-serif;
+    --font-family-title: var(--font-family-h1);
+    --font-family-h2: var(--font-family-h1);
+    --font-family-h3: var(--font-family-h1);
+    --font-weight-h1: 400;
+    --font-weight-h2: 400;
+    --font-weight-h3: 400;
+}
+
+
+@keyframes gradient-background-animation {
+    /* Inspired by https://www.gradient-animator.com by Ian Forrest ( https://www.IanForrest.me ) */
+
+    0% {
+        background-position:50% 50%;
+        background-size: 400% 400%;
+    }
+
+    17% {
+        background-position:100% 0%;
+    }
+
+    33% {
+        background-position:100% 100%;
+    }
+
+    50% {
+        background-position:50% 50%;
+    }
+
+    67% {
+        background-position:0% 0%;
+    }
+
+    83% {
+        background-position:0% 100%;
+    }
+
+    100% {
+        background-position:50% 50%;
+        background-size: 400% 400%;
+    }
+}
+
+
+.gradient-background,
+.button.big:not(.low-emphasis):not(.medium-emphasis) {
+    background-image: linear-gradient(-135deg, #0D47A2 0%, #311B93 25%, #890E4F 100%);
+    animation-duration: 30s;
+    animation-name: gradient-background-animation;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    background-position: 0% 50%;
+    background-attachment: fixed;
+}
+
+
+.app-bar.gradient-background .title {
+    color: #1DEAB7 !important;
+    font-size: 17pt;
+    mix-blend-mode: screen;
+}
+
+
+.app-bar .title {
+    margin: 0;
+    padding: 0;
+}
+.app-bar :link,
+.app-bar :visited {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+
+.app-bar .title .subtitle-text:not(:empty) {
+    margin-left: 2em;
+    margin-inline-start: 2em;
+    margin-inline-end: 0;
+}
+
+
+i.insignia {
+    background-image: url("/img/insignia.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 2.5em;
+    height: 2.5em;
+    display: inline-block;
+    mix-blend-mode: screen;
+    background-blend-mode: screen;
+}
+
+
+.placeholder {
+    opacity: 0.2;
+}
+
+
+main {
+    position: relative;
+}
+
+
+main .page {
+    position: absolute;
+    transition-property: transform, opacity, pointer-events;
+}
+
+
+main .page:not(.presented) {
+    transform: translateY(2in);
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.infobox,
+.specs {
+    background: var(--theme-background-color-at-level-atop-parent);
+}
+
+
+
+aside {
+    text-align: end;
+    opacity: 0.7;
+    margin-inline-start: auto;
+    width: 75%;
+
+    transition-property: width;
+
+    } @media (max-width: 4in) { aside {
+        width: 100%;
+    }
+}
+
+.reduce-motion aside {
+    transition-property: width !important;
+}

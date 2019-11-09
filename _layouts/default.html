@@ -105,7 +105,7 @@
         <section>
             <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
         </section>
-        <section class="shows-child-on-hover">
+        <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
             <i class="icon-button material-icons">more_vert</i>
             <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
                 <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
@@ -113,7 +113,7 @@
             </ol>
         </section>
         <script>
-        $(".brightness-toggle").removeClass("hidden")
+        $("#menu").removeClass("hidden")
         </script>
     </nav>
 </body>

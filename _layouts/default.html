@@ -31,9 +31,9 @@
 {% endif %}
 
 {% if page.description %}
-{% assign description = page.description %}
+{% assign description = page.description | strip %}
 {% else %}
-{% assign description = site.description %}
+{% assign description = site.description | strip %}
 {% endif %}
 
 <meta name="description"                           content="{{ description }}" property="og:description"/>

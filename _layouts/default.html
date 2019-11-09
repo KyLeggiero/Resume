@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <meta name="viewport"              content="width=device-width, initial-scale=1.0" />
 <meta name="language"              content="English" /> <meta property="og:locale" content="en_US" />
-<title>{{ site.title }}</title>
+<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
 
 <link rel="shortcut icon"                type="image/x-icon"    href="https://Shared.BHStudios.org/img/ico/favicon.ico" />
 <link rel="apple-touch-icon"             type="image/png"       href="https://Shared.BHStudios.org/img/brand/paw_2.2.1_(512).png" />
@@ -30,11 +30,17 @@
 <link href="{{ site.author.social.website }}" rel="me" />
 {% endif %}
 
-<meta name="description"                           content="{{ site.description }}" property="og:description"/>
+{% if page.description %}
+{% assign description = page.description %}
+{% else %}
+{% assign description = site.description %}
+{% endif %}
+
+<meta name="description"                           content="{{ description }}" property="og:description"/>
 <meta name="keywords"                              content="{{ site.author.name }},Resume,Résumé"/>
 <meta property="og:title"                          content="{{ site.title }}" />
 <meta property="twitter:title"                     content="{{ site.title }}" />
-<meta name="twitter:description"                   content="{{ site.description }}" />
+<meta name="twitter:description"                   content="{{ description }}" />
 <meta property="og:site_name"                      content="{{ site.title }}" />
 <meta property="twitter:site"                      content="{{ site.title }}" />
 <meta name="twitter:creator"                       content="@{{ site.author.social.twitter-username }}" /><!-- Tell twitter that this was made by Ben Leggiero -->

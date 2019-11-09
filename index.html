@@ -297,11 +297,10 @@ page-specific-stylesheets:
     </section>
 
     <aside class="text-center">
-        <!-- also update article:modified_time meta -->
-        Last updated <time datetime="{{ site.date.newest.web }}">{{ site.date.newest.web }}</time><span class="hide-print">
+        Last updated <time datetime="{{ site.date.newest.web }}">{{ site.date.newest.web }}</time>
         {% if site.document.txt %}
-        —
-        <a href="{{ site.document.directory }}/{{ site.document.txt.prefix }}{{ site.date.newest.txt }}.txt" title="Text-only version"><i class="far fa-file-alt"></i> Text-only version</a></span>
+        <span class="hide-print">
+        — <a href="{{ site.document.directory }}/{{ site.document.txt.prefix }}{{ site.date.newest.txt }}.txt" title="Text-only version"><i class="far fa-file-alt"></i> Text-only version</a></span>
         {% endif %}
     </aside>
 </footer>

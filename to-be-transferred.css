@@ -148,6 +148,10 @@ header h1,
     visibility: hidden;
 }
 
+.hidden {
+    display: none;
+}
+
 /* selecting second half of items (round up). Up to 6 */
 .app-bar-overlay>*:first-child:last-child .icon-button,
 .app-bar-overlay>*:nth-child(n+2):nth-last-child(-n+2) .icon-button,
@@ -185,6 +189,7 @@ header h1,
 
 .shows-child-on-hover {
     position: relative;
+    outline: none;
 }
 
 .shows-child-on-hover .shown-on-parent-hover {

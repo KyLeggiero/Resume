@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="material brightness-dark not-top-level reduce-motion" lang="en-US">
+<head>
+<meta http-equiv="Content-Type"    content="text/html; charset=utf-8" /> <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta name="viewport"              content="width=device-width, initial-scale=1.0" />
+<meta name="language"              content="English" /> <meta property="og:locale" content="en_US" />
+<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+
+<link rel="shortcut icon"                type="image/x-icon"    href="https://Shared.BHStudios.org/img/ico/favicon.ico" />
+<link rel="apple-touch-icon"             type="image/png"       href="https://Shared.BHStudios.org/img/brand/paw_2.2.1_(512).png" />
+<link rel="apple-touch-icon-precomposed" type="image/png"       href="https://Shared.BHStudios.org/img/brand/paw_2.2.1_(512).png" />
+
+{% if site.author.social.blog %}
+<link href="{{ site.author.social.blog }}" rel="me" />
+{% endif %}
+{% if site.author.social.linkedin-username %}
+<link href="https://LinkedIn.com/in/{{ site.author.social.linkedin-username }}" rel="me" />
+{% endif %}
+{% if site.author.social.mastodon %}
+<link href="{{ site.author.social.mastodon }}" rel="me" />
+{% endif %}
+{% if site.author.social.stackoverflow-suffix %}
+<link href="https://stackoverflow.com/{{ site.author.social.stackoverflow-suffix }}" rel="me" />
+{% endif %}
+{% if site.author.social.twitter-username %}
+<link href="https://Twitter.com/{{ site.author.social.twitter-username }}" rel="me" />
+{% endif %}
+{% if site.author.social.website %}
+<link href="{{ site.author.social.website }}" rel="me" />
+{% endif %}
+
+{% if page.description %}
+{% assign description = page.description | strip %}
+{% else %}
+{% assign description = site.description | strip %}
+{% endif %}
+
+<meta name="description"                           content="{{ description }}" property="og:description"/>
+<meta name="keywords"                              content="{{ site.author.name }},Resume,Résumé"/>
+<meta property="og:title"                          content="{{ site.title }}" />
+<meta property="twitter:title"                     content="{{ site.title }}" />
+<meta name="twitter:description"                   content="{{ description }}" />
+<meta property="og:site_name"                      content="{{ site.title }}" />
+<meta property="twitter:site"                      content="{{ site.title }}" />
+<meta name="twitter:creator"                       content="@{{ site.author.social.twitter-username }}" /><!-- Tell twitter that this was made by Ben Leggiero -->
+<meta property="og:type"                           content="profile" />
+<meta property="profile:first_name"                content="Ben" />
+<meta property="profile:last_name"                 content="Leggiero" />
+<meta property="profile:username"                  content="{{ site.author.social.twitter-username }}" />
+<meta name="twitter:card"                          content="summary_large_image" /><!-- Tell twitter that this link can be presented as a large image with a summary -->
+<meta name="msapplication-TileColor"               content="#21043C" /><!-- When pinned as a tile for Windows' Start, this is the tile's BG color -->
+<meta name="theme-color"                           content="#21043C"/><!-- Color in Chrome address bar -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#21043C" /><!-- Color in Safari status bar -->
+<meta name="msapplication-TileImage"               content="https://Shared.BHStudios.org/img/brand/paw_2.2.1_(512).png" /><!-- When pinned as a tile for Windows' Start, this is the image -->
+<meta property="og:image"                          content="/img/Social-Preview.png" /><!-- Image for sharing on social networks -->
+<meta property="twitter:image"                     content="/img/Social-Preview.png" />
+<meta name="twitter:image:src"                     content="/img/Social-Preview.png" />
+<meta property="article:published_time"            content="{{ site.date.originally-written }}" />
+<meta property="article:modified_time"             content="{{ site.date.newest.web }}" />
+<!-- Also update the Last Updated date in the footer -->
+
+
+
+<script type="text/javascript" src="https://shared.bhstudios.org/_js/jquery-bh-preferred.js">/* jQuery */</script>
+<script type="text/javascript" src="https://shared.BHStudios.org/_js/custom.jquery.js">/* custom jQuery stuffs */</script>
+<script type="text/javascript" src="/js/prototype.js">/* custom jQuery stuffs */</script>
+
+<!-- BEGIN Style-Switcher Stylesheets -->
+<link rel="stylesheet" id="styleSheet-print" href="https://stylesheets.BHStudios.org/assets/v2/basics/print.css"/>
+<link rel="stylesheet" id="styleSheet-main"  href="https://stylesheets.BHStudios.org/assets/v2/neon/neon-water.css"/>
+<!-- END Style-Switcher Stylesheets -->
+
+<!-- BEGIN Site-specific Stylesheets -->
+<link rel="stylesheet" id="google-fonts"             href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700|Bangers|Carter+One|Gugi|Nova+Square|Questrial|Squada+One|ZCOOL+QingKe+HuangYou|Economica:400i|Medula+One|Teko:300,400&amp;subset=chinese-simplified,korean,latin-ext,vietnamese,cyrillic,cyrillic-ext,greek,greek-ext">
+<link rel="stylesheet" id="general-styles"           href="/styles.css" />
+<link rel="stylesheet" id="styles-to-be-transferred" href="/to-be-transferred.css" />
+{% for stylesheet in page.page-specific-stylesheets %}
+<link rel="stylesheet" id="page-specific-stylesheet-{{ forloop.index }}" href="{{ stylesheet }}" />
+{% endfor %}
+<!-- END Site-specific Stylesheets -->
+
+<!-- BEGIN Prefetched Resources -->
+<link rel="prefetch"                type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" />
+<link rel="prefetch"                type="text/plain"      href="/documents/Leggiero-Resume_{{ site.date.newest.txt }}.txt" />
+
+<link rel="prefetch"                type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" as="document" />
+<link rel="prefetch"  media="print" type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" as="document" />
+<link rel="prefetch"  media="print" type="text/plain"      href="/documents/Leggiero-Resume_{{ site.date.newest.txt }}.txt" as="document" />
+
+<link rel="alternate"               type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" />
+<link rel="alternate" media="print" type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" />
+<link rel="alternate" media="print" type="text/plain"      href="/documents/Leggiero-Resume_{{ site.date.newest.txt }}.txt" />
+<!-- END Prefetched Resources -->
+
+</head>
+
+
+
+<body>
+    <header class="app-bar gradient-background">
+        {% if page.is-top-level %}
+        <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
+        {% else %}
+        <a href="/" class="button back-to-root-link"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <h1 class="title"><span class="title-text">{{ site.author.name }}</span><span class="subtitle-text"></span></h1></a>
+        {% endif %}
+    </header>
+
+
+
+    {{ content }}
+
+
+
+    <nav class="app-bar-overlay">
+        <section>
+            {% if page.is-top-level %}
+            <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
+            {% else %}
+            <a href="/" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
+            {% endif %}
+        </section>
+        <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
+            <i class="icon-button material-icons">more_vert</i>
+            <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Reduce Motion</span> <input name="reduce-motion-toggle" id="reduce-motion-toggle" type="checkbox" checked /></label></li>
+            </ol>
+        </section>
+        <script>
+        $("#menu").removeClass("hidden")
+        </script>
+    </nav>
+</body>
+</html>

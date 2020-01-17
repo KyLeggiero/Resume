@@ -13,28 +13,28 @@
 
 {% if site.author.social.blog %}
 <link href="{{ site.author.social.blog }}" rel="me" />
-{% endif %}
+{%- endif -%}
 {% if site.author.social.linkedin-username %}
 <link href="https://LinkedIn.com/in/{{ site.author.social.linkedin-username }}" rel="me" />
-{% endif %}
+{%- endif -%}
 {% if site.author.social.mastodon %}
 <link href="{{ site.author.social.mastodon }}" rel="me" />
-{% endif %}
+{%- endif -%}
 {% if site.author.social.stackoverflow-suffix %}
 <link href="https://stackoverflow.com/{{ site.author.social.stackoverflow-suffix }}" rel="me" />
-{% endif %}
+{%- endif -%}
 {% if site.author.social.twitter-username %}
 <link href="https://Twitter.com/{{ site.author.social.twitter-username }}" rel="me" />
-{% endif %}
+{%- endif -%}
 {% if site.author.social.website %}
 <link href="{{ site.author.social.website }}" rel="me" />
-{% endif %}
+{%- endif %}
 
-{% if page.description %}
-{% assign description = page.description | strip %}
-{% else %}
-{% assign description = site.description | strip %}
-{% endif %}
+{% if page.description -%}
+{%- assign description = page.description | strip -%}
+{%- else -%}
+{%- assign description = site.description | strip -%}
+{%- endif -%}
 
 <meta name="description"                           content="{{ description }}" property="og:description"/>
 <meta name="keywords"                              content="{{ site.author.name }},Resume,Résumé"/>
@@ -75,9 +75,9 @@
 <link rel="stylesheet" id="google-fonts"             href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700|Bangers|Carter+One|Gugi|Nova+Square|Questrial|Squada+One|ZCOOL+QingKe+HuangYou|Economica:400i|Medula+One|Teko:300,400&amp;subset=chinese-simplified,korean,latin-ext,vietnamese,cyrillic,cyrillic-ext,greek,greek-ext">
 <link rel="stylesheet" id="general-styles"           href="/styles.css" />
 <link rel="stylesheet" id="styles-to-be-transferred" href="/to-be-transferred.css" />
-{% for stylesheet in page.page-specific-stylesheets %}
+{% for stylesheet in page.page-specific-stylesheets -%}
 <link rel="stylesheet" id="page-specific-stylesheet-{{ forloop.index }}" href="{{ stylesheet }}" />
-{% endfor %}
+{%- endfor %}
 <!-- END Site-specific Stylesheets -->
 
 <!-- BEGIN Prefetched Resources -->
@@ -99,11 +99,11 @@
 
 <body>
 <header class="app-bar gradient-background">
-    {% if page.is-top-level %}
+    {%- if page.is-top-level %}
     <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
-    {% else %}
+    {%- else %}
     <a href="/" class="button back-to-root-link"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <h1 class="title"><span class="title-text">{{ site.author.name }}</span><span class="subtitle-text"></span></h1></a>
-    {% endif %}
+    {%- endif %}
 </header>
 
 
@@ -114,11 +114,11 @@
 
 <nav class="app-bar-overlay">
     <section>
-        {% if page.is-top-level %}
+        {%- if page.is-top-level %}
         <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
-        {% else %}
+        {%- else %}
         <a href="/" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
-        {% endif %}
+        {%- endif %}
     </section>
     <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
         <i class="icon-button material-icons">more_vert</i>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <meta name="viewport"              content="width=device-width, initial-scale=1.0" />
 <meta name="language"              content="English" /> <meta property="og:locale" content="en_US" />
-<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+<title>{% if page.title %}{{ page.title | replace: '%site.author.name%', site.author.name }} - {% endif %}{{ site.title }}</title>
 
 <link rel="shortcut icon"                type="image/x-icon"    href="https://Shared.BHStudios.org/img/ico/favicon.ico" />
 <link rel="apple-touch-icon"             type="image/png"       href="https://Shared.BHStudios.org/img/brand/paw_2.2.1_(512).png" />
@@ -98,38 +98,38 @@
 
 
 <body>
-    <header class="app-bar gradient-background">
+<header class="app-bar gradient-background">
+    {% if page.is-top-level %}
+    <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
+    {% else %}
+    <a href="/" class="button back-to-root-link"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <h1 class="title"><span class="title-text">{{ site.author.name }}</span><span class="subtitle-text"></span></h1></a>
+    {% endif %}
+</header>
+
+
+
+{{ content }}
+
+
+
+<nav class="app-bar-overlay">
+    <section>
         {% if page.is-top-level %}
-        <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
+        <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
         {% else %}
-        <a href="/" class="button back-to-root-link"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <h1 class="title"><span class="title-text">{{ site.author.name }}</span><span class="subtitle-text"></span></h1></a>
+        <a href="/" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
         {% endif %}
-    </header>
-
-
-
-    {{ content }}
-
-
-
-    <nav class="app-bar-overlay">
-        <section>
-            {% if page.is-top-level %}
-            <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
-            {% else %}
-            <a href="/" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
-            {% endif %}
-        </section>
-        <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
-            <i class="icon-button material-icons">more_vert</i>
-            <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
-                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
-                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Reduce Motion</span> <input name="reduce-motion-toggle" id="reduce-motion-toggle" type="checkbox" checked /></label></li>
-            </ol>
-        </section>
-        <script>
-        $("#menu").removeClass("hidden")
-        </script>
-    </nav>
+    </section>
+    <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
+        <i class="icon-button material-icons">more_vert</i>
+        <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
+            <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
+            <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Reduce Motion</span> <input name="reduce-motion-toggle" id="reduce-motion-toggle" type="checkbox" checked /></label></li>
+        </ol>
+    </section>
+    <script>
+    $("#menu").removeClass("hidden")
+    </script>
+</nav>
 </body>
 </html>

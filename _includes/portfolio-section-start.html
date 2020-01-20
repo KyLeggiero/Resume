@@ -1,10 +1,10 @@
     <section>
         <h1 id="{{ include.id }}">{{ include.title }}</h1>
 
-        {% if include.aside -%}
+        {%- if include.aside %}
         <aside>
             {{ include.aside }}
         </aside>
         {%- endif %}
 
-        <ol class="portfolio-cards   flex-row flex-wrap flex-horiz-space-around">
+        {% include portfolio-list-start.html %}

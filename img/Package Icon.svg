@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Package Icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Package-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Back" transform="translate(2.000000, 4.000000)" stroke="#979797" stroke-width="0.1">
+            <path d="M12.1821181,0.252828752 L14.0353553,3.96464466 L18.9552786,9.02236068 L16.9646447,5.03535534 L12.1821181,0.252828752 Z" id="Right-Flap" fill="#EBC791"></path>
+            <path d="M8.9785701,1.95443867 L12.0158114,0.0474341649 L3.02773501,3.04160251 L-0.0158113883,4.95256584 L8.9785701,1.95443867 Z" id="Back-Flap" fill="#EBC791"></path>
+            <path d="M12.0498031,0.120513807 L12.0353553,8.96464466 L16.95,14 L16.9646447,5.03535534 L12.0498031,0.120513807 Z" id="Right-Side" fill="#FFE0B2"></path>
+            <path d="M3.04973443,3.03612648 L2.98418861,11.9525658 L11.95,9 L12.0158114,0.0474341649 L3.04973443,3.03612648 Z" id="Back-Side" fill="#EBC791"></path>
+        </g>
+        <g id="Inner-Box-/-Blue" transform="translate(11.000000, 5.000000)">
+            <g id="Inner-Box" stroke="#979797" stroke-width="0.1">
+                <path d="M2.98592177,0.0566324463 L0.0353553391,0.964644661 L1.98418861,2.95256584 L4.96464466,2.03535534 L2.98592177,0.0566324463 Z" id="Path-8" fill="#FFE0B2"></path>
+                <path d="M0.0496449761,1.12035565 L0.0353553391,5.96464466 L1.95,8 L1.96464466,3.03535534 L0.0496449761,1.12035565 Z" id="Path-9" fill="#D5AD70"></path>
+                <path d="M2.04951898,3.0361983 L1.98418861,7.95256584 L4.95,7 L5.01581139,2.04743416 L2.04951898,3.0361983 Z" id="Path-10" fill="#EBC791"></path>
+            </g>
+            <polygon id="Color" fill="#2196F3" style="mix-blend-mode: color;" points="0 1 3 0 5 2 5 7 2 8 0 6"></polygon>
+        </g>
+        <g id="Inner-Box-/-Yellow" transform="translate(8.000000, 8.000000)">
+            <g id="Inner-Box" stroke="#979797" stroke-width="0.1">
+                <path d="M2.98592177,0.0566324463 L0.0353553391,0.964644661 L1.98418861,2.95256584 L4.96464466,2.03535534 L2.98592177,0.0566324463 Z" id="Path-8" fill="#FFE0B2"></path>
+                <path d="M0.0496449761,1.12035565 L0.0353553391,5.96464466 L1.95,8 L1.96464466,3.03535534 L0.0496449761,1.12035565 Z" id="Path-9" fill="#D5AD70"></path>
+                <path d="M2.04951898,3.0361983 L1.98418861,7.95256584 L4.95,7 L5.01581139,2.04743416 L2.04951898,3.0361983 Z" id="Path-10" fill="#EBC791"></path>
+            </g>
+            <polygon id="Color" fill="#FFEB3B" style="mix-blend-mode: color;" points="0 1 3 0 5 2 5 7 2 8 0 6"></polygon>
+        </g>
+        <g id="Inner-Box-/-Magenta" transform="translate(13.000000, 8.000000)">
+            <g id="Inner-Box" stroke="#979797" stroke-width="0.1">
+                <path d="M2.98592177,0.0566324463 L0.0353553391,0.964644661 L1.98418861,2.95256584 L4.96464466,2.03535534 L2.98592177,0.0566324463 Z" id="Path-8" fill="#FFE0B2"></path>
+                <path d="M0.0496449761,1.12035565 L0.0353553391,5.96464466 L1.95,8 L1.96464466,3.03535534 L0.0496449761,1.12035565 Z" id="Path-9" fill="#D5AD70"></path>
+                <path d="M2.04951898,3.0361983 L1.98418861,7.95256584 L4.95,7 L5.01581139,2.04743416 L2.04951898,3.0361983 Z" id="Path-10" fill="#EBC791"></path>
+            </g>
+            <polygon id="Color" fill="#9C27B0" style="mix-blend-mode: color;" points="0 1 3 0 5 2 5 7 2 8 0 6"></polygon>
+        </g>
+        <g id="Inner-Box-/-Green" transform="translate(10.000000, 9.000000)">
+            <g id="Inner-Box" stroke="#979797" stroke-width="0.1">
+                <path d="M2.98592177,0.0566324463 L0.0353553391,0.964644661 L1.98418861,2.95256584 L4.96464466,2.03535534 L2.98592177,0.0566324463 Z" id="Path-8" fill="#FFE0B2"></path>
+                <path d="M0.0496449761,1.12035565 L0.0353553391,5.96464466 L1.95,8 L1.96464466,3.03535534 L0.0496449761,1.12035565 Z" id="Path-9" fill="#D5AD70"></path>
+                <path d="M2.04951898,3.0361983 L1.98418861,7.95256584 L4.95,7 L5.01581139,2.04743416 L2.04951898,3.0361983 Z" id="Path-10" fill="#EBC791"></path>
+            </g>
+            <polygon id="Color" fill="#4CAF50" style="mix-blend-mode: color;" points="0 1 3 0 5 2 5 7 2 8 0 6"></polygon>
+        </g>
+        <g id="Inner-Box-/-Red" transform="translate(5.000000, 7.000000)">
+            <g id="Inner-Box" stroke="#979797" stroke-width="0.1">
+                <path d="M2.98592177,0.0566324463 L0.0353553391,0.964644661 L1.98418861,2.95256584 L4.96464466,2.03535534 L2.98592177,0.0566324463 Z" id="Path-8" fill="#FFE0B2"></path>
+                <path d="M0.0496449761,1.12035565 L0.0353553391,5.96464466 L1.95,8 L1.96464466,3.03535534 L0.0496449761,1.12035565 Z" id="Path-9" fill="#D5AD70"></path>
+                <path d="M2.04951898,3.0361983 L1.98418861,7.95256584 L4.95,7 L5.01581139,2.04743416 L2.04951898,3.0361983 Z" id="Path-10" fill="#EBC791"></path>
+            </g>
+            <polygon id="Color" fill="#F44336" style="mix-blend-mode: color;" points="0 1 3 0 5 2 5 7 2 8 0 6"></polygon>
+        </g>
+        <g id="Inner-Box-/-Cyan" transform="translate(7.000000, 11.000000)">
+            <g id="Inner-Box" stroke="#979797" stroke-width="0.1">
+                <path d="M2.98592177,0.0566324463 L0.0353553391,0.964644661 L1.98418861,2.95256584 L4.96464466,2.03535534 L2.98592177,0.0566324463 Z" id="Path-8" fill="#FFE0B2"></path>
+                <path d="M0.0496449761,1.12035565 L0.0353553391,5.96464466 L1.95,8 L1.96464466,3.03535534 L0.0496449761,1.12035565 Z" id="Path-9" fill="#D5AD70"></path>
+                <path d="M2.04951898,3.0361983 L1.98418861,7.95256584 L4.95,7 L5.01581139,2.04743416 L2.04951898,3.0361983 Z" id="Path-10" fill="#EBC791"></path>
+            </g>
+            <polygon id="Color" fill="#00BCD4" style="mix-blend-mode: color;" points="0 1 3 0 5 2 5 7 2 8 0 6"></polygon>
+        </g>
+        <g id="Front" transform="translate(2.000000, 7.000000)">
+            <path d="M8.05,13.9308932 L16.95,11 L17.0158114,2.04743416 L8.05,5 L8.05,13.9308932 Z" id="Front-Side" stroke="#979797" stroke-width="0.1" fill="#EBC791"></path>
+            <path d="M7.95019687,13.8794862 L7.96464466,5.03535534 L3.05,0 L3.03535534,8.96464466 L7.95019687,13.8794862 Z" id="Left-Side" stroke="#979797" stroke-width="0.1" fill="#FFE0B2"></path>
+            <polygon id="Left-Shadow" fill="#EBC791" opacity="0.5" style="mix-blend-mode: multiply;" points="8 5 8 10 4 6 3 0"></polygon>
+            <path d="M8.06567349,5.03081346 L9.98418861,9.95256584 L18.9535762,7.01856953 L17.0158114,2.04743416 L8.06567349,5.03081346 Z" id="Front-Flap" stroke="#979797" stroke-width="0.1" fill="#FFE0B2"></path>
+            <path d="M3.00505306,0.0757637409 L0.0353553391,3.96464466 L4.96,8.97 L7.96464466,5.03535534 L3.00505306,0.0757637409 Z" id="Left-Flap" stroke="#979797" stroke-width="0.1" fill="#FFE8C5"></path>
+        </g>
+    </g>
+</svg>

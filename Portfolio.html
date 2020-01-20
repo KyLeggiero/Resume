@@ -49,6 +49,9 @@ title: "%site.author.name%'s Portfolio"
 
 
 
+
+
+
 {% include portfolio-section-start.html
     title='Big Personal Projects'
     id='big-personal-projects'
@@ -81,6 +84,9 @@ title: "%site.author.name%'s Portfolio"
 
 
 
+
+
+
 {% include portfolio-section-start.html
     title='Open-Source Con&shy;tri&shy;bu&shy;tions'
     id='open-source-contributions'
@@ -107,9 +113,88 @@ title: "%site.author.name%'s Portfolio"
 {%- include portfolio-section-end.html %}
 
 
-{% include portfolio-footer-start.html
-    title='My Open-Source Projects'
+
+
+
+
+{% include portfolio-subsection-start.html
+    title='My Open-Source packages'
     id='my-open-source-projects'
+    aside='A lot of my open-source projects lately are small library packages:'
+-%}
+    {% include portfolio-list-start.html %}
+        {%- include portfolio-item-small.html
+            title='Swift Lazy Patterns'
+            description='A few lazy-initialization patterns for Swift 5.1'
+            url='https://github.com/RougeWare/Swift-Lazy-Patterns'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift SemVer'
+            description='A small Swift library that implements SemVer 2.0.0'
+            url='https://github.com/RougeWare/Swift-SemVer'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Rectangle Tools'
+            description='A set of Swift utilities for dealing with rectangles, including a way to generically build your own!'
+            url='https://github.com/RougeWare/Swift-Rectangle-Tools'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Special String'
+            description='Ever need a string but also wish it weren\'t a <code>String</code> type?'
+            url='https://github.com/RougeWare/Swift-Special-String'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Safe Pointer'
+            description='Lets you pass anything using reference semantics without the danger of unsafe pointers'
+            url='https://github.com/RougeWare/Swift-Safe-Pointer'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Atomic'
+            description='Uses <code>DispatchQueue</code> to ensure a value is only read from and written to by one thread at a time'
+            url='https://github.com/RougeWare/Swift-Atomic'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Safe Collection Access'
+            description='Ever wonder why Swift crashes if you access a collection the wrong way? Me too here\'s some extensions'
+            url='https://github.com/RougeWare/Swift-Safe-Collection-Access'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift <code>TODO()</code>'
+            description='For when you know you\'re gonna get to something, but right now you have other priorities.'
+            url='https://github.com/RougeWare/Swift-TODO'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Cross-Kit Types'
+            description='Some types and extensions for those using AppKit and UIKit in the same project'
+            url='https://github.com/RougeWare/Swift-Cross-Kit-Types'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Optional Tools'
+            description='Some tools to make Optionals easier to use'
+            url='https://github.com/RougeWare/Swift-Optional-Tools'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Mul&shy;ti&shy;pli&shy;ca&shy;tive Ar&shy;ith&shy;met&shy;ic'
+            description='Formalizes an object\'s ability to be multiplied by something'
+            url='https://github.com/RougeWare/Swift-MultiplicativeArithmetic'
+        -%}
+        {%- include portfolio-item-small.html
+            title='SwiftUI Seven-Segment Display'
+            description='A 7-segment display for SwiftUI'
+            url='https://github.com/RougeWare/SwiftUI-SevenSegmentDisplay'
+        -%}
+    {% include portfolio-list-end.html %}
+{%- include portfolio-subsection-end.html -%}
+
+
+
+
+
+
+{% include portfolio-subsection-start.html
+    title='The Rest Of My Open-Source Projects'
+    id='my-open-source-projects'
+    aside='The rest of my projects, including this site and several apps, are separated into these three GitHub repos:'
 -%}
     {%- if site.author.social.github-suffix.personal -%}
         {%- capture github-personal-url -%}https://github.com/{{ site.author.social.github-suffix.personal }}{%- endcapture -%}
@@ -135,4 +220,4 @@ title: "%site.author.name%'s Portfolio"
             fa-icon='fab fa-github'
         -%}
     {%- endif -%}
-{%- include portfolio-footer-end.html -%}
+{%- include portfolio-subsection-end.html -%}

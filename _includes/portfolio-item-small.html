@@ -1,0 +1,13 @@
+
+            <li>
+                <a href="{{ include.url }}" target="_blank" class="mini portfolio-card   big low-emphasis button">
+                    <figure class="flex-row">
+                        <img src="{{ include.image-url | default: '/img/Package Icon.svg' }}" class="portfolio-card-thumbnail" />
+
+                        <figcaption class="portfolio-card-text">
+                            <h2 class="portfolio-card-title">{{ include.title }}</h2>
+                            <p class="portfolio-card-description">{{ include.description }}</p>
+                        </figcaption>
+                    </figure>
+                </a>
+            </li>

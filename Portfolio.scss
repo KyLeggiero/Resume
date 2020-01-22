@@ -80,6 +80,14 @@ main {
     .portfolio-card-title {
         margin: 0;
         padding: 0 0 1ex;
+
+        span {
+            display: inline-block;
+        }
+
+        small {
+            margin: 0;
+        }
     }
 
     .portfolio-card-description {

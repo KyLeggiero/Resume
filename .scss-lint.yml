@@ -1,0 +1,26 @@
+# yamllint disable rule:document-start
+# https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
+
+preprocess_command: "gsed --regexp-extended '/^---$/,/^---$/s/.*//'"
+linters:
+    BorderZero:
+        convention: none
+    PropertySortOrder:
+        order: smacss
+        ignore_unspecified: true
+    Indentation:
+        width: 4
+    QualifyingElement:
+        allow_element_with_attribute: true
+        allow_element_with_class: true
+        allow_element_with_id: true
+    LeadingZero:
+        style: include_zero
+    StringQuotes:
+        style: double_quotes
+    NestingDepth:
+        max_depth: 5
+    SelectorDepth:
+        max_depth: 5
+    DuplicateProperty:
+        ignore_consecutive: true

@@ -2,77 +2,122 @@
 ---
 
 :root {
-    --portfolio-card-width: var(--phone-portrait-small-max-width);
+    --portfolio-card-width: calc(var(--phone-portrait-small-max-width) - (var(--main-total-inline-margin) / 2));
+}
+
+main {
+    @media (max-width: 960px), (max-aspect-ratio:1/1) {
+        padding: 0;
+    }
 }
 
 .portfolio-cards {
     list-style-type: none;
-}
-.portfolio-cards li {
-    margin: 0;
-}
-.portfolio-cards>* {
-    display: inline-block;
-}
 
-.portfolio-card,
-.portfolio-card.button,
-.portfolio-card.big.button,
-.portfolio-card:link,
-.portfolio-card:visited {
-    --button-resting-shadow: var(--box-shadow-z6);
-    --button-hover-shadow: var(--box-shadow-z24);
-    --button-pressed-shadow: none;
-    --button-border-radius: 1ex;
-    --font-weight-button: 400;
+    li {
+        margin: 0;
+        margin-inline-start: 1ex;
+        margin-inline-end: 1ex;
+    }
 
-    box-shadow: var(--box-shadow-z6);
-    background: var(--theme-background-color-at-level-raised);
-    display: block;
-    max-width: var(--portfolio-card-width);
-    margin: 1cm;
-    padding: 0;
-    text-align: left;
-    text-align: start;
-    text-transform: none;
-
-    transform: translateY(0px);
-    transition-property: background, box-shadow, color, transform, border, opacity;
-
-    } @media (max-width: 960px), (max-aspect-ratio:1/1) {
-            .portfolio-card,
-            .portfolio-card.button,
-            .portfolio-card.big.button,
-            .portfolio-card:link,
-            .portfolio-card:visited {
-        margin: 1cm 0;
+    >* {
+        display: inline-block;
     }
 }
 
-.portfolio-card .portfolio-card-thumbnail {
-    width: 100%;
-    /* max-height: var(--portfolio-card-width); */
-}
+.portfolio-card {
+    &,
+    * {
+        border-radius: var(--button-border-radius);
+        text-decoration: none;
+    }
 
-.portfolio-card .portfolio-card-text {
-    padding: 1ex 2ex;
-}
+    &:hover,
+    &:focus {
+        transform: translateY(-1px);
+    }
 
-.portfolio-card, .portfolio-card * {
-    border-radius: var(--button-border-radius);
-    text-decoration: none;
-}
+    &.button,
+    &.big.button,
+    &:link,
+    &:visited {
+        --button-resting-shadow: var(--box-shadow-z6);
+        --button-hover-shadow: var(--box-shadow-z24);
+        --button-pressed-shadow: none;
+        --button-border-radius: 1ex;
+        --font-weight-button: 400;
 
-.portfolio-card:hover, .portfolio-card:focus {
-    transform: translateY(-1px);
-}
+        display: block;
+        max-width: var(--portfolio-card-width);
+        margin: 1cm;
+        padding: 0;
 
-.portfolio-card .portfolio-card-title {
-    padding: 0 0 1ex;
-    margin: 0;
-}
+        transform: translateY(0);
+        transition-property: background, box-shadow, color, transform, border, opacity;
 
-.portfolio-card .portfolio-card-description {
-    font-weight: normal;
-    font-size: 1rem;
+        background: var(--theme-background-color-at-level-raised);
+        box-shadow: var(--box-shadow-z6);
+
+        text-align: left;
+        text-align: start;
+        text-transform: none;
+
+
+        @media (max-width: 960px), (max-aspect-ratio:1/1) {
+            margin: 1cm 0;
+        }
+    }
+
+    .portfolio-card-thumbnail {
+        width: 100%;
+        // max-height: var(--portfolio-card-width);
+    }
+
+    .portfolio-card-text {
+        padding: 1ex 2ex;
+    }
+
+    .portfolio-card-title {
+        margin: 0;
+        padding: 0 0 1ex;
+
+        span {
+            display: inline-block;
+        }
+
+        small {
+            margin: 0;
+        }
+    }
+
+    .portfolio-card-description {
+        font-size: 1rem;
+        font-weight: normal;
+    }
+
+
+    &.mini {
+        --mini-card-ideal-height: 2cm;
+
+        min-height: var(--mini-card-ideal-height);
+
+        .portfolio-card-thumbnail {
+            flex-grow: 1;
+            flex-shrink: 0;
+            width: var(--mini-card-ideal-height);
+            border-block-end-inline-end-radius: 0;   // scss-lint:disable PropertySpelling
+            border-block-start-inline-end-radius: 0; // scss-lint:disable PropertySpelling
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background: var(--theme-background-color-at-level-3);
+        }
+
+        .portfolio-card-title {
+            font-size: 1em;
+        }
+
+        .portfolio-card-description {
+            font-size: 1ex;
+        }
+    }
 }

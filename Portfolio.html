@@ -10,42 +10,45 @@ title: "%site.author.name%'s Portfolio"
     id='big-projects'
 -%}
     {%- include portfolio-item-large.html
-        title='Motif for macOS'
-        description='Custom photo books, calendars, and cards right in Apple Photos'
+        title='Motif'
+        description='Custom photo books, calendars, &amp; cards right in Apple Photos'
         url='https://MotifPhotos.com'
         image-url='/img/Motif-icon.svg'
     -%}
     {%- include portfolio-item-large.html
-        title='Ionic Files for macOS'
+        title='Ionic Files'
         description='User-facing desktop file protection software for macOS'
         url='https://Ionic.com/files/'
         image-url='/img/Ionic Files icon.png'
     -%}
     {%- include portfolio-item-large.html
         title='PVP 3'
-        description='Elegant and powerful video streaming software for statium-tier events'
+        description='Elegant &amp; powerful video streaming software for statium-tier events'
         url='https://RenewedVision.com/ProVideoPlayer/'
         image-url='/img/PVP3.png'
     -%}
     {%- include portfolio-item-large.html
         title='ProPresenter'
-        description='Live video presentation and compositing software'
+        description='Live video presentation &amp; compositing software'
         url='https://RenewedVision.com/ProPresenter/'
         image-url='/img/ProPresenter icon.png'
     -%}
     {%- include portfolio-item-large.html
         title='NCR Silver'
-        description='Point-of-sale software supporting mobile payments, sales reporting, loyalty rewards, business management, and more'
+        description='Point-of-sale software supporting mobile payments, sales reporting, loyalty rewards, business management, &amp; more'
         url='https://NCRSilver.com'
         image-url='/img/NCR Silver logo.png'
     -%}
     {%- include portfolio-item-large.html
-        title='The Columbus State University website'
+        title='The CSU website'
         description='Over 100 specialized websites in one modern, responsive design that maintains compatibility with IE 8 through the latest Chrome. CMS integration allows school employees to maintain their own sub-sites'
         url='https://ColumbusState.edu'
         image-url='/img/ColumbusState.edu screenshot.png'
     -%}
 {%- include portfolio-section-end.html %}
+
+
+
 
 
 
@@ -81,19 +84,22 @@ title: "%site.author.name%'s Portfolio"
 
 
 
+
+
+
 {% include portfolio-section-start.html
     title='Open-Source Con&shy;tri&shy;bu&shy;tions'
     id='open-source-contributions'
     aside='These are only projects to which I\'ve made notable contributions, but which I don\'t own. There are many which are not listed here to which I have made small contributions. For those which I own, see my GitHub profiles (<a href="https://GitHub.com/BenLeggiero" target="_blank">personal</a> andor <a href="https://GitHub.com/BlueHuskyStudios" target="_blank">big projects</a>).'
 -%}
     {%- include portfolio-item-large.html
-        title='Kotlin Collection Literals <small>(Proposal)</small>'
+        title='Kotlin <span>Collection Literals</span> <small>(Proposal)</small>'
         description='A proposal for how to implement collection literals in the Kotlin language'
         url='https://github.com/Kotlin/KEEP/pull/112'
         image-url='/img/Kotlin-logo.svg'
     -%}
     {%- include portfolio-item-large.html
-        title='Kotlin Error Handling <small>(Proposal)</small>'
+        title='Kotlin <span>Error Handling</span> <small>(Proposal)</small>'
         description='A proposal for how to natively handle errors in the Kotlin language'
         url='https://github.com/Kotlin/KEEP/pull/81'
         image-url='/img/Kotlin-logo.svg'
@@ -107,9 +113,88 @@ title: "%site.author.name%'s Portfolio"
 {%- include portfolio-section-end.html %}
 
 
-{% include portfolio-footer-start.html
-    title='My Open-Source Projects'
+
+
+
+
+{% include portfolio-subsection-start.html
+    title='My Open-Source packages'
     id='my-open-source-projects'
+    aside='A lot of my open-source projects lately are small library packages:'
+-%}
+    {% include portfolio-list-start.html %}
+        {%- include portfolio-item-small.html
+            title='Swift Lazy Patterns'
+            description='A few lazy-initialization patterns for Swift 5.1'
+            url='https://github.com/RougeWare/Swift-Lazy-Patterns'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift SemVer'
+            description='A small Swift library that implements SemVer 2.0.0'
+            url='https://github.com/RougeWare/Swift-SemVer'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Rectangle Tools'
+            description='A set of Swift utilities for dealing with rectangles, including a way to generically build your own!'
+            url='https://github.com/RougeWare/Swift-Rectangle-Tools'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Special String'
+            description='Ever need a string but also wish it weren\'t a <code>String</code> type?'
+            url='https://github.com/RougeWare/Swift-Special-String'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Safe Pointer'
+            description='Lets you pass anything using reference semantics without the danger of unsafe pointers'
+            url='https://github.com/RougeWare/Swift-Safe-Pointer'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Atomic'
+            description='Uses <code>DispatchQueue</code> to ensure a value is only read from and written to by one thread at a time'
+            url='https://github.com/RougeWare/Swift-Atomic'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Safe Collection Access'
+            description='Ever wonder why Swift crashes if you access a collection the wrong way? Me too here\'s some extensions'
+            url='https://github.com/RougeWare/Swift-Safe-Collection-Access'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift <code>TODO()</code>'
+            description='For when you know you\'re gonna get to something, but right now you have other priorities.'
+            url='https://github.com/RougeWare/Swift-TODO'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Cross-Kit Types'
+            description='Some types and extensions for those using AppKit and UIKit in the same project'
+            url='https://github.com/RougeWare/Swift-Cross-Kit-Types'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Optional Tools'
+            description='Some tools to make Optionals easier to use'
+            url='https://github.com/RougeWare/Swift-Optional-Tools'
+        -%}
+        {%- include portfolio-item-small.html
+            title='Swift Mul&shy;ti&shy;pli&shy;ca&shy;tive Ar&shy;ith&shy;met&shy;ic'
+            description='Formalizes an object\'s ability to be multiplied by something'
+            url='https://github.com/RougeWare/Swift-MultiplicativeArithmetic'
+        -%}
+        {%- include portfolio-item-small.html
+            title='SwiftUI Seven-Segment Display'
+            description='A 7-segment display for SwiftUI'
+            url='https://github.com/RougeWare/SwiftUI-SevenSegmentDisplay'
+        -%}
+    {% include portfolio-list-end.html %}
+{%- include portfolio-subsection-end.html -%}
+
+
+
+
+
+
+{% include portfolio-subsection-start.html
+    title='The Rest Of My Open-Source Projects'
+    id='my-open-source-projects'
+    aside='The rest of my projects, including this site and several apps, are separated into these three GitHub repos:'
 -%}
     {%- if site.author.social.github-suffix.personal -%}
         {%- capture github-personal-url -%}https://github.com/{{ site.author.social.github-suffix.personal }}{%- endcapture -%}
@@ -135,4 +220,4 @@ title: "%site.author.name%'s Portfolio"
             fa-icon='fab fa-github'
         -%}
     {%- endif -%}
-{%- include portfolio-footer-end.html -%}
+{%- include portfolio-subsection-end.html -%}

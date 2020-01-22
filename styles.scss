@@ -59,28 +59,30 @@
 }
 
 
-.app-bar.gradient-background .title {
-    color: #1DEAB7 !important;
-    font-size: 17pt;
-    mix-blend-mode: screen;
-}
+.app-bar {
+    &.gradient-background .title {
+        color: #1DEAB7 !important; // scss-lint:disable ImportantRule
+        font-size: 17pt;
+        mix-blend-mode: screen;
+    }
 
 
-.app-bar .title {
-    margin: 0;
-    padding: 0;
-}
-.app-bar :link,
-.app-bar :visited {
-    color: inherit !important;
-    text-decoration: none;
-}
+    .title {
+        margin: 0;
+        padding: 0;
 
+        .subtitle-text:not(:empty) {
+            margin-left: 2em;
+            margin-inline-start: 2em;
+            margin-inline-end: 0;
+        }
+    }
 
-.app-bar .title .subtitle-text:not(:empty) {
-    margin-left: 2em;
-    margin-inline-start: 2em;
-    margin-inline-end: 0;
+    :link,
+    :visited {
+        color: inherit !important; // scss-lint:disable ImportantRule
+        text-decoration: none;
+    }
 }
 
 
@@ -104,19 +106,17 @@ i.insignia {
 
 main {
     position: relative;
-}
 
+    .page {
+        position: absolute;
+        transition-property: transform, opacity, pointer-events;
+    }
 
-main .page {
-    position: absolute;
-    transition-property: transform, opacity, pointer-events;
-}
-
-
-main .page:not(.presented) {
-    transform: translateY(2in);
-    opacity: 0;
-    pointer-events: none;
+    .page:not(.presented) {
+        transform: translateY(2in);
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 
@@ -128,18 +128,28 @@ main .page:not(.presented) {
 
 
 aside {
-    text-align: end;
-    opacity: 0.7;
-    margin-inline-start: auto;
     width: 75%;
 
     transition-property: width;
 
-    } @media (max-width: 4in) { aside {
+    opacity: 0.7;
+
+    text-align: end;
+    margin-inline-start: auto;
+
+
+    @media (max-width: 4in) {
         width: 100%;
+    }
+
+    .reduce-motion & {
+        transition-property: width !important; // scss-lint:disable ImportantRule
     }
 }
 
-.reduce-motion aside {
-    transition-property: width !important;
+
+
+code {
+    font-family: "Fira Code", monospace;
+    font-size: 90%;
 }

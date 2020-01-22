@@ -119,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
     word-break: break-word;
 }
 h2, h3, h4, h5, h6 {
-    hyphens: none;
+    hyphens: manual;
 }
 h2 small {
     display: inline-block;

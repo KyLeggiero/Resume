@@ -87,13 +87,15 @@
 
 
 i.insignia {
-    background-image: url("/img/insignia.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    display: inline-block;
+
     width: 2.5em;
     height: 2.5em;
-    display: inline-block;
+
+    background-image: url("/img/insignia.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     mix-blend-mode: screen;
     background-blend-mode: screen;
 }

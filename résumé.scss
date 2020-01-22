@@ -203,6 +203,18 @@ p:not(:last-child) {
         background-image: url("./img/Filled Piece.svg");
         background-size: contain;
     }
+
+
+    &[data-proficiency-out-of-10="10"]::after { width: 100%; filter: hue-rotate(45deg); }
+    &[data-proficiency-out-of-10="9"]::after  { width: 90%;  filter: hue-rotate(30deg); }
+    &[data-proficiency-out-of-10="8"]::after  { width: 80%;  }
+    &[data-proficiency-out-of-10="7"]::after  { width: 70%;  filter: hue-rotate(270deg); }
+    &[data-proficiency-out-of-10="6"]::after  { width: 60%;  filter: hue-rotate(240deg); }
+    &[data-proficiency-out-of-10="5"]::after  { width: 50%;  filter: hue-rotate(225deg); }
+    &[data-proficiency-out-of-10="4"]::after  { width: 40%;  filter: hue-rotate(225deg); }
+    &[data-proficiency-out-of-10="3"]::after  { width: 30%;  filter: saturate(10%); }
+    &[data-proficiency-out-of-10="2"]::after  { width: 20%;  filter: saturate(10%) brightness(80%); }
+    &[data-proficiency-out-of-10="1"]::after  { width: 10%;  filter: saturate(10%) brightness(50%); }
 }
 
 .spec-list {
@@ -220,20 +232,6 @@ p:not(:last-child) {
         /* font-variant: small-caps; */
         margin: 0;
     }
-}
-
-
-.spec-bars{
-    &[data-proficiency-out-of-10="10"]::after { width: 100%; filter: hue-rotate(45deg); }
-    &[data-proficiency-out-of-10="9"]::after  { width: 90%;  filter: hue-rotate(30deg); }
-    &[data-proficiency-out-of-10="8"]::after  { width: 80%;  }
-    &[data-proficiency-out-of-10="7"]::after  { width: 70%;  filter: hue-rotate(270deg); }
-    &[data-proficiency-out-of-10="6"]::after  { width: 60%;  filter: hue-rotate(240deg); }
-    &[data-proficiency-out-of-10="5"]::after  { width: 50%;  filter: hue-rotate(225deg); }
-    &[data-proficiency-out-of-10="4"]::after  { width: 40%;  filter: hue-rotate(225deg); }
-    &[data-proficiency-out-of-10="3"]::after  { width: 30%;  filter: saturate(10%); }
-    &[data-proficiency-out-of-10="2"]::after  { width: 20%;  filter: saturate(10%) brightness(80%); }
-    &[data-proficiency-out-of-10="1"]::after  { width: 10%;  filter: saturate(10%) brightness(50%); }
 }
 
 
@@ -258,20 +256,7 @@ dl.like-bulleted-list {
     >* {
         display: list-item;
     }
-}
 
-[data-list-bullet-style="dash"] {
-    list-style-type: "— "
-}
-
-.definitions-inline-with-terms{
-     dd,
-     dt {
-        display: inline;
-    }
-}
-
-dl.like-bulleted-list{
     &.definitions-inline-with-terms[data-definition-separator="dash"] dd {
         margin-left: 0;
 
@@ -294,6 +279,16 @@ dl.like-bulleted-list{
     }
 }
 
+[data-list-bullet-style="dash"] {
+    list-style-type: "— "
+}
+
+.definitions-inline-with-terms{
+     dd,
+     dt {
+        display: inline;
+    }
+}
 
 
 

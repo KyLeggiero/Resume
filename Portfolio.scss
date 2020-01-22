@@ -68,6 +68,7 @@ main {
         }
     }
 
+
     .portfolio-card-thumbnail {
         width: 100%;
         // max-height: var(--portfolio-card-width);
@@ -100,6 +101,22 @@ main {
         --mini-card-ideal-height: 2cm;
 
         min-height: var(--mini-card-ideal-height);
+
+        &.button,
+        &.big.button,
+        &:link,
+        &:visited {
+            max-width: calc(var(--portfolio-card-width) + 5mm);
+            margin: 1cm 5mm;
+
+            .portfolio-card-text {
+                padding: 1ex;
+            }
+
+            @media (max-width: 960px), (max-aspect-ratio:1/1) {
+                margin: 5mm 0;
+            }
+        }
 
         .portfolio-card-thumbnail {
             flex-grow: 1;

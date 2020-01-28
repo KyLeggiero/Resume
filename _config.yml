@@ -11,7 +11,7 @@ title: Ben Leggiero's Résumé
 
 # Short bio or description (in share links)
 description: >
-    Senior Software Engineer &amp; Architect with a passion for designing &amp;
+    Senior Software Engineer with a passion for designing &amp;
     making great products
 
 author:
@@ -42,9 +42,10 @@ author:
 date:
     originally-written: 2019-04-02
     newest:
-        web: 2020-01-17
-        pdf: 2019-10-31
-        txt: 2019-10-30
+        web: 2020-01-27
+        pdf: 2020-01-27
+        txt: 2019-01-27
+        json: 2020-01-27
 
 document:
     directory: /documents
@@ -98,6 +99,9 @@ plugins:
     - jekyll-feed  # Create an Atom feed using the official Jekyll feed gem
     - jekyll-archives
     - jekyll-redirect-from  # Allow multiple names for a page
+
+whitelist:
+    - jekyll-redirect-from
 
 # Exclude these files from your production _site
 exclude:

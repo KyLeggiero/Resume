@@ -2,9 +2,9 @@
   "format-version": "1.0.0",
   "meta": {
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
-    "info-version": "3.1.0",
+    "info-version": "3.2.0",
     "title": "Résumé Basics",
-    "date-last-edited": "2019-10-30"
+    "date-last-edited": "2020-01-27"
   },
   "content": {
     "contact": {
@@ -63,7 +63,7 @@
         "start": {
           "date": "2012-09-19",
           "title": "Web Designer & Developer",
-          "description": "Redesigned & rebuilt https://ColumbusState.edu in HTML5+CSS3, with XSLT & PHP where needed. Made CMS templates so teachers could build pages.",
+          "description": "Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3, with XSLT & PHP where needed. Made templates for CMS so teachers could build pages.\nInvented, critiqued, and evolved design elements for CSU website. Designed pages for all schools of the University within a consistent theme.",
 
           "compensation": {
             "type": "hourly",
@@ -132,7 +132,7 @@
         "start": {
           "date": "2015-01-19",
           "title": "Mobile Software Engineer",
-          "description": "Built industry-leading point-of-sale software for iOS & Android. Implemented headlining features such as 64-bit support, EMV payments, scale-weighing of items, & future orders, including any hardware drivers necessary for these.",
+          "description": "Built state-of-the-art point-of-sale software for iOS & Android. Implemented headlining features such as 64-bit support, EMV payments, scale-weighing of items, & future orders, including any hardware drivers necessary for these.\nWorked alongside UI design team to revamp the system's look-and-feel.",
           "compensation": {
             "type": "yearly",
             "amount": 65000,
@@ -162,7 +162,7 @@
         "start": {
           "date": "2016-07-14",
           "title": "macOS Software Engineer",
-          "description": "Built industry-leading professional presentation software for macOS. Collaboratively created software platforms with open-source & proprietary tech: advanced auto font scaling, inspector, animated grid item selection UI.",
+          "description": "Built industry-leading professional presentation software for macOS. Collaboratively created software platforms with open-source & proprietary tech: advanced auto font scaling, inspector, & animated grid item selector.\nDesigned dozens of icons & other graphics, user flows, interface approaches, animations, and more.",
           "compensation": {
             "type": "yearly",
             "amount": 55000,
@@ -193,7 +193,7 @@
         "start": {
           "date": "2017-03-27",
           "title": "Software Engineer",
-          "description": "Engineered user-facing file encryption and access software for macOS. Collaborated on a company-wide software platform to allow client software to be made consistent on many platforms, including macOS, Android, Windows, and iOS. \nWorked closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user flows, and overall experience.",
+          "description": "Engineered user-facing file encryption and access software for macOS. Collaborated on a company-wide software platform to allow such client software to be made consistent on many other platforms, including macOS, Android, Windows, and iOS.\nWorked closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user flows, and overall experience.",
           "compensation": {
             "type": "yearly",
             "amount": 75000,
@@ -220,8 +220,8 @@
       {
         "id": "6EBBD5DD-62CE-41BA-ABDA-ECC64A1AE141",
         "company": {
-          "name": "Motif",
-          "name-long": "R. R. Donnelley - Motif Photos",
+          "name": "RR Donnelley",
+          "division": "Motif",
           "broad-location": "Chicago, Illinois",
           "address": "",
           "phone-number": ""

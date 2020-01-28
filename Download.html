@@ -1,0 +1,13 @@
+---
+redirect_from:
+    - /download
+    - /pdf
+    - /Pdf
+    - /PDF
+    - /print
+    - /Print
+---
+{%- capture url -%}
+{{ site.document.directory }}/{{ site.document.pdf.prefix }}{{ site.date.newest.pdf }}.pdf
+{%- endcapture -%}
+<html><head><meta http-equiv="refresh" content="0; url={{ url }}" /><style>:root{background:#263238;color:#EEE;font:30pt sans-serif;text-align:center}:link,:visited{color:#42A5F5}body>:only-child{margin:calc(50vh - 1em) 0 0;opacity:0.25}</style></head><body><p><a href="{{ url }}">If the download does not start, click here</a></p></body></html>

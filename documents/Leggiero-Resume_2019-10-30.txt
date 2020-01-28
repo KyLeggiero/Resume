@@ -1,50 +1,57 @@
 
-                                                      Ben Leggiero
-                                                 Developer | Designer
+                                   Ben Leggiero
+                              Developer | Designer
 
-               Senior Software Engineer & Architect with a passion for designing & making great products
+ Senior Software Engineer with a passion for designing & making great products
 
-                       BenLeggiero@Gmail.com                        +1 (470) BEN C LEG (236-2534)
+          BenLeggiero@Gmail.com           +1 (470) BEN C LEG (236-2534)
 
 
-                                                       Employment
+                                   Employment
 
 RR Don­nel­ley - Mo­tif (Contract from July 2019 - October 2019)
-mac­OS Soft­ware Ar­chi­tect
+Soft­ware Ar­chi­tect
 
-Defined the future architecture for the leading photo book software on macOS. Instituted standard practices across
-teams to bring development in-house and improve turnaround.
+Defined the future architecture for the leading photo book software on macOS.
+Instituted standard practices across teams to bring development in- house and
+improve turnaround.
 
-Worked back-and-forth with UI/UX leads to ensure a smooth and intuitive transition between operating system versions.
-
+Worked back-and-forth with UI/UX leads to ensure a smooth and intuitive
+transition between operating system versions.
 
 
 
 Ionic Security (2017 - 2019)
-macOS Software Engineer
+Software Engineer III
 
-Engineered user-facing file encryption and access software for macOS. Collaborated on a company-wide software platform
-to allow such client software to be made consistent on many other platforms, including macOS, Android, Windows, and iOS.
+Engineered user-facing file encryption and access software for macOS.
+Collaborated on a company-wide software platform to allow such client software
+to be made consistent on many other platforms, including macOS, Android,
+Windows, and iOS.
 
-Worked closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user
-flows, and overall experience.
+Worked closely with UI/UX team to hone the design of multiple company products,
+including graphics, animations, user flows, and overall experience.
 
 
 
 Renewed Vision (2016 - 2017)
 macOS Software Engineer
-Built industry-leading professional presentation software for macOS. Collaboratively created software platforms with
-open-source & proprietary tech: advanced auto font scaling, inspector, & animated grid item selector.
 
-Designed dozens of icons & other graphics, user flows, interface approaches, animations, and more.
+Built industry-leading professional presentation software for macOS.
+Collaboratively created software platforms with open-source & proprietary tech:
+advanced auto font scaling, inspector, & animated grid item selector.
+
+Designed dozens of icons & other graphics, user flows, interface approaches,
+animations, and more.
 
 
 
 NCR - Small & Medium Business (2015 - 2016)
 Mobile Software Engineer
 
-Built state-of-the-art point-of-sale software for iOS & Android. Implemented headlining features such as 64-bit
-support, EMV payments, scale-weighing of items, & future orders, including any hardware drivers necessary for these.
+Built state-of-the-art point-of-sale software for iOS & Android. Implemented
+headlining features such as 64-bit support, EMV payments, scale-weighing of
+items, & future orders, including any hardware drivers necessary for these.
 
 Worked alongside UI design team to revamp the system's look-and-feel.
 
@@ -53,77 +60,75 @@ Worked alongside UI design team to revamp the system's look-and-feel.
 University System of Georgia - Information Technology Services (2012 - 2014)
 Web Developer & Designer
 
-Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3, with XSLT & PHP where needed. Made
-templates for CMS so teachers could build pages.
+Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3,
+with XSLT & PHP where needed. Made templates for CMS so teachers could build
+pages.
 
-Invented, critiqued, and evolved design elements for CSU website. Designed pages for all schools of the University
-within a consistent theme.
+Invented, critiqued, and evolved design elements for CSU website. Designed
+pages for all schools of the University within a consistent theme.
 
 
 
-                                                       Education
+                                   Education
 
 Columbus State University (2014)
 Bachelor of Science in Computer Science
 
 
 
-                                                       Tech Specs
+                                   Tech Specs
 
 Extraordinary:
-Swift, CSS 4, Web (front-end), Git
+Swift, Kotlin, CSS 4, macOS, Web (Front-End), Git, Learning New Skills
 
 Expert:
-Kotlin, HTML 5, macOS, JVM, Agile, Learning New Skills
+HTML 5, iOS, JVM, Frameworks and APIs, Open-Source, Agile
 
 Advanced:
-Sass, iOS, Multithreading, Networking, Open-Source, Architecture
+Sass and SCSS, Multithreading, Networking, Architecture
 
 Very Good:
-Android, Web (back-end)
+Android
 
 
 
-                                                         Design
+                                     Design
 
 Extraordinary:
-Icons, Web Design, Inkscape
+Iconography, Web Design, Sketch
 
 Expert:
-UI/UX, Sketch
+UI/UX, Custom Controls, Inkscape
 
 Advanced:
 Print Design
 
 Very Good:
-Gravit
-
-Good:
 Logo Design
 
 
 
-                                             https://Resume.BenLeggiero.me
+                             https://BenLeggiero.me
 
 
 
-                     As PDF: https://Resume.BenLeggiero.me/documents/Leggiero-Resume_2019-10-31.pdf
+                   As PDF: https://Resume.BenLeggiero.me/PDF
 
-                                       Calendar:  https://Calendar.BenLeggiero.me
-                                      Portfolio:  https://Resume.BenLeggiero.me/Portfolio
+                    Calendar:  https://BenLeggiero.me/Calendar
+                   Portfolio:  https://Resume.BenLeggiero.me/Portfolio
 
-                                       LinkedIn:  https://LinkedIn.com/in/ben-leggiero
-                                  StackOverflow:  https://StackOverflow.com/story/benleggiero
-                              GitHub (Personal):  https://GitHub.com/BenLeggiero
-                          GitHub (Big Projects):  https://GitHub.com/BlueHuskyStudios
-                                           Blog:  https://BenLeggiero.blog
-                                       Mastodon:  https://Mastodon.social/@BenLeggiero
-                                        Google+:  https://Google.com/+BenLeggiero
-                                        Twitter:  https://twitter.com/BenLeggiero
-                                         E-mail:  BenLeggiero@Gmail.com
-                                          Phone:  +1 (470) BEN C LEG (236-2534)
+                    LinkedIn:  https://LinkedIn.com/in/ben-leggiero
+               StackOverflow:  https://StackOverflow.com/story/benleggiero
+           GitHub (Personal):  https://GitHub.com/BenLeggiero
+       GitHub (Big Projects):  https://GitHub.com/BlueHuskyStudios
+          GitHub (Utilities):  https://GitHub.com/RougeWare
+                        Blog:  https://BenLeggiero.blog
+                    Mastodon:  https://Mastodon.social/@BenLeggiero
+                     Twitter:  https://Twitter.com/BenLeggiero
+                      E-mail:  BenLeggiero@Gmail.com
+                       Phone:  +1 (470) BEN C LEG (236-2534)
 
 
 
-                                             https://Resume.BenLeggiero.me
-                                                Last updated 2019-10-30
+                            https://BenLeggiero.me
+                            Last updated 2020-01-27

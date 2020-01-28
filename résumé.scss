@@ -187,6 +187,26 @@ p:not(:last-child) {
     }
 }
 
+
+@keyframes glowing-proficiency-10-spec-bar {
+    // Inspired by https://www.gradient-animator.com by Ian Forrest ( https://www.IanForrest.me )
+
+    0% {
+        filter: hue-rotate(45deg)
+            drop-shadow(0 0 3px var(--top-skills-glow-color))
+        ;
+    }
+
+    100% {
+        filter: hue-rotate(45deg)
+            drop-shadow(0 0 6px var(--top-skills-glow-color))
+            drop-shadow(0 0 6px var(--top-skills-glow-color))
+            contrast(200%)
+            brightness(150%)
+        ;
+    }
+}
+
 .spec-bars {
     height: var(--tech-spec-meter-height);
     width: var(--tech-spec-meter-width);
@@ -196,16 +216,40 @@ p:not(:last-child) {
     margin: 0 2em 0 0;
     transition-property: height, width;
 
+    --top-skills-glow-color: #FDD835;
+
+    .brightness-dark &,
+    .brightness-black & {
+        --top-skills-glow-color: var(--gradient-background-start-color);
+    }
+
     &::after {
         content: "";
         display: inline-block;
         height: 100%;
         background-image: url("./img/Filled Piece.svg");
         background-size: contain;
+        transition-property: filter;
     }
 
 
-    &[data-proficiency-out-of-10="10"]::after { width: 100%; filter: hue-rotate(45deg); }
+    &[data-proficiency-out-of-10="10"]::after {
+        width: 100%;
+        filter: hue-rotate(45deg);
+        filter: hue-rotate(45deg) drop-shadow(0 0 6px var(--top-skills-glow-color));
+
+        animation-name: glowing-proficiency-10-spec-bar;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-play-state: running;
+
+        .reduce-motion & {
+            animation-play-state: paused;
+        }
+    }
+
     &[data-proficiency-out-of-10="9"]::after  { width: 90%;  filter: hue-rotate(30deg); }
     &[data-proficiency-out-of-10="8"]::after  { width: 80%;  }
     &[data-proficiency-out-of-10="7"]::after  { width: 70%;  filter: hue-rotate(270deg); }

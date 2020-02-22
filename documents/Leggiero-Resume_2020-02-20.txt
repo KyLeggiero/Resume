@@ -9,6 +9,13 @@
 
                                    Employment
 
+PKWare (2020 - Present)
+Apple Platform Engineer
+
+Working on encryption software for Apple platforms such as macOS and iOS
+
+
+
 RR Don­nel­ley - Mo­tif (Contract from July 2019 - October 2019)
 Soft­ware Ar­chi­tect
 
@@ -24,13 +31,12 @@ transition between operating system versions.
 Ionic Security (2017 - 2019)
 Software Engineer III
 
-Engineered user-facing file encryption and access software for macOS.
-Collaborated on a company-wide software platform to allow such client software
-to be made consistent on many other platforms, including macOS, Android,
-Windows, and iOS.
+Built industry-leading professional presentation software for macOS.
+Collaboratively created software platforms with open-source & proprietary tech:
+advanced auto font scaling, inspector, & animated grid item selector.
 
-Worked closely with UI/UX team to hone the design of multiple company products,
-including graphics, animations, user flows, and overall experience.
+Designed dozens of icons & other graphics, user flows, interface approaches,
+animations, and more.
 
 
 
@@ -112,7 +118,7 @@ Logo Design
 
 
 
-                   As PDF: https://Resume.BenLeggiero.me/PDF
+                    As a PDF: https://Resume.BenLeggiero.me/PDF
 
                     Calendar:  https://BenLeggiero.me/Calendar
                    Portfolio:  https://Resume.BenLeggiero.me/Portfolio
@@ -131,4 +137,4 @@ Logo Design
 
 
                             https://BenLeggiero.me
-                            Last updated 2020-01-27
+                            Last updated 2020-02-20

@@ -44,8 +44,8 @@ date:
     newest:
         web: 2020-02-20
         pdf: 2020-02-20
-        txt: 2020-02-20
-        json: 2020-02-21
+        txt: 2020-02-23
+        json: 2020-02-23
 
 document:
     directory: /documents

@@ -63,15 +63,13 @@ Worked alongside UI design team to revamp the system's look-and-feel.
 
 
 
-University System of Georgia - Information Technology Services (2012 - 2014)
+University System of Georgia - UITS (2012 - 2014)
 Web Developer & Designer
 
-Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3,
-with XSLT & PHP where needed. Made templates for CMS so teachers could build
-pages.
+Redesigned & rebuilt subsites & CMS templates for ColumbusState.edu.
 
-Invented, critiqued, and evolved design elements for CSU website. Designed
-pages for all schools of the University within a consistent theme.
+Invented, critiqued, & evolved design elements & a consistent theme for CSU
+websites.
 
 
 
@@ -137,4 +135,4 @@ Logo Design
 
 
                             https://BenLeggiero.me
-                            Last updated 2020-02-20
+                            Last updated 2020-02-23

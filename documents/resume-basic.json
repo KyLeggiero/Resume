@@ -4,7 +4,7 @@
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
     "info-version": "4.0.0",
     "title": "Résumé Basics",
-    "date-last-edited": "2020-02-21"
+    "date-last-edited": "2020-02-23"
   },
   "content": {
     "contact": {
@@ -64,7 +64,7 @@
         "start": {
           "date": "2012-09-19",
           "title": "Web Designer & Developer",
-          "description": "Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3, with XSLT & PHP where needed. Made templates for CMS so teachers could build pages.\nInvented, critiqued, and evolved design elements for CSU website. Designed pages for all schools of the University within a consistent theme.",
+          "description": "Redesigned & rebuilt subsites & CMS templates for ColumbusState.edu.\nInvented, critiqued, & evolved design elements & a consistent theme for CSU websites.",
 
           "compensation": {
             "type": "hourly",

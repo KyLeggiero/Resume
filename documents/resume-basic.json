@@ -2,9 +2,9 @@
   "format-version": "1.0.0",
   "meta": {
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
-    "info-version": "3.2.0",
+    "info-version": "4.0.0",
     "title": "Résumé Basics",
-    "date-last-edited": "2020-01-27"
+    "date-last-edited": "2020-02-23"
   },
   "content": {
     "contact": {
@@ -15,6 +15,7 @@
       "last-name": "Leggiero",
       "phone-number": "+1 (470) BEN C LEG",
       "email-address": "BenLeggiero@Gmail.com",
+      "tagline": "Senior Software Engineer with a passion for designing & making great products",
       "website-url": "https://BenLeggiero.me",
       "blog-url": "https://BenLeggiero.blog"
     },
@@ -63,7 +64,7 @@
         "start": {
           "date": "2012-09-19",
           "title": "Web Designer & Developer",
-          "description": "Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3, with XSLT & PHP where needed. Made templates for CMS so teachers could build pages.\nInvented, critiqued, and evolved design elements for CSU website. Designed pages for all schools of the University within a consistent theme.",
+          "description": "Redesigned & rebuilt subsites & CMS templates for ColumbusState.edu.\nInvented, critiqued, & evolved design elements & a consistent theme for CSU websites.",
 
           "compensation": {
             "type": "hourly",
@@ -210,7 +211,7 @@
         },
 
         "keywords": ["client-side", "file protection", "encryption", "decryption", "file sharing", "macOS", "software platforms", "open-source", "proprietary"],
-        "tags": ["tech", "software engineering", "apps", "desktop", "macOS", "Cocoa", "desk job", "career"],
+        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "Cocoa", "desk job", "career"],
 
         "reason-for-leaving": {
           "brief": "amicable",
@@ -252,6 +253,28 @@
           "brief": "downsizing",
           "description": "Company budget was cut and they terminated contracts to fit it. Mine was one of those."
         }
+      },
+      {
+        "id": "75709497-148D-4B93-8B01-66C0EE597AA6",
+        "company": {
+          "name": "PKWare",
+          "name-long": "PKWARE, Inc.",
+          "broad-location": "Milwaukee, WI",
+          "address": "201 E. Pittsburgh Ave., Ste. 400, Milwaukee, WI, 53204",
+          "phone-number": "+1 (414) 289-9788"
+        },
+        "start": {
+          "date": "2020-03-02",
+          "title": "Apple Platform Engineer",
+          "description": "Working on encryption software for Apple platforms such as macOS and iOS.",
+          "compensation": {
+            "type": "yearly",
+            "amount": 120000,
+            "tier": "full-time"
+          }
+        },
+        "keywords": ["encryption", "decryption", "file sharing", "macOS", "iOS", "iPadOS", "software platforms", "proprietary"],
+        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "desk job", "career"]
       }
     ]
   }

@@ -9,6 +9,13 @@
 
                                    Employment
 
+PKWare (2020 - Present)
+Apple Platform Engineer
+
+Working on encryption software for Apple platforms such as macOS and iOS
+
+
+
 RR Don­nel­ley - Mo­tif (Contract from July 2019 - October 2019)
 Soft­ware Ar­chi­tect
 
@@ -24,13 +31,12 @@ transition between operating system versions.
 Ionic Security (2017 - 2019)
 Software Engineer III
 
-Engineered user-facing file encryption and access software for macOS.
-Collaborated on a company-wide software platform to allow such client software
-to be made consistent on many other platforms, including macOS, Android,
-Windows, and iOS.
+Built industry-leading professional presentation software for macOS.
+Collaboratively created software platforms with open-source & proprietary tech:
+advanced auto font scaling, inspector, & animated grid item selector.
 
-Worked closely with UI/UX team to hone the design of multiple company products,
-including graphics, animations, user flows, and overall experience.
+Designed dozens of icons & other graphics, user flows, interface approaches,
+animations, and more.
 
 
 
@@ -57,15 +63,13 @@ Worked alongside UI design team to revamp the system's look-and-feel.
 
 
 
-University System of Georgia - Information Technology Services (2012 - 2014)
+University System of Georgia - UITS (2012 - 2014)
 Web Developer & Designer
 
-Redesigned & rebuilt ColumbusState.edu and dozens of sub-sites in HTML5+CSS3,
-with XSLT & PHP where needed. Made templates for CMS so teachers could build
-pages.
+Redesigned & rebuilt subsites & CMS templates for ColumbusState.edu.
 
-Invented, critiqued, and evolved design elements for CSU website. Designed
-pages for all schools of the University within a consistent theme.
+Invented, critiqued, & evolved design elements & a consistent theme for CSU
+websites.
 
 
 
@@ -112,7 +116,7 @@ Logo Design
 
 
 
-                   As PDF: https://Resume.BenLeggiero.me/PDF
+                    As a PDF: https://Resume.BenLeggiero.me/PDF
 
                     Calendar:  https://BenLeggiero.me/Calendar
                    Portfolio:  https://Resume.BenLeggiero.me/Portfolio
@@ -131,4 +135,4 @@ Logo Design
 
 
                             https://BenLeggiero.me
-                            Last updated 2020-01-27
+                            Last updated 2020-02-23

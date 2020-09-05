@@ -166,3 +166,13 @@ code {
     font-family: "Fira Code", monospace;
     font-size: 90%;
 }
+
+
+
+
+// MARK: - Bodge
+// MARK: #61
+
+.app-bar h1, .app-bar.short h1 {
+    line-height: unset;
+}

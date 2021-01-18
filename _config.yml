@@ -20,6 +20,10 @@ author:
     avatar: >
         https://www.gravatar.com/avatar/2f4691f7a1c9d3192fe843a164a27535?s=280px
 
+    professional:
+        title: Senior Software Engineer
+        start-year: 2012
+
     social:
         blog: https://BenLeggiero.blog
         calendar: https://BenLeggiero.me/Calendar
@@ -42,9 +46,9 @@ author:
 date:
     originally-written: 2019-04-02
     newest:
-        web: 2020-02-20
+        web: 2021-01-12
         pdf: 2020-02-20
-        txt: 2020-02-23
+        txt: 2021-01-13
         json: 2020-02-23
 
 document:

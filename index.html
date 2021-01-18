@@ -31,34 +31,28 @@ page-specific-stylesheets:
 
     <div class="flex-row flex-wrap has-sidebar">
         <main style="transform: translate3d(0,0,0) !important">
-            {%- include resume/experience-card/list-start.html
+            {%- include resume/experience/list-start.html
                 title='Em&shy;ploy&shy;ment'
                 id='Employment'
             %}
-                {%- include resume/experience-card/infobox.html
+                {%- include resume/experience/infobox.html
                     company='PKWare'
                     title='Ap&shy;ple Plat&shy;form En&shy;gi&shy;neer'
                     duration='<time datetime="2020-03-02">2020</time> – <i>Present</i>'
 
-                    summary='Working on encryption software for Apple platforms such as macOS and iOS'
+                    summary-line-1='Working on personal <strong>file encryption</strong> software for macOS and iOS, as well as <strong>internal libraries</strong> to support these.'
+                    summary-line-2='<strong>Completely redesigned</strong> the iOS app from the ground up to focus on core competencies, improve accessibility, and optimize flow.'
 
                     url='https://PKWare.com'
-                    logo-for-light-theme='./img/PKWare-blue-logo.svg'
-                    logo-for-dark-theme='./img/PKWare-white-logo.svg'
+                    logo-for-light-theme='/img/PKWare-blue-logo.svg'
+                    logo-for-dark-theme='/img/PKWare-white-logo.svg'
                 %}
-                {%- include resume/experience-card/infobox.html
-                    company='RR Don&shy;nel&shy;ley &mdash; Mo&shy;tif'
+                {%- include resume/experience/omitted.html
+                    company='RR Don&shy;nel&shy;ley'
                     title='Soft&shy;ware Ar&shy;chi&shy;tect'
-                    duration='Contract from <time datetime="2019-07-01">July 2019</time> – <time datetime="2019-10-31">October 2019</time>'
-
-                    summary-line-1='Defined the future <strong>architecture</strong> for the leading photo book software on <strong>macOS</strong>. Instituted <strong>standard practices</strong> across teams to bring development in-house and improve turnaround.'
-                    summary-line-2='Worked back-and-forth with UI/UX leads to ensure a <strong>smooth and intuitive</strong> transition between operating system versions.'
-
-                    url='https://MotifPhotos.com'
-                    logo-for-light-theme='./img/Motif-dark-grey-logo.svg'
-                    logo-for-dark-theme='./img/Motif-white-logo.svg'
+                    duration='<time datetime="2019-07-01">July</time> – <time datetime="2019-10-31">October 2019</time>'
                 %}
-                {%- include resume/experience-card/infobox.html
+                {%- include resume/experience/infobox.html
                     company='Ion&shy;ic Se&shy;cu&shy;ri&shy;ty'
                     title='Soft&shy;ware En&shy;gi&shy;neer'
                     duration='<time datetime="2017-03-27">2017</time> – <time datetime="2019-06-28">2019</time>'
@@ -67,10 +61,10 @@ page-specific-stylesheets:
                     summary-line-2='Worked closely with UI/UX team to hone the design of multiple company products, including <strong>graphics</strong>, <strong>animations</strong>, user <strong>flows</strong>, and overall <strong>experience</strong>.'
 
                     url='https://Ionic.com'
-                    logo-for-light-theme='./img/IONIC-dark-grey-logo.svg'
-                    logo-for-dark-theme='./img/IONIC-white-logo.svg'
+                    logo-for-light-theme='/img/IONIC-dark-grey-logo.svg'
+                    logo-for-dark-theme='/img/IONIC-white-logo.svg'
                 %}
-                {%- include resume/experience-card/infobox.html
+                {%- include resume/experience/infobox.html
                     company='Re&shy;newed Vi&shy;sion'
                     title='mac&shy;OS Soft&shy;ware En&shy;gi&shy;neer'
                     duration='<time datetime="2016-07-14">2016</time> – <time datetime="2017-01-16">2017</time>'
@@ -79,9 +73,9 @@ page-specific-stylesheets:
                     summary-line-2='Designed dozens of <strong>icons</strong> &amp; other graphics, <strong>user flows</strong>, interface approaches, <strong>animations</strong>, and more.'
 
                     url='https://RenewedVision.com'
-                    logo='./img/Renewed-Vision-logo-icon.png'
+                    logo='/img/Renewed-Vision-logo-icon.png'
                 %}
-                {%- include resume/experience-card/infobox.html
+                {%- include resume/experience/infobox.html
                     company='NCR &mdash; Small &amp; Medi&shy;um Busi&shy;ness'
                     title='Mo&shy;bile Soft&shy;ware En&shy;gi&shy;neer'
                     duration='<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>'
@@ -90,36 +84,29 @@ page-specific-stylesheets:
                     summary-line-2='Worked alongside UI design team to <strong>revamp</strong> the system\'s <strong>look-and-feel</strong>.'
 
                     url='https://NCRSilver.com'
-                    logo='./img/NCR-logo.svg'
+                    logo='/img/NCR-logo.svg'
                 %}
-                {%- include resume/experience-card/infobox.html
-                    company='Uni&shy;ver&shy;si&shy;ty Sys&shy;tem of Geor&shy;gia &mdash; UITS'
+                {%- include resume/experience/omitted.html
+                    company='USG'
                     title='Web De&shy;vel&shy;op&shy;er &amp; De&shy;sign&shy;er'
                     duration='<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>'
-
-                    summary-line-1='Redesigned &amp; rebuilt subsites &amp; CMS templates for <strong><a href="https://ColumbusState.edu" target="_blank">ColumbusState.edu</a></strong>.'
-                    summary-line-2='Invented, critiqued, &amp; <strong>evolved design elements</strong> &amp; a consistent theme for CSU websites.'
-
-                    url='https://ColumbusState.edu'
-                    logo-for-light-theme='./img/CSU_Logo_Tower_WhiteBackground.svg'
-                    logo-for-dark-theme='./img/CSU_Logo_Tower_BlueBackground.svg'
                 %}
-            {%- include resume/experience-card/list-end.html %}
+            {%- include resume/experience/list-end.html more-button-href='/More' %}
 
-            {%- include resume/experience-card/list-start.html
+            {%- include resume/experience/list-start.html
                 title='Edu&shy;ca&shy;tion'
                 id='Education'
             %}
-                {%- include resume/experience-card/infobox.html
+                {%- include resume/experience/infobox.html
                     company='Columbus State University'
                     title='Bachelor of Science in Computer Science'
                     duration='<time datetime="2014-05-12">2014</time>'
 
                     url='https://ColumbusState.edu'
-                    logo-for-light-theme='./img/CSU_Logo_Tower_WhiteBackground.svg'
-                    logo-for-dark-theme='./img/CSU_Logo_Tower_BlueBackground.svg'
+                    logo-for-light-theme='/img/CSU_Logo_Tower_WhiteBackground.svg'
+                    logo-for-dark-theme='/img/CSU_Logo_Tower_BlueBackground.svg'
                 %}
-            {%- include resume/experience-card/list-end.html %}
+            {%- include resume/experience/list-end.html %}
         </main>
 
         <section class="sidebar-right">
@@ -277,22 +264,23 @@ page-specific-stylesheets:
             <i class="fa fa-download"></i>
             <span>Download as PDF</span>
         </a>
-        {% endif %}{% if site.author.social.linkedin-username %}
-        <a href="https://LinkedIn.com/in/{{ site.author.social.linkedin-username }}" target="_blank" class="big button">
-            <i class="fab fa-linkedin"></i>
-            <span>View LinkedIn</span>
-        </a>
         {% endif %}
+        <a href="/Portfolio" class="big button"><i class="fa fa-th"></i> <span>Portfolio</span></a>
     </section>
 
     <section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
         {% if site.author.social.calendar %}
         <a href="{{ site.author.social.calendar }}" class="button medium-emphasis"><i class="fa fa-calendar"></i> <span>Calendar</span></a>
-        {% endif %}
-        <a href="/Portfolio" class="button medium-emphasis"><i class="fa fa-th"></i> <span>Portfolio</span></a>
+        {%- endif %}
+        {% if site.author.social.linkedin-username %}
+        <a href="https://LinkedIn.com/in/{{ site.author.social.linkedin-username }}" target="_blank" class="button medium-emphasis">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+        </a>
+        {%- endif %}
         {% if site.author.social.stackoverflow-suffix %}
         <a href="https://stackoverflow.com/{{ site.author.social.stackoverflow-suffix }}" target="_blank" class="button medium-emphasis"><i class="fab fa-stack-overflow"></i> <span>StackOverflow</span></a>
-        {% endif %}
+        {%- endif %}
         <section class="flex-row flex-wrap flex-horiz-space-around">
             {% if site.author.social.github-suffix.personal %}
             <a href="https://github.com/{{ site.author.social.github-suffix.personal }}" target="_blank" class="button medium-emphasis"><i class="fab fa-github"></i> <span>GitHub <small>(Personal)</small></span></a>

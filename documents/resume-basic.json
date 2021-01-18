@@ -2,7 +2,7 @@
   "format-version": "1.0.0",
   "meta": {
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
-    "info-version": "4.0.0",
+    "info-version": "4.1.0",
     "title": "Résumé Basics",
     "date-last-edited": "2020-02-23"
   },
@@ -31,7 +31,7 @@
         "start": {
           "date": "2011-06-07",
           "title": "Team Member",
-          "description": "Straighten merchandise, restock customer-facing shelves, directing and helping guests, handle money",
+          "description": "Straightened merchandise, restocked customer-facing shelves, directed and helped guests, handled money",
 
           "compensation": {
             "type": "hourly",
@@ -40,7 +40,7 @@
           }
         },
         "end": {
-          "date": "2011-06-20"
+          "date": "2011-08-20"
         },
 
         "keywords": ["straighten", "restock", "helping guests", "money"],
@@ -266,7 +266,7 @@
         "start": {
           "date": "2020-03-02",
           "title": "Apple Platform Engineer",
-          "description": "Working on encryption software for Apple platforms such as macOS and iOS.",
+          "description": "Working on personal file encryption software for macOS and iOS, as well as internal libraries to support these. \nCompletely redesigned the iOS app from the ground up to focus on core competencies, improve accessibility, and optimize flow.",
           "compensation": {
             "type": "yearly",
             "amount": 120000,

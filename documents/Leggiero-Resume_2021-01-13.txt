@@ -12,19 +12,15 @@
 PKWare (2020 - Present)
 Apple Platform Engineer
 
-Working on encryption software for Apple platforms such as macOS and iOS
+Working on personal file encryption software for macOS and iOS, as well as
+internal libraries to support these.
+
+Completely redesigned the iOS app from the ground up to focus on core
+competencies, improve accessibility, and optimize flow.
 
 
 
-RR Don­nel­ley - Mo­tif (Contract from July 2019 - October 2019)
-Soft­ware Ar­chi­tect
-
-Defined the future architecture for the leading photo book software on macOS.
-Instituted standard practices across teams to bring development in- house and
-improve turnaround.
-
-Worked back-and-forth with UI/UX leads to ensure a smooth and intuitive
-transition between operating system versions.
+- Software Architect - Mo­tif (2019 Contract) -
 
 
 
@@ -63,13 +59,11 @@ Worked alongside UI design team to revamp the system's look-and-feel.
 
 
 
-University System of Georgia - UITS (2012 - 2014)
-Web Developer & Designer
+- Web Developer & Designer - University System of Georgia (2012 - 2014) -
 
-Redesigned & rebuilt subsites & CMS templates for ColumbusState.edu.
 
-Invented, critiqued, & evolved design elements & a consistent theme for CSU
-websites.
+
+View more details about all positions at https://Resume.BenLeggiero.me/More
 
 
 
@@ -135,4 +129,4 @@ Logo Design
 
 
                             https://BenLeggiero.me
-                            Last updated 2020-02-23
+                            Last updated 2021-01-13

@@ -1,6 +1,10 @@
 ---
 ---
 
+@import "variables";
+
+
+
 :root {
     --font-family-h1: 'Questrial', 'Roboto', sans-serif;
     --font-family-title: var(--font-family-h1);
@@ -67,6 +71,7 @@
         var(--gradient-background-mid-color) 25%,
         var(--gradient-background-end-color) 100%);
     background-position: 0% 50%;
+    color: var(--dark-theme-foreground-color);
 }
 
 
@@ -78,9 +83,18 @@
     }
 
 
+    &,
+    * {
+        color: var(--dark-theme-foreground-color) !important;
+    }
+
+
     .title {
         margin: 0;
         padding: 0;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
 
         .subtitle-text:not(:empty) {
             margin-left: 2em;

@@ -1,0 +1,7 @@
+
+// Mobile breakpoints
+@mixin mobile {
+    @media (max-width: 960px), (max-aspect-ratio: 1/1) {
+        @content;
+    }
+}

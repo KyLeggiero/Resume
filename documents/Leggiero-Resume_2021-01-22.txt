@@ -9,10 +9,10 @@
 
                                    Employment
 
-PKWare (2020 - Present)
+PKWare (2020 - 2021)
 Apple Platform Engineer
 
-Working on personal file encryption software for macOS and iOS, as well as
+Worked on personal file encryption software for macOS and iOS, as well as
 internal libraries to support these.
 
 Completely redesigned the iOS app from the ground up to focus on core
@@ -77,10 +77,10 @@ Bachelor of Science in Computer Science
                                    Tech Specs
 
 Extraordinary:
-Swift, Kotlin, CSS 4, macOS, Web (Front-End), Git, Learning New Skills
+Swift, Kotlin, CSS 4, macOS, iOS, Web (Front-End), SwiftUI, Git, Learning New Skills
 
 Expert:
-HTML 5, iOS, JVM, Frameworks and APIs, Open-Source, Agile
+HTML 5, JVM, Frameworks and APIs, Open-Source, Agile
 
 Advanced:
 Sass and SCSS, Multithreading, Networking, Architecture
@@ -110,7 +110,7 @@ Logo Design
 
 
 
-                    As a PDF: https://Resume.BenLeggiero.me/PDF
+                    As a PDF:  https://Resume.BenLeggiero.me/PDF
 
                     Calendar:  https://BenLeggiero.me/Calendar
                    Portfolio:  https://Resume.BenLeggiero.me/Portfolio
@@ -129,4 +129,4 @@ Logo Design
 
 
                             https://BenLeggiero.me
-                            Last updated 2021-01-13
+                            Last updated 2021-01-22

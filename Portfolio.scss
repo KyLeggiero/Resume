@@ -127,6 +127,7 @@ main {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             background: var(--theme-background-color-at-level-3);
+            transition-property: background;
         }
 
         .portfolio-card-title {

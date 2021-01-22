@@ -46,10 +46,10 @@ author:
 date:
     originally-written: 2019-04-02
     newest:
-        web: 2021-01-12
+        web: 2021-01-22
         pdf: 2020-02-20
-        txt: 2021-01-13
-        json: 2020-02-23
+        txt: 2021-01-22
+        json: 2021-01-22
 
 document:
     directory: /documents
@@ -57,11 +57,6 @@ document:
         prefix: Leggiero-Resume_
     txt:
         prefix: Leggiero-Resume_
-
-
-# # Enter the Google Analytics web tracking code (e.g. UA-2110908-2) to
-# # activate tracking
-# google_analytics:
 
 # This website URL
 # Used for Sitemap.xml and the RSS feed

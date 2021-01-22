@@ -4,7 +4,7 @@
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
     "info-version": "4.1.0",
     "title": "Résumé Basics",
-    "date-last-edited": "2020-02-23"
+    "date-last-edited": "2021-01-22"
   },
   "content": {
     "contact": {
@@ -266,12 +266,19 @@
         "start": {
           "date": "2020-03-02",
           "title": "Apple Platform Engineer",
-          "description": "Working on personal file encryption software for macOS and iOS, as well as internal libraries to support these. \nCompletely redesigned the iOS app from the ground up to focus on core competencies, improve accessibility, and optimize flow.",
+          "description": "Worked on personal file encryption software for macOS and iOS, as well as internal libraries to support these. \nCompletely redesigned the iOS app from the ground up to focus on core competencies, improve accessibility, and optimize flow.",
           "compensation": {
             "type": "yearly",
             "amount": 120000,
             "tier": "full-time"
-          }
+          },
+          "end": {
+            "date": "2021-01-18",
+            "compensation": {
+              "type": "hourly",
+              "amount": 120000,
+              "tier": "full-time"
+            }
         },
         "keywords": ["encryption", "decryption", "file sharing", "macOS", "iOS", "iPadOS", "software platforms", "proprietary"],
         "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "desk job", "career"]

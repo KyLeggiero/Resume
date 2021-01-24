@@ -43,10 +43,10 @@
 <meta name="twitter:description"                   content="{{ description }}" />
 <meta property="og:site_name"                      content="{{ site.title }}" />
 <meta property="twitter:site"                      content="{{ site.title }}" />
-<meta name="twitter:creator"                       content="@{{ site.author.social.twitter-username }}" /><!-- Tell twitter that this was made by Ben Leggiero -->
+<meta name="twitter:creator"                       content="@{{ site.author.social.twitter-username }}" /><!-- Tell twitter that this was made by {{ site.author.name }} -->
 <meta property="og:type"                           content="profile" />
-<meta property="profile:first_name"                content="Ben" />
-<meta property="profile:last_name"                 content="Leggiero" />
+<meta property="profile:first_name"                content="{{ site.author.first-name }}" />
+<meta property="profile:last_name"                 content="{{ site.author.last-name }}" />
 <meta property="profile:username"                  content="{{ site.author.social.twitter-username }}" />
 <meta name="twitter:card"                          content="summary_large_image" /><!-- Tell twitter that this link can be presented as a large image with a summary -->
 <meta name="msapplication-TileColor"               content="#21043C" /><!-- When pinned as a tile for Windows' Start, this is the tile's BG color -->
@@ -81,16 +81,16 @@
 <!-- END Site-specific Stylesheets -->
 
 <!-- BEGIN Prefetched Resources -->
-<link rel="prefetch"                type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" />
-<link rel="prefetch"                type="text/plain"      href="/documents/Leggiero-Resume_{{ site.date.newest.txt }}.txt" />
+<link rel="prefetch"                type="application/pdf" href="/documents/{{ site.document.pdf.prefix }}{{ site.date.newest.pdf }}.pdf" />
+<link rel="prefetch"                type="text/plain"      href="/documents/{{ site.document.txt.prefix }}{{ site.date.newest.txt }}.txt" />
 
-<link rel="prefetch"                type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" as="document" />
-<link rel="prefetch"  media="print" type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" as="document" />
-<link rel="prefetch"  media="print" type="text/plain"      href="/documents/Leggiero-Resume_{{ site.date.newest.txt }}.txt" as="document" />
+<link rel="prefetch"                type="application/pdf" href="/documents/{{ site.document.pdf.prefix }}{{ site.date.newest.pdf }}.pdf" as="document" />
+<link rel="prefetch"  media="print" type="application/pdf" href="/documents/{{ site.document.pdf.prefix }}{{ site.date.newest.pdf }}.pdf" as="document" />
+<link rel="prefetch"  media="print" type="text/plain"      href="/documents/{{ site.document.txt.prefix }}{{ site.date.newest.txt }}.txt" as="document" />
 
-<link rel="alternate"               type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" />
-<link rel="alternate" media="print" type="application/pdf" href="/documents/Leggiero-Resume_{{ site.date.newest.pdf }}.pdf" />
-<link rel="alternate" media="print" type="text/plain"      href="/documents/Leggiero-Resume_{{ site.date.newest.txt }}.txt" />
+<link rel="alternate"               type="application/pdf" href="/documents/{{ site.document.pdf.prefix }}{{ site.date.newest.pdf }}.pdf" />
+<link rel="alternate" media="print" type="application/pdf" href="/documents/{{ site.document.pdf.prefix }}{{ site.date.newest.pdf }}.pdf" />
+<link rel="alternate" media="print" type="text/plain"      href="/documents/{{ site.document.txt.prefix }}{{ site.date.newest.txt }}.txt" />
 <!-- END Prefetched Resources -->
 
 </head>
@@ -100,7 +100,7 @@
 <body>
 <header class="app-bar gradient-background">
     {%- if page.is-top-level %}
-    <a href="https://GitHub.com/BenLeggiero/resumes" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">Ben Leggiero</span><span class="subtitle-text"></span></h1></a>
+    <a href="{{ site.author.social.personal-site }}" class="button back-to-root-link"><i class="insignia   back-to-root-icon   invisible"></i> <h1 class="title"><span class="title-text">{{ site.author.name }}</span><span class="subtitle-text"></span></h1></a>
     {%- else %}
     <a href="/" class="button back-to-root-link"><i class="material-icons    back-to-root-icon   invisible">arrow_back</i> <h1 class="title"><span class="title-text">{{ site.author.name }}</span><span class="subtitle-text"></span></h1></a>
     {%- endif %}
@@ -115,7 +115,7 @@
 <nav class="app-bar-overlay">
     <section>
         {%- if page.is-top-level %}
-        <a href="https://GitHub.com/BenLeggiero/resumes" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
+        <a href="{{ site.author.social.personal-site }}" class="icon-button back-to-root-link"><i class="insignia    back-to-root-icon"></i></a>
         {%- else %}
         <a href="/" class="icon-button back-to-root-link"><i class="material-icons    back-to-root-icon">arrow_back</i></a>
         {%- endif %}

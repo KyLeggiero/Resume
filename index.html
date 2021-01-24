@@ -276,6 +276,9 @@ page-specific-stylesheets:
         {% if site.author.social.calendar %}
         <a href="{{ site.author.social.calendar }}" class="button medium-emphasis"><i class="fa fa-calendar"></i> <span>Calendar</span></a>
         {%- endif %}
+        {% if site.author.social.contact-and-more %}
+        <a href="{{ site.author.social.contact-and-more }}" class="button medium-emphasis"><i class="fa fa-address-card"></i> <span>Contacts &amp; More</span></a>
+        {%- endif %}
         {% if site.author.social.linkedin-username %}
         <a href="https://LinkedIn.com/in/{{ site.author.social.linkedin-username }}" target="_blank" class="button medium-emphasis">
             <i class="fab fa-linkedin"></i>
@@ -312,6 +315,12 @@ page-specific-stylesheets:
         <a href="https://LinkedIn.com/in/{{ site.author.social.linkedin-username }}" target="_blank" class="low-emphasis button"><i class="fab fa-linkedin"></i> <span>LinkedIn</span></a>
         {% endif %}
     </section>
+
+    {% if site.source-code %}
+    <section class="hide-print flex-row flex-wrap flex-horiz-space-around font-1-1hx">
+        <a href="{{ site.source-code }}" target="_blank" class="button"><i class="fa fa-code"></i> <span>View the source code for this résumé</span></a>
+    </section>
+    {% endif %}
 
     <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
         {% if wbr_email %}

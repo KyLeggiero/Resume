@@ -121,17 +121,19 @@
         {%- endif %}
     </section>
 
-    <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
+    <section>
         <a href="/Download" class="icon-button"><i class="material-icons">download</i></a>
-        <i class="icon-button material-icons">more_vert</i>
-        <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
-            <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
-            <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Reduce Motion</span> <input name="reduce-motion-toggle" id="reduce-motion-toggle" type="checkbox" checked /></label></li>
-        </ol>
+        <section id="menu" class="shows-child-on-hover hidden" tabindex="-1">
+            <i class="icon-button material-icons">more_vert</i>
+            <ol class="context-menu shown-on-parent-hover requires-js" data-show-approach="unfurl-down" data-context-menu-item-context-corners="top-left,top-right">
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Dark Mode</span> <input name="dark-mode-toggle" id="dark-mode-toggle" type="checkbox" checked /></label></li>
+                <li><label class="context-menu-item   flex-row flex-horiz-space-between flex-vert-center"><span>Reduce Motion</span> <input name="reduce-motion-toggle" id="reduce-motion-toggle" type="checkbox" checked /></label></li>
+            </ol>
+        </section>
+        <script>
+        $("#menu").removeClass("hidden")
+        </script>
     </section>
-    <script>
-    $("#menu").removeClass("hidden")
-    </script>
 </nav>
 </body>
 </html>

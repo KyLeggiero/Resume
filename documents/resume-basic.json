@@ -238,12 +238,7 @@
           }
         },
         "end": {
-          "date": "2019-10-30",
-          "compensation": {
-            "type": "hourly",
-            "amount": 65,
-            "tier": "full-time"
-          }
+          "date": "2019-10-30"
         },
 
         "keywords": ["architecture", "macOS", "photos", "books"],
@@ -271,17 +266,40 @@
             "type": "yearly",
             "amount": 120000,
             "tier": "full-time"
-          },
-          "end": {
-            "date": "2021-01-18",
-            "compensation": {
-              "type": "hourly",
-              "amount": 120000,
-              "tier": "full-time"
-            }
+          }
+        },
+        "end": {
+          "date": "2021-01-18"
         },
         "keywords": ["encryption", "decryption", "file sharing", "macOS", "iOS", "iPadOS", "software platforms", "proprietary"],
-        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "desk job", "career"]
+        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "desk job", "career", "remote"],
+
+        "reason-for-leaving": {
+          "brief": "layoff",
+          "description": "Position eliminated"
+        }
+      },
+      {
+        "id": "946E7E22-9588-403D-ABC4-55DBEDC8D548",
+        "company": {
+          "name": "Yes Health",
+          "name-long": "Yes Health, Inc.",
+          "broad-location": "Mill Valley, CA",
+          "address": "35 Miller Avenue Suite #273 Mill Valley, CA. 94941",
+          "phone-number": ""
+        },
+        "start": {
+          "date": "2021-02-01",
+          "title": "Mobile Software Engineer",
+          "description": "Coordinating engineering multiple health products across multiple platforms.\nWorking with UI/UX team to redesign those products.",
+          "compensation": {
+            "type": "yearly",
+            "amount": 130000,
+            "tier": "full-time"
+          }
+        },
+        "keywords": ["redesign", "multiple health products"],
+        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote"]
       }
     ]
   }

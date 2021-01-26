@@ -450,6 +450,10 @@ dl.like-bulleted-list {
             i {
                 margin-right: 2pt;
             }
+
+            span {
+                display: inline-block;
+            }
         }
     }
 }
@@ -503,6 +507,11 @@ hr{
             @include mobile {
                 display: none;
             }
+        }
+
+        &>span span {
+            display: inline-block;
+            margin: 0;
         }
     }
 

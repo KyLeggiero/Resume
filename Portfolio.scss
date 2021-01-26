@@ -1,6 +1,10 @@
 ---
 ---
 
+@import "variables";
+
+
+
 :root {
     --portfolio-card-width: calc(var(--phone-portrait-small-max-width) - (var(--main-total-inline-margin) / 2));
 }
@@ -113,8 +117,8 @@ main {
                 padding: 1ex;
             }
 
-            @media (max-width: 960px), (max-aspect-ratio:1/1) {
-                margin: 5mm 0;
+            @include mobile {
+                margin: 2mm 0;
             }
         }
 

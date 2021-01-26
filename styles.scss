@@ -183,6 +183,14 @@ code {
 
 
 
+:root {
+    @include mobile {
+        --button-margin: 1em 1ex;
+    }
+}
+
+
+
 
 // MARK: - Bodge
 // MARK: #61

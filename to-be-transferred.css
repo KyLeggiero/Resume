@@ -19,7 +19,6 @@
     min-width: var(--app-bar-height-auto);
     transition-property: margin,width,opacity;
     line-height: calc(var(--app-bar-height-auto) - var(--app-bar-vertical-padding));
-    transition-property: margin,width,opacity;
 }
 .app-bar .icon-button .material-icons {
     width: 100%;
@@ -52,13 +51,6 @@
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-
-    /* [class^=flex-], [class*=" flex-"] */
-    display: -webkit-box!important;
-    display: -moz-box!important;
-    display: -ms-flexbox!important;
-    display: -webkit-flex!important;
-    display: flex!important;
 
     /* .flex-row.flex-horiz-space-between */
     -webkit-box-pack: justify;
@@ -204,10 +196,6 @@ header h1,
 .shows-child-on-hover:not(:hover) .shown-on-parent-hover {
     visibility: hidden;
     transition-delay: 1s;
-}
-
-.shows-child-on-hover .shown-on-paren-hover[data-show-approach="unfurl-down"] {
-
 }
 
 .context-menu {

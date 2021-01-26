@@ -3,12 +3,115 @@ layout: portfolio
 page-specific-stylesheets:
     - /Portfolio.css
 title: "%site.author.name%'s Portfolio"
+
+
+
+portfolio:
+    packages:
+        -
+            title: "Swift Lazy Containers"
+            description: "A few lazy-initialization container types for Swift 5.1+"
+            url: "https://github.com/RougeWare/Swift-Lazy-Containers"
+        -
+            title: "Swift SemVer"
+            description: "A small Swift library that implements SemVer 2.0.0"
+            url: "https://github.com/RougeWare/Swift-SemVer"
+        -
+            title: "Swift Rectangle Tools"
+            description: "A set of Swift utilities for dealing with rectangles, including a way to generically build your own!"
+            url: "https://github.com/RougeWare/Swift-Rectangle-Tools"
+        -
+            title: "Swift Special String"
+            description: "Ever need a string but also wish it weren't a <code>String</code> type?"
+            url: "https://github.com/RougeWare/Swift-Special-String"
+        -
+            title: "Swift Safe Pointer"
+            description: "Lets you pass anything using reference semantics without the danger of unsafe pointers"
+            url: "https://github.com/RougeWare/Swift-Safe-Pointer"
+        -
+            title: "Swift Atomic"
+            description: "Uses <code>DispatchQueue</code> to ensure a value is only read from and written to by one thread at a time"
+            url: "https://github.com/RougeWare/Swift-Atomic"
+        -
+            title: "Swift Safe Collection Access"
+            description: "Ever wonder why Swift crashes if you access a collection the wrong way? Me too here's some extensions"
+            url: "https://github.com/RougeWare/Swift-Safe-Collection-Access"
+        -
+            title: "Swift <code>TODO()</code>"
+            description: "For when you know you're gonna get to something, but right now you have other priorities."
+            url: "https://github.com/RougeWare/Swift-TODO"
+        -
+            title: "Swift Cross-Kit Types"
+            description: "Some types and extensions for those using AppKit and UIKit in the same project"
+            url: "https://github.com/RougeWare/Swift-Cross-Kit-Types"
+        -
+            title: "Swift Optional Tools"
+            description: "Some tools to make Optionals easier to use"
+            url: "https://github.com/RougeWare/Swift-Optional-Tools"
+        -
+            title: "Swift Mul&shy;ti&shy;pli&shy;ca&shy;tive Arith&shy;me&shy;tic"
+            description: "Formalizes an object's ability to be multiplied by something"
+            url: "https://github.com/RougeWare/Swift-MultiplicativeArithmetic"
+        -
+            title: "SwiftUI Seven-Segment Display"
+            description: "A 7-segment display for SwiftUI"
+            url: "https://github.com/RougeWare/SwiftUI-SevenSegmentDisplay"
+        -
+            title: "Swift Drawing Tools"
+            description: "Some tools to help with drawing in Swift"
+            url: "https://github.com/RougeWare/Swift-Drawing-Tools"
+        -
+            title: "Swift Serialization Tools"
+            description: "Some tools to help with drawing in Swift"
+            url: "https://github.com/RougeWare/Swift-SerializationTools"
+        -
+            title: "Swift PropertyWrapper Protocol"
+            description: "Lets you reference property wrappers as protocols"
+            url: "https://github.com/RougeWare/Swift-PropertyWrapper-Protocol"
+        -
+            title: "Swift Simple Logging"
+            description: "For when you need something more advanced than print, but not a whole heavy system"
+            url: "https://github.com/RougeWare/Swift-Simple-Logging"
+        -
+            title: "Swift Collection Tools"
+            description: "A bunch of tools I tend to write to make collections easier to use"
+            url: "https://github.com/RougeWare/Swift-Collection-Tools"
+        -
+            title: "Swift Function Tools"
+            description: "Some tools to make functions easier to use in Swift"
+            url: "https://github.com/RougeWare/Swift-Function-Tools"
+        -
+            title: "Swift Color Swatches"
+            description: "Turn an NSColor or UIColor into an image"
+            url: "https://github.com/RougeWare/Swift-Color-Swatches"
+        -
+            title: "Swift Basic Math Tools"
+            description: "Some basic tools for doing math in Swift"
+            url: "https://github.com/RougeWare/Swift-Basic-Math-Tools"
+        -
+            title: "Swift String Integer Access"
+            description: "I hate how Swift <code>String</code>s don't let you access their characters with <code>Int</code>s. This package lets you do just that."
+            url: "https://github.com/RougeWare/Swift-String-Integer-Access"
+        -
+            title: "Swift Safe Collection Access"
+            description: "Ever wonder why Swift crashes if you access a collection the wrong way? Me too here's some extensions"
+            url: "https://github.com/RougeWare/Swift-Safe-Collection-Access"
+
+
+
 ---
 
 {% include portfolio-section-start.html
     title='Big Projects'
     id='big-projects'
 -%}
+    {%- include portfolio-item-large.html
+        title='Smartcrypt'
+        description='Personal file encryption as a service'
+        url='https://pkware.com/smartcrypt-for-mobile'
+        image-url='/img/Smartcrypt Icon (Blue).svg'
+        image-url-for-dark-theme='/img/Smartcrypt Icon (White).svg'
+    -%}
     {%- include portfolio-item-large.html
         title='Motif'
         description='Custom photo books, calendars, &amp; cards right in Apple Photos'
@@ -66,7 +169,7 @@ title: "%site.author.name%'s Portfolio"
         title='Swift Mines'
         description='A clean and modern Mines game for macOS, written in SwiftUI and published on the Mac App Store'
         url='https://github.com/BlueHuskyStudios/Swift-Mines/releases'
-        image-url='https://raw.githubusercontent.com/BlueHuskyStudios/Swift-Mines/master/Swift%20Mines/Swift%20Mines%20for%20macOS/Assets.xcassets/AppIcon.appiconset/Mines%20Icon%20(512p)@2x.png'
+        image-url='https://raw.githubusercontent.com/BlueHuskyStudios/Swift-Mines/master/Swift%20Mines/Swift%20Mines%20for%20macOS/Assets/Assets.xcassets/AppIcon.appiconset/Mines%20Icon%20(512p)%402x.png'
     -%}
     {%- include portfolio-item-large.html
         title='Rent-Split'
@@ -74,6 +177,7 @@ title: "%site.author.name%'s Portfolio"
         url='https://Rent-Split.BHStudios.org'
         image-url='https://Split.Rent/_img/Logo%201.1.0%20(1024p).png'
     -%}
+<!--
     {%- include portfolio-item-large.html
         title='Blue Husky Software Platform'
         description='A platform of modular code and concepts upon which my personal sofware is written. Based on an architecture I came up with, myself.'
@@ -86,6 +190,7 @@ title: "%site.author.name%'s Portfolio"
         url='https://github.com/BlueHuskyStudios/Pixel-Art-Resizer/releases'
         image-url='https://raw.githubusercontent.com/BlueHuskyStudios/Pixel-Art-Resizer/master/Pixel%20Art%20Resizer/Resources/Assets.xcassets/AppIcon.appiconset/512%20x%20512@2x.png'
     -%}
+-->
 {%- include portfolio-section-end.html %}
 
 
@@ -128,67 +233,16 @@ title: "%site.author.name%'s Portfolio"
     id='my-open-source-projects'
     aside='A lot of my open-source projects lately are small library packages:'
 -%}
-    {% include portfolio-list-start.html %}
+    {% include portfolio-list-start.html -%}
+
+    {% for package in page.portfolio.packages -%}
         {%- include portfolio-item-small.html
-            title='Swift Lazy Patterns'
-            description='A few lazy-initialization patterns'
-            url='https://github.com/RougeWare/Swift-Lazy-Patterns'
+            title=package.title
+            description=package.description
+            url=package.url
         -%}
-        {%- include portfolio-item-small.html
-            title='Swift SemVer'
-            description='A small Swift library that implements SemVer 2.0.0'
-            url='https://github.com/RougeWare/Swift-SemVer'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Rectangle Tools'
-            description='A set of Swift utilities for dealing with rectangles, including a way to generically build your own!'
-            url='https://github.com/RougeWare/Swift-Rectangle-Tools'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Special String'
-            description='Ever need a string but also wish it weren\'t a <code>String</code> type?'
-            url='https://github.com/RougeWare/Swift-Special-String'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Safe Pointer'
-            description='Lets you pass anything using reference semantics without the danger of unsafe pointers'
-            url='https://github.com/RougeWare/Swift-Safe-Pointer'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Atomic'
-            description='Uses <code>DispatchQueue</code> to ensure a value is only read from and written to by one thread at a time'
-            url='https://github.com/RougeWare/Swift-Atomic'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Safe Collection Access'
-            description='Ever wonder why Swift crashes if you access a collection the wrong way? Me too here\'s some extensions'
-            url='https://github.com/RougeWare/Swift-Safe-Collection-Access'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift <code>TODO()</code>'
-            description='For when you know you\'re gonna get to something, but right now you have other priorities.'
-            url='https://github.com/RougeWare/Swift-TODO'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Cross-Kit Types'
-            description='Some types and extensions for those using AppKit and UIKit in the same project'
-            url='https://github.com/RougeWare/Swift-Cross-Kit-Types'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Optional Tools'
-            description='Some tools to make Optionals easier to use'
-            url='https://github.com/RougeWare/Swift-Optional-Tools'
-        -%}
-        {%- include portfolio-item-small.html
-            title='Swift Mul&shy;ti&shy;pli&shy;ca&shy;tive Arith&shy;me&shy;tic'
-            description='Formalizes an object\'s ability to be multiplied by something'
-            url='https://github.com/RougeWare/Swift-MultiplicativeArithmetic'
-        -%}
-        {%- include portfolio-item-small.html
-            title='SwiftUI Seven-Segment Display'
-            description='A 7-segment display for SwiftUI'
-            url='https://github.com/RougeWare/SwiftUI-SevenSegmentDisplay'
-        -%}
+    {% endfor %}
+
     {% include portfolio-list-end.html %}
 {%- include portfolio-subsection-end.html -%}
 
@@ -214,7 +268,7 @@ title: "%site.author.name%'s Portfolio"
         {%- capture github-big-projects-url -%}https://github.com/{{ site.author.social.github-suffix.big-projects }}{%- endcapture -%}
         {%- include portfolio-item-button.html
             title='GitHub <small>(Big Projects)</small>'
-            url='github-big-projects-url'
+            url=github-big-projects-url
             fa-icon='fab fa-github'
         -%}
     {%- endif -%}
@@ -222,7 +276,7 @@ title: "%site.author.name%'s Portfolio"
         {%- capture github-utilities-url -%}https://github.com/{{ site.author.social.github-suffix.utilities }}{%- endcapture -%}
         {%- include portfolio-item-button.html
             title='GitHub <small>(Utilities)</small>'
-            url='github-utilities-url'
+            url=github-utilities-url
             fa-icon='fab fa-github'
         -%}
     {%- endif -%}

@@ -1,0 +1,8 @@
+
+// Mobile breakpoints
+@mixin mobile {
+    @media (portrait and max-width: 640px),
+        (landscape and max-height: 640px) {
+        @content;
+    }
+}

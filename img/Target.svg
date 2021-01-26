@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BullseyeNoR_17_PMS186</title>
+    <defs>
+        <polygon id="path-1" points="0 0 72 0 72 71.94 0 71.94"></polygon>
+    </defs>
+    <g id="BullseyeNoR_17_PMS186" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip-2"></g>
+            <path d="M35.996,12.001 C22.741,12.001 11.996,22.746 11.996,36.001 C11.996,49.255 22.741,60.001 35.996,60.001 C49.251,60.001 59.996,49.255 59.996,36.001 C59.996,22.746 49.251,12.001 35.996,12.001 Z M72,36 C72,55.882 55.882,72 36,72 C16.118,72 0,55.882 0,36 C0,16.118 16.118,0 36,0 C55.882,0 72,16.118 72,36 L72,36 Z" id="Fill-1" fill="#D02139" mask="url(#mask-2)"></path>
+        </g>
+        <path d="M35.998,24.003 C29.37,24.003 23.998,29.375 23.998,36.003 C23.998,42.63 29.37,48.003 35.998,48.003 C42.625,48.003 47.998,42.63 47.998,36.003 C47.998,29.375 42.625,24.003 35.998,24.003" id="Fill-4" fill="#D02139"></path>
+    </g>
+</svg>

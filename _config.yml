@@ -14,15 +14,25 @@ description: >
     Senior Software Engineer with a passion for designing &amp;
     making great products
 
+source-code: https://GitHub.com/BenLeggiero/resumes
+
 author:
     name: Ben Leggiero
+    first-name: Ben
+    last-name: Leggiero
     tagline-html: Developer&emsp;|&emsp;Designer
     avatar: >
         https://www.gravatar.com/avatar/2f4691f7a1c9d3192fe843a164a27535?s=280px
 
+    professional:
+        title: Senior Software Engineer
+        start-year: 2012
+
     social:
         blog: https://BenLeggiero.blog
         calendar: https://BenLeggiero.me/Calendar
+        personal-site: https://BenLeggiero.me
+        contact-and-more: https://BenLeggiero.me
         email: BenLeggiero@Gmail.com
         github-suffix:
             this: BenLeggiero/resumes
@@ -42,10 +52,10 @@ author:
 date:
     originally-written: 2019-04-02
     newest:
-        web: 2020-02-20
-        pdf: 2020-02-20
-        txt: 2020-02-23
-        json: 2020-02-23
+        web: 2021-01-25
+        pdf: 2021-01-25
+        txt: 2021-01-25
+        json: 2021-01-25
 
 document:
     directory: /documents
@@ -53,11 +63,6 @@ document:
         prefix: Leggiero-Resume_
     txt:
         prefix: Leggiero-Resume_
-
-
-# # Enter the Google Analytics web tracking code (e.g. UA-2110908-2) to
-# # activate tracking
-# google_analytics:
 
 # This website URL
 # Used for Sitemap.xml and the RSS feed

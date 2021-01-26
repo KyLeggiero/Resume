@@ -1,0 +1,45 @@
+---
+---
+
+@import "variables";
+
+
+
+.tldr {
+    --tldr-padding-each-vertical: 1em;
+    --tldr-margin-each-vertical: 3em;
+
+    background: var(--theme-background-color-at-level-raised);
+    padding: var(--tldr-padding-each-vertical) 1ex;
+    margin-top: var(--tldr-margin-each-vertical);
+
+    @include mobile {
+        height: 75vh;
+        height: calc(100vh - (var(--tldr-margin-each-vertical) * 2) - var(--app-bar-height-auto));
+        height: unset;
+    }
+}
+
+
+
+main {
+    max-width: none;
+    width: 100%;
+}
+
+
+
+.content {
+    h1 {
+        flex-basis: 100%;
+    }
+
+    .infobox {
+        margin: 3em;
+        flex-grow: 0.5;
+
+        @include mobile {
+            margin-inline: 0;
+        }
+    }
+}

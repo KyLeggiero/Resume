@@ -1,6 +1,10 @@
 ---
 ---
 
+@import "variables";
+
+
+
 :root {
     --tech-spec-meter-height: 36px; /*3em;*/
     --tech-spec-meter-width: calc(var(--tech-spec-meter-height) * 20 / 3);
@@ -185,6 +189,15 @@ p:not(:last-child) {
         font-size: minmax(15vmin, 5rem);
         margin: 3rem 0 1rem;
     }
+
+    .button {
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+    }
+
+    .additional-links-holder {
+        text-align: center;
+    }
 }
 
 
@@ -337,6 +350,10 @@ dl.like-bulleted-list {
 
 
 .infobox {
+
+    transition-property: background, border, box-shadow;
+
+
     @at-root
     &,
     .spec-list {
@@ -363,7 +380,7 @@ dl.like-bulleted-list {
         /* border: 1px solid #8882; */
         padding: 1ex;
         border-radius: 4px;
-        margin: 0;
+        margin: 1em 1ex;
         flex-grow: 0;
 
         /* background: var(--theme-background-color-at-level-raised); */
@@ -433,9 +450,114 @@ dl.like-bulleted-list {
             i {
                 margin-right: 2pt;
             }
+
+            span {
+                display: inline-block;
+            }
         }
     }
 }
+
+
+
+hr{
+    &.inline-small,
+    &.inline-small-low-priority {
+        display: inline-block;
+        width: 1ex;
+    }
+
+    &.inline-small {
+        // wrap
+    }
+}
+
+.omitted-infoline {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2em 0;
+    padding: 0 1em;
+    align-items: center;
+    font-size: 1em;
+    opacity: 0.75;
+    text-decoration: none;
+    width: 100%;
+
+    @include mobile {
+        flex-direction: column;
+        flex-flow: column;
+        // align-items: stretch;
+    }
+
+    &:link,
+    &:visited {
+        // text-decoration: none;
+    }
+
+    .inline-content {
+        display: block;
+        text-align: center;
+
+        &>* {
+            display: inline-block;
+        }
+
+        &>hr {
+            @include mobile {
+                display: none;
+            }
+        }
+
+        &>span span {
+            display: inline-block;
+            margin: 0;
+        }
+    }
+
+    * {
+        margin: 0.5ex;
+    }
+
+    &>* {
+        // margin: 0 1em;
+        display: inline-block;
+    }
+
+    small {
+        font-size: 1em;
+        opacity: 0.8;
+    }
+
+    &::before,
+    &::after,
+    hr {
+        content: "";
+        border: none;
+        border-bottom: 1px solid currentColor;
+        min-width: 2ex;
+        height: 1px;
+        flex-grow: 1;
+        opacity: 33%;
+
+        @include mobile {
+            content: none;
+        }
+    }
+
+    hr {
+        flex-grow: 0;
+    }
+
+    &>hr {
+        @include mobile {
+            width: 30%;
+            margin: 4pt 8pt;
+        }
+    }
+}
+
+
 
 figure.infobox > .infobox-info {
     flex-grow: 2;

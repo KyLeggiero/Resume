@@ -2,7 +2,9 @@
             <li>
                 <a href="{{ include.url }}" target="_blank" class="portfolio-card   big low-emphasis button">
                     <figure>
-                        <img src="{{ include.image-url }}" class="portfolio-card-thumbnail" />
+                        {% if include.image-url-for-dark-theme %}<img src="{{ include.image-url-for-dark-theme }}" class="portfolio-card-thumbnail" data-required-theme-type="dark" />
+                        {% endif %}
+                        <img src="{{ include.image-url }}" class="portfolio-card-thumbnail" {%- if include.image-url-for-dark-theme %} data-required-theme-type="light" {% endif %}/>
 
                         <figcaption class="portfolio-card-text">
                             <h2 class="portfolio-card-title">{{ include.title }}</h2>

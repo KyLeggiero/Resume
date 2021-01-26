@@ -1,0 +1,157 @@
+---
+layout: default
+page-specific-stylesheets:
+    - /résumé.css
+    - /More.css
+title: "The back page"
+---
+
+<article>
+    <header class="tldr   flex-column flex-horiz-stretch flex-vert-center">
+        <p>{{ site.author.name }} is a {{ site.author.professional.title }}, with professional experience since {{ site.author.professional.start-year }}.</p>
+        <p>This page lists more experience minutia than fits on a one-page résumé</p>
+    </header>
+
+    <main style="transform: translate3d(0,0,0) !important">
+        {%- include resume/experience/list-start.html
+            title='Em&shy;ploy&shy;ment'
+            id='Employment'
+            classes='flex-row flex-wrap flex-horiz-space-around'
+        %}
+            {%- include resume/experience/infobox.html
+                company='Yes Health'
+                title='<span>Mo&shy;bile</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
+                duration='<time datetime="2021-02-01">2021</time> – <i>Present</i>'
+
+                summary-line-1='Coordinating engineering <strong>multiple health products</strong> across multiple platforms.'
+                summary-line-2='Working with UI/UX team to <strong>redesign</strong> those products.'
+
+                url='https://YesHealth.com'
+                logo='/img/Yes-Health-logo.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company='PKWare'
+                title='<span>Ap&shy;ple</span> <span>Plat&shy;form</span> <span>En&shy;gi&shy;neer</span>'
+                duration='<time datetime="2020-03-02">2020</time> – <time datetime="2021-01-18">2021</time>'
+
+                summary-line-1='Worked on personal <strong>file encryption</strong> software for macOS and iOS, as well as <strong>internal libraries</strong> to support these.'
+                summary-line-2='<strong>Completely redesigned</strong> the iOS app from the ground up to focus on core competencies, improve accessibility, and optimize flow.'
+
+                url='https://PKWare.com'
+                logo-for-light-theme='/img/PKWare-blue-logo.svg'
+                logo-for-dark-theme='/img/PKWare-white-logo.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company='RR Don&shy;nel&shy;ley <span>&mdash; <span>Mo&shy;tif</span></span>'
+                title='<span>Soft&shy;ware</span> <span>Ar&shy;chi&shy;tect</span>'
+                duration='Contract from <time datetime="2019-07-01">July 2019</time> – <time datetime="2019-10-31">October 2019</time>'
+
+                summary-line-1='Defined the future <strong>architecture</strong> for the leading photo book software on <strong>macOS</strong>. Instituted <strong>standard practices</strong> across teams to bring development in-house and improve turnaround.'
+                summary-line-2='Worked back-and-forth with UI/UX leads to ensure a <strong>smooth and intuitive</strong> transition between operating system versions.'
+
+                url='https://MotifPhotos.com'
+                logo-for-light-theme='/img/Motif-dark-grey-logo.svg'
+                logo-for-dark-theme='/img/Motif-white-logo.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company='<span>Ion&shy;ic</span> <span>Se&shy;cu&shy;ri&shy;ty</span>'
+                title='<span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
+                duration='<time datetime="2017-03-27">2017</time> – <time datetime="2019-06-28">2019</time>'
+
+                summary-line-1='Engineered <strong>user-facing</strong> file <strong>encryption</strong> and access software for macOS. Collaborated on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.'
+                summary-line-2='Worked closely with UI/UX team to hone the design of multiple company products, including <strong>graphics</strong>, <strong>animations</strong>, user <strong>flows</strong>, and overall <strong>experience</strong>.'
+
+                url='https://Ionic.com'
+                logo-for-light-theme='/img/IONIC-dark-grey-logo.svg'
+                logo-for-dark-theme='/img/IONIC-white-logo.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company='<span>Re&shy;newed</span> <span>Vi&shy;sion</span>'
+                title='<span>mac&shy;OS</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
+                duration='<time datetime="2016-07-14">2016</time> – <time datetime="2017-01-16">2017</time>'
+
+                summary-line-1='Built industry-leading <strong>professional presentation</strong> software for <strong>macOS</strong>. Collaboratively created <strong>software platforms</strong> with <strong>open-source &amp; proprietary</strong> tech: advanced <strong>auto font scaling</strong>, <strong>inspector</strong>, &amp; animated grid item selector.'
+                summary-line-2='Designed dozens of <strong>icons</strong> &amp; other graphics, <strong>user flows</strong>, interface approaches, <strong>animations</strong>, and more.'
+
+                url='https://RenewedVision.com'
+                logo='/img/Renewed-Vision-logo-icon.png'
+            %}
+            {%- include resume/experience/infobox.html
+                company='NCR &mdash; <span>Small &amp; <span>Medi&shy;um</span> <span>Busi&shy;ness</span></span>'
+                title='<span>Mo&shy;bile</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
+                duration='<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>'
+
+                summary-line-1='Built state-of-the-art <strong>point-of-sale</strong> software for <strong>iOS &amp; Android</strong>. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.'
+                summary-line-2='Worked alongside UI design team to <strong>revamp</strong> the system\'s <strong>look-and-feel</strong>.'
+
+                url='https://NCRSilver.com'
+                logo='/img/NCR-logo.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company='<span>Uni&shy;ver&shy;si&shy;ty</span> <span>Sys&shy;tem</span> of <span>Geor&shy;gia</span> &mdash; UITS'
+                title='Web <span>De&shy;vel&shy;op&shy;er</span> &amp; <span>De&shy;sign&shy;er</span>'
+                duration='<time datetime="2012-09-19">2012</time> – <time datetime="2014-02-17">2014</time>'
+
+                summary-line-1='Redesigned &amp; rebuilt subsites &amp; CMS templates for <strong><a href="https://ColumbusState.edu" target="_blank">ColumbusState.edu</a></strong>.'
+                summary-line-2='Invented, critiqued, &amp; <strong>evolved design elements</strong> &amp; a consistent theme for CSU websites.'
+
+                url='https://ColumbusState.edu'
+                logo-for-light-theme='/img/CSU_Logo_Tower_WhiteBackground.svg'
+                logo-for-dark-theme='/img/CSU_Logo_Tower_BlueBackground.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company="Dun&shy;kin'"
+                title='Team Mem&shy;ber'
+                duration='<time datetime="2013-06-27">June</time> – <time datetime="2013-08">~August 2013?</time>'
+
+                summary='Take orders, prepare and serve drinks and food, handle cash, bake, stock, clean, and other such coffee shop responsibilities, all while providing an enjoyable experience for each guest.'
+
+                url='https://www.DunkinBrands.com/'
+                logo='/img/Dunkin.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company='Tar&shy;get'
+                title='Team Mem&shy;ber'
+                duration='<time datetime="2011-06-07">June</time> – <time datetime="2011-08-20">August 2011</time>'
+
+                summary='Straightened merchandise, restocked customer-facing shelves, directed and helped guests, handled money'
+
+                url='https://Target.com'
+                logo='/img/Target.svg'
+            %}
+        {%- include resume/experience/list-end.html %}
+
+        {%- include resume/experience/list-start.html
+            title='Edu&shy;ca&shy;tion'
+            id='Education'
+            classes='flex-row flex-wrap flex-horiz-space-around'
+        %}
+            {%- include resume/experience/infobox.html
+                company='<span>Co&shy;lum&shy;bus</span> State <span>Uni&shy;ver&shy;sity</span>'
+                title='<span>Bach&shy;e&shy;lor</span> of <span>Sci&shy;ence</span> in <span>Com&shy;put&shy;er</span> <span>Sci&shy;ence</span>'
+                duration='<span>Geor&shy;gia</span>, <time datetime="2014-05-12">2014</time>'
+
+                url='https://ColumbusState.edu'
+                logo-for-light-theme='/img/CSU_Logo_Tower_WhiteBackground.svg'
+                logo-for-dark-theme='/img/CSU_Logo_Tower_BlueBackground.svg'
+            %}
+        {%- include resume/experience/list-end.html %}
+    </main>
+
+
+    <footer>
+        <section class="flex-row flex-wrap flex-horiz-center   font-1-1hx">
+            <a href="/"          class="button"><i class="material-icons">arrow_back</i> <span>Full Résumé</span></a>
+            <a href="/Portfolio" class="button"><i class="fa fa-th"                ></i> <span>Portfolio</span></a>
+        </section>
+
+        <section class="hide-print   flex-row flex-wrap flex-horiz-center   font-1-1hx">
+            {% if site.author.social.calendar %}
+            <a href="{{ site.author.social.calendar }}" class="button medium-emphasis"><i class="fa fa-calendar"></i> <span>Calendar</span></a>
+            {%- endif %}
+            {% if site.author.social.contact-and-more %}
+            <a href="{{ site.author.social.contact-and-more }}" class="button medium-emphasis"><i class="fa fa-address-card"></i> <span>Contacts &amp; More</span></a>
+            {%- endif %}
+        </section>
+    </footer>
+</article>

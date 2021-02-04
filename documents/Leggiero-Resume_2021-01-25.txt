@@ -86,7 +86,7 @@ Bachelor of Science in Computer Science
                                    Tech Specs
 
 Extraordinary:
-Swift, Kotlin, CSS 4, macOS, iOS, Web (Front-End), SwiftUI, Git, Learning New Skills
+Swift, Kotlin, CSS 2020, macOS, iOS, Web (Front-End), SwiftUI, Git, Learning New Skills
 
 Expert:
 HTML 5, JVM, Frameworks and APIs, Open-Source, Agile

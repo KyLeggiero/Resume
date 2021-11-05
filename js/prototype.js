@@ -15,17 +15,6 @@ function disableDisabledLinks() {
 }
 
 
-function didClickBrightnessToggle() {
-    if ($(":root").hasClass("brightness-dark")) {
-        $(":root").removeClass("brightness-dark").addClass("brightness-light")
-    }
-    else {
-        $(":root").removeClass("brightness-light").addClass("brightness-dark")
-    }
-    return false;
-}
-
-
 function isDevicePowerfulEnoughForAnimations(callback) {
     function isInternetConnectionHardWired() {
         const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection
@@ -155,7 +144,7 @@ function setUpDarkModeCheckBox() {
         }
     })
 
-    $("#dark-mode-toggle").change(event => {
+    $("#dark-mode-toggle").change(function() {
         if (userWantsHighContrastModeNext) {
             userWantsHighContrastModeNext = false
             const wasDarkModeAlready = isDarkBrightness()
@@ -181,21 +170,10 @@ function setUpDarkModeCheckBox() {
 
 
 function setUpReduceMotionCheckBox() {
-    $("#reduce-motion-toggle").change(event => {
+    $("#reduce-motion-toggle").change(function() {
         setReduceMotion($("#reduce-motion-toggle").is(":checked"))
     })
     $("#reduce-motion-toggle").prop("checked", true)
-}
-
-
-function setUpMenuTouchCompatibility() {
-    const hoverParent = $(".shows-child-on-hover")
-
-    hoverParent.bind("tap", event => {
-        const shouldShowMenu = event.target.is(":hover") || event.target.is(":focus")
-
-        // 🤷🏼
-    })
 }
 
 
@@ -205,5 +183,4 @@ $(() => {
     setUpAutoReduceMotion()
     setUpDarkModeCheckBox()
     setUpReduceMotionCheckBox()
-    setUpMenuTouchCompatibility()
 })

@@ -5,20 +5,20 @@
 #
 
 # Name of the site (displayed in the content)
-name: Ben Leggiero's Résumé
+name: Ky Leggiero's Résumé
 # Name of the site (displayed in the tab)
-title: Ben Leggiero's Résumé
+title: Ky Leggiero's Résumé
 
 # Short bio or description (in share links)
 description: >
     Senior Software Engineer with a passion for designing &amp;
     making great products
 
-source-code: https://GitHub.com/BenLeggiero/resumes
+source-code: https://GitHub.com/KyLeggiero/Resume
 
 author:
-    name: Ben Leggiero
-    first-name: Ben
+    name: Ky Leggiero
+    first-name: Ky
     last-name: Leggiero
     tagline-html: Developer&emsp;|&emsp;Designer
     avatar: >
@@ -29,25 +29,25 @@ author:
         start-year: 2012
 
     social:
-        blog: https://BenLeggiero.blog
-        calendar: https://BenLeggiero.me/Calendar
-        personal-site: https://BenLeggiero.me
-        contact-and-more: https://BenLeggiero.me
-        email: BenLeggiero@Gmail.com
+        blog: https://Blog.KyLeggiero.me
+        calendar: https://KyLeggiero.me/Calendar
+        personal-site: https://KyLeggiero.me
+        contact-and-more: https://KyLeggiero.me
+        email: KyLeggiero@Gmail.com
         github-suffix:
-            this: BenLeggiero/resumes
-            personal: BenLeggiero
+            this: KyLeggiero/resumes
+            personal: KyLeggiero
             big-projects: BlueHuskyStudios
             utilities: RougeWare
         linkedin-username: ben-leggiero
-        mastodon: https://Mastodon.Social/@BenLeggiero
+        mastodon: https://Mastodon.Social/@KyLeggiero
         phone:
             display-html: +1&nbsp;(470) BEN&nbsp;C&nbsp;LEG
             disambiguation: 236-2534
             just-numbers: 14702362534
         stackoverflow-suffix: story/benleggiero
-        twitter-username: BenLeggiero
-        website: https://BenLeggiero.me
+        twitter-username: KyLeggiero
+        website: https://KyLeggiero.me
 
 date:
     originally-written: 2019-04-02
@@ -66,7 +66,7 @@ document:
 
 # This website URL
 # Used for Sitemap.xml and the RSS feed
-url: https://Resume.BenLeggiero.me
+url: https://Resume.KyLeggiero.me
 
 # If this site is hosted at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)

@@ -1,3 +1,3 @@
-# [Ben Leggiero's Résumé](https://Resume.BenLeggiero.me) #
+# [Ky Leggiero's Résumé](https://Resume.KyLeggiero.me) #
 
-Currently live at https://Resume.BenLeggiero.me 👍
+Currently live at https://Resume.KyLeggiero.me 👍

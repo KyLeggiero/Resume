@@ -1,20 +1,28 @@
 
-                                   Ky Leggiero
-                              Developer | Designer
+                                       Ky
+                              Developer & Designer
 
  Senior Software Engineer with a passion for designing & making great products
+                              for Apple platforms
 
-              KyLeggiero@Gmail.com              +1 (470) 236-2534
+
+
+               Hire@KyLeggiero.me               +1 (470) 236-2534
 
 
                                    Employment
 
-Yes Health (2021 - Present)
+Yes Health (2021 - 2022)
 Mobile Software Engineer
 
-Coordinating engineering multiple health products across multiple platforms.
+Coordinated engineering multiple health products across multiple platforms.
+Transitioned old Objective-C + UIKit codebase to Swift + SwiftUI. Brought new
+levels of diversity & inclusion to the teams & products.
 
-Working with UI/UX team to redesign those products.
+Implemented department-wide processes & best practices such as agile kanban
+sprints, version control, a documentation system, et cetera.
+
+Worked with UI/UX team to redesign & rebrand those products.
 
 
 
@@ -86,13 +94,13 @@ Bachelor of Science in Computer Science
                                    Tech Specs
 
 Extraordinary:
-Swift, Kotlin, CSS 2020, macOS, iOS, Web (Front-End), SwiftUI, Git, Learning New Skills
+Swift, Kotlin, CSS 2022, macOS, iOS, Web (Front-End), SwiftUI, Git, Learning New Skills
 
 Expert:
-HTML 5, JVM, Frameworks and APIs, Open-Source, Agile
+Sass and SCSS, HTML 5, JVM, Frameworks and APIs, Open-Source, Agile
 
 Advanced:
-Sass and SCSS, Multithreading, Networking, Architecture
+Multithreading, Networking, Architecture
 
 Very Good:
 Android
@@ -105,7 +113,7 @@ Extraordinary:
 Iconography, Web Design, Sketch
 
 Expert:
-UI/UX, Custom Controls, Inkscape
+UI/UX, Custom Controls, Figma
 
 Advanced:
 Print Design
@@ -119,23 +127,23 @@ Logo Design
 
 
 
+                 Web version:  https://Resume.KyLeggiero.me
                     As a PDF:  https://Resume.KyLeggiero.me/PDF
 
                     Calendar:  https://KyLeggiero.me/Calendar
                    Portfolio:  https://Resume.KyLeggiero.me/Portfolio
 
-                    LinkedIn:  https://LinkedIn.com/in/ben-leggiero
-               StackOverflow:  https://StackOverflow.com/story/benleggiero
+                    LinkedIn:  https://LinkedIn.com/in/ky-leggiero
+               StackOverflow:  https://StackOverflow.com/story/kyleggiero
            GitHub (Personal):  https://GitHub.com/KyLeggiero
        GitHub (Big Projects):  https://GitHub.com/BlueHuskyStudios
           GitHub (Utilities):  https://GitHub.com/RougeWare
                         Blog:  https://Blog.KyLeggiero.me
                     Mastodon:  https://Mastodon.social/@KyLeggiero
                      Twitter:  https://Twitter.com/KyLeggiero
-                      E-mail:  KyLeggiero@Gmail.com
-                       Phone:  +1 (470) BEN C LEG (236-2534)
+                      E-mail:  Hire@KyLeggiero.me
+                       Phone:  +1 (470) 236-2534
 
 
 
-                            https://KyLeggiero.me
-                            Last updated 2021-01-25
+                            Last updated 2022-03-26

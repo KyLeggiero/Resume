@@ -1,21 +1,21 @@
 {
-  "format-version": "1.0.0",
+  "format-version": "1.1.0",
   "meta": {
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
-    "info-version": "4.2.0",
+    "info-version": "5.0.0",
     "title": "Résumé Basics",
-    "date-last-edited": "2021-01-25"
+    "date-last-edited": "2022-03-26"
   },
   "content": {
     "contact": {
       "id": "FE07ABFD-12B7-4C27-828C-CAD99FA251A9",
+      "legal-first-name": "Ky",
       "full-first-name": "Ky",
       "preferred-first-name": "Ky",
-      "middle-initial": "C",
       "last-name": "Leggiero",
       "phone-number": "+1 (470) 236 2534",
       "email-address": "KyLeggiero@Gmail.com",
-      "tagline": "Senior Software Engineer with a passion for designing & making great products",
+      "tagline": "Senior Software Engineer with a passion for designing & making great products for Apple platforms",
       "website-url": "https://KyLeggiero.me",
       "blog-url": "https://Blog.KyLeggiero.me"
     },
@@ -291,15 +291,23 @@
         "start": {
           "date": "2021-02-01",
           "title": "Mobile Software Engineer",
-          "description": "Coordinating engineering multiple health products across multiple platforms.\nWorking with UI/UX team to redesign those products.",
+          "description": "Coordinated engineering multiple health products across multiple platforms. Transitioned old Objective-C + UIKit codebase to Swift + SwiftUI. Brought new levels of diversity & inclusion to the teams & products.\nImplemented department-wide processes & best practices such as agile kanban sprints, version control, a documentation system, et cetera.\n\nWorked with UI/UX team to redesign & rebrand those products.",
           "compensation": {
             "type": "yearly",
             "amount": 130000,
             "tier": "full-time"
           }
         },
-        "keywords": ["redesign", "multiple health products"],
-        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote"]
+        "end": {
+          "date": "2022-03-22"
+        },
+
+        "keywords": ["multiple health products", "Swift + SwiftUI", "diversity & inclusion", "best practices", "agile kanban sprints", "version control", "documentation", "redesign", "rebrand"],
+        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote"],
+
+        "reason-for-leaving": {
+          "brief": "layoff"
+        }
       }
     ]
   }

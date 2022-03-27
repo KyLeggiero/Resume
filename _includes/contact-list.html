@@ -1,0 +1,14 @@
+    <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
+        {% if site.author.social.email %}
+        {% assign split_email = site.author.social.email | split: "@" %}
+        {% assign wbr_email = split_email | join: "<wbr />@" %}
+        <li class="contact-list-item"><a href="mailto:{{ site.author.social.email }}?subject=Your%20Résumé" class="low-emphasis big button"><i class="material-icons">email</i><span>{{ wbr_email }}</span></a></li>
+        {% endif %}
+        {% if site.author.social.phone %}
+        <li class="contact-list-item"><a href="tel:{{ site.author.social.phone.just-numbers }}" class="low-emphasis big button"><i class="material-icons">smartphone</i><span>{{ site.author.social.phone.display-html | default: site.author.social.phone.just-numbers }}{% if site.author.social.phone.disambiguation %} <small>({{ site.author.social.phone.disambiguation }})</small>{% endif %}</span></a>
+            {%- if site.author.social.phone.only-for-urgencies %}
+            <p class="contact-requirement-note pill"><span class="material-icons material-icons-round warning">dangerous</span> <span>Only for urgent matters</span></p>
+            {%- endif %}
+        </li>
+        {% endif %}
+    </ul>

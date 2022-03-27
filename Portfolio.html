@@ -2,7 +2,7 @@
 layout: portfolio
 page-specific-stylesheets:
     - /Portfolio.css
-title: "%site.author.name%'s Portfolio"
+subtitle: "Portfolio"
 
 
 
@@ -106,47 +106,61 @@ portfolio:
     id='big-projects'
 -%}
     {%- include portfolio-item-large.html
+        title='Yes Health'
+        description='Individual, goal-oriented health coaching app'
+        url='https://yeshealth.com'
+        image-url='/img/Yes-Health-logo.svg'
+        image-full-bleed=false
+    -%}
+    {%- include portfolio-item-large.html
         title='Smartcrypt'
         description='Personal file encryption as a service'
         url='https://pkware.com/smartcrypt-for-mobile'
         image-url='/img/Smartcrypt Icon (Blue).svg'
         image-url-for-dark-theme='/img/Smartcrypt Icon (White).svg'
+        image-full-bleed=false
     -%}
     {%- include portfolio-item-large.html
         title='Motif'
         description='Custom photo books, calendars, &amp; cards right in Apple Photos'
         url='https://MotifPhotos.com'
         image-url='/img/Motif-icon.svg'
+        image-full-bleed=false
     -%}
     {%- include portfolio-item-large.html
         title='Ionic Files'
         description='User-facing desktop file protection software for macOS'
         url='https://Ionic.com/files/'
         image-url='/img/Ionic Files icon.png'
+        image-full-bleed=false
     -%}
     {%- include portfolio-item-large.html
         title='PVP 3'
         description='Elegant &amp; powerful video streaming software for statium-tier events'
         url='https://RenewedVision.com/ProVideoPlayer/'
         image-url='/img/PVP3.png'
+        image-full-bleed=false
     -%}
     {%- include portfolio-item-large.html
         title='ProPresenter'
         description='Live video presentation &amp; compositing software'
         url='https://RenewedVision.com/ProPresenter/'
         image-url='/img/ProPresenter icon.png'
+        image-full-bleed=false
     -%}
     {%- include portfolio-item-large.html
         title='NCR Silver'
         description='Point-of-sale software supporting mobile payments, sales reporting, loyalty rewards, business management, &amp; more'
         url='https://NCRSilver.com'
         image-url='/img/NCR Silver logo.png'
+        image-full-bleed=false
     -%}
     {%- include portfolio-item-large.html
         title='The CSU website'
         description='Over 100 specialized websites in one modern, responsive design that maintains compatibility with IE 8 through the latest Chrome. CMS integration allows school employees to maintain their own sub-sites'
         url='https://ColumbusState.edu'
         image-url='/img/ColumbusState.edu screenshot.png'
+        image-full-bleed=true
     -%}
 {%- include portfolio-section-end.html %}
 
@@ -164,18 +178,21 @@ portfolio:
         description='I wrote all the code and designed all the UI on this site from scratch, without templates.'
         url='https://GitHub.com/KyLeggiero/resumes'
         image-url='/img/Social-Preview.png'
+        image-full-bleed=true
     -%}
     {%- include portfolio-item-large.html
         title='Swift Mines'
         description='A clean and modern Mines game for macOS, written in SwiftUI and published on the Mac App Store'
         url='https://github.com/BlueHuskyStudios/Swift-Mines/releases'
         image-url='https://raw.githubusercontent.com/BlueHuskyStudios/Swift-Mines/master/Swift%20Mines/Swift%20Mines%20for%20macOS/Assets/Assets.xcassets/AppIcon.appiconset/Mines%20Icon%20(512p)%402x.png'
+        image-full-bleed=false
     -%}
     {%- include portfolio-item-large.html
         title='Rent-Split'
         description='Calculates how to split rent fairly based on income'
         url='https://Rent-Split.BHStudios.org'
         image-url='https://Split.Rent/_img/Logo%201.1.0%20(1024p).png'
+        image-full-bleed=true
     -%}
 <!--
     {%- include portfolio-item-large.html
@@ -195,31 +212,37 @@ portfolio:
 
 
 
+{% capture open-source-contributions-aside %}
+These are only projects to which I\'ve made notable contributions, but which I don\'t own. There are many which are not listed here to which I have made small contributions. For those which I own, see my GitHub profiles (<a href="https://GitHub.com/{{ author.social.github-suffix.personal }}" target="_blank">personal</a> andor <a href="https://GitHub.com/{{ author.social.github-suffix.big-projects }}" target="_blank">big projects</a>).
+{% endcapture %}
 
 
 
 {% include portfolio-section-start.html
     title='Open-Source Con&shy;tri&shy;bu&shy;tions'
     id='open-source-contributions'
-    aside='These are only projects to which I\'ve made notable contributions, but which I don\'t own. There are many which are not listed here to which I have made small contributions. For those which I own, see my GitHub profiles (<a href="https://GitHub.com/KyLeggiero" target="_blank">personal</a> andor <a href="https://GitHub.com/BlueHuskyStudios" target="_blank">big projects</a>).'
+    aside=open-source-contributions-aside
 -%}
     {%- include portfolio-item-large.html
         title='Kotlin <span>Collection Literals</span> <small>(Proposal)</small>'
         description='A proposal for how to implement collection literals in the Kotlin language'
         url='https://github.com/Kotlin/KEEP/pull/112'
         image-url='/img/Kotlin-logo.svg'
+        image-full-bleed=true
     -%}
     {%- include portfolio-item-large.html
         title='Kotlin <span>Error Handling</span> <small>(Proposal)</small>'
         description='A proposal for how to natively handle errors in the Kotlin language'
         url='https://github.com/Kotlin/KEEP/pull/81'
         image-url='/img/Kotlin-logo.svg'
+        image-full-bleed=true
     -%}
     {%- include portfolio-item-large.html
         title='Slide Social Buttons'
         description='A set of uniform social share buttons invented by Christopher Yee in 2013 and updated by myself in 2015'
         url='https://github.com/christophery/slide-social-buttons'
         image-url='/img/Slide Social logo.svg'
+        image-full-bleed=true
     -%}
 {%- include portfolio-section-end.html %}
 

@@ -2,6 +2,7 @@
 ---
 
 @import "variables";
+@import "fonts";
 
 
 
@@ -22,6 +23,8 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
     text-align: center;
     margin: 0;
+    padding-inline: 0;
+    padding-block-end: 2em;
     position: absolute;
     z-index: calc(var(--app-bar-z-index) + 1);
     width: 100%;
@@ -44,19 +47,19 @@ h1, h2, h3, h4, h5, h6 {
     &,
     .title-text,
     .subtitle-text {
-        font-family: var(--font-family-title);
-        font-weight: var(--font-weight-title);
+        font-family: 'Raleway';//var(--font-family-title);
     }
 
     .title-text {
         color: #1DEAB7;
         margin: 0;
-        margin-block-end: 0.25ex;
+        margin-block-end: -0.7ex;
 
-        font-size: 18vmin;
+        font-size: 39vmin;
+        font-weight: 900;
 
         @media (max-aspect-ratio:1/1) {
-            font-size: 10vmin;
+            font-size: 29vmin;
         }
     }
 
@@ -66,6 +69,10 @@ h1, h2, h3, h4, h5, h6 {
         margin: 0;
 
         font-size: 7.5vmin;
+        font-weight: 400;
+        font-weight: 470;
+
+        mix-blend-mode: difference;
 
         @media (max-aspect-ratio:1/1) {
             font-size: 5.5vmin;
@@ -151,19 +158,29 @@ h1, h2, h3, h4, h5, h6 {
         padding: 2mm;
     }
 
-    .contact-list-item,
-    .contact-list-item span {
-        display: inline-block;
-    }
-
     .contact-list-item {
         margin: 0 1ex;
-    }
 
-    .contact-list-item,
-    .contact-list-item>* {
-        font: inherit;
-        text-transform: none !important;
+        &,
+        span {
+            display: inline-block;
+        }
+
+        &,
+        &>* {
+            font: inherit;
+            text-transform: none !important;
+        }
+
+        .contact-requirement-note {
+            font-size: 12pt;
+            font-weight: 500;
+
+            &,
+            * {
+                vertical-align: middle;
+            }
+        }
     }
 
     footer & {
@@ -197,6 +214,17 @@ p:not(:last-child) {
 
     .additional-links-holder {
         text-align: center;
+    }
+}
+
+
+.material-icons,
+.material-icons-round,
+.fa,
+.fab,
+.fas {
+    &.warning {
+        color: #FFC400;
     }
 }
 
@@ -252,7 +280,7 @@ p:not(:last-child) {
         filter: hue-rotate(45deg) drop-shadow(0 0 6px var(--top-skills-glow-color));
 
         animation-name: glowing-proficiency-10-spec-bar;
-        animation-duration: 1s;
+        animation-duration: 4s;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
         animation-direction: alternate;

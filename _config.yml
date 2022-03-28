@@ -5,27 +5,27 @@
 #
 
 # Name of the site (displayed in the content)
-name: Ky Leggiero's Résumé
+name: Ky's Résumé
 # Name of the site (displayed in the tab)
-title: Ky Leggiero's Résumé
+title: Ky's Résumé
 
 # Short bio or description (in share links)
 description: >
     Senior Software Engineer with a passion for designing &amp;
-    making great products
+    making great products for Apple&nbsp;platforms
 
 source-code: https://GitHub.com/KyLeggiero/Resume
 
 author:
-    name: Ky Leggiero
+    name: Ky
     first-name: Ky
     last-name: Leggiero
-    tagline-html: Developer&emsp;|&emsp;Designer
+    tagline-html: Developer&emsp;&amp;&emsp;Designer
     avatar: >
         https://www.gravatar.com/avatar/2f4691f7a1c9d3192fe843a164a27535?s=280px
 
     professional:
-        title: Senior Software Engineer
+        title: Senior Apple Platform Software Engineer
         start-year: 2012
 
     social:
@@ -33,29 +33,30 @@ author:
         calendar: https://KyLeggiero.me/Calendar
         personal-site: https://KyLeggiero.me
         contact-and-more: https://KyLeggiero.me
-        email: KyLeggiero@Gmail.com
+        email: Hire@KyLeggiero.me
         github-suffix:
             this: KyLeggiero/resumes
             personal: KyLeggiero
             big-projects: BlueHuskyStudios
             utilities: RougeWare
-        linkedin-username: ben-leggiero
+        linkedin-username: ky-leggiero
         mastodon: https://Mastodon.Social/@KyLeggiero
         phone:
-            display-html: +1&nbsp;(470) BEN&nbsp;C&nbsp;LEG
-            disambiguation: 236-2534
+            display-html: +1&nbsp;(470) 236-2534
+            # disambiguation: 236-2534
             just-numbers: 14702362534
-        stackoverflow-suffix: story/benleggiero
+            only-for-urgencies: true
+        stackoverflow-suffix: story/kyleggiero
         twitter-username: KyLeggiero
         website: https://KyLeggiero.me
 
 date:
     originally-written: 2019-04-02
     newest:
-        web: 2021-11-04
-        pdf: 2021-11-04
-        txt: 2021-11-04
-        json: 2021-11-04
+        web: 2022-03-26
+        pdf: 2022-03-26
+        txt: 2022-03-26
+        json: 2022-03-26
 
 document:
     directory: /documents

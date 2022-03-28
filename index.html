@@ -18,16 +18,7 @@ page-specific-stylesheets:
         <p>{{ site.description }}</p>
     </header>
 
-    <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
-        {% if site.author.social.email %}
-        {% assign split_email = site.author.social.email | split: "@" %}
-        {% assign wbr_email = split_email | join: "<wbr />@" %}
-        <li class="contact-list-item"><a href="mailto:{{ site.author.social.email }}?subject=Your%20Résumé" class="low-emphasis big button"><i class="material-icons">email</i><span>{{ wbr_email }}</span></a></li>
-        {% endif %}
-        {% if site.author.social.phone %}
-        <li class="contact-list-item"><a href="tel:{{ site.author.social.phone.just-numbers }}" class="low-emphasis big button"><i class="material-icons">smartphone</i><span>{{ site.author.social.phone.display-html }}{% if site.author.social.phone.disambiguation %} <small>({{ site.author.social.phone.disambiguation }})</small>{% endif %}</span></a></li>
-        {% endif %}
-    </ul>
+    {% include contact-list.html %}
 
     <div class="flex-row flex-wrap has-sidebar">
         <main style="transform: translate3d(0,0,0) !important">
@@ -38,10 +29,10 @@ page-specific-stylesheets:
                 {%- include resume/experience/infobox.html
                     company='Yes Health'
                     title='<span>Mo&shy;bile</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
-                    duration='<time datetime="2021-02-01">2021</time> – <i>Present</i>'
+                    duration='<time datetime="2021-02-01">2021</time> – <time datetime="2022-03-22">2022</time>'
 
-                    summary-line-1='Coordinating engineering <strong>multiple health products</strong> across multiple platforms.'
-                    summary-line-2='Working with UI/UX team to <strong>redesign</strong> those products.'
+                    summary-line-1='Coordinated engineering <strong>multiple health products</strong> across multiple platforms. Transitioned old Objective-C + UIKit codebase to <strong>Swift + SwiftUI</strong>. Brought new levels of <strong>diversity &amp; inclusion</strong> to the teams &amp; products.<br/>Implemented department-wide processes &amp; <strong>best practices</strong> such as <strong>agile kanban sprints</strong>, <strong>version control</strong>, a <strong>documentation</strong> system, et cetera.'
+                    summary-line-2='Worked with UI/UX team to <strong>redesign</strong> &amp; <strong>rebrand</strong> those products.'
 
                     url='https://YesHealth.com'
                     logo='/img/Yes-Health-logo.svg'
@@ -91,8 +82,8 @@ page-specific-stylesheets:
                     title='<span>Mo&shy;bile</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
                     duration='<time datetime="2015-01-19">2015</time> – <time datetime="2016-06-06">2016</time>'
 
-                    summary-line-1='Built state-of-the-art <strong>point-of-sale</strong> software for <strong>iOS &amp; Android</strong>. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.'
-                    summary-line-2='Worked alongside UI design team to <strong>revamp</strong> the system\'s <strong>look-and-feel</strong>.'
+                    summary-line-1='Built industrial-scale <strong>point-of-sale</strong> firmware for <strong>Android</strong> &amp; app for <strong>iOS</strong>, handling millions of dollars per week. Implemented headlining features such as <strong>64-bit</strong> support, <strong>EMV</strong> payments, <strong>scale-weighing</strong> of items, &amp; <strong>future orders</strong>, including any hardware drivers necessary for these.'
+                    summary-line-2='Worked alongside UI/UX team to <strong>revamp</strong> the system\'s <strong>look-and-feel</strong>.'
 
                     url='https://NCRSilver.com'
                     logo='/img/NCR-logo.svg'
@@ -138,12 +129,12 @@ page-specific-stylesheets:
                     proficiency-out-of-10='9'
                 %}
                 {%- include resume-spec-bar.html
-                    skill='CSS 2020'
+                    skill='CSS 2022'
                     proficiency-out-of-10='10'
                 %}
                 {%- include resume-spec-bar.html
                     skill='Sass / SCSS'
-                    proficiency-out-of-10='8'
+                    proficiency-out-of-10='9'
                 %}
                 <!-- {%- include resume-spec-bar.html
                     skill='Node'
@@ -262,7 +253,7 @@ page-specific-stylesheets:
                     proficiency-out-of-10='10'
                 %}
                 {%- include resume-spec-bar.html
-                    skill='Inkscape'
+                    skill='Figma'
                     proficiency-out-of-10='9'
                 %}
             {%- include resume-spec-list-end.html %}
@@ -333,14 +324,7 @@ page-specific-stylesheets:
     </section>
     {% endif %}
 
-    <ul class="contact-list   flex-row flex-horiz-space-around flex-vert-center flex-wrap">
-        {% if wbr_email %}
-        <li class="contact-list-item"><a href="mailto:{{ site.author.social.email }}?subject=Your%20Résumé" class="low-emphasis big button"><i class="material-icons">email</i><span>{{ wbr_email }}</span></a></li>
-        {% endif %}
-        {% if site.author.social.phone %}
-        <li class="contact-list-item"><a href="tel:{{ site.author.social.phone.just-numbers }}" class="low-emphasis big button"><i class="material-icons">smartphone</i><span>{{ site.author.social.phone.display-html }}{% if site.author.social.phone.disambiguation %} <small>({{ site.author.social.phone.disambiguation }})</small>{% endif %}</span></a></li>
-        {% endif %}
-    </ul>
+    {% include contact-list.html %}
 
     <section class="show-print text-centered">
         {{ site.url }}

@@ -75,7 +75,19 @@ main {
 
     .portfolio-card-thumbnail {
         width: 100%;
-        // max-height: var(--portfolio-card-width);
+        max-height: calc(1.5 * var(--portfolio-card-width));
+        background-color: hsla(16deg, 25%, 22%, 12%);
+
+        transition-property: background-color;
+
+        .brightness-dark &,
+        .brightness-black & {
+            background-color: hsla(9deg, 33%, 3%, 15%);
+        }
+
+        &:not(.full-bleed) {
+            padding: 1.5ex 2ex;
+        }
     }
 
     .portfolio-card-text {

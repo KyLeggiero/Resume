@@ -1,30 +1,13 @@
 
-const ThemeBrightness = {
-    black : "brightness-black",
-    dark : "brightness-dark",
-    light : "brightness-light",
-    white : "brightness-white",
-}
-
-let userWantsHighContrastModeNext = false
-
-
+// MARK: - Disabled Links
 
 function disableDisabledLinks() {
     $(":link[disabled], :visited[disabled]").click(() => false)
 }
 
 
-// function didClickBrightnessToggle() {
-//     if ($(":root").hasClass("brightness-dark")) {
-//         $(":root").removeClass("brightness-dark").addClass("brightness-light")
-//     }
-//     else {
-//         $(":root").removeClass("brightness-light").addClass("brightness-dark")
-//     }
-//     return false;
-// }
 
+// MARK: - Reduce Motion
 
 function isDevicePowerfulEnoughForAnimations(callback) {
     function isInternetConnectionHardWired() {
@@ -92,54 +75,6 @@ function setUpAutoReduceMotion() {
 }
 
 
-function setDarkMode(isDarkMode) {
-    setThemeBrightness(isDarkMode ? ThemeBrightness.dark : ThemeBrightness.light)
-}
-
-
-function isDarkBrightness() {
-    switch (currentThemeBrightness()) {
-        case ThemeBrightness.black:
-        case ThemeBrightness.dark:
-            return true
-
-        default:
-            return false
-    }
-}
-
-
-function setHighContrastDarkMode(isHighContrastDarkMode) {
-    setThemeBrightness(isHighContrastDarkMode ? ThemeBrightness.black : ThemeBrightness.white)
-}
-
-
-function isHighContrastBrightness() {
-    switch (currentThemeBrightness()) {
-        case ThemeBrightness.black:
-        case ThemeBrightness.white:
-            return true
-
-        default:
-            return false
-    }
-}
-
-
-function setThemeBrightness(brightness) {
-    $(":root").removeClass((_, className) => {
-        return className.match(/(\bbrightness-\w+)/gim)
-    })
-
-    $(":root").addClass(brightness)
-}
-
-
-function currentThemeBrightness() {
-    return $(":root")[0].className.match(/\bbrightness-\w+/gi)[0]
-}
-
-
 function isReduceMotion() {
     return window.localStorage.getItem('org.bh.reduce-motion') === "true"
 }
@@ -153,65 +88,35 @@ function setReduceMotion(shouldReduceMotion) {
 }
 
 
-function setUpDarkModeCheckBox() {
-    $("#dark-mode-toggle").click(event => {
-        if (event.altKey || event.ctrlKey || event.shiftKey) {
-            userWantsHighContrastModeNext = true
-        }
-        else {
-            userWantsHighContrastModeNext = false
-        }
-    })
-
-    $("#dark-mode-toggle").change(event => {
-        if (userWantsHighContrastModeNext) {
-            userWantsHighContrastModeNext = false
-            const wasDarkModeAlready = isDarkBrightness()
-            const shouldCheckDarkModeCheckBox = wasDarkModeAlready
-
-            if (isHighContrastBrightness()) {
-                setDarkMode(wasDarkModeAlready)
-            }
-            else {
-                setHighContrastDarkMode(wasDarkModeAlready)
-            }
-
-            $("#dark-mode-toggle").prop("checked", shouldCheckDarkModeCheckBox)
-            return shouldCheckDarkModeCheckBox
-        }
-        else {
-            setDarkMode($("#dark-mode-toggle").is(":checked"))
-        }
-    })
-
-    $("#dark-mode-toggle").prop("checked", isDarkBrightness())
-}
-
-
 function setUpReduceMotionCheckBox() {
-    $("#reduce-motion-toggle").change(event => {
+    $("#reduce-motion-toggle").change(() => {
         setReduceMotion($("#reduce-motion-toggle").is(":checked"))
     })
     setReduceMotion(isReduceMotion())
 }
 
 
-function setUpMenuTouchCompatibility() {
-    const hoverParent = $(".shows-child-on-hover")
 
-    hoverParent.bind("tap", event => {
-        const shouldShowMenu = event.target.is(":hover") || event.target.is(":focus")
+// // MARK: - Touch Compatibility
+//
+// function setUpMenuTouchCompatibility() {
+//     const hoverParent = $(".shows-child-on-hover")
+//
+//     hoverParent.bind("tap", event => {
+//         const shouldShowMenu = event.target.is(":hover") || event.target.is(":focus")
+//
+//         // 🤷🏼
+//     })
+// }
 
-        // 🤷🏼
-    })
-}
 
+
+// MARK: - Startup
 
 $(() => {
     disableDisabledLinks()
 
     setUpAutoReduceMotion()
-    //setUpDarkModeCheckBox()
     setUpReduceMotionCheckBox()
-    setUpMenuTouchCompatibility()
+    //setUpMenuTouchCompatibility()
 })

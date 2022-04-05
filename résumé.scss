@@ -390,6 +390,7 @@ dl.like-bulleted-list {
         padding: 8px;
         border-radius: 12px;
         margin: 3em 0;
+        position: relative;
 
         @media screen and (max-width: 640px), (max-aspect-ratio:1/1) {
             -webkit-flex-wrap: wrap;

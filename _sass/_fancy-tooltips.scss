@@ -1,0 +1,46 @@
+
+[title]:not([data-use-legay-tooltips]) {
+
+    position: relative;
+
+    &::after {
+        content: attr(title);
+        opacity: 0;
+
+        transition-property: opacity;
+
+        pointer-events: none;
+
+        font-family: var(--font-family-primary, "Roboto"), sans-serif;
+        font-size: 11pt;
+        font-weight: 500;
+
+        background: var(--theme-background-color-at-level-3);
+        box-shadow: var(--box-shadow-z2);
+        border-radius: 0.5ex;
+
+        position: absolute;
+        padding: 0.5ex 1ex;
+        top: 100%;
+        right: 50%;
+    }
+
+    &:focus,
+    &:hover {
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &[data-tooltip-position="to-left-of-subject"]::after {
+        top: 0;
+        right: calc(100% + 1ex);
+        left: unset;
+    }
+
+    &[data-tooltip-position="to-right-of-subject"]::after {
+        top: 0;
+        right: unset;
+        left: calc(00% + 1ex);
+    }
+}

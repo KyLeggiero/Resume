@@ -1,0 +1,25 @@
+{%- case include.type -%}
+    {%- when 'healthcare' -%}
+        <i class="infobox-badge   material-icons-round"
+            title="Healthcare industry"
+            data-tooltip-position="to-left-of-subject"
+            >medical_services</i>
+
+    {%- when 'infosec' -%}
+        <i class="infosec infobox-badge   material-icons-two-tone"
+            title="InfoSec"
+            data-tooltip-position="to-left-of-subject"
+            >security</i>
+
+    {%- when 'entertainment' -%}
+        <i class="infobox-badge   material-icons-round"
+            title="Entertainment industry"
+            data-tooltip-position="to-left-of-subject"
+            >movie_filter</i>
+
+    {%- when 'fintech' -%}
+        <i class="infobox-badge   material-icons-round"
+            title="Fintech"
+            data-tooltip-position="to-left-of-subject"
+            >account_balance</i>
+{%- endcase -%}

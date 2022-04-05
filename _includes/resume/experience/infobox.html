@@ -1,5 +1,10 @@
 
                 <figure class="infobox infobox-with-dynamic-layout   flex-row flex-vert-center flex-horiz-space-around flex-wrap">
+                    {%- if include.badge %}
+                    {% include resume/experience/infobox-badge.html
+                        type=include.badge
+                         %}
+                     {%- endif %}
                     {% if include.logo-for-dark-theme %}<a class="infobox-subject" href="{{ include.url | default: 'url' }}" target="_blank" style="background-image: url('{{ include.logo-for-dark-theme }}')" data-required-theme-type="dark"></a>
                     {% endif %}<a class="infobox-subject" href="{{ include.url | default: 'url' }}" target="_blank" style="background-image: url('{{ include.logo | default: include.logo-for-light-theme }}')" {%- if include.logo-for-dark-theme %} data-required-theme-type="light" {%- endif %}></a>
                     <figcaption class="infobox-info">

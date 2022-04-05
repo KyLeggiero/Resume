@@ -160,6 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .contact-list-item {
         margin: 0 1ex;
+        padding: 1em 0; // Ensure that there's vertical space for contact requirement notes
 
         &,
         span {
@@ -175,6 +176,7 @@ h1, h2, h3, h4, h5, h6 {
         .contact-requirement-note {
             font-size: 12pt;
             font-weight: 500;
+            margin-bottom: -1.5em; // Don't consider the first line of this when aligning content vertically
 
             &,
             * {
@@ -378,7 +380,6 @@ dl.like-bulleted-list {
 
 
 .infobox {
-
     transition-property: background, border, box-shadow;
 
 
@@ -390,6 +391,7 @@ dl.like-bulleted-list {
         padding: 8px;
         border-radius: 12px;
         margin: 3em 0;
+        position: relative;
 
         @media screen and (max-width: 640px), (max-aspect-ratio:1/1) {
             -webkit-flex-wrap: wrap;

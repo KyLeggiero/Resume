@@ -1,0 +1,32 @@
+
+.infobox-badge {
+    position: absolute !important;
+    top: 1em;
+    right: 1em;
+    opacity: 60%;
+
+
+    &.infosec {
+        opacity: 1;
+
+        transition-property: filter, text-shadow;
+
+        --shadow-color: #fdff04;
+        --shadow: 0 0 1em var(--shadow-color);
+        text-shadow: var(--shadow);
+
+        &::after {
+            text-shadow: none;
+        }
+
+        .brightness-dark &,
+        .brightness-black & {
+            --shadow-color: #0f16c1;
+        }
+
+        .brightness-dark &.material-icons-two-tone,
+        .brightness-black &.material-icons-two-tone {
+            --shadow-color: #f0e93e;
+        }
+    }
+}

@@ -31,8 +31,22 @@
     url('/fonts/MaterialIconsRound-Regular.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Material Icons Two-Tone';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons Two-Tone'),
+    local('MaterialIconsTwoTone-Regular'),
+    url('/fonts/MaterialIconsTwoTone-Regular.otf') format('opentype');
+}
+
+
+
+// MARK: - Styles which enable font icons
+
 .material-icons,
-.material-icons-round {
+.material-icons-round,
+.material-icons-two-tone {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
@@ -57,6 +71,22 @@
   font-feature-settings: 'liga';
 }
 
+
 .material-icons-round {
     font-family: 'Material Icons Round';
+}
+
+
+.material-icons-two-tone {
+    font-family: 'Material Icons Two-Tone';
+
+    .brightness-dark &,
+    .brightness-black & {
+        filter: invert(1);
+
+
+        &[title]:not([data-use-legay-tooltips])::after {
+            filter: invert(1);
+        }
+    }
 }

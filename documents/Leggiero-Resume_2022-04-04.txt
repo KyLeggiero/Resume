@@ -12,7 +12,7 @@
 
                                    Employment
 
-Yes Health (2021 - 2022)
+Yes Health (2021 - 2022)  -  Healthcare industry
 Mobile Software Engineer
 
 Coordinated engineering multiple health products across multiple platforms.
@@ -26,7 +26,7 @@ Worked with UI/UX team to redesign & rebrand those products.
 
 
 
-PKWare (2020 - 2021)
+PKWare (2020 - 2021)  -  InfoSec
 Apple Platform Engineer
 
 Worked on personal file encryption software for macOS and iOS, as well as
@@ -41,7 +41,7 @@ competencies, improve accessibility, and optimize flow.
 
 
 
-Ionic Security (2017 - 2019)
+Ionic Security (2017 - 2019)  -  InfoSec
 Software Engineer III
 
 Built industry-leading professional presentation software for macOS.
@@ -53,7 +53,7 @@ animations, and more.
 
 
 
-Renewed Vision (2016 - 2017)
+Renewed Vision (2016 - 2017)  -  Entertainment industry
 macOS Software Engineer
 
 Built industry-leading professional presentation software for macOS.
@@ -65,7 +65,7 @@ animations, and more.
 
 
 
-NCR - Small & Medium Business (2015 - 2016)
+NCR - Small & Medium Business (2015 - 2016)  -  Fintech
 Mobile Software Engineer
 
 Built state-of-the-art point-of-sale software for iOS & Android. Implemented
@@ -94,10 +94,12 @@ Bachelor of Science in Computer Science
                                    Tech Specs
 
 Extraordinary:
-Swift, Kotlin, CSS 2022, macOS, iOS, Web (Front-End), SwiftUI, Git, Learning New Skills
+Swift, Kotlin, CSS 2022, macOS, iOS, Web (Front-End), SwiftUI, Git,
+Learning New Skills
 
 Expert:
-Sass and SCSS, HTML 5, JVM, Frameworks and APIs, Open-Source, Agile
+App-Level Security, Sass and SCSS, HTML 5, JVM, Frameworks and APIs,
+Open-Source, Agile
 
 Advanced:
 Multithreading, Networking, Architecture
@@ -146,4 +148,4 @@ Logo Design
 
 
 
-                            Last updated 2022-03-26
+                            Last updated 2022-04-04

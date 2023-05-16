@@ -2,9 +2,9 @@
   "format-version": "1.1.0",
   "meta": {
     "id": "2821559F-FD9C-4697-ACC2-427AFD4B6825",
-    "info-version": "4.3.0",
+    "info-version": "5.0.0",
     "title": "Résumé Basics",
-    "date-last-edited": "2022-03-26"
+    "date-last-edited": "2023-05-16"
   },
   "content": {
     "contact": {
@@ -14,8 +14,8 @@
       "preferred-first-name": "Ky",
       "last-name": "Leggiero",
       "phone-number": "+1 (470) 236 2534",
-      "email-address": "KyLeggiero@Gmail.com",
-      "tagline": "Senior Software Engineer with a passion for designing & making great products for Apple platforms",
+      "email-address": "Hire@KyLeggiero.me",
+      "tagline": "Staff Software Engineer with a passion for designing & making great products for Apple platforms",
       "website-url": "https://KyLeggiero.me",
       "blog-url": "https://Blog.KyLeggiero.me"
     },
@@ -128,7 +128,10 @@
           "division": "Small & Medium Business",
           "broad-location": "Alpharetta, GA",
           "address": "4325 Alexander Dr, Alpharetta, GA 30022",
-          "phone-number": "+1 (800) CALL NCR"
+          "phone-number": "+1 (800) CALL NCR",
+          "email": {
+              "hr": "AMER.HRCentral@ncr.com"
+          }
         },
         "start": {
           "date": "2015-01-19",
@@ -156,9 +159,13 @@
         "id": "EF4A6657-8052-4F64-A2C3-802018F1F406",
         "company": {
           "name": "Renewed Vision",
+          "name-long": "Renewed Vision, LLC",
           "broad-location": "Alpharetta, GA",
           "address": "6505 Shiloh Road #200, Alpharetta, GA",
-          "phone-number": "+1 (770) 599-5337"
+          "phone-number": "+1 (770) 599-5337",
+          "email": {
+              "hr": "bweston@renewedvision.com"
+          }
         },
         "start": {
           "date": "2016-07-14",
@@ -189,11 +196,14 @@
           "name-long": "Ionic Security, Inc.",
           "broad-location": "Atlanta, GA",
           "address": "1170 Peachtree St NE #400, Atlanta, GA 30309",
-          "phone-number": "+1 (404) 736-6000"
+          "phone-number": "+1 (404) 736-6000",
+          "email": {
+              "hr": "adelong@ionicsecurity.com"
+          }
         },
         "start": {
           "date": "2017-03-27",
-          "title": "Software Engineer",
+          "title": "Software Engineer III",
           "description": "Engineered user-facing file encryption and access software for macOS. Collaborated on a company-wide software platform to allow such client software to be made consistent on many other platforms, including macOS, Android, Windows, and iOS.\nWorked closely with UI/UX team to hone the design of multiple company products, including graphics, animations, user flows, and overall experience.",
           "compensation": {
             "type": "yearly",
@@ -222,10 +232,15 @@
         "id": "6EBBD5DD-62CE-41BA-ABDA-ECC64A1AE141",
         "company": {
           "name": "RR Donnelley",
+          "name-long": "R.R. Donnelley & Sons Company",
           "division": "Motif",
           "broad-location": "Chicago, Illinois",
-          "address": "",
-          "phone-number": ""
+          "address": "35 West Wacker Drive, Chicago, IL, 60601",
+          "phone-number": "+1 (855) 901-3099",
+          "email": {
+              "manager": "ethan.i.miller@rrd.com",
+              "director": "kathleen.f.gonzalez@rrd.com"
+          }
         },
         "start": {
           "date": "2019-07-01",
@@ -256,11 +271,14 @@
           "name-long": "PKWARE, Inc.",
           "broad-location": "Milwaukee, WI",
           "address": "201 E. Pittsburgh Ave., Ste. 400, Milwaukee, WI, 53204",
-          "phone-number": "+1 (414) 289-9788"
+          "phone-number": "+1 (414) 289-9788",
+          "email": {
+              "hr": "Kathy.Treichel@pkware.com"
+          }
         },
         "start": {
           "date": "2020-03-02",
-          "title": "Apple Platform Engineer",
+          "title": "Senior Software Engineer",
           "description": "Worked on personal file encryption software for macOS and iOS, as well as internal libraries to support these. \nCompletely redesigned the iOS app from the ground up to focus on core competencies, improve accessibility, and optimize flow.",
           "compensation": {
             "type": "yearly",
@@ -285,12 +303,15 @@
           "name": "Yes Health",
           "name-long": "Yes Health, Inc.",
           "broad-location": "Mill Valley, CA",
-          "address": "35 Miller Avenue Suite #273 Mill Valley, CA. 94941",
-          "phone-number": "+1 (415) 687-2200"
+          "address": "35 Miller Avenue Suite #273 Mill Valley, CA, 94941, USA",
+          "phone-number": "+1 (415) 687-2200",
+          "email": {
+              "hr": "curtisbarthold@yeshealth.com"
+          }
         },
         "start": {
           "date": "2021-02-01",
-          "title": "Mobile Software Engineer",
+          "title": "Senior Software Engineer",
           "description": "Coordinated engineering multiple health products across multiple platforms. Transitioned old Objective-C + UIKit codebase to Swift + SwiftUI. Brought new levels of diversity & inclusion to the teams & products.\nImplemented department-wide processes & best practices such as agile kanban sprints, version control, a documentation system, et cetera.\n\nWorked with UI/UX team to redesign & rebrand those products.",
           "compensation": {
             "type": "yearly",
@@ -303,11 +324,45 @@
         },
 
         "keywords": ["multiple health products", "Swift + SwiftUI", "diversity & inclusion", "best practices", "agile kanban sprints", "version control", "documentation", "redesign", "rebrand"],
-        "tags": ["tech", "software engineering", "apps", "frameworks", "desktop", "macOS", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote"],
+        "tags": ["tech", "software engineering", "apps", "frameworks", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote"],
 
         "reason-for-leaving": {
-          "brief": "layoff"
+          "brief": "layoff",
+          "description": "Company dissolved"
         }
+      },
+      {
+        "id": "BEF51B70-407F-4AF8-A036-EAB821D24EA5",
+        "company": {
+          "name": "Realtor.com",
+          "name-long": "Realtor.com • Move, Inc. • NewsCorp",
+          "broad-location": "Santa Clara, CA",
+          "address": "30700 Russell Ranch Road, Westlake Village, CA, 91362, USA",
+          "phone-number": "+1 (805) 557-2300",
+          "email": {
+              "hr": "askhr@move.com"
+          }
+        },
+        "start": {
+          "date": "2022-05-31",
+          "title": "Staff Software Engineer",
+          "description": "Leading transition to SwiftUI. Guiding removal of core components.\n\nCollaborating cross-team to ensure clear sync & quality product.\nDriving changes of product, process, & team.\n\nWorking with UI/UX to finalize & implement full redesign.\nDocumenting & encoding the design system.",
+          "compensation": {
+            "type": "yearly",
+            "amount": 180000,
+            "tier": "full-time"
+          }
+        },
+        "end": {
+            "compensation": {
+              "type": "yearly",
+              "amount": 185000,
+              "tier": "full-time"
+            }
+        },
+
+        "keywords": ["Leading transition", "Guiding", "Driving changes", "full redesign", "Documenting & encoding"],
+        "tags": ["tech", "staff-level", "software engineering", "staff engineer", "apps", "frameworks", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote", "coordination", "leadership"],
       }
     ]
   }

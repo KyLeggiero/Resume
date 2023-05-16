@@ -11,7 +11,7 @@ title: Ky's Résumé
 
 # Short bio or description (in share links)
 description: >
-    Senior Software Engineer with a passion for designing &amp;
+    Staff Software Engineer with a passion for designing &amp;
     making great products for Apple&nbsp;platforms
 
 source-code: https://GitHub.com/KyLeggiero/Resume
@@ -25,12 +25,13 @@ author:
         https://www.gravatar.com/avatar/2f4691f7a1c9d3192fe843a164a27535?s=280px
 
     professional:
-        title: Senior Apple Platform Software Engineer
+        title: Staff Apple Platform Software Engineer
         start-year: 2012
 
     social:
         blog: https://Blog.KyLeggiero.me
         calendar: https://KyLeggiero.me/Calendar
+        calendar-email: KyLeggiero@Gmail.com
         personal-site: https://KyLeggiero.me
         contact-and-more: https://KyLeggiero.me
         email: Hire@KyLeggiero.me
@@ -53,10 +54,10 @@ author:
 date:
     originally-written: 2019-04-02
     newest:
-        web: 2022-04-04
-        pdf: 2022-04-07
-        txt: 2022-04-04
-        json: 2022-03-26
+        web: 2023-05-16
+        pdf: 2022-05-11
+        txt: 2022-05-16
+        json: 2022-05-16
 
 document:
     directory: /documents

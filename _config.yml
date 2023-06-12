@@ -43,6 +43,8 @@ author:
         linkedin-username: ky-leggiero
         mastodon: https://Mastodon.Social/@KyLeggiero
         phone:
+            require-scheduled-call:
+                url: https://KyLeggiero.me/Scheduling
             display-html: +1&nbsp;(470) 236-2534
             # disambiguation: 236-2534
             just-numbers: 14702362534
@@ -54,10 +56,10 @@ author:
 date:
     originally-written: 2019-04-02
     newest:
-        web: 2023-05-16
-        pdf: 2022-05-11
-        txt: 2022-05-16
-        json: 2022-05-16
+        web: 2023-06-11
+        pdf: 2023-06-11
+        txt: 2023-06-11
+        json: 2023-06-11
 
 document:
     directory: /documents

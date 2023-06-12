@@ -346,7 +346,7 @@
         "start": {
           "date": "2022-05-31",
           "title": "Staff Software Engineer",
-          "description": "Leading transition to SwiftUI. Guiding removal of core components.\n\nCollaborating cross-team to ensure clear sync & quality product.\nDriving changes of product, process, & team.\n\nWorking with UI/UX to finalize & implement full redesign.\nDocumenting & encoding the design system.",
+          "description": "Lead transition to SwiftUI. Guided removal of core components.\n\nCollaborated cross-team to ensure clear sync & quality product.\nDrove changes of product, process, & team.\n\nWorked with UI/UX to finalize & implement full redesign.\nDocumented & encoded the design system.",
           "compensation": {
             "type": "yearly",
             "amount": 180000,
@@ -358,11 +358,16 @@
               "type": "yearly",
               "amount": 185000,
               "tier": "full-time"
-            }
+            },
+            "date": "2023-06-09"
+        },
+        "reason-for-leaving": {
+          "brief": "layoff",
+          "description": "Position eliminated"
         },
 
-        "keywords": ["Leading transition", "Guiding", "Driving changes", "full redesign", "Documenting & encoding"],
-        "tags": ["tech", "staff-level", "software engineering", "staff engineer", "apps", "frameworks", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote", "coordination", "leadership"],
+        "keywords": ["Lead transition", "Guided", "Drove changes", "full redesign", "Documented & encoded"],
+        "tags": ["tech", "staff-level", "software engineering", "staff engineer", "apps", "frameworks", "mobile", "iOS", "iPadOS", "Android", "desk job", "career", "remote", "coordination", "leadership"]
       }
     ]
   }

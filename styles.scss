@@ -21,7 +21,7 @@
 
     --gradient-background-start-color: #0D47A2;
     --gradient-background-mid-color: #311B92;
-    --gradient-background-end-color: #890E4F;
+    --gradient-background-end-color: #4A148C;
 }
 
 
@@ -70,7 +70,7 @@
     background-color: var(--resume-theme-color);
     background-image: linear-gradient(-135deg,
         var(--gradient-background-start-color) 0%,
-        var(--gradient-background-mid-color) 25%,
+        var(--gradient-background-mid-color) 27%,
         var(--gradient-background-end-color) 100%);
     background-position: 0% 50%;
     color: var(--dark-theme-foreground-color);

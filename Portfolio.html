@@ -2,6 +2,7 @@
 layout: portfolio
 page-specific-stylesheets:
     - /Portfolio.css
+title: "Portfolio"
 subtitle: "Portfolio"
 
 
@@ -105,6 +106,14 @@ portfolio:
     title='Big Projects'
     id='big-projects'
 -%}
+    {%- include portfolio-item-large.html
+        title='Realtor.com for iOS'
+        description='Real Estate & Rentals app'
+        url='https://www.realtor.com/mobile/#1'
+        my-contributions='Lead transition to SwiftUI. Guided removal of core components. <br/>Cross-team leardership to ensure clear sync & quality product. Drove changes to product, process, & team. <br/>Worked with UI/UX to finalize & implement full redesign. Documented & encoded the design system.'
+        image-url='/img/Realtor.com-logo.svg'
+        image-full-bleed=false
+    -%}
     {%- include portfolio-item-large.html
         title='Yes Health'
         description='Individual, goal-oriented health coaching app'
@@ -251,10 +260,13 @@ These are only projects to which I\'ve made notable contributions, but which I d
 
 
 
+{% capture open-source-packages-aside %}
+A lot of my open-source projects lately are small library packages published under <a href="https://GitHub.com/{{ site.author.social.github-suffix.utilities }}" target="_blank">{{ site.author.social.github-suffix.utilities }}</a>.
+{% endcapture %}
 {% include portfolio-subsection-start.html
     title='My Open-Source packages'
     id='my-open-source-projects'
-    aside='A lot of my open-source projects lately are small library packages:'
+    aside=open-source-packages-aside
 -%}
     {% include portfolio-list-start.html -%}
 

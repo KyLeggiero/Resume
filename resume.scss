@@ -45,9 +45,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
     &,
-    .title-text,
-    .subtitle-text {
-        font-family: 'Raleway';//var(--font-family-title);
+    .title-text {
+        font-family: 'Raleway', sans-serif;//var(--font-family-title);
     }
 
     .title-text {

@@ -4,12 +4,13 @@ page-specific-stylesheets:
     - /resume.css
     - /More.css
 title: "The back page"
+subtitle: "The back page of my résumé"
 ---
 
 <article>
     <header class="tldr   flex-column flex-horiz-stretch flex-vert-center">
         <p>{{ site.author.name }} is a {{ site.author.professional.title }}, with professional experience since {{ site.author.professional.start-year }}.</p>
-        <p>This page lists more experience minutia than fits on a one-page résumé</p>
+        <p>This page lists more experience minutia than fits on <a href="/">a one-page résumé</a></p>
     </header>
 
     <main style="transform: translate3d(0,0,0) !important">
@@ -19,27 +20,43 @@ title: "The back page"
             classes='flex-row flex-wrap flex-horiz-space-around'
         %}
             {%- include resume/experience/infobox.html
+                company='Realtor.com'
+                title='<span>Staff</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
+                duration='<time datetime="2022-05-31">2022</time> – <time datetime="2023-06-09">2023</time>'
+
+                summary-line-1='<strong>Lead transition</strong> to SwiftUI. <strong>Guided</strong> removal of core components.'
+                summary-line-2='Cross-team leadership to ensure clear sync & quality product. <strong>Drove changes</strong> of product, process, & team.'
+                summary-line-3='Worked with UI/UX to finalize &amp; implement <strong>full redesign</strong>. <strong>Documented & encoded</strong> the design system.'
+
+                url='https://Realtor.com'
+                logo='/img/Realtor.com-logo.svg'
+                badge='real-estate'
+            %}
+            {%- include resume/experience/infobox.html
                 company='Yes Health'
-                title='<span>Mo&shy;bile</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
+                title='<span>Lead</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
                 duration='<time datetime="2021-02-01">2021</time> – <time datetime="2022-03-22">2022</time>'
 
-                summary-line-1='Coordinated engineering <strong>multiple health products</strong> across multiple platforms. Transitioned old Objective-C + UIKit codebase to <strong>Swift + SwiftUI</strong>. Brought new levels of <strong>diversity &amp; inclusion</strong> to the teams &amp; products.<br/>Implemented department-wide processes &amp; <strong>best practices</strong> such as <strong>agile kanban sprints</strong>, <strong>version control</strong>, a <strong>documentation</strong> system, et cetera.'
-                summary-line-2='Worked with UI/UX team to <strong>redesign</strong> &amp; <strong>rebrand</strong> those products.'
+                summary-line-1='Coordinated engineering <strong>multiplat health products</strong>. Converted <strong>ObjC</strong> codebase to <strong>SwiftUI</strong>. Enhanced <strong>diversity &amp; inclusion</strong>.'
+                summary-line-2='Implemented department-wide processes &amp; <strong>best practices</strong>, <strong>version control</strong>, a <strong>documentation</strong> system, etc.'
+                summary-line-3='Worked with UI/UX to <strong>redesign</strong> &amp; <strong>rebrand</strong> those products.'
 
                 url='https://YesHealth.com'
                 logo='/img/Yes-Health-logo.svg'
+                badge='healthcare'
             %}
             {%- include resume/experience/infobox.html
                 company='PKWare'
-                title='<span>Ap&shy;ple</span> <span>Plat&shy;form</span> <span>En&shy;gi&shy;neer</span>'
+                title='<span>Sen&shy;ior</span> <span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
                 duration='<time datetime="2020-03-02">2020</time> – <time datetime="2021-01-18">2021</time>'
 
-                summary-line-1='Worked on personal <strong>file encryption</strong> software for macOS and iOS, as well as <strong>internal libraries</strong> to support these.'
+                summary-line-1='Maintained & invented personal <strong>file encryption</strong> software for macOS and iOS, as well as <strong>internal libraries</strong> to support these.'
                 summary-line-2='<strong>Completely redesigned</strong> the iOS app from the ground up to focus on core competencies, improve accessibility, and optimize flow.'
 
                 url='https://PKWare.com'
                 logo-for-light-theme='/img/PKWare-blue-logo.svg'
                 logo-for-dark-theme='/img/PKWare-white-logo.svg'
+                badge='infosec'
             %}
             {%- include resume/experience/infobox.html
                 company='RR Don&shy;nel&shy;ley <span>&mdash; <span>Mo&shy;tif</span></span>'
@@ -52,10 +69,11 @@ title: "The back page"
                 url='https://MotifPhotos.com'
                 logo-for-light-theme='/img/Motif-dark-grey-logo.svg'
                 logo-for-dark-theme='/img/Motif-white-logo.svg'
+                badge='printing'
             %}
             {%- include resume/experience/infobox.html
                 company='<span>Ion&shy;ic</span> <span>Se&shy;cu&shy;ri&shy;ty</span>'
-                title='<span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span>'
+                title='<span>Soft&shy;ware</span> <span>En&shy;gi&shy;neer</span> III'
                 duration='<time datetime="2017-03-27">2017</time> – <time datetime="2019-06-28">2019</time>'
 
                 summary-line-1='Engineered <strong>user-facing</strong> file <strong>encryption</strong> and access software for macOS. Collaborated on a company-wide <strong>software platform</strong> to allow such client software to be made consistent on many other platforms, including <strong>macOS, Android, Windows, and iOS</strong>.'
@@ -64,6 +82,7 @@ title: "The back page"
                 url='https://Ionic.com'
                 logo-for-light-theme='/img/IONIC-dark-grey-logo.svg'
                 logo-for-dark-theme='/img/IONIC-white-logo.svg'
+                badge='infosec'
             %}
             {%- include resume/experience/infobox.html
                 company='<span>Re&shy;newed</span> <span>Vi&shy;sion</span>'
@@ -75,6 +94,7 @@ title: "The back page"
 
                 url='https://RenewedVision.com'
                 logo='/img/Renewed-Vision-logo-icon.png'
+                badge='entertainment'
             %}
             {%- include resume/experience/infobox.html
                 company='NCR &mdash; <span>Small &amp; <span>Medi&shy;um</span> <span>Busi&shy;ness</span></span>'
@@ -86,6 +106,7 @@ title: "The back page"
 
                 url='https://NCRSilver.com'
                 logo='/img/NCR-logo.svg'
+                badge='fintech'
             %}
             {%- include resume/experience/infobox.html
                 company='<span>Uni&shy;ver&shy;si&shy;ty</span> <span>Sys&shy;tem</span> of <span>Geor&shy;gia</span> &mdash; UITS'
@@ -98,6 +119,7 @@ title: "The back page"
                 url='https://ColumbusState.edu'
                 logo-for-light-theme='/img/CSU_Logo_Tower_WhiteBackground.svg'
                 logo-for-dark-theme='/img/CSU_Logo_Tower_BlueBackground.svg'
+                badge='education'
             %}
             {%- include resume/experience/infobox.html
                 company="Dun&shy;kin'"
@@ -108,6 +130,7 @@ title: "The back page"
 
                 url='https://www.DunkinBrands.com/'
                 logo='/img/Dunkin.svg'
+                badge='foodservice'
             %}
             {%- include resume/experience/infobox.html
                 company='Tar&shy;get'
@@ -118,6 +141,7 @@ title: "The back page"
 
                 url='https://Target.com'
                 logo='/img/Target.svg'
+                badge='retail'
             %}
         {%- include resume/experience/list-end.html %}
 
@@ -129,20 +153,29 @@ title: "The back page"
             {%- include resume/experience/infobox.html
                 company='<span>Co&shy;lum&shy;bus</span> State <span>Uni&shy;ver&shy;sity</span>'
                 title='<span>Bach&shy;e&shy;lor</span> of <span>Sci&shy;ence</span> in <span>Com&shy;put&shy;er</span> <span>Sci&shy;ence</span>'
-                duration='<span>Geor&shy;gia</span>, <time datetime="2014-05-12">2014</time>'
+                duration='<time datetime="2014-05-12">2014</time>'
 
                 url='https://ColumbusState.edu'
                 logo-for-light-theme='/img/CSU_Logo_Tower_WhiteBackground.svg'
                 logo-for-dark-theme='/img/CSU_Logo_Tower_BlueBackground.svg'
+            %}
+            {%- include resume/experience/infobox.html
+                company='<span>Geor&shy;gia</span> <span>Gwinn&shy;ett</span> <span>Col&shy;lege</span>'
+                title='Ancillary Studies'
+                duration='<time datetime="2013">2013</time>'
+
+                url='https://www.GGC.edu'
+                logo-for-light-theme='/img/GGC-logo-lightMode.svg'
+                logo-for-dark-theme='/img/GGC-logo-darkMode.svg'
             %}
         {%- include resume/experience/list-end.html %}
     </main>
 
 
     <footer>
-        <section class="flex-row flex-wrap flex-horiz-center   font-1-1hx">
-            <a href="/"          class="button"><i class="material-icons">arrow_back</i> <span>Full Résumé</span></a>
-            <a href="/Portfolio" class="button"><i class="fa fa-th"                ></i> <span>Portfolio</span></a>
+        <section class="flex-column flex-wrap flex-horiz-center   font-1-1hx">
+            <a href="/"          class="button"    ><i class="material-icons">arrow_back</i> <span>Full Résumé</span></a>
+            <a href="/Portfolio" class="big button"><i class="fa fa-th"                ></i> <span>Portfolio</span></a>
         </section>
 
         <section class="hide-print   flex-row flex-wrap flex-horiz-center   font-1-1hx">

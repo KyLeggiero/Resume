@@ -4,13 +4,22 @@
                     {% include resume/experience/infobox-badge.html
                         type=include.badge
                          %}
-                     {%- endif %}
-                    {% if include.logo-for-dark-theme %}<a class="infobox-subject" href="{{ include.url | default: 'url' }}" target="_blank" style="background-image: url('{{ include.logo-for-dark-theme }}')" data-required-theme-type="dark"></a>
-                    {% endif %}<a class="infobox-subject" href="{{ include.url | default: 'url' }}" target="_blank" style="background-image: url('{{ include.logo | default: include.logo-for-light-theme }}')" {%- if include.logo-for-dark-theme %} data-required-theme-type="light" {%- endif %}></a>
+                    {%- endif %}
+                    {% if include.logo-for-dark-theme -%}
+                        <a class="infobox-subject" href="{{ include.url | default: 'url' }}" target="_blank" style="background-image: url('{{ include.logo-for-dark-theme }}')" data-required-theme-type="dark"></a>
+                    {% endif -%}
+                    <a class="infobox-subject" href="{{ include.url | default: 'url' }}" target="_blank" style="background-image: url('{{ include.logo | default: include.logo-for-light-theme }}')" {%- if include.logo-for-dark-theme %} data-required-theme-type="light" {%- endif %}></a>
                     <figcaption class="infobox-info">
                         <h2>{{ include.company | default: 'company' }} <small>({{ include.duration | default: 'duration' }})</small></h2>
                         <h3>{{ include.title | default: 'title' }}</h3>
-                        {% if include.summary-line-1 or include.summary %}<p>{{ include.summary-line-1 | default: include.summary }}</p>
-                        {% if include.summary-line-2 %}<p>{{ include.summary-line-2 }}</p>{% endif %}{% endif %}
+                        {% if include.summary-line-1 or include.summary -%}
+                            <p>{{ include.summary-line-1 | default: include.summary }}</p>
+                            {%- if include.summary-line-2 -%}
+                                <p>{{ include.summary-line-2 }}</p>
+                            {%- endif -%}
+                            {%- if include.summary-line-3 -%}
+                                <p>{{ include.summary-line-3 }}</p>
+                            {%- endif -%}
+                        {%- endif %}
                     </figcaption>
                 </figure>

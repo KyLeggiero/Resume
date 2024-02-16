@@ -28,14 +28,9 @@ Documented & encoded the design system.
 
 
 
-<<<<<<<< HEAD:documents/Leggiero-Resume_2024-01-18.txt
-Yes Health (2021 - 2022)  -  Healthcare industry
-Lead Software Engineer
-========
 Yes Health (2021 - 2022)
 Senior Software Engineer
 (Healthcare industry)
->>>>>>>> 54130eb (Updating PDF & back page):documents/Leggiero-Resume_2024-01-26.txt
 
 Coordinated engineering multiple health products across multiple platforms.
 Transitioned old Objective-C + UIKit codebase to Swift + SwiftUI. Brought new

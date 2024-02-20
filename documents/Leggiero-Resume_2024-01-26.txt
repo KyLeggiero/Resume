@@ -29,7 +29,7 @@ Documented & encoded the design system.
 
 
 Yes Health (2021 - 2022)
-Senior Software Engineer
+Lead Software Engineer
 (Healthcare industry)
 
 Coordinated engineering multiple health products across multiple platforms.
